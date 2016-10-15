@@ -7,6 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "SendRequst.h"
+#import "MyCenterApi.h"
+#import "InviteModel.h"
 
 @interface ViewController ()
 
@@ -17,6 +20,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"system" forKey:@"_cmd_"];
+    [dic setObject:@"list" forKey:@"type"];
+    [dic setObject:@"" forKey:@"status"];
+    [dic setObject:@"1" forKey:@"page"];
+    [dic setObject:@"10" forKey:@"number"];
+    [MyCenterApi systemMessageListWithBlock:^(NSMutableArray *array, NSError *error) {
+        if(!error){
+        
+        }
+    } dic:dic noNetWork:nil];
+    
+    
+//    [SendRequst sendRequestWithUrlString:@"" success:^(id responseDic) {
+//        
+//    } failure:^(NSError *error) {
+//        
+//    } apiName:@"" noNetWork:nil];
 }
 
 

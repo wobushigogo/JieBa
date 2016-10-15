@@ -1,0 +1,51 @@
+//
+//  JieBa-Prefix.pch
+//  JieBa
+//
+//  Created by 汪洋 on 16/10/13.
+//  Copyright © 2016年 zhixin. All rights reserved.
+//
+
+#ifndef JieBa_Prefix_pch
+#define JieBa_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "AFNetworking.h"
+#import "LoginSqlite.h"
+#import "UIView+ViewKit.h"
+#import "UILabel+LabelKit.h"
+#import "NSString+LabelKit.h"
+#import "GetImagePath.h"
+#import "UIViewController+UIAlertControllerKit.h"
+#import "StringTool.h"
+#endif /* JieBa_Prefix_pch */
+
+#define serverAddress @"http://service.lingqianzaixian.com"
+
+#define DataBasePath [[(NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES)) lastObject]stringByAppendingPathComponent:@"JieBa.sqlite"]
+
+#define WidthXiShu(a) ((a) * kWidthXiShu)
+#define HeightXiShu(b) ((b) * kHeightXiShu)
+#define kWidthXiShu (kScreenWidth / 375.0)
+#define kHeightXiShu (kScreenHeight / 667.0)
+
+//屏幕尺寸
+#define kScreenBounds [UIScreen mainScreen].bounds
+#define kScreenSize [UIScreen mainScreen].bounds.size
+#define kScreenWidth CGRectGetWidth([UIScreen mainScreen].bounds)
+#define kScreenHeight CGRectGetHeight([UIScreen mainScreen].bounds)
+
+#define RGBCOLOR(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+#define RGBACOLOR(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+
+#define HEITI(font) [UIFont fontWithName:@"Heiti SC" size:font]
+
+//导航颜色
+#define NavColor RGBCOLOR(82, 149, 228)
+
+#define AllBackLightGratColor RGBCOLOR(242,242,242)//浅灰背景
+#define AllLightGrayColor RGBCOLOR(152,150,150)//浅灰
+#define TextFiledTitleColor RGBCOLOR(59, 59, 59)

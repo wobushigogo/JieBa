@@ -7,8 +7,15 @@
 //
 
 #import "AppDelegate.h"
+#import "MainViewController.h"
+#import "BaseNavigationController.h"
+#import "MyCenterViewController.h"
+#import "RentViewController.h"
+#import "LoanViewController.h"
+#import "LoginViewController.h"
+#import "LoginApi.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<UITabBarControllerDelegate>
 
 @end
 
@@ -17,6 +24,71 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    [LoginSqlite opensql];
+    
+    MainViewController *main = [[MainViewController alloc] init];
+//    [plan.tabBarItem setImageInsets:UIEdgeInsetsMake(7.0, 0.0, -7.0, 0.0)];
+//    plan.tabBarItem.image = [[UIImage imageNamed:@"planDefault"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+//    plan.tabBarItem.selectedImage = [[UIImage imageNamed:@"planSelect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    BaseNavigationController *mainNav = [[BaseNavigationController alloc] initWithRootViewController:main];
+    mainNav.navigationBarHidden = YES;
+    
+    LoanViewController *loan = [[LoanViewController alloc] init];
+//    [loan.tabBarItem setImageInsets:UIEdgeInsetsMake(7.0, 0.0, -7.0, 0.0)];
+//    loan.tabBarItem.image = [[UIImage imageNamed:@"magazineDefault"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+//    loan.tabBarItem.selectedImage = [[UIImage imageNamed:@"magazineSelect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    BaseNavigationController *loannav = [[BaseNavigationController alloc] initWithRootViewController:loan];
+    loannav.navigationBarHidden = YES;
+    
+    RentViewController *rent = [[RentViewController alloc] init];
+    [rent.tabBarItem setImageInsets:UIEdgeInsetsMake(7.0, 0.0, -7.0, 0.0)];
+    rent.tabBarItem.image = [[UIImage imageNamed:@"shoppingListDefault"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    rent.tabBarItem.selectedImage = [[UIImage imageNamed:@"shoppingListSelect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    BaseNavigationController *rentNav = [[BaseNavigationController alloc] initWithRootViewController:rent];
+    rentNav.navigationBarHidden = YES;
+    
+    MyCenterViewController *myCenter = [[MyCenterViewController alloc] init];
+//    [myCenter.tabBarItem setImageInsets:UIEdgeInsetsMake(7.0, 0.0, -7.0, 0.0)];
+//    myCenter.tabBarItem.image = [[UIImage imageNamed:@"myDefault"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+//    myCenter.tabBarItem.selectedImage = [[UIImage imageNamed:@"mySelect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    BaseNavigationController *myCenterNav = [[BaseNavigationController alloc] initWithRootViewController:myCenter];
+    myCenterNav.navigationBarHidden = YES;
+    
+    UITabBarController *tabbar = [[UITabBarController alloc] init];
+    tabbar.delegate = self;
+    //    tabbar.viewControllers = @[plannav,magazinenav,detailedListnav,personalnav];
+    tabbar.viewControllers = @[mainNav,loan,rent,myCenter];
+    
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, tabbar.tabBar.height)];
+    bgView.backgroundColor = RGBCOLOR(16, 16, 16);
+//    self.dianImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth-5-WidthXiShu(26), WidthXiShu(7.5), 6, 6)];
+//    self.dianImageView.backgroundColor = RGBCOLOR(255, 100, 64);
+//    self.dianImageView.hidden = YES;
+//    self.dianImageView.layer.cornerRadius = 3;
+//    self.dianImageView.layer.masksToBounds = YES;
+//    [bgView addSubview:self.dianImageView];
+//    [tabbar.tabBar insertSubview:bgView atIndex:0];
+    tabbar.tabBar.opaque = YES;
+    self.window.rootViewController = tabbar;
+    [self.window makeKeyAndVisible];
+    
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setTitle:@"login" forState:UIControlStateNormal];
+    btn.backgroundColor = [UIColor blackColor];
+    btn.frame = CGRectMake(100, 100, 50, 50);
+    [btn addTarget:self action:@selector(btnAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.window addSubview:btn];
+    
+    
+    UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn2 setTitle:@"logout" forState:UIControlStateNormal];
+    btn2.backgroundColor = [UIColor blackColor];
+    btn2.frame = CGRectMake(200, 100, 50, 50);
+    [btn2 addTarget:self action:@selector(btnAction2) forControlEvents:UIControlEventTouchUpInside];
+    [self.window addSubview:btn2];
+    
     return YES;
 }
 
@@ -47,5 +119,20 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-
+-(void)btnAction{
+    LoginViewController *view = [[LoginViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:view];
+    nav.navigationBarHidden = YES;
+    [self.window.rootViewController presentViewController:nav animated:YES completion:nil];
+}
+-(void)btnAction2{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"member_logout" forKey:@"_cmd_"];
+    [dic setObject:[LoginSqlite getdata:@"token"] forKey:@"token"];
+    [LoginApi logoutWithBlock:^(NSString *string, NSError *error) {
+        if(!error){
+            NSLog(@"%@",string);
+        }
+    } dic:dic noNetWork:nil];
+}
 @end
