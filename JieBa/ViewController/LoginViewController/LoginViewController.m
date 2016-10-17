@@ -16,7 +16,6 @@
 @interface LoginViewController ()<UITextFieldDelegate>
 @property(nonatomic,strong)NavView *navView;
 @property(nonatomic,strong)UIImageView *bgImgView;
-@property(nonatomic,strong)UIButton *bgBtn;
 @property(nonatomic,strong)UIImageView *iconImgView;
 @property(nonatomic,strong)InputTextFiledView *phoneInputView;
 @property(nonatomic,strong)InputTextFiledView *pwdInputView;
@@ -31,7 +30,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self bgImgView];
-    [self bgBtn];
     [self navView];
     [self iconImgView];
     [self phoneInputView];
@@ -71,21 +69,9 @@
     return _bgImgView;
 }
 
--(UIButton *)bgBtn{
-    if(!_bgBtn){
-        UIButton *bgBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        bgBtn.frame = self.view.bounds;
-        [bgBtn addTarget:self action:@selector(closeKeyboard) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:bgBtn];
-        
-        _bgBtn = bgBtn;
-    }
-    return _bgBtn;
-}
-
 - (UIImageView *)iconImgView {
     if (!_iconImgView) {
-        UIImageView *iconImgView = [[UIImageView alloc] initWithFrame:CGRectMake((kScreenWidth-WidthXiShu(139))/2, HeightXiShu(70), WidthXiShu(139), HeightXiShu(98))];
+        UIImageView *iconImgView = [[UIImageView alloc] initWithFrame:CGRectMake((kScreenWidth-WidthXiShu(82))/2, HeightXiShu(70), WidthXiShu(82), HeightXiShu(64))];
         iconImgView.image = [GetImagePath getImagePath:@"login_TM"];
         [self.view addSubview:iconImgView];
         
@@ -96,11 +82,11 @@
 
 -(InputTextFiledView *)phoneInputView{
     if(!_phoneInputView){
-        InputTextFiledView *phoneInputView = [[InputTextFiledView alloc] initWithFrame:CGRectMake(WidthXiShu(30), self.iconImgView.maxY+HeightXiShu(30), kScreenWidth-WidthXiShu(60), HeightXiShu(54))];
+        InputTextFiledView *phoneInputView = [[InputTextFiledView alloc] initWithFrame:CGRectMake(WidthXiShu(32), self.iconImgView.maxY+HeightXiShu(30), kScreenWidth-WidthXiShu(64), HeightXiShu(50))];
         phoneInputView.placeholder = @"请输入手机号";
         phoneInputView.placeholderColor = [UIColor whiteColor];
-        phoneInputView.textFiledMargin = WidthXiShu(55);
-        UIImageView *leftView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, WidthXiShu(39), HeightXiShu(54))];
+        phoneInputView.textFiledMargin = WidthXiShu(41);
+        UIImageView *leftView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, WidthXiShu(31), HeightXiShu(41))];
         leftView.image = [GetImagePath getImagePath:@"login_phone"];
         phoneInputView.leftView = leftView;
         phoneInputView.textWidth = phoneInputView.width - WidthXiShu(55);
@@ -115,11 +101,11 @@
 
 -(InputTextFiledView *)pwdInputView{
     if(!_pwdInputView){
-        InputTextFiledView *pwdInputView = [[InputTextFiledView alloc] initWithFrame:CGRectMake(WidthXiShu(30), self.phoneInputView.maxY+HeightXiShu(30), kScreenWidth-WidthXiShu(60), HeightXiShu(38))];
+        InputTextFiledView *pwdInputView = [[InputTextFiledView alloc] initWithFrame:CGRectMake(WidthXiShu(32), self.phoneInputView.maxY+HeightXiShu(30), kScreenWidth-WidthXiShu(64), HeightXiShu(50))];
         pwdInputView.placeholder = @"请输入密码";
         pwdInputView.placeholderColor = [UIColor whiteColor];
-        pwdInputView.textFiledMargin = WidthXiShu(55);
-        UIImageView *leftView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, WidthXiShu(33), HeightXiShu(38))];
+        pwdInputView.textFiledMargin = WidthXiShu(41);
+        UIImageView *leftView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, WidthXiShu(31), HeightXiShu(41))];
         leftView.image = [GetImagePath getImagePath:@"login_pwd"];
         pwdInputView.leftView = leftView;
         pwdInputView.textWidth = pwdInputView.width - WidthXiShu(55);
@@ -135,8 +121,9 @@
 -(UIButton *)loginBtn{
     if(!_loginBtn){
          UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        loginBtn.frame = CGRectMake(WidthXiShu(30), self.pwdInputView.maxY+HeightXiShu(40), kScreenWidth-WidthXiShu(60), HeightXiShu(40));
-        loginBtn.backgroundColor = RGBCOLOR(99, 168, 233);
+        loginBtn.frame = CGRectMake(WidthXiShu(12), self.pwdInputView.maxY+HeightXiShu(32), kScreenWidth-WidthXiShu(24), HeightXiShu(50));
+        loginBtn.backgroundColor = ButtonColor;
+        loginBtn.titleLabel.font = HEITI(HeightXiShu(19));
         [loginBtn addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchUpInside];
         loginBtn.layer.masksToBounds = YES;
         loginBtn.layer.cornerRadius = HeightXiShu(5);
@@ -152,10 +139,11 @@
 -(UIButton *)registerBtn{
     if(!_registerBtn){
         UIButton *registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        registerBtn.frame = CGRectMake(WidthXiShu(30), self.loginBtn.maxY+HeightXiShu(10), kScreenWidth-WidthXiShu(60), HeightXiShu(40));
+        registerBtn.frame = CGRectMake(WidthXiShu(12), self.loginBtn.maxY+HeightXiShu(20), kScreenWidth-WidthXiShu(24), HeightXiShu(50));
         registerBtn.backgroundColor = [UIColor whiteColor];
         [registerBtn setTitle:@"注册" forState:UIControlStateNormal];
-        [registerBtn setTitleColor:RGBCOLOR(95, 95, 95) forState:UIControlStateNormal];
+        [registerBtn setTitleColor:TitleColor forState:UIControlStateNormal];
+        registerBtn.titleLabel.font = HEITI(HeightXiShu(19));
         [registerBtn addTarget:self action:@selector(registerAction) forControlEvents:UIControlEventTouchUpInside];
         registerBtn.layer.masksToBounds = YES;
         registerBtn.layer.cornerRadius = HeightXiShu(5);
@@ -169,10 +157,10 @@
 -(UIButton *)forgetBtn{
     if(!_forgetBtn){
         UIButton *forgetBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        forgetBtn.frame = CGRectMake(kScreenWidth - WidthXiShu(30)-WidthXiShu(80), self.registerBtn.maxY+HeightXiShu(15), WidthXiShu(80), HeightXiShu(30));
+        forgetBtn.frame = CGRectMake(kScreenWidth - WidthXiShu(12)-WidthXiShu(80), self.registerBtn.maxY+HeightXiShu(10), WidthXiShu(80), HeightXiShu(30));
         [forgetBtn setTitle:@"忘记密码？" forState:UIControlStateNormal];
-        [forgetBtn setTitleColor:RGBCOLOR(36, 115, 171) forState:UIControlStateNormal];
-        forgetBtn.titleLabel.font = HEITI(HeightXiShu(14));
+        [forgetBtn setTitleColor:RGBCOLOR(84, 149, 230) forState:UIControlStateNormal];
+        forgetBtn.titleLabel.font = HEITI(HeightXiShu(13));
         forgetBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         [forgetBtn addTarget:self action:@selector(gotoForgetPwd) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:forgetBtn];
@@ -195,11 +183,6 @@
 -(void)registerAction{
     RegisterViewController *view = [[RegisterViewController alloc] init];
     [self.navigationController pushViewController:view animated:YES];
-}
-
--(void)closeKeyboard{
-    [self.phoneInputView.textField resignFirstResponder];
-    [self.pwdInputView.textField resignFirstResponder];
 }
 
 -(void)gotoForgetPwd{

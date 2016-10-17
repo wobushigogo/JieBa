@@ -16,7 +16,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.textField = [[BaseTextFiled alloc] initWithFrame:CGRectMake(0, self.height - HeightXiShu(30), 0, HeightXiShu(30))];
+        self.textField = [[BaseTextFiled alloc] initWithFrame:CGRectMake(0, (self.height - HeightXiShu(30))/2, 0, HeightXiShu(30))];
         self.textField.font = HEITI(HeightXiShu(16));
         [self addSubview:self.textField];
         [self bottomSepeLine];

@@ -10,4 +10,5 @@
 
 @interface BaseViewController : UIViewController
 @property(nonatomic,strong)UIView *statusBar;
+@property (nonatomic, assign) BOOL autoEndEdit;//default is YES
 @end

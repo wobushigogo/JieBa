@@ -12,7 +12,8 @@
 #import "UpdataPwdViewController.h"
 
 #define placeholderFont HEITI(HeightXiShu(15))
-#define titleMargin WidthXiShu(50)
+#define titleMargin WidthXiShu(22)
+#define titleWidth WidthXiShu(50)
 
 @interface ForgetPwdViewController ()<UITextFieldDelegate>
 @property(nonatomic,strong)NavView *navView;
@@ -73,18 +74,19 @@
 -(UIView *)phoneView{
     if(!_phoneView){
         UIView *phoneView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, HeightXiShu(50))];
-        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(10), 0, WidthXiShu(80), HeightXiShu(50))];
-        title.text = @"手 机 号";
+        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(10), 0, titleWidth, HeightXiShu(50))];
+        title.text = @"手机号";
         title.font = placeholderFont;
-        title.textColor = TextFiledTitleColor;
+        title.textColor = TitleColor;
         [phoneView addSubview:title];
         
-        UITextField *phoneTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(title.maxY+titleMargin, 0, phoneView.width-(title.maxY+titleMargin)-WidthXiShu(30), HeightXiShu(50))];
+        UITextField *phoneTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(title.maxX+titleMargin, 0, phoneView.width-(title.maxX+titleMargin)-WidthXiShu(30), HeightXiShu(50))];
         phoneTextFiled.placeholder = @"请输入手机号";
         phoneTextFiled.font = placeholderFont;
         phoneTextFiled.keyboardType = UIKeyboardTypeNumberPad;
         phoneTextFiled.returnKeyType = UIReturnKeyDone;
         phoneTextFiled.delegate = self;
+        [phoneTextFiled setValue:PlaceholderColor forKeyPath:@"_placeholderLabel.textColor"];
         [phoneView addSubview:phoneTextFiled];
         _phoneTextFiled = phoneTextFiled;
         
@@ -101,18 +103,19 @@
     if(!_yzmView){
         UIView *yzmView = [[UIView alloc] initWithFrame:CGRectMake(0, self.phoneView.maxY, kScreenWidth, HeightXiShu(50))];
         
-        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(10), 0, WidthXiShu(80), HeightXiShu(50))];
-        title.text = @"手机验证码";
+        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(10), 0, titleWidth, HeightXiShu(50))];
+        title.text = @"验证码";
         title.font = placeholderFont;
-        title.textColor = TextFiledTitleColor;
+        title.textColor = TitleColor;
         [yzmView addSubview:title];
         
-        UITextField *yzmTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(title.maxY+titleMargin, 0, yzmView.width-(title.maxY+titleMargin)-WidthXiShu(100), HeightXiShu(50))];
+        UITextField *yzmTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(title.maxX+titleMargin, 0, yzmView.width-(title.maxX+titleMargin)-WidthXiShu(100), HeightXiShu(50))];
         yzmTextFiled.placeholder = @"请输入验证码";
         yzmTextFiled.font = placeholderFont;
         yzmTextFiled.keyboardType = UIKeyboardTypeNumberPad;
         yzmTextFiled.returnKeyType = UIReturnKeyDone;
         yzmTextFiled.delegate = self;
+        [yzmTextFiled setValue:PlaceholderColor forKeyPath:@"_placeholderLabel.textColor"];
         [yzmView addSubview:yzmTextFiled];
         _yzmTextFiled = yzmTextFiled;
         
@@ -123,7 +126,7 @@
         UIButton *yzmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         yzmBtn.frame = CGRectMake(kScreenWidth-WidthXiShu(103), 0, WidthXiShu(103), HeightXiShu(50));
         [yzmBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
-        [yzmBtn setTitleColor:RGBCOLOR(99, 168, 233) forState:UIControlStateNormal];
+        [yzmBtn setTitleColor:ButtonColor forState:UIControlStateNormal];
         yzmBtn.titleLabel.font = placeholderFont;
         [yzmBtn addTarget:self action:@selector(yzmAction) forControlEvents:UIControlEventTouchUpInside];
         [yzmView addSubview:yzmBtn];
@@ -137,8 +140,9 @@
 -(UIButton *)nextBtn{
     if(!_nextBtn){
         UIButton *nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        nextBtn.frame = CGRectMake(WidthXiShu(30), self.contentView.maxY+HeightXiShu(20), kScreenWidth-WidthXiShu(60), HeightXiShu(40));
-        nextBtn.backgroundColor = RGBCOLOR(99, 168, 233);
+        nextBtn.frame = CGRectMake(WidthXiShu(12), self.contentView.maxY+HeightXiShu(20), kScreenWidth-WidthXiShu(24), HeightXiShu(50));
+        nextBtn.backgroundColor = ButtonColor;
+        nextBtn.titleLabel.font = HEITI(HeightXiShu(19));
         [nextBtn addTarget:self action:@selector(nextAction) forControlEvents:UIControlEventTouchUpInside];
         nextBtn.layer.masksToBounds = YES;
         nextBtn.layer.cornerRadius = HeightXiShu(5);

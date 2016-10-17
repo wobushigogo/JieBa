@@ -28,30 +28,30 @@
     [LoginSqlite opensql];
     
     MainViewController *main = [[MainViewController alloc] init];
-//    [plan.tabBarItem setImageInsets:UIEdgeInsetsMake(7.0, 0.0, -7.0, 0.0)];
-//    plan.tabBarItem.image = [[UIImage imageNamed:@"planDefault"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-//    plan.tabBarItem.selectedImage = [[UIImage imageNamed:@"planSelect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [main.tabBarItem setImageInsets:UIEdgeInsetsMake(7.0, 0.0, -7.0, 0.0)];
+    main.tabBarItem.image = [[UIImage imageNamed:@"tabbar_home_gary"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    main.tabBarItem.selectedImage = [[UIImage imageNamed:@"tabbar_home_blue"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     BaseNavigationController *mainNav = [[BaseNavigationController alloc] initWithRootViewController:main];
     mainNav.navigationBarHidden = YES;
     
     LoanViewController *loan = [[LoanViewController alloc] init];
-//    [loan.tabBarItem setImageInsets:UIEdgeInsetsMake(7.0, 0.0, -7.0, 0.0)];
-//    loan.tabBarItem.image = [[UIImage imageNamed:@"magazineDefault"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-//    loan.tabBarItem.selectedImage = [[UIImage imageNamed:@"magazineSelect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [loan.tabBarItem setImageInsets:UIEdgeInsetsMake(7.0, 0.0, -7.0, 0.0)];
+    loan.tabBarItem.image = [[UIImage imageNamed:@"tabbar_loan_gary"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    loan.tabBarItem.selectedImage = [[UIImage imageNamed:@"tabbar_loan_blue"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     BaseNavigationController *loannav = [[BaseNavigationController alloc] initWithRootViewController:loan];
     loannav.navigationBarHidden = YES;
     
     RentViewController *rent = [[RentViewController alloc] init];
     [rent.tabBarItem setImageInsets:UIEdgeInsetsMake(7.0, 0.0, -7.0, 0.0)];
-    rent.tabBarItem.image = [[UIImage imageNamed:@"shoppingListDefault"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    rent.tabBarItem.selectedImage = [[UIImage imageNamed:@"shoppingListSelect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    rent.tabBarItem.image = [[UIImage imageNamed:@"tabbar_rent_gary"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    rent.tabBarItem.selectedImage = [[UIImage imageNamed:@"tabbar_rent_blue"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     BaseNavigationController *rentNav = [[BaseNavigationController alloc] initWithRootViewController:rent];
     rentNav.navigationBarHidden = YES;
     
     MyCenterViewController *myCenter = [[MyCenterViewController alloc] init];
-//    [myCenter.tabBarItem setImageInsets:UIEdgeInsetsMake(7.0, 0.0, -7.0, 0.0)];
-//    myCenter.tabBarItem.image = [[UIImage imageNamed:@"myDefault"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-//    myCenter.tabBarItem.selectedImage = [[UIImage imageNamed:@"mySelect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [myCenter.tabBarItem setImageInsets:UIEdgeInsetsMake(7.0, 0.0, -7.0, 0.0)];
+    myCenter.tabBarItem.image = [[UIImage imageNamed:@"tabbar_myCenter_gray"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    myCenter.tabBarItem.selectedImage = [[UIImage imageNamed:@"tabbar_myCenter_blue"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     BaseNavigationController *myCenterNav = [[BaseNavigationController alloc] initWithRootViewController:myCenter];
     myCenterNav.navigationBarHidden = YES;
     

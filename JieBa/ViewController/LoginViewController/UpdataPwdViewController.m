@@ -11,7 +11,8 @@
 #import "LoginApi.h"
 
 #define placeholderFont HEITI(HeightXiShu(15))
-#define titleMargin WidthXiShu(50)
+#define titleMargin WidthXiShu(22)
+#define titleWidth WidthXiShu(60)
 
 @interface UpdataPwdViewController ()<UITextFieldDelegate>
 @property(nonatomic,strong)NavView *navView;
@@ -71,18 +72,19 @@
     if(!_pwdView){
         UIView *pwdView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, HeightXiShu(50))];
         
-        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(10), 0, WidthXiShu(80), HeightXiShu(50))];
+        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(10), 0, titleWidth, HeightXiShu(50))];
         title.text = @"新 密 码";
         title.font = placeholderFont;
-        title.textColor = TextFiledTitleColor;
+        title.textColor = TitleColor;
         [pwdView addSubview:title];
         
-        UITextField *pwdTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(title.maxY+titleMargin, 0, pwdView.width-(title.maxY+titleMargin)-WidthXiShu(30), HeightXiShu(50))];
+        UITextField *pwdTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(title.maxX+titleMargin, 0, pwdView.width-(title.maxX+titleMargin)-WidthXiShu(30), HeightXiShu(50))];
         pwdTextFiled.placeholder = @"请输入新密码";
         pwdTextFiled.font = placeholderFont;
         pwdTextFiled.returnKeyType = UIReturnKeyDone;
         pwdTextFiled.secureTextEntry = YES;
         pwdTextFiled.delegate = self;
+        [pwdTextFiled setValue:PlaceholderColor forKeyPath:@"_placeholderLabel.textColor"];
         [pwdView addSubview:pwdTextFiled];
         _pwdTextFiled = pwdTextFiled;
         
@@ -99,18 +101,19 @@
     if(!_pwdAgainView){
         UIView *pwdAgainView = [[UIView alloc] initWithFrame:CGRectMake(0, self.pwdView.maxY, kScreenWidth, HeightXiShu(50))];
         
-        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(10), 0, WidthXiShu(80), HeightXiShu(50))];
+        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(10), 0, titleWidth, HeightXiShu(50))];
         title.text = @"确认密码";
         title.font = placeholderFont;
-        title.textColor = TextFiledTitleColor;
+        title.textColor = TitleColor;
         [pwdAgainView addSubview:title];
         
-        UITextField *pwdAgainTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(title.maxY+titleMargin, 0, pwdAgainView.width-(title.maxY+titleMargin)-WidthXiShu(30), HeightXiShu(50))];
+        UITextField *pwdAgainTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(title.maxX+titleMargin, 0, pwdAgainView.width-(title.maxX+titleMargin)-WidthXiShu(30), HeightXiShu(50))];
         pwdAgainTextFiled.placeholder = @"请再次确认密码";
         pwdAgainTextFiled.font = placeholderFont;
         pwdAgainTextFiled.returnKeyType = UIReturnKeyDone;
         pwdAgainTextFiled.secureTextEntry = YES;
         pwdAgainTextFiled.delegate = self;
+        [pwdAgainTextFiled setValue:PlaceholderColor forKeyPath:@"_placeholderLabel.textColor"];
         [pwdAgainView addSubview:pwdAgainTextFiled];
         _pwdAgainTextFiled = pwdAgainTextFiled;
         
@@ -122,8 +125,9 @@
 -(UIButton *)updataBtn{
     if(!_updataBtn){
         UIButton *updataBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        updataBtn.frame = CGRectMake(WidthXiShu(30), self.contentView.maxY+HeightXiShu(20), kScreenWidth-WidthXiShu(60), HeightXiShu(40));
-        updataBtn.backgroundColor = RGBCOLOR(99, 168, 233);
+        updataBtn.frame = CGRectMake(WidthXiShu(12), self.contentView.maxY+HeightXiShu(32), kScreenWidth-WidthXiShu(24), HeightXiShu(50));
+        updataBtn.backgroundColor = ButtonColor;
+        updataBtn.titleLabel.font = HEITI(HeightXiShu(19));
         [updataBtn addTarget:self action:@selector(updataAction) forControlEvents:UIControlEventTouchUpInside];
         updataBtn.layer.masksToBounds = YES;
         updataBtn.layer.cornerRadius = HeightXiShu(5);

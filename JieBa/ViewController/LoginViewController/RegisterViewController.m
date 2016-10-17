@@ -11,7 +11,8 @@
 #import "LoginApi.h"
 
 #define placeholderFont HEITI(HeightXiShu(15))
-#define titleMargin WidthXiShu(50)
+#define titleMargin WidthXiShu(22)
+#define titleWidth WidthXiShu(60)
 
 @interface RegisterViewController ()<UITextFieldDelegate>
 @property(nonatomic,strong)NavView *navView;
@@ -92,18 +93,19 @@
 -(UIView *)phoneView{
     if(!_phoneView){
         UIView *phoneView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, HeightXiShu(50))];
-        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(10), 0, WidthXiShu(80), HeightXiShu(50))];
+        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(10), 0, titleWidth, HeightXiShu(50))];
         title.text = @"手 机 号";
         title.font = placeholderFont;
-        title.textColor = TextFiledTitleColor;
+        title.textColor = TitleColor;
         [phoneView addSubview:title];
         
-        UITextField *phoneTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(title.maxY+titleMargin, 0, phoneView.width-(title.maxY+titleMargin)-WidthXiShu(30), HeightXiShu(50))];
+        UITextField *phoneTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(title.maxX+titleMargin, 0, phoneView.width-(title.maxX+titleMargin)-WidthXiShu(30), HeightXiShu(50))];
         phoneTextFiled.placeholder = @"请输入手机号";
         phoneTextFiled.font = placeholderFont;
         phoneTextFiled.keyboardType = UIKeyboardTypeNumberPad;
         phoneTextFiled.returnKeyType = UIReturnKeyDone;
         phoneTextFiled.delegate = self;
+        [phoneTextFiled setValue:PlaceholderColor forKeyPath:@"_placeholderLabel.textColor"];
         [phoneView addSubview:phoneTextFiled];
         _phoneTextFiled = phoneTextFiled;
         
@@ -120,18 +122,19 @@
     if(!_yzmView){
         UIView *yzmView = [[UIView alloc] initWithFrame:CGRectMake(0, self.phoneView.maxY, kScreenWidth, HeightXiShu(50))];
         
-        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(10), 0, WidthXiShu(80), HeightXiShu(50))];
+        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(10), 0, titleWidth, HeightXiShu(50))];
         title.text = @"验 证 码";
         title.font = placeholderFont;
-        title.textColor = TextFiledTitleColor;
+        title.textColor = TitleColor;
         [yzmView addSubview:title];
         
-        UITextField *yzmTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(title.maxY+titleMargin, 0, yzmView.width-(title.maxY+titleMargin)-WidthXiShu(100), HeightXiShu(50))];
+        UITextField *yzmTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(title.maxX+titleMargin, 0, yzmView.width-(title.maxX+titleMargin)-WidthXiShu(100), HeightXiShu(50))];
         yzmTextFiled.placeholder = @"请输入验证码";
         yzmTextFiled.font = placeholderFont;
         yzmTextFiled.keyboardType = UIKeyboardTypeNumberPad;
         yzmTextFiled.returnKeyType = UIReturnKeyDone;
         yzmTextFiled.delegate = self;
+        [yzmTextFiled setValue:PlaceholderColor forKeyPath:@"_placeholderLabel.textColor"];
         [yzmView addSubview:yzmTextFiled];
         _yzmTextFiled = yzmTextFiled;
         
@@ -161,26 +164,28 @@
     if(!_pwdView){
         UIView *pwdView = [[UIView alloc] initWithFrame:CGRectMake(0, self.yzmView.maxY, kScreenWidth, HeightXiShu(50))];
         
-        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(10), 0, WidthXiShu(80), HeightXiShu(50))];
+        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(10), 0, titleWidth, HeightXiShu(50))];
         title.text = @"密     码";
         title.font = placeholderFont;
-        title.textColor = TextFiledTitleColor;
+        title.textColor = TitleColor;
         [pwdView addSubview:title];
         
-        UITextField *pwdTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(title.maxY+titleMargin, 0, pwdView.width-(title.maxY+titleMargin)-WidthXiShu(30), HeightXiShu(50))];
+        UITextField *pwdTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(title.maxX+titleMargin, 0, pwdView.width-(title.maxX+titleMargin)-WidthXiShu(30), HeightXiShu(50))];
         pwdTextFiled.placeholder = @"6-10位字母，数字结合";
         pwdTextFiled.font = placeholderFont;
         pwdTextFiled.returnKeyType = UIReturnKeyDone;
         pwdTextFiled.secureTextEntry = YES;
         pwdTextFiled.delegate = self;
+        [pwdTextFiled setValue:PlaceholderColor forKeyPath:@"_placeholderLabel.textColor"];
         [pwdView addSubview:pwdTextFiled];
         _pwdTextFiled = pwdTextFiled;
         
         UIButton *showPwdBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        showPwdBtn.frame = CGRectMake(kScreenWidth-WidthXiShu(30)-WidthXiShu(10), HeightXiShu(10), WidthXiShu(30), HeightXiShu(30));
-        showPwdBtn.backgroundColor = [UIColor purpleColor];
+        showPwdBtn.frame = CGRectMake(kScreenWidth-WidthXiShu(28)-WidthXiShu(10), HeightXiShu(11), WidthXiShu(28), HeightXiShu(28));
+        [showPwdBtn setImage:[GetImagePath getImagePath:@"register_show"] forState:UIControlStateNormal];
         [showPwdBtn addTarget:self action:@selector(showPwd) forControlEvents:UIControlEventTouchUpInside];
         [pwdView addSubview:showPwdBtn];
+        _showPwdBtn = showPwdBtn;
         
         UIImageView *cutLine = [[UIImageView alloc] initWithFrame:CGRectMake(WidthXiShu(10), HeightXiShu(49), kScreenWidth-WidthXiShu(10), .5)];
         cutLine.backgroundColor = AllLightGrayColor;
@@ -195,18 +200,19 @@
     if(!_pwdAgainView){
         UIView *pwdAgainView = [[UIView alloc] initWithFrame:CGRectMake(0, self.pwdView.maxY, kScreenWidth, HeightXiShu(50))];
         
-        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(10), 0, WidthXiShu(80), HeightXiShu(50))];
+        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(10), 0, titleWidth, HeightXiShu(50))];
         title.text = @"确认密码";
         title.font = placeholderFont;
-        title.textColor = TextFiledTitleColor;
+        title.textColor = TitleColor;
         [pwdAgainView addSubview:title];
         
-        UITextField *pwdAgainTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(title.maxY+titleMargin, 0, pwdAgainView.width-(title.maxY+titleMargin)-WidthXiShu(30), HeightXiShu(50))];
+        UITextField *pwdAgainTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(title.maxX+titleMargin, 0, pwdAgainView.width-(title.maxX+titleMargin)-WidthXiShu(30), HeightXiShu(50))];
         pwdAgainTextFiled.placeholder = @"请再次确认密码";
         pwdAgainTextFiled.font = placeholderFont;
         pwdAgainTextFiled.returnKeyType = UIReturnKeyDone;
         pwdAgainTextFiled.secureTextEntry = YES;
         pwdAgainTextFiled.delegate = self;
+        [pwdAgainTextFiled setValue:PlaceholderColor forKeyPath:@"_placeholderLabel.textColor"];
         [pwdAgainView addSubview:pwdAgainTextFiled];
         _pwdAgainTextFiled = pwdAgainTextFiled;
         
@@ -223,24 +229,21 @@
     if(!_recommendView){
         UIView *recommendView = [[UIView alloc] initWithFrame:CGRectMake(0, self.pwdAgainView.maxY, kScreenWidth, HeightXiShu(50))];
         
-        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(10), 0, WidthXiShu(80), HeightXiShu(50))];
+        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(10), 0, titleWidth, HeightXiShu(50))];
         title.text = @"好友推荐";
         title.font = placeholderFont;
-        title.textColor = TextFiledTitleColor;
+        title.textColor = TitleColor;
         [recommendView addSubview:title];
         
-        UITextField *recommendTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(title.maxY+titleMargin, 0, recommendView.width-(title.maxY+titleMargin)-WidthXiShu(30), HeightXiShu(50))];
-        recommendTextFiled.placeholder = @"好友手机号/用户名（可选填）";
+        UITextField *recommendTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(title.maxX+titleMargin, 0, recommendView.width-(title.maxX+titleMargin)-WidthXiShu(30), HeightXiShu(50))];
+        recommendTextFiled.placeholder = @"好友手机号";
         recommendTextFiled.font = placeholderFont;
         recommendTextFiled.returnKeyType = UIReturnKeyDone;
         recommendTextFiled.secureTextEntry = YES;
         recommendTextFiled.delegate = self;
+        [recommendTextFiled setValue:PlaceholderColor forKeyPath:@"_placeholderLabel.textColor"];
         [recommendView addSubview:recommendTextFiled];
         _recommendTextFiled = recommendTextFiled;
-        
-        UIImageView *smallImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth-WidthXiShu(30)-WidthXiShu(10), HeightXiShu(10), WidthXiShu(30), HeightXiShu(30))];
-        smallImageView.backgroundColor = [UIColor purpleColor];
-        [recommendView addSubview:smallImageView];
         
         _recommendView =recommendView;
     }
@@ -250,8 +253,8 @@
 -(UIButton *)agreeBtn{
     if(!_agreeBtn){
         UIButton *agreeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        agreeBtn.frame = CGRectMake(WidthXiShu(10), self.contentView.maxY+HeightXiShu(20), WidthXiShu(15), HeightXiShu(15));
-        agreeBtn.backgroundColor = [UIColor purpleColor];
+        agreeBtn.frame = CGRectMake(WidthXiShu(12), self.contentView.maxY+HeightXiShu(10), WidthXiShu(20), HeightXiShu(20));
+        [agreeBtn setImage:[GetImagePath getImagePath:@"register_select"] forState:UIControlStateNormal];
         [agreeBtn addTarget:self action:@selector(agreeAction) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:agreeBtn];
         
@@ -262,9 +265,9 @@
 
 -(UILabel *)titleLabel{
     if(!_titleLabel){
-        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.agreeBtn.maxX+WidthXiShu(5), self.contentView.maxY+HeightXiShu(20), WidthXiShu(100), HeightXiShu(15))];
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.agreeBtn.maxX+WidthXiShu(5), self.contentView.maxY+HeightXiShu(10), WidthXiShu(100), HeightXiShu(20))];
         titleLabel.text = @"已经同意并阅读";
-        titleLabel.font = HEITI(HeightXiShu(14));
+        titleLabel.font = HEITI(HeightXiShu(13));
         [self.view addSubview:titleLabel];
         
         _titleLabel = titleLabel;
@@ -275,10 +278,10 @@
 -(UIButton *)agreementBtn{
     if(!_agreementBtn){
         UIButton *agreementBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        agreementBtn.frame = CGRectMake(self.titleLabel.maxX, self.contentView.maxY+HeightXiShu(20), WidthXiShu(150), HeightXiShu(15));
+        agreementBtn.frame = CGRectMake(self.titleLabel.maxX, self.contentView.maxY+HeightXiShu(10), WidthXiShu(150), HeightXiShu(20));
         [agreementBtn setTitle:@"《车生活用户协议》" forState:UIControlStateNormal];
-        [agreementBtn setTitleColor:RGBCOLOR(99, 168, 233) forState:UIControlStateNormal];
-        agreementBtn.titleLabel.font = HEITI(HeightXiShu(14));
+        [agreementBtn setTitleColor:ButtonColor forState:UIControlStateNormal];
+        agreementBtn.titleLabel.font = HEITI(HeightXiShu(13));
         agreementBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [self.view addSubview:agreementBtn];
         
@@ -290,8 +293,9 @@
 -(UIButton *)registerBtn{
     if(!_registerBtn){
         UIButton *registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        registerBtn.frame = CGRectMake(WidthXiShu(30), self.agreementBtn.maxY+HeightXiShu(20), kScreenWidth-WidthXiShu(60), HeightXiShu(40));
-        registerBtn.backgroundColor = RGBCOLOR(99, 168, 233);
+        registerBtn.frame = CGRectMake(WidthXiShu(12), self.agreementBtn.maxY+HeightXiShu(32), kScreenWidth-WidthXiShu(24), HeightXiShu(50));
+        registerBtn.backgroundColor = ButtonColor;
+        registerBtn.titleLabel.font = HEITI(HeightXiShu(19));
         [registerBtn addTarget:self action:@selector(registerAction) forControlEvents:UIControlEventTouchUpInside];
         registerBtn.layer.masksToBounds = YES;
         registerBtn.layer.cornerRadius = HeightXiShu(5);
@@ -313,14 +317,22 @@
     if(self.isShowPwd){
         self.pwdTextFiled.secureTextEntry = YES;
         self.isShowPwd = NO;
+        [self.showPwdBtn setImage:[GetImagePath getImagePath:@"register_show"] forState:UIControlStateNormal];
     }else{
         self.pwdTextFiled.secureTextEntry = NO;
         self.isShowPwd = YES;
+        [self.showPwdBtn setImage:[GetImagePath getImagePath:@"register_noShow"] forState:UIControlStateNormal];
     }
 }
 
 -(void)agreeAction{
-        self.isAgree = !self.isAgree;
+    if(self.isAgree){
+        [self.agreeBtn setImage:[GetImagePath getImagePath:@"register_noSelect"] forState:UIControlStateNormal];
+        self.isAgree = NO;
+    }else{
+        [self.agreeBtn setImage:[GetImagePath getImagePath:@"register_select"] forState:UIControlStateNormal];
+        self.isAgree = YES;
+    }
 }
 
 #pragma mark - 接口

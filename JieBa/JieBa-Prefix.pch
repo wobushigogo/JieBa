@@ -21,6 +21,9 @@
 #import "GetImagePath.h"
 #import "UIViewController+UIAlertControllerKit.h"
 #import "StringTool.h"
+#import "SDImageCache.h"
+#import "UIImageView+WebCache.h"
+#import "UIButton+WebCache.h"
 #endif /* JieBa_Prefix_pch */
 
 #define serverAddress @"http://service.lingqianzaixian.com"
@@ -44,8 +47,11 @@
 #define HEITI(font) [UIFont fontWithName:@"Heiti SC" size:font]
 
 //导航颜色
-#define NavColor RGBCOLOR(82, 149, 228)
-
-#define AllBackLightGratColor RGBCOLOR(242,242,242)//浅灰背景
-#define AllLightGrayColor RGBCOLOR(152,150,150)//浅灰
-#define TextFiledTitleColor RGBCOLOR(59, 59, 59)
+#define NavColor RGBCOLOR(84, 149, 230)
+#define TitleColor RGBCOLOR(76, 76, 76)//文字颜色
+#define PlaceholderColor RGBCOLOR(180, 180, 180)//输入框提示文字
+#define MessageColor RGBCOLOR(177, 177, 177)//提示性小文字
+#define AllRedColor RGBCOLOR(250, 61, 20)//突出字体突出按钮色
+#define AllBackLightGratColor RGBCOLOR(239,239,239)//浅灰背景
+#define AllLightGrayColor RGBCOLOR(236,236,236)//分割线
+#define ButtonColor RGBCOLOR(40,156,235)//主按钮颜色
