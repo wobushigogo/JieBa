@@ -9,5 +9,7 @@
 #import "BaseViewController.h"
 
 @interface LoginViewController : BaseViewController
-
+-(void)clearPWD;
++ (instancetype)instance;
++ (BOOL)openLogin;
 @end

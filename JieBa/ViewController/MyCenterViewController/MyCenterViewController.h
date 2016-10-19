@@ -10,5 +10,5 @@
 #import "BaseTableViewController.h"
 
 @interface MyCenterViewController : BaseTableViewController
-
+-(void)loadUserInfo;
 @end

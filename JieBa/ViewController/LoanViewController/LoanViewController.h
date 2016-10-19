@@ -6,8 +6,8 @@
 //  Copyright © 2016年 zhixin. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "BaseTableViewController.h"
 
-@interface LoanViewController : BaseViewController
+@interface LoanViewController : BaseTableViewController
 
 @end

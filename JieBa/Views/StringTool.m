@@ -476,4 +476,20 @@
     BOOL isMatch = [pred evaluateWithObject:string];
     return isMatch;
 }
+
+
++(NSNumber *)roundFloat:(double)price{
+    NSDecimalNumberHandler* roundingBehavior = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundBankers scale:2 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
+    NSDecimalNumber* decimal = [[NSDecimalNumber alloc] initWithDouble:price];
+    NSNumber* ratio = [decimal decimalNumberByRoundingAccordingToBehavior:roundingBehavior];
+    return ratio;
+}
+
++(BOOL)isLogin{
+    if([[StringTool stringWithNull:[LoginSqlite getdata:@"token"]] isEqualToString:@""]){
+        return NO;
+    }else{
+        return YES;
+    }
+}
 @end

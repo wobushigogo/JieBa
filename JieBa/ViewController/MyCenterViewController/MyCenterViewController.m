@@ -8,10 +8,18 @@
 
 #import "MyCenterViewController.h"
 #import "MyCenterHead.h"
+#import "MyCenterApi.h"
+#import "UserInfoModel.h"
+#import "CenterViewController.h"
+#import "LewPopupViewAnimationFade.h"
+#import "OrderViewController.h"
 
-@interface MyCenterViewController ()
+@interface MyCenterViewController ()<MyCenterHeadDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property(nonatomic,strong)MyCenterHead *headView;
--(UIView *)cellViewWithMainImg:(NSString *)mainImgName mainText:(NSString *)mainText subText:(NSString *)subText buttonName1:(NSString *)buttonName1 buttonName2:(NSString *)buttonName2 selector1:(SEL)selector1 selector2:(SEL)selector2 stingOrImage:(BOOL)stingOrImage;
+@property(nonatomic,strong)UIView *footerView;
+@property(nonatomic,strong)UIImageView *QRImageView;
+@property(nonatomic,strong)UserInfoModel *userInfoModel;
+-(UIView *)cellViewWithMainImg:(NSString *)mainImgName mainText:(NSString *)mainText subText:(NSString *)subText buttonName1:(NSString *)buttonName1 buttonName2:(NSString *)buttonName2 selector:(SEL)selector selector1:(SEL)selector1 selector2:(SEL)selector2 needMainBtn:(BOOL)needMainBtn stingOrImage:(BOOL)stingOrImage;
 @end
 
 @implementation MyCenterViewController
@@ -23,11 +31,19 @@
     [self.tableView setMinY:0 maxY:kScreenHeight - 44];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.tableHeaderView = self.headView;
+    self.tableView.tableFooterView = self.footerView;
+    self.tableView.backgroundColor = AllBackLightGratColor;
+    //[self loadUserInfo];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = NO;
 }
 
 #pragma mark - tableView delegate dataSource
@@ -56,34 +72,8 @@
     if(section == 0){
         return 0;
     }
-    return HeightXiShu(22);
+    return HeightXiShu(10);
 }
-
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    CGFloat const height = [self tableView:tableView heightForHeaderInSection:section];
-//    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, height)];
-//    view.backgroundColor = AllBackLightGratColor;
-//    
-//    UIImageView *cutLine = [[UIImageView alloc] initWithFrame:CGRectMake(WidthXiShu(12), HeightXiShu(4), WidthXiShu(2), HeightXiShu(14))];
-//    cutLine.backgroundColor = ButtonColor;
-//    [view addSubview:cutLine];
-//    
-//    UILabel *typeLabel = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(27), 0, WidthXiShu(60), height)];
-//    typeLabel.font = HEITI(HeightXiShu(15));
-//    typeLabel.text = @"我与借吧";
-//    typeLabel.textColor = TitleColor;
-//    typeLabel.font = HEITI(HeightXiShu(12));
-//    [view addSubview:typeLabel];
-//    
-//    UIButton *moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    moreBtn.frame = CGRectMake(kScreenWidth-WidthXiShu(92), 0, WidthXiShu(80), height);
-//    [moreBtn setTitle:@"查看更多》" forState:UIControlStateNormal];
-//    [moreBtn setTitleColor:ButtonColor forState:UIControlStateNormal];
-//    moreBtn.titleLabel.font = HEITI(HeightXiShu(10));
-//    moreBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-//    [view addSubview:moreBtn];
-//    return view;
-//}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString* const identifier = @"cell";
@@ -96,7 +86,8 @@
     if(indexPath.section == 0 || indexPath.section == 1 || indexPath.section == 2){
         NSString *imgName = @[@"myCenter_ balance",@"myCenter_ order",@"myCenter_center"][indexPath.section];
         NSString *mainText = @[@"账户余额",@"我的订单",@"个人中心"][indexPath.section];
-        NSString *buttonName1 = @[@"充值",[NSString stringWithFormat:@"待评价  %d",0],@"实名认证"][indexPath.section];
+        NSString *mainSelector = @[@"balanceAction",@"orderAction",@"centerAction"][indexPath.section];
+        NSString *buttonName1 = @[@"充值",[NSString stringWithFormat:@"待评价  %ld",(long)self.userInfoModel.assed_count],@"实名认证"][indexPath.section];
         NSString *buttonName2 = @[@"体现",@"已评价",@"绑定银行卡"][indexPath.section];
         NSString *selector1 = @[@"creditAction",@"evaluateAction",@"approveAction"][indexPath.section];
         NSString *selector2 = @[@"withdrawAction",@"evaluateEndAction",@"bindAction"][indexPath.section];
@@ -107,23 +98,96 @@
         }else{
             isString = NO;
         }
-        UIView *view = [self cellViewWithMainImg:imgName mainText:mainText subText:@"1000.00元" buttonName1:buttonName1 buttonName2:buttonName2 selector1:NSSelectorFromString(selector1) selector2:NSSelectorFromString(selector2) stingOrImage:isString];
+        UIView *view = [self cellViewWithMainImg:imgName mainText:mainText subText:[NSString stringWithFormat:@"%@元",self.userInfoModel.balance] buttonName1:buttonName1 buttonName2:buttonName2 selector:NSSelectorFromString(mainSelector) selector1:NSSelectorFromString(selector1) selector2:NSSelectorFromString(selector2) needMainBtn:YES stingOrImage:isString];
         [cell addSubview:view];
+    }else if (indexPath.section == 3){
+        UIImageView *cutLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, HeightXiShu(40), kScreenWidth, .5)];
+        cutLine.backgroundColor = AllLightGrayColor;
+        if(indexPath.row == 3){
+            cutLine.hidden = YES;
+        }else{
+            cutLine.hidden = NO;
+        }
+        [cell addSubview:cutLine];
+        
+        NSString *imgName = @[@"myCenter_invite",@"myCenter_active",@"myCenter_service",@"myCenter_more"][indexPath.row];
+        NSString *mainText = @[@"邀请记录",@"活动专区",@"在线客服",@"更多"][indexPath.row];
+        NSString *detailText = @[@"",@"",@"随时为您服务哦",@""][indexPath.row];
+        
+        UIImageView *smallImageView = [[UIImageView alloc] initWithFrame:CGRectMake(WidthXiShu(15), HeightXiShu(10), WidthXiShu(19), HeightXiShu(19))];
+        smallImageView.image = [GetImagePath getImagePath:imgName];
+        [cell addSubview:smallImageView];
+        
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(53), 0, WidthXiShu(150), HeightXiShu(40))];
+        titleLabel.text = mainText;
+        titleLabel.textColor = TitleColor;
+        titleLabel.font = HEITI(HeightXiShu(14));
+        [cell addSubview:titleLabel];
+        
+        UILabel *detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth-WidthXiShu(16)-WidthXiShu(5)-WidthXiShu(100), 0, WidthXiShu(100), HeightXiShu(40))];
+        detailLabel.text = detailText;
+        detailLabel.textColor = [UIColor lightGrayColor];
+        detailLabel.font = HEITI(HeightXiShu(12));
+        detailLabel.textAlignment = NSTextAlignmentRight;
+        [cell addSubview:detailLabel];
+        
+        UIImageView *arrowImgView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth-WidthXiShu(16), HeightXiShu(13), WidthXiShu(8), HeightXiShu(13))];
+        arrowImgView.image = [GetImagePath getImagePath:@"myCenter_arrow"];
+        [cell addSubview:arrowImgView];
+    }else{
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, HeightXiShu(40))];
+        titleLabel.text = @"客服电话：400 663 9066";
+        titleLabel.textColor = NavColor;
+        titleLabel.font = HEITI(HeightXiShu(14));
+        titleLabel.textAlignment = NSTextAlignmentCenter;
+        [cell addSubview:titleLabel];
     }
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.section == 3){
+        if(indexPath.row == 0){
+        
+        }else if (indexPath.row == 1){
+        
+        }else if (indexPath.row == 2){
+        
+        }else{
+        
+        }
+    }else if (indexPath.row == 4){
+        
+    }
 }
 
 #pragma mark - 页面元素
 -(MyCenterHead *)headView{
     if(!_headView){
         MyCenterHead *headView = [[MyCenterHead alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, HeightXiShu(210))];
+        headView.delegate = self;
         _headView = headView;
     }
     return _headView;
 }
 
+-(UIView *)footerView{
+    if(!_footerView){
+        UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, HeightXiShu(50))];
+        footerView.backgroundColor = AllBackLightGratColor;
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, HeightXiShu(50))];
+        titleLabel.text = @"服务时间：法定工作日 9:00-20:00";
+        titleLabel.textColor = TitleColor;
+        titleLabel.textAlignment = NSTextAlignmentCenter;
+        titleLabel.font = HEITI(HeightXiShu(10));
+        [footerView addSubview:titleLabel];
+        _footerView = footerView;
+    }
+    return _footerView;
+}
+
 #pragma mark - 创建前3个view
--(UIView *)cellViewWithMainImg:(NSString *)mainImgName mainText:(NSString *)mainText subText:(NSString *)subText buttonName1:(NSString *)buttonName1 buttonName2:(NSString *)buttonName2 selector1:(SEL)selector1 selector2:(SEL)selector2 stingOrImage:(BOOL)stingOrImage{
+-(UIView *)cellViewWithMainImg:(NSString *)mainImgName mainText:(NSString *)mainText subText:(NSString *)subText buttonName1:(NSString *)buttonName1 buttonName2:(NSString *)buttonName2 selector:(SEL)selector selector1:(SEL)selector1 selector2:(SEL)selector2 needMainBtn:(BOOL)needMainBtn stingOrImage:(BOOL)stingOrImage{
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, HeightXiShu(80))];
     UIView *cutLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, .5)];
     cutLine.backgroundColor = AllLightGrayColor;
@@ -148,10 +212,15 @@
     subLabel.textAlignment = NSTextAlignmentRight;
     [view addSubview:subLabel];
     
-    UIImageView *arrowImgView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth-WidthXiShu(16), HeightXiShu(15), WidthXiShu(6), HeightXiShu(10))];
-    arrowImgView.backgroundColor = [UIColor purpleColor];
+    UIImageView *arrowImgView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth-WidthXiShu(16), HeightXiShu(13), WidthXiShu(8), HeightXiShu(13))];
+    arrowImgView.image = [GetImagePath getImagePath:@"myCenter_arrow"];
     arrowImgView.hidden  = stingOrImage;
     [view addSubview:arrowImgView];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, kScreenWidth, HeightXiShu(40));
+    [button addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:button];
     
     UIButton *button1 = [UIButton buttonWithType:UIButtonTypeCustom];
     [button1 setTitle:buttonName1 forState:UIControlStateNormal];
@@ -173,6 +242,18 @@
     cutLine2.backgroundColor = AllLightGrayColor;
     [view addSubview:cutLine2];
     return view;
+}
+
+-(UIImageView *)QRImageView{
+    if(!_QRImageView){
+        UIImageView *QRImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, WidthXiShu(293), HeightXiShu(433))];
+        QRImageView.userInteractionEnabled = YES;
+        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(QRImageLong:)];
+        longPress.minimumPressDuration = 0.8; //定义按的时间
+        [QRImageView addGestureRecognizer:longPress];
+        _QRImageView = QRImageView;
+    }
+    return _QRImageView;
 }
 
 #pragma mark - selector
@@ -198,5 +279,161 @@
 
 -(void)bindAction{
     NSLog(@"bindAction");
+}
+
+-(void)QRImageLong:(UILongPressGestureRecognizer *)gestureRecognizer{
+    __block typeof(self)wSelf = self;
+    UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:@"提示" message:@"是否把图片保存到相册" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *agreeAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [wSelf saveImageToPhotos:self.QRImageView.image];
+    }];
+    [alertControl addAction:cancelAction];
+    [alertControl addAction:agreeAction];
+    [self presentViewController:alertControl animated:YES completion:nil];
+}
+
+- (void)saveImageToPhotos:(UIImage*)savedImage{
+    UIImageWriteToSavedPhotosAlbum(savedImage, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
+}
+
+// 指定回调方法
+- (void)image: (UIImage *) image didFinishSavingWithError: (NSError *) error contextInfo: (void *) contextInfo{
+    NSString *msg = nil ;
+    if(error != NULL){
+        msg = @"保存图片失败" ;
+    }else{
+        msg = @"保存图片成功" ;
+    }
+    UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:@"提示" message:msg preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *agreeAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+    [alertControl addAction:agreeAction];
+    [self presentViewController:alertControl animated:YES completion:nil];
+}
+
+#pragma mark - head的delegate
+-(void)changeHeadClick{
+    __block typeof(self)wSelf = self;
+    UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *loaclAction = [UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [wSelf localPhoto];
+    }];
+    UIAlertAction *takeAction = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [wSelf takePhoto];
+    }];
+    [alertControl addAction:cancelAction];
+    [alertControl addAction:loaclAction];
+    [alertControl addAction:takeAction];
+    [self presentViewController:alertControl animated:YES completion:nil];
+}
+
+-(void)messageClick{
+
+}
+
+-(void)QRCoedeClick{
+    [self.QRImageView sd_setImageWithURL:self.userInfoModel.card_name_url];
+    
+    [self lew_presentPopupView:self.QRImageView animation:[LewPopupViewAnimationFade new] dismissed:^{
+        NSLog(@"动画结束");
+    }];
+}
+
+-(void)signClick{
+
+}
+
+-(void)activeClick{
+
+}
+
+-(void)balanceAction{
+
+}
+
+-(void)orderAction{
+    OrderViewController *view = [[OrderViewController alloc] init];
+    [self.navigationController pushViewController:view animated:YES];
+}
+
+-(void)centerAction{
+    __block typeof(self)wSelf = self;
+    CenterViewController *view = [[CenterViewController alloc] init];
+    view.logoutBlock = ^(void){
+        wSelf.tabBarController.selectedIndex = 0;
+    };
+    [self.navigationController pushViewController:view animated:YES];
+}
+
+#pragma mark - 选照片
+//开始拍照
+-(void)takePhoto{
+    UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
+    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera])
+    {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        //设置拍照后的图片可被编辑
+        picker.allowsEditing = YES;
+        picker.sourceType = sourceType;
+        [self.view.window.rootViewController presentViewController:picker animated:YES completion:nil];
+    }else{
+        NSLog(@"模拟其中无法打开照相机,请在真机中使用");
+    }
+}
+
+//打开本地相册
+-(void)localPhoto{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    picker.delegate = self;
+    //设置选择后的图片可被编辑
+    picker.allowsEditing = YES;
+    [self.view.window.rootViewController presentViewController:picker animated:YES completion:nil];
+}
+
+#pragma mark - UIImagePickerDelegate
+
+//当选择一张图片后进入这里
+-(void)imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+    //UIImageWriteToSavedPhotosAlbum(image, self,nil, nil);
+    
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.3);
+    //    imageData = UIImageJPEGRepresentation([GetImagePath getImagePath:@"001"], .3);
+    
+    //NSString* imageStr = [[NSString alloc] initWithData:[GTMBase64 encodeData:imageData] encoding:NSUTF8StringEncoding];
+    [self gotoAddImage:imageData image:image];
+    //[self.headImgView setImage:image forState:UIControlStateNormal];
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    NSLog(@"您取消了选择图片");
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - 接口
+-(void)gotoAddImage:(NSData *)imageData image:(UIImage *)image{
+    [MyCenterApi updataHeadWithBlock:^(NSString *imageUrl, NSError *error) {
+        if(!error){
+        
+        }
+    } imgData:imageData noNetWork:nil];
+}
+
+-(void)loadUserInfo{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"system" forKey:@"_cmd_"];
+    [dic setObject:@"countDetail" forKey:@"type"];
+    [MyCenterApi getUserInfoListWithBlock:^(UserInfoModel *model, NSError *error) {
+        if(!error){
+            self.userInfoModel = model;
+            [self.headView setModel:self.userInfoModel];
+            [self.tableView reloadData];
+        }
+    } dic:dic noNetWork:nil];
 }
 @end

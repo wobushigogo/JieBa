@@ -31,4 +31,9 @@
 + (BOOL)verifyCardNumberWithSoldier:(NSString *)value;
 
 +(BOOL)verifyText:(NSString *)text withRegex:(NSString *)regex;
+
+//四舍五入保留2位
++(NSNumber *)roundFloat:(double)price;
+
++(BOOL)isLogin;
 @end

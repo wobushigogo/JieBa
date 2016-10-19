@@ -35,7 +35,7 @@
     self.tableView.mj_header = headerRefresh ? [MJRefreshHeader headerWithRefreshingBlock:^{
         [wSelf netWorkWithType:BaseTableViewRefreshHeader];
     }] : nil;
-    self.tableView.mj_footer = footerRefresh ? [MJRefreshFooter footerWithRefreshingBlock:^{
+    self.tableView.mj_footer = footerRefresh ? [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         [wSelf netWorkWithType:BaseTableViewRefreshFooter];
     }] : nil;
 }

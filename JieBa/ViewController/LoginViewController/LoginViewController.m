@@ -26,6 +26,28 @@
 
 @implementation LoginViewController
 
++ (instancetype)instance {
+    static LoginViewController *_viewController = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _viewController = [[LoginViewController alloc] init];
+    });
+    return _viewController;
+}
+
++ (BOOL)openLogin {
+    if(![StringTool isLogin]){
+        LoginViewController *view = [LoginViewController instance];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:view];
+        nav.navigationBarHidden = YES;
+        [[UIApplication sharedApplication].delegate.window.rootViewController presentViewController:nav animated:YES completion:nil];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"openLogin"];
+        return YES;
+    }else {
+        return NO;
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -171,6 +193,7 @@
 
 #pragma mark - 事件
 -(void)backAction{
+    [self clearPWD];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -188,6 +211,10 @@
 -(void)gotoForgetPwd{
     ForgetPwdViewController *view = [[ForgetPwdViewController alloc] init];
     [self.navigationController pushViewController:view animated:YES];
+}
+
+-(void)clearPWD{
+    self.pwdInputView.textField.text = @"";
 }
 
 #pragma mark - textFiled delegate
@@ -229,6 +256,7 @@
         if(!error){
             [self addAlertView:@"登录成功" block:^{
                 __block typeof(self)otherSelf = wSelf;
+                [wSelf clearPWD];
                 [otherSelf dismissViewControllerAnimated:YES completion:nil];
             }];
         }

@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UserInfoModel.h"
+
+@protocol MyCenterHeadDelegate <NSObject>
+-(void)messageClick;
+-(void)QRCoedeClick;
+-(void)signClick;
+-(void)activeClick;
+-(void)changeHeadClick;
+@end
 
 @interface MyCenterHead : UIView
-
+@property(nonatomic,weak)id<MyCenterHeadDelegate>delegate;
+@property(nonatomic,strong)UserInfoModel *model;
 @end

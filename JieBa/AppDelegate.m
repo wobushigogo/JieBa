@@ -14,6 +14,7 @@
 #import "LoanViewController.h"
 #import "LoginViewController.h"
 #import "LoginApi.h"
+#import "MyCenterViewController.h"
 
 @interface AppDelegate ()<UITabBarControllerDelegate>
 
@@ -38,8 +39,8 @@
     [loan.tabBarItem setImageInsets:UIEdgeInsetsMake(7.0, 0.0, -7.0, 0.0)];
     loan.tabBarItem.image = [[UIImage imageNamed:@"tabbar_loan_gary"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     loan.tabBarItem.selectedImage = [[UIImage imageNamed:@"tabbar_loan_blue"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    BaseNavigationController *loannav = [[BaseNavigationController alloc] initWithRootViewController:loan];
-    loannav.navigationBarHidden = YES;
+    BaseNavigationController *loanNav = [[BaseNavigationController alloc] initWithRootViewController:loan];
+    loanNav.navigationBarHidden = YES;
     
     RentViewController *rent = [[RentViewController alloc] init];
     [rent.tabBarItem setImageInsets:UIEdgeInsetsMake(7.0, 0.0, -7.0, 0.0)];
@@ -58,7 +59,7 @@
     UITabBarController *tabbar = [[UITabBarController alloc] init];
     tabbar.delegate = self;
     //    tabbar.viewControllers = @[plannav,magazinenav,detailedListnav,personalnav];
-    tabbar.viewControllers = @[mainNav,loan,rent,myCenter];
+    tabbar.viewControllers = @[mainNav,loanNav,rentNav,myCenterNav];
     
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, tabbar.tabBar.height)];
     bgView.backgroundColor = RGBCOLOR(16, 16, 16);
@@ -72,22 +73,6 @@
     tabbar.tabBar.opaque = YES;
     self.window.rootViewController = tabbar;
     [self.window makeKeyAndVisible];
-    
-    
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setTitle:@"login" forState:UIControlStateNormal];
-    btn.backgroundColor = [UIColor blackColor];
-    btn.frame = CGRectMake(100, 100, 50, 50);
-    [btn addTarget:self action:@selector(btnAction) forControlEvents:UIControlEventTouchUpInside];
-    [self.window addSubview:btn];
-    
-    
-    UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn2 setTitle:@"logout" forState:UIControlStateNormal];
-    btn2.backgroundColor = [UIColor blackColor];
-    btn2.frame = CGRectMake(200, 100, 50, 50);
-    [btn2 addTarget:self action:@selector(btnAction2) forControlEvents:UIControlEventTouchUpInside];
-    [self.window addSubview:btn2];
     
     return YES;
 }
@@ -119,20 +104,47 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
--(void)btnAction{
-    LoginViewController *view = [[LoginViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:view];
-    nav.navigationBarHidden = YES;
-    [self.window.rootViewController presentViewController:nav animated:YES completion:nil];
-}
--(void)btnAction2{
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setObject:@"member_logout" forKey:@"_cmd_"];
-    [dic setObject:[LoginSqlite getdata:@"token"] forKey:@"token"];
-    [LoginApi logoutWithBlock:^(NSString *string, NSError *error) {
-        if(!error){
-            NSLog(@"%@",string);
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    if(![StringTool isLogin]){
+        if(tabBarController.viewControllers[0] == viewController){
+            return YES;
+        }else if (tabBarController.viewControllers[1] == viewController){
+            [self loginAction];
+            return NO;
+        }else if (tabBarController.viewControllers[2] == viewController){
+            [self loginAction];
+            return NO;
+        }else if (tabBarController.viewControllers[3] == viewController){
+            [self loginAction];
+            return NO;
+        }else{
+            return NO;
         }
-    } dic:dic noNetWork:nil];
+    }else {
+        
+        return YES;
+        
+    }
+}
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
+    NSLog(@"%@",[viewController class]);
+    if(tabBarController.viewControllers[0] == viewController){
+        
+    }else if (tabBarController.viewControllers[1] == viewController){
+        
+    }else if (tabBarController.viewControllers[2] == viewController){
+        
+    }else{
+        UINavigationController *navigationctr = (UINavigationController *)viewController;
+        MyCenterViewController *secvc = (MyCenterViewController *)navigationctr.topViewController;
+        [secvc loadUserInfo];
+    }
+}
+
+-(void)loginAction{
+    if([LoginViewController openLogin]){
+        return;
+    }
 }
 @end

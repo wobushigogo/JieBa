@@ -52,7 +52,7 @@
     [postParamDic setObject:identifierForVendor forKey:@"_deviceid_"];
     [postParamDic setObject:@"IOS" forKey:@"_client_"];
     [postParamDic setObject:[MD5 md5HexDigestPost:signStr] forKey:@"_sign_"];
-    [postParamDic setObject:[LoginSqlite getdata:@"token"] forKey:@"_token_"];
+    [postParamDic setObject:[StringTool stringWithNull:[LoginSqlite getdata:@"token"]] forKey:@"_token_"];
     NSLog(@"postDic=========%@",postParamDic);
     NSLog(@"urlString=========%@",urlString);
     
@@ -83,7 +83,7 @@
     [postParamDic setObject:identifierForVendor forKey:@"_deviceid_"];
     [postParamDic setObject:@"IOS" forKey:@"_client_"];
     [postParamDic setObject:[MD5 md5HexDigestPost:signStr] forKey:@"_sign_"];
-    [postParamDic setObject:[LoginSqlite getdata:@"token"] forKey:@"_token_"];
+    [postParamDic setObject:[StringTool stringWithNull:[LoginSqlite getdata:@"token"]] forKey:@"_token_"];
     
     
     [[AFAppDotNetAPIClient sharedClient] POST:urlString
