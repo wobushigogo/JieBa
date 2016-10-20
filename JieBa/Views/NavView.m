@@ -31,7 +31,7 @@
 
 - (UIButton *)leftBtn {
     if (!_leftBtn) {
-        UIButton *leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, WidthXiShu(60), [self.class defualtHeight])];
+        UIButton *leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, WidthXiShu(65), [self.class defualtHeight])];
         [leftBtn setImage:[GetImagePath getImagePath:@"login_back"] forState:UIControlStateNormal];
         [leftBtn setTitle:@"返回" forState:UIControlStateNormal];
         leftBtn.imageEdgeInsets = UIEdgeInsetsMake(5,0,0,0);//设置

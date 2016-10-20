@@ -10,8 +10,15 @@
 #import "NavView.h"
 #import "LoginApi.h"
 #import "CenterTableViewCell.h"
+#import "ChangeUserNameViewController.h"
+#import "ChangePhoneViewController.h"
+#import "ChangePwdViewController.h"
+#import "RealNameViewController.h"
+#import <TVFaceAuthFramework/TVFaceAuthFramework.h>
+#import <Photos/Photos.h>
+#import <PhotosUI/PhotosUI.h>
 
-@interface CenterViewController ()
+@interface CenterViewController () <TVFaceAuthProtocol>
 @property(nonatomic,strong)NavView *navView;
 @property(nonatomic,strong)UIView *footerView;
 @end
@@ -104,6 +111,23 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.row == 0){
+        ChangeUserNameViewController *view = [[ChangeUserNameViewController alloc] init];
+        [self.navigationController pushViewController:view animated:YES];
+    }else if (indexPath.row == 1){
+        ChangePhoneViewController *view = [[ChangePhoneViewController alloc] init];
+        [self.navigationController pushViewController:view animated:YES];
+    }else if (indexPath.row == 2){
+        ChangePwdViewController *view = [[ChangePwdViewController alloc] init];
+        [self.navigationController pushViewController:view animated:YES];
+    }else if (indexPath.row == 3){
+        [TVFaceAuthFramework tvFaceAuthCtrl:self faceAuthProtocol:self];
+//        RealNameViewController *view = [[RealNameViewController alloc] init];
+//        [self.navigationController pushViewController:view animated:YES];
+    }
+}
+
 #pragma mark - 事件
 -(void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
@@ -123,5 +147,30 @@
             }
         }
     } dic:dic noNetWork:nil];
+}
+
+#pragma mark - TVFaceAuthProtocol
+- (void)didFaceAuthSuccess:(NSString*)serviceId evidenceId:(NSString*)evidenceId {
+    NSString* log = [NSString stringWithFormat:@"face auth success serviceId : %@ evidenceId : %@\n", serviceId, evidenceId];
+    [self log:log];
+}
+- (void)didFaceAuthFail:(NSString*)serviceId {
+    NSString* log = [NSString stringWithFormat:@"face auth fail serviceId %@\n", serviceId];
+    [self log:log];
+}
+
+- (void)didFaceAuthCancel {
+    NSString* log = @"cancel face auth\n";
+    [self log:log];
+}
+
+- (void)log:(NSString*)log {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    [dateFormatter setDateFormat:@"yyyy:MM:dd HH:mm:ss:SSS"];
+    NSString *dateStr = [dateFormatter stringFromDate:[NSDate date]];
+    NSString* logStr = [NSString stringWithFormat:@"%@ %@", dateStr, log];
+    NSLog(@"%@", logStr);
 }
 @end

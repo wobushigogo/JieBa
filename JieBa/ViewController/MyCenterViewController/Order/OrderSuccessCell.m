@@ -157,7 +157,7 @@
         [commentBtn setTitle:@"立即评价" forState:UIControlStateNormal];
         commentBtn.titleLabel.font = HEITI(HeightXiShu(14));
         commentBtn.layer.masksToBounds = YES;
-        commentBtn.layer.cornerRadius = HeightXiShu(3);
+        commentBtn.layer.cornerRadius = HeightXiShu(3); 
         [self.detailView addSubview:commentBtn];
         _commentBtn = commentBtn;
     }

@@ -59,7 +59,7 @@
         NavView *navView = [NavView initNavView];
         navView.minY = HeightXiShu(20);
         navView.backgroundColor = NavColor;
-        navView.titleLabel.text = @"个人中心";
+        navView.titleLabel.text = @"我的订单";
         [navView.leftBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
         _navView = navView;
         [self.view addSubview:_navView];

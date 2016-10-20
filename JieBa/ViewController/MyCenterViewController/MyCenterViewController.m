@@ -33,7 +33,7 @@
     self.tableView.tableHeaderView = self.headView;
     self.tableView.tableFooterView = self.footerView;
     self.tableView.backgroundColor = AllBackLightGratColor;
-    //[self loadUserInfo];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeUserName:) name:@"changeUserName" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,6 +44,10 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = NO;
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"changeUserName" object:nil];
 }
 
 #pragma mark - tableView delegate dataSource
@@ -82,7 +86,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    [cell.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     if(indexPath.section == 0 || indexPath.section == 1 || indexPath.section == 2){
         NSString *imgName = @[@"myCenter_ balance",@"myCenter_ order",@"myCenter_center"][indexPath.section];
         NSString *mainText = @[@"账户余额",@"我的订单",@"个人中心"][indexPath.section];
@@ -99,7 +103,7 @@
             isString = NO;
         }
         UIView *view = [self cellViewWithMainImg:imgName mainText:mainText subText:[NSString stringWithFormat:@"%@元",self.userInfoModel.balance] buttonName1:buttonName1 buttonName2:buttonName2 selector:NSSelectorFromString(mainSelector) selector1:NSSelectorFromString(selector1) selector2:NSSelectorFromString(selector2) needMainBtn:YES stingOrImage:isString];
-        [cell addSubview:view];
+        [cell.contentView addSubview:view];
     }else if (indexPath.section == 3){
         UIImageView *cutLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, HeightXiShu(40), kScreenWidth, .5)];
         cutLine.backgroundColor = AllLightGrayColor;
@@ -108,7 +112,7 @@
         }else{
             cutLine.hidden = NO;
         }
-        [cell addSubview:cutLine];
+        [cell.contentView addSubview:cutLine];
         
         NSString *imgName = @[@"myCenter_invite",@"myCenter_active",@"myCenter_service",@"myCenter_more"][indexPath.row];
         NSString *mainText = @[@"邀请记录",@"活动专区",@"在线客服",@"更多"][indexPath.row];
@@ -116,31 +120,31 @@
         
         UIImageView *smallImageView = [[UIImageView alloc] initWithFrame:CGRectMake(WidthXiShu(15), HeightXiShu(10), WidthXiShu(19), HeightXiShu(19))];
         smallImageView.image = [GetImagePath getImagePath:imgName];
-        [cell addSubview:smallImageView];
+        [cell.contentView addSubview:smallImageView];
         
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(53), 0, WidthXiShu(150), HeightXiShu(40))];
         titleLabel.text = mainText;
         titleLabel.textColor = TitleColor;
         titleLabel.font = HEITI(HeightXiShu(14));
-        [cell addSubview:titleLabel];
+        [cell.contentView addSubview:titleLabel];
         
         UILabel *detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth-WidthXiShu(16)-WidthXiShu(5)-WidthXiShu(100), 0, WidthXiShu(100), HeightXiShu(40))];
         detailLabel.text = detailText;
         detailLabel.textColor = [UIColor lightGrayColor];
         detailLabel.font = HEITI(HeightXiShu(12));
         detailLabel.textAlignment = NSTextAlignmentRight;
-        [cell addSubview:detailLabel];
+        [cell.contentView addSubview:detailLabel];
         
         UIImageView *arrowImgView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth-WidthXiShu(16), HeightXiShu(13), WidthXiShu(8), HeightXiShu(13))];
         arrowImgView.image = [GetImagePath getImagePath:@"myCenter_arrow"];
-        [cell addSubview:arrowImgView];
+        [cell.contentView addSubview:arrowImgView];
     }else{
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, HeightXiShu(40))];
         titleLabel.text = @"客服电话：400 663 9066";
         titleLabel.textColor = NavColor;
         titleLabel.font = HEITI(HeightXiShu(14));
         titleLabel.textAlignment = NSTextAlignmentCenter;
-        [cell addSubview:titleLabel];
+        [cell.contentView addSubview:titleLabel];
     }
     return cell;
 }
@@ -309,6 +313,10 @@
     UIAlertAction *agreeAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
     [alertControl addAction:agreeAction];
     [self presentViewController:alertControl animated:YES completion:nil];
+}
+
+-(void)changeUserName:(NSNotification *)noti{
+    [self loadUserInfo];
 }
 
 #pragma mark - head的delegate

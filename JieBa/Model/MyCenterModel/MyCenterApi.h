@@ -24,4 +24,10 @@
 
 //订单列表 不传是全部订单 1是审核中订单 2审核成功订单 3是审核失败订单
 + (void)orderListWithBlock:(void (^)(NSMutableArray *array, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork;
+
+//修改用户名
++ (void)updataUserNameWithBlock:(void (^)(NSString *userName, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork;
+
+//修改密码
++ (void)updataPwdWithBlock:(void (^)(NSString *pwd, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork;
 @end

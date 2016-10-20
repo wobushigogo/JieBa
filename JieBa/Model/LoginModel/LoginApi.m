@@ -14,6 +14,8 @@
     NSString *urlStr = [NSString stringWithFormat:@"?member_login"];
     [SendRequst formRequstWithUrlString:urlStr postParamDic:dic success:^(id responseDic) {
         [LoginSqlite insertData:responseDic[@"dataresult"][@"_token_"] datakey:@"token"];
+        [LoginSqlite insertData:responseDic[@"dataresult"][@"username"] datakey:@"userName"];
+        [LoginSqlite insertData:dic[@"mobile"] datakey:@"phone"];
         if(block){
             block(responseDic[@"dataresult"],nil);
         }
@@ -57,6 +59,8 @@
     NSString *urlStr = [NSString stringWithFormat:@"?member_register"];
     [SendRequst formRequstWithUrlString:urlStr postParamDic:dic success:^(id responseDic) {
         [LoginSqlite insertData:responseDic[@"dataresult"][@"_token_"] datakey:@"token"];
+        [LoginSqlite insertData:responseDic[@"dataresult"][@"username"] datakey:@"userName"];
+        [LoginSqlite insertData:dic[@"mobile"] datakey:@"phone"];
         if(block){
             block(responseDic[@"dataresult"],nil);
         }

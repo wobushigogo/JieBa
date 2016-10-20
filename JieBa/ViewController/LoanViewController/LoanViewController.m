@@ -254,11 +254,11 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-        [cell.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+        [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
         NSString *imageName = @[@"",@"loan_liucheng",@"loan_city"][indexPath.section];
         UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, HeightXiShu(148))];
         bgImageView.image = [GetImagePath getImagePath:imageName];
-        [cell addSubview:bgImageView];
+        [cell.contentView addSubview:bgImageView];
         return cell;
     }
 }

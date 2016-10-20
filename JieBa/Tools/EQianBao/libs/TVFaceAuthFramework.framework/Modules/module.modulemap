@@ -1,0 +1,6 @@
+framework module TVFaceAuthFramework {
+  umbrella header "TVFaceAuthFramework.h"
+
+  export *
+  module * { export * }
+}

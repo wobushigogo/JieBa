@@ -15,6 +15,7 @@
 #import "LoginViewController.h"
 #import "LoginApi.h"
 #import "MyCenterViewController.h"
+#import <TVFaceAuthFramework/TVFaceAuthFramework.h>
 
 @interface AppDelegate ()<UITabBarControllerDelegate>
 
@@ -25,6 +26,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [TVFaceAuthFramework setAppProjectId:@"1111563806" projectSecret:@"0c4275a48e17b0652f5246a91dd27ef3" serverEnviroment:0];
+    [TVFaceAuthFramework setSignatureType:@"SHA" signatureKey:@"0c4275a48e17b0652f5246a91dd27ef3"];
+    
+    
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     [LoginSqlite opensql];
     

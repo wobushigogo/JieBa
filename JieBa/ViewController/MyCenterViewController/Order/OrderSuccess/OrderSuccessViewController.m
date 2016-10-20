@@ -8,6 +8,8 @@
 
 #import "OrderSuccessViewController.h"
 #import "MyCenterApi.h"
+#import "OrderModel.h"
+#import "OrderSuccessCell.h"
 
 @interface OrderSuccessViewController ()
 @property(nonatomic)NSInteger startIndex;
@@ -41,25 +43,20 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return HeightXiShu(50);
+    return HeightXiShu(217);
 }
 
-//-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    static NSString* const identifier = @"CenterTableViewCell";
-//    CenterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-//    if (!cell) {
-//        cell = [[CenterTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    }
-//    cell.title = @[@"修改用户名",@"修改手机号",@"修改密码",@"实名认证",@"绑定银行卡",@"更改邀请码"][indexPath.row];
-//    cell.detail = @[@"",@"",@"",@"未认证",@"未绑定",@""][indexPath.row];
-//    if(indexPath.row == 5){
-//        cell.isShowCutLine = NO;
-//    }else{
-//        cell.isShowCutLine = YES;
-//    }
-//    return cell;
-//}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    OrderModel *model = self.modelArr[indexPath.row];
+    static NSString* const identifier = @"OrderSuccessCell";
+    OrderSuccessCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[OrderSuccessCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    cell.model = model;
+    return cell;
+}
 
 #pragma mark - 事件
 -(void)reloadData{
