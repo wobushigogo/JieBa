@@ -40,7 +40,7 @@
 +(void)trueNameWithBlock:(void (^)(NSDictionary *dict, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork;
 
 //提交修改邀请码
-+(void)changeInviteWithBlock:(void (^)(NSDictionary *dict, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork;
++(void)changeInviteWithBlock:(void (^)(NSString *string, NSError *error))block dic:(NSMutableDictionary *)dic imageData:(NSData *)imageData noNetWork:(void(^)())noNetWork;
 
 //修改邀请码手机验证码
 +(void)changeInviteYZMWithBlock:(void (^)(NSDictionary *dict, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork;

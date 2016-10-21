@@ -153,6 +153,10 @@
     NSLog(@"%ld",(long)error.code);
     NSLog(@"===>%@",error.userInfo);
     [SendRequst AddAlertView:error.domain];
+    if([error.userInfo[@"errorCode"] isEqualToString:@"NOT_LOGIN"]){
+        [LoginSqlite deleteAll];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"loginAgain" object:nil];
+    }
 }
 
 +(void)AddAlertView:(NSString *)msg{

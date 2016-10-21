@@ -58,7 +58,7 @@
         navView.minY = HeightXiShu(20);
         navView.backgroundColor = NavColor;
         navView.titleLabel.text = @"车贷宝";
-        [navView.leftBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+        navView.leftBtn.hidden = YES;
         _navView = navView;
         [self.view addSubview:_navView];
     }
@@ -285,10 +285,6 @@
 }
 
 #pragma mark - 事件
--(void)backAction{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 -(void)firstSectionAction:(UIButton *)button{
     switch (button.tag) {
         case 0:

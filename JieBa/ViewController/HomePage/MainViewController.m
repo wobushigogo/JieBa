@@ -14,8 +14,10 @@
 #import "BannerModel.h"
 #import "LocationView.h"
 #import "BannerViewController.h"
+#import "CompanyProfileViewController.h"
+#import "LoginViewController.h"
 
-@interface MainViewController ()<ZWAdViewDelagate>
+@interface MainViewController ()<ZWAdViewDelagate,MainButtonCellDelegate>
 @property(nonatomic,strong)UIView *headView;
 @property(nonatomic,strong)UIButton *scanBtn;
 @property(nonatomic,strong)ZWAdView *zwAdView;
@@ -40,6 +42,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = NO;
 }
 
 #pragma mark - tableView delegate dataSource
@@ -98,6 +105,7 @@
             cell=[[MainButtonCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MainButtonCell"];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.delegate = self;
         return cell;
     }else{
         InvitationCell* cell=[tableView dequeueReusableCellWithIdentifier:@"InvitationCell"];
@@ -192,5 +200,62 @@
             [self.tableView reloadData];
         }
     } dic:dic noNetWork:nil];
+}
+
+#pragma - mark delegate
+-(void)buttonClick:(NSInteger)index{
+    switch (index) {
+        case 0:
+        {
+            CompanyProfileViewController *view = [[CompanyProfileViewController alloc] init];
+            [self.navigationController pushViewController:view animated:YES];
+        }
+            break;
+        case 1:
+        {
+            if([LoginViewController openLogin]){
+                return;
+            }
+        }
+            break;
+        case 2:
+        {
+            if([LoginViewController openLogin]){
+                return;
+            }
+        }
+            break;
+        case 3:
+        {
+            if([LoginViewController openLogin]){
+                return;
+            }
+        }
+            break;
+        case 4:
+        {
+            if([StringTool isLogin]){
+                
+            }else{
+                UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:@"提示" message:@"客服电话：400 663 9066" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
+                UIAlertAction *agreeAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    NSString *telStr = [@"tel://" stringByAppendingString:@"4006639066"];
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telStr]];
+                }];
+                [self presentViewController:alertControl animated:YES completion:nil];
+            }
+        }
+            break;
+        case 5:
+        {
+            if([LoginViewController openLogin]){
+                return;
+            }
+        }
+            break;
+        default:
+            break;
+    }
 }
 @end

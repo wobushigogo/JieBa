@@ -42,6 +42,15 @@
 		D320498D1DB63039000782F9 /* loan_liucheng.png in Resources */ = {isa = PBXBuildFile; fileRef = D32049871DB63039000782F9 /* loan_liucheng.png */; };
 		D320498E1DB63039000782F9 /* loan_liucheng@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D32049881DB63039000782F9 /* loan_liucheng@2x.png */; };
 		D320498F1DB63039000782F9 /* loan_liucheng@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D32049891DB63039000782F9 /* loan_liucheng@3x.png */; };
+		D3348CCE1DB9B82000A5E06A /* ChangeInviteCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3348CCD1DB9B82000A5E06A /* ChangeInviteCodeViewController.m */; };
+		D3348CD21DB9C08B00A5E06A /* myCenter_addCamera.png in Resources */ = {isa = PBXBuildFile; fileRef = D3348CCF1DB9C08B00A5E06A /* myCenter_addCamera.png */; };
+		D3348CD31DB9C08B00A5E06A /* myCenter_addCamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3348CD01DB9C08B00A5E06A /* myCenter_addCamera@2x.png */; };
+		D3348CD41DB9C08B00A5E06A /* myCenter_addCamera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3348CD11DB9C08B00A5E06A /* myCenter_addCamera@3x.png */; };
+		D3348CDF1DB9D66E00A5E06A /* rent_banner.png in Resources */ = {isa = PBXBuildFile; fileRef = D3348CDC1DB9D66E00A5E06A /* rent_banner.png */; };
+		D3348CE01DB9D66E00A5E06A /* rent_banner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3348CDD1DB9D66E00A5E06A /* rent_banner@2x.png */; };
+		D3348CE11DB9D66E00A5E06A /* rent_banner@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3348CDE1DB9D66E00A5E06A /* rent_banner@3x.png */; };
+		D3348CE51DB9F2EE00A5E06A /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3348CE41DB9F2EE00A5E06A /* MoreViewController.m */; };
+		D3348CE91DB9FD7F00A5E06A /* CompanyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3348CE81DB9FD7F00A5E06A /* CompanyProfileViewController.m */; };
 		D33AAEAE1DB85CC100459F4E /* ChangeUserNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D33AAEAD1DB85CC100459F4E /* ChangeUserNameViewController.m */; };
 		D33AAEB21DB860BD00459F4E /* myCente_changUserName.png in Resources */ = {isa = PBXBuildFile; fileRef = D33AAEAF1DB860BD00459F4E /* myCente_changUserName.png */; };
 		D33AAEB31DB860BD00459F4E /* myCente_changUserName@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D33AAEB01DB860BD00459F4E /* myCente_changUserName@2x.png */; };
@@ -348,6 +357,18 @@
 		D32049871DB63039000782F9 /* loan_liucheng.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loan_liucheng.png; sourceTree = "<group>"; };
 		D32049881DB63039000782F9 /* loan_liucheng@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loan_liucheng@2x.png"; sourceTree = "<group>"; };
 		D32049891DB63039000782F9 /* loan_liucheng@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loan_liucheng@3x.png"; sourceTree = "<group>"; };
+		D3348CCC1DB9B82000A5E06A /* ChangeInviteCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeInviteCodeViewController.h; sourceTree = "<group>"; };
+		D3348CCD1DB9B82000A5E06A /* ChangeInviteCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeInviteCodeViewController.m; sourceTree = "<group>"; };
+		D3348CCF1DB9C08B00A5E06A /* myCenter_addCamera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myCenter_addCamera.png; sourceTree = "<group>"; };
+		D3348CD01DB9C08B00A5E06A /* myCenter_addCamera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myCenter_addCamera@2x.png"; sourceTree = "<group>"; };
+		D3348CD11DB9C08B00A5E06A /* myCenter_addCamera@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myCenter_addCamera@3x.png"; sourceTree = "<group>"; };
+		D3348CDC1DB9D66E00A5E06A /* rent_banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rent_banner.png; sourceTree = "<group>"; };
+		D3348CDD1DB9D66E00A5E06A /* rent_banner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rent_banner@2x.png"; sourceTree = "<group>"; };
+		D3348CDE1DB9D66E00A5E06A /* rent_banner@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rent_banner@3x.png"; sourceTree = "<group>"; };
+		D3348CE31DB9F2EE00A5E06A /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
+		D3348CE41DB9F2EE00A5E06A /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
+		D3348CE71DB9FD7F00A5E06A /* CompanyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyProfileViewController.h; sourceTree = "<group>"; };
+		D3348CE81DB9FD7F00A5E06A /* CompanyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyProfileViewController.m; sourceTree = "<group>"; };
 		D33AAEAC1DB85CC100459F4E /* ChangeUserNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeUserNameViewController.h; sourceTree = "<group>"; };
 		D33AAEAD1DB85CC100459F4E /* ChangeUserNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeUserNameViewController.m; sourceTree = "<group>"; };
 		D33AAEAF1DB860BD00459F4E /* myCente_changUserName.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myCente_changUserName.png; sourceTree = "<group>"; };
@@ -790,6 +811,35 @@
 			path = Loan;
 			sourceTree = "<group>";
 		};
+		D3348CD51DB9D64100A5E06A /* Rent */ = {
+			isa = PBXGroup;
+			children = (
+				D3348CDC1DB9D66E00A5E06A /* rent_banner.png */,
+				D3348CDD1DB9D66E00A5E06A /* rent_banner@2x.png */,
+				D3348CDE1DB9D66E00A5E06A /* rent_banner@3x.png */,
+			);
+			path = Rent;
+			sourceTree = "<group>";
+		};
+		D3348CE21DB9F2B900A5E06A /* More */ = {
+			isa = PBXGroup;
+			children = (
+				D3348CE61DB9FD5A00A5E06A /* CompanyProfile */,
+				D3348CE31DB9F2EE00A5E06A /* MoreViewController.h */,
+				D3348CE41DB9F2EE00A5E06A /* MoreViewController.m */,
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
+		D3348CE61DB9FD5A00A5E06A /* CompanyProfile */ = {
+			isa = PBXGroup;
+			children = (
+				D3348CE71DB9FD7F00A5E06A /* CompanyProfileViewController.h */,
+				D3348CE81DB9FD7F00A5E06A /* CompanyProfileViewController.m */,
+			);
+			path = CompanyProfile;
+			sourceTree = "<group>";
+		};
 		D33AAEA61DB85C8E00459F4E /* BindCard */ = {
 			isa = PBXGroup;
 			children = (
@@ -800,6 +850,8 @@
 		D33AAEA71DB85C8E00459F4E /* ChangeInviteCode */ = {
 			isa = PBXGroup;
 			children = (
+				D3348CCC1DB9B82000A5E06A /* ChangeInviteCodeViewController.h */,
+				D3348CCD1DB9B82000A5E06A /* ChangeInviteCodeViewController.m */,
 			);
 			path = ChangeInviteCode;
 			sourceTree = "<group>";
@@ -954,6 +1006,7 @@
 		D3458A131DB08847007BD2CF /* MyCenterViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D3348CE21DB9F2B900A5E06A /* More */,
 				D3B2BE3D1DB74FAF0095306E /* Order */,
 				D3B2BE161DB726150095306E /* MyCenter */,
 				D3458A151DB08864007BD2CF /* MyCenterViewController.h */,
@@ -1016,6 +1069,7 @@
 		D3458A261DB0B0E7007BD2CF /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D3348CD51DB9D64100A5E06A /* Rent */,
 				D320497D1DB60AF3000782F9 /* Loan */,
 				D347E3311DB4D44000E7B9BA /* MyCenter */,
 				D347E2ED1DB49A7F00E7B9BA /* HomePage */,
@@ -1282,6 +1336,9 @@
 		D347E3311DB4D44000E7B9BA /* MyCenter */ = {
 			isa = PBXGroup;
 			children = (
+				D3348CCF1DB9C08B00A5E06A /* myCenter_addCamera.png */,
+				D3348CD01DB9C08B00A5E06A /* myCenter_addCamera@2x.png */,
+				D3348CD11DB9C08B00A5E06A /* myCenter_addCamera@3x.png */,
 				D33AAF071DB8B68200459F4E /* myCenter_scan.png */,
 				D33AAF081DB8B68200459F4E /* myCenter_scan@2x.png */,
 				D33AAF091DB8B68200459F4E /* myCenter_scan@3x.png */,
@@ -1793,6 +1850,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3348CD41DB9C08B00A5E06A /* myCenter_addCamera@3x.png in Resources */,
 				D347E2C51DB46F0800E7B9BA /* tabbar_myCenter_gray.png in Resources */,
 				D3458A501DB0C608007BD2CF /* login_phone@2x.png in Resources */,
 				D3B2BE211DB73B220095306E /* myCenter_arrow@2x.png in Resources */,
@@ -1833,6 +1891,7 @@
 				D32049821DB60B17000782F9 /* loan_banner@2x.png in Resources */,
 				D347E3101DB49B9E00E7B9BA /* homePage_rent@2x.png in Resources */,
 				D3458A4F1DB0C608007BD2CF /* login_phone.png in Resources */,
+				D3348CD21DB9C08B00A5E06A /* myCenter_addCamera.png in Resources */,
 				D347E3041DB49B9E00E7B9BA /* homePage_business@2x.png in Resources */,
 				D347E3001DB49B9E00E7B9BA /* homePage_assess.png in Resources */,
 				D347E3111DB49B9E00E7B9BA /* homePage_rent@3x.png in Resources */,
@@ -1886,6 +1945,7 @@
 				D33AAEB21DB860BD00459F4E /* myCente_changUserName.png in Resources */,
 				D32049811DB60B17000782F9 /* loan_banner.png in Resources */,
 				D347E3281DB4B11800E7B9BA /* homePage_scan@2x.png in Resources */,
+				D3348CD31DB9C08B00A5E06A /* myCenter_addCamera@2x.png in Resources */,
 				D347E3091DB49B9E00E7B9BA /* homePage_introduce.png in Resources */,
 				D320495F1DB5C4E0000782F9 /* myCenter_ invitation.png in Resources */,
 				D3B2BE201DB73B220095306E /* myCenter_arrow.png in Resources */,
@@ -1908,6 +1968,7 @@
 				D32049631DB5C4E0000782F9 /* myCenter_sign@2x.png in Resources */,
 				D33AAEB41DB860BD00459F4E /* myCente_changUserName@3x.png in Resources */,
 				D347E2C11DB46F0800E7B9BA /* tabbar_loan_gary@3x.png in Resources */,
+				D3348CE11DB9D66E00A5E06A /* rent_banner@3x.png in Resources */,
 				D347E2CC1DB46F0800E7B9BA /* tabbar_rent_gary@2x.png in Resources */,
 				D33AAEC11DB8A00300459F4E /* myCenter_sfz.png in Resources */,
 				D347E2C71DB46F0800E7B9BA /* tabbar_myCenter_gray@3x.png in Resources */,
@@ -1926,11 +1987,13 @@
 				D3E8ADD21DB51136002F5D35 /* myCenter_ balance.png in Resources */,
 				D347E31D1DB4A7B300E7B9BA /* homePage_loactionbg@3x.png in Resources */,
 				D347E2DF1DB470E700E7B9BA /* register_noShow@3x.png in Resources */,
+				D3348CDF1DB9D66E00A5E06A /* rent_banner.png in Resources */,
 				D32049501DB5BFE3000782F9 /* myCenter_invite.png in Resources */,
 				D347E3291DB4B11800E7B9BA /* homePage_scan@3x.png in Resources */,
 				D320498E1DB63039000782F9 /* loan_liucheng@2x.png in Resources */,
 				D3E8ADD31DB51136002F5D35 /* myCenter_ balance@2x.png in Resources */,
 				D347E2C41DB46F0800E7B9BA /* tabbar_myCenter_blue@3x.png in Resources */,
+				D3348CE01DB9D66E00A5E06A /* rent_banner@2x.png in Resources */,
 				D32049511DB5BFE3000782F9 /* myCenter_invite@2x.png in Resources */,
 				D3458A491DB0C5C3007BD2CF /* login_pwd.png in Resources */,
 				D347E3031DB49B9E00E7B9BA /* homePage_business.png in Resources */,
@@ -2007,6 +2070,7 @@
 				D3E147EC1DAF5FAE002F6D60 /* LoginSqlite.m in Sources */,
 				D3E147C51DAF335C002F6D60 /* UIAlertView+AFNetworking.m in Sources */,
 				D347E32D1DB4BE1500E7B9BA /* BannerViewController.m in Sources */,
+				D3348CE91DB9FD7F00A5E06A /* CompanyProfileViewController.m in Sources */,
 				D3458A451DB0B8D0007BD2CF /* InputTextFiledView.m in Sources */,
 				D3E147BB1DAF335C002F6D60 /* AFURLConnectionOperation.m in Sources */,
 				D33AAF061DB8ABE000459F4E /* CustomCameraViewController.m in Sources */,
@@ -2051,6 +2115,7 @@
 				D347E24F1DB30E4D00E7B9BA /* MJRefreshAutoFooter.m in Sources */,
 				D3E147B91DAF335C002F6D60 /* AFNetworkReachabilityManager.m in Sources */,
 				D3B2BE4D1DB757020095306E /* OrderAllViewController.m in Sources */,
+				D3348CCE1DB9B82000A5E06A /* ChangeInviteCodeViewController.m in Sources */,
 				D3E147EA1DAF5FAE002F6D60 /* FMDatabaseQueue.m in Sources */,
 				D347E2561DB30E4D00E7B9BA /* MJRefreshAutoStateFooter.m in Sources */,
 				D33AAEAE1DB85CC100459F4E /* ChangeUserNameViewController.m in Sources */,
@@ -2068,6 +2133,7 @@
 				D3458A621DB21F6A007BD2CF /* ForgetPwdViewController.m in Sources */,
 				D3B2BE3C1DB74E1F0095306E /* StageAndNumberView.m in Sources */,
 				D347E3301DB4D1FE00E7B9BA /* MyCenterHead.m in Sources */,
+				D3348CE51DB9F2EE00A5E06A /* MoreViewController.m in Sources */,
 				D3B2BE391DB74B190095306E /* StageChooseView.m in Sources */,
 				D3B2BE501DB757130095306E /* OrderUnderwayViewController.m in Sources */,
 				D3458A051DB0854F007BD2CF /* NSString+LabelKit.m in Sources */,

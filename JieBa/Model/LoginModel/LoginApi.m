@@ -156,9 +156,10 @@
     } apiName:@"member_changeuserinfo" noNetWork:nil];
 }
 
-+(void)changeInviteWithBlock:(void (^)(NSDictionary *dict, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork{
++(void)changeInviteWithBlock:(void (^)(NSString *string, NSError *error))block dic:(NSMutableDictionary *)dic imageData:(NSData *)imageData noNetWork:(void(^)())noNetWork{
     NSString *urlStr = [NSString stringWithFormat:@"?member_changeuserinfo"];
-    [SendRequst formRequstWithUrlString:urlStr postParamDic:dic success:^(id responseDic) {
+    [SendRequst postImageRequstWithUrlString:urlStr postParamDic:dic imageDataArr:[NSMutableArray arrayWithObject:imageData] success:^(id responseDic) {
+        NSLog(@"%@",responseDic[@"dataresult"]);
         if(block){
             block(responseDic[@"dataresult"],nil);
         }

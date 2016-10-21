@@ -26,9 +26,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [TVFaceAuthFramework setAppProjectId:@"1111563806" projectSecret:@"0c4275a48e17b0652f5246a91dd27ef3" serverEnviroment:0];
-    [TVFaceAuthFramework setSignatureType:@"SHA" signatureKey:@"0c4275a48e17b0652f5246a91dd27ef3"];
-    
+    [TVFaceAuthFramework setAppProjectId:@"1111563517" projectSecret:@"95439b0863c241c63a861b87d1e647b7" serverEnviroment:2];
+    [TVFaceAuthFramework setSignatureType:@"SHA" signatureKey:@"95439b0863c241c63a861b87d1e647b7"];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginAgain) name:@"loginAgain" object:nil];
     
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     [LoginSqlite opensql];
@@ -151,5 +151,9 @@
     if([LoginViewController openLogin]){
         return;
     }
+}
+
+-(void)loginAgain{
+    
 }
 @end

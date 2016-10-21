@@ -59,7 +59,7 @@
 
 - (UIButton *)rightBtn {
     if (!_rightBtn) {
-        UIButton *rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, [self.class defualtHeight])];
+        UIButton *rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, WidthXiShu(60), [self.class defualtHeight])];
         [rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         rightBtn.titleLabel.font = HEITI(HeightXiShu(15));
         [rightBtn setMaxX:self.width - 15 midY:self.halfHeight];

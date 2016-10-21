@@ -14,6 +14,7 @@
 #import "ChangePhoneViewController.h"
 #import "ChangePwdViewController.h"
 #import "RealNameViewController.h"
+#import "ChangeInviteCodeViewController.h"
 #import <TVFaceAuthFramework/TVFaceAuthFramework.h>
 #import <Photos/Photos.h>
 #import <PhotosUI/PhotosUI.h>
@@ -125,6 +126,11 @@
         [TVFaceAuthFramework tvFaceAuthCtrl:self faceAuthProtocol:self];
 //        RealNameViewController *view = [[RealNameViewController alloc] init];
 //        [self.navigationController pushViewController:view animated:YES];
+    }else if (indexPath.row == 4){
+    
+    }else{
+        ChangeInviteCodeViewController *view = [[ChangeInviteCodeViewController alloc] init];
+        [self.navigationController pushViewController:view animated:YES];
     }
 }
 

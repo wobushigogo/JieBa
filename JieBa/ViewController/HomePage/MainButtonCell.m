@@ -114,39 +114,8 @@
 }
 
 -(void)buttonAction:(UIButton *)button{
-    switch (button.tag) {
-        case 0:
-        {
-        
-        }
-            break;
-        case 1:
-        {
-            
-        }
-            break;
-        case 2:
-        {
-            
-        }
-            break;
-        case 3:
-        {
-            
-        }
-            break;
-        case 4:
-        {
-            
-        }
-            break;
-        case 5:
-        {
-            
-        }
-            break;
-        default:
-            break;
+    if([self.delegate respondsToSelector:@selector(buttonClick:)]){
+        [self.delegate buttonClick:button.tag];
     }
 }
 @end

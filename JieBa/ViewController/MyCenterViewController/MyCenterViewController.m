@@ -13,6 +13,7 @@
 #import "CenterViewController.h"
 #import "LewPopupViewAnimationFade.h"
 #import "OrderViewController.h"
+#import "MoreViewController.h"
 
 @interface MyCenterViewController ()<MyCenterHeadDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property(nonatomic,strong)MyCenterHead *headView;
@@ -92,11 +93,11 @@
         NSString *mainText = @[@"账户余额",@"我的订单",@"个人中心"][indexPath.section];
         NSString *mainSelector = @[@"balanceAction",@"orderAction",@"centerAction"][indexPath.section];
         NSString *buttonName1 = @[@"充值",[NSString stringWithFormat:@"待评价  %ld",(long)self.userInfoModel.assed_count],@"实名认证"][indexPath.section];
-        NSString *buttonName2 = @[@"体现",@"已评价",@"绑定银行卡"][indexPath.section];
+        NSString *buttonName2 = @[@"提现",@"已评价",@"绑定银行卡"][indexPath.section];
         NSString *selector1 = @[@"creditAction",@"evaluateAction",@"approveAction"][indexPath.section];
         NSString *selector2 = @[@"withdrawAction",@"evaluateEndAction",@"bindAction"][indexPath.section];
         
-        BOOL isString = nil;
+        BOOL isString = YES;
         if(indexPath.section == 0){
             isString = YES;
         }else{
@@ -158,7 +159,8 @@
         }else if (indexPath.row == 2){
         
         }else{
-        
+            MoreViewController *view = [[MoreViewController alloc] init];
+            [self.navigationController pushViewController:view animated:YES];
         }
     }else if (indexPath.row == 4){
         

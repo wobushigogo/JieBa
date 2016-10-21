@@ -56,6 +56,6 @@
 
 #pragma mark - 事件
 -(void)backAction{
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end
