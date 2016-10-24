@@ -9,12 +9,12 @@
 #import "RealNameViewController.h"
 #import "NavView.h"
 #import "CustomCameraViewController.h"
+#import <TVFaceAuthFramework/TVFaceAuthFramework.h>
+#import <Photos/Photos.h>
+#import <PhotosUI/PhotosUI.h>
 
-@interface RealNameViewController ()
+@interface RealNameViewController ()<TVFaceAuthProtocol>
 @property(nonatomic,strong)NavView *navView;
-@property(nonatomic,strong)UIImageView *bigImageView;
-@property(nonatomic,strong)UILabel *messageLabel;
-@property(nonatomic,strong)UIButton *realBtn;
 @end
 
 @implementation RealNameViewController
@@ -24,9 +24,8 @@
     // Do any additional setup after loading the view.
     [self statusBar];
     [self navView];
-    [self bigImageView];
-    [self messageLabel];
-    [self realBtn];
+    
+    [TVFaceAuthFramework tvFaceAuthCtrl:self faceAuthProtocol:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,51 +48,34 @@
     return _navView;
 }
 
--(UIImageView *)bigImageView{
-    if(!_bigImageView){
-        UIImageView *bigImageView = [[UIImageView alloc] initWithFrame:CGRectMake(WidthXiShu(12), self.navView.maxY+HeightXiShu(45), kScreenWidth-WidthXiShu(24), HeightXiShu(220))];
-        bigImageView.image = [GetImagePath getImagePath:@"myCenter_sfz"];
-        [self.view addSubview:bigImageView];
-        _bigImageView = bigImageView;
-    }
-    return _bigImageView;
-}
-
--(UILabel *)messageLabel{
-    if(!_messageLabel){
-        UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, HeightXiShu(25)+self.bigImageView.maxY, kScreenWidth, HeightXiShu(20))];
-        messageLabel.text = @"请准备好身份证，正面朝上";
-        messageLabel.textColor = TitleColor;
-        messageLabel.font = HEITI(HeightXiShu(16));
-        messageLabel.textAlignment = NSTextAlignmentCenter;
-        [self.view addSubview:messageLabel];
-        _messageLabel = messageLabel;
-    }
-    return _messageLabel;
-}
-
--(UIButton *)realBtn{
-    if(!_realBtn){
-        UIButton *realBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        realBtn.frame = CGRectMake(WidthXiShu(12), HeightXiShu(32)+self.messageLabel.maxY, kScreenWidth-WidthXiShu(24), HeightXiShu(50));
-        [realBtn setTitle:@"开始识别" forState:UIControlStateNormal];
-        realBtn.backgroundColor = ButtonColor;
-        realBtn.layer.masksToBounds = YES;
-        realBtn.layer.cornerRadius = HeightXiShu(5);
-        [realBtn addTarget:self action:@selector(realAction) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:realBtn];
-        _realBtn = realBtn;
-    }
-    return _realBtn;
-}
-
 #pragma mark - 事件
 -(void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)realAction{
-    CustomCameraViewController *view = [[CustomCameraViewController alloc] init];
-    [self.navigationController pushViewController:view animated:YES];
+#pragma mark - TVFaceAuthProtocol
+- (void)didFaceAuthSuccess:(NSString*)serviceId evidenceId:(NSString*)evidenceId {
+    NSString* log = [NSString stringWithFormat:@"face auth success serviceId : %@ evidenceId : %@\n", serviceId, evidenceId];
+    [self log:log];
+}
+- (void)didFaceAuthFail:(NSString*)serviceId {
+    NSString* log = [NSString stringWithFormat:@"face auth fail serviceId %@\n", serviceId];
+    [self log:log];
+}
+
+- (void)didFaceAuthCancel {
+    [self.navigationController popViewControllerAnimated:YES];
+    NSString* log = @"cancel face auth\n";
+    [self log:log];
+}
+
+- (void)log:(NSString*)log {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    [dateFormatter setDateFormat:@"yyyy:MM:dd HH:mm:ss:SSS"];
+    NSString *dateStr = [dateFormatter stringFromDate:[NSDate date]];
+    NSString* logStr = [NSString stringWithFormat:@"%@ %@", dateStr, log];
+    NSLog(@"%@", logStr);
 }
 @end

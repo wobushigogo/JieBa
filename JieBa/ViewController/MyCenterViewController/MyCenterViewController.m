@@ -14,6 +14,8 @@
 #import "LewPopupViewAnimationFade.h"
 #import "OrderViewController.h"
 #import "MoreViewController.h"
+#import "RealNameViewController.h"
+#import "RealWithUsViewController.h"
 
 @interface MyCenterViewController ()<MyCenterHeadDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property(nonatomic,strong)MyCenterHead *headView;
@@ -280,7 +282,7 @@
 }
 
 -(void)approveAction{
-    NSLog(@"approveAction");
+    [self loadNameStatus];
 }
 
 -(void)bindAction{
@@ -443,6 +445,37 @@
             self.userInfoModel = model;
             [self.headView setModel:self.userInfoModel];
             [self.tableView reloadData];
+        }
+    } dic:dic noNetWork:nil];
+}
+
+-(void)loadNameStatus{
+    __block typeof(self)wSelf = self;
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"member_changeuserinfo" forKey:@"_cmd_"];
+    [dic setObject:@"member_info" forKey:@"type"];
+    [MyCenterApi getUserInfoWithBlock:^(NSDictionary *dict, NSError *error) {
+        if(!error){
+            if([dict[@"nameStatus"] integerValue] == 1){
+                RealWithUsViewController *view = [[RealWithUsViewController alloc] init];
+                view.isReal = YES;
+                view.realName = dict[@"names"];
+                view.certiNumber = dict[@"certiNumber"];
+                [wSelf.navigationController pushViewController:view animated:YES];
+            }else{
+                UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:@"提示" message:@"是否实名认证" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
+                UIAlertAction *agreeAction = [UIAlertAction actionWithTitle:@"马上认证" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    RealWithUsViewController *view = [[RealWithUsViewController alloc] init];
+                    view.isReal = NO;
+                    view.realName = dict[@"names"];
+                    view.certiNumber = dict[@"certiNumber"];
+                    [wSelf.navigationController pushViewController:view animated:YES];
+                }];
+                [alertControl addAction:cancelAction];
+                [alertControl addAction:agreeAction];
+                [wSelf presentViewController:alertControl animated:YES completion:nil];
+            }
         }
     } dic:dic noNetWork:nil];
 }

@@ -8,6 +8,9 @@
 
 #import "RentViewController.h"
 #import "NavView.h"
+#import "CreditApi.h"
+#import "CreditModel.h"
+#import "CreditListViewController.h"
 
 @interface RentViewController ()
 @property(nonatomic,strong)NavView *navView;
@@ -15,6 +18,7 @@
 @property(nonatomic,strong)UILabel *lowMoney;
 @property(nonatomic,strong)UILabel *mostMoney;
 @property(nonatomic,strong)UIButton *submitBtn;
+@property(nonatomic,strong)CreditModel *creditModel;
 @end
 
 @implementation RentViewController
@@ -31,6 +35,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = NO;
 }
 
 #pragma mark - 页面元素
@@ -59,13 +68,13 @@
         
         UILabel *lowMoney = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(15), HeightXiShu(80), WidthXiShu(120), HeightXiShu(30))];
         lowMoney.textColor = ButtonColor;
-        lowMoney.text = @"￥1000";
+        lowMoney.text = @"￥0";
         lowMoney.font = [UIFont boldSystemFontOfSize:HeightXiShu(30)];
         [contentView addSubview:lowMoney];
         
         UILabel *mostMoney = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth-WidthXiShu(15)-WidthXiShu(140), HeightXiShu(175), WidthXiShu(140), HeightXiShu(30))];
         mostMoney.textColor = ButtonColor;
-        mostMoney.text = @"￥10000";
+        mostMoney.text = @"￥0";
         mostMoney.font = [UIFont boldSystemFontOfSize:HeightXiShu(30)];
         [contentView addSubview:mostMoney];
         
@@ -95,10 +104,26 @@
 
 #pragma mark - 事件
 -(void)rightAction{
-
+    CreditListViewController *view = [[CreditListViewController alloc] init];
+    [self.navigationController pushViewController:view animated:YES];
 }
 
 -(void)submitAction{
 
+}
+
+#pragma mark - 接口
+-(void)loadCreditInfo{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"credit" forKey:@"_cmd_"];
+    [dic setObject:@"credit_status" forKey:@"type"];
+    
+    [CreditApi creditWithBlock:^(CreditModel *model, NSError *error) {
+        if(!error){
+            self.creditModel = model;
+            self.lowMoney.text = [NSString stringWithFormat:@"￥%@",self.creditModel.minMoney];
+            self.mostMoney.text = [NSString stringWithFormat:@"￥%@",self.creditModel.maxMoney];
+        }
+    } dic:dic noNetWork:nil];
 }
 @end

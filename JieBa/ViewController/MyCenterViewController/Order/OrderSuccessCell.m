@@ -19,6 +19,8 @@
 @property(nonatomic,strong)UILabel *loanmoneyLabel;
 @property(nonatomic,strong)UILabel *timeaddLabel;
 @property(nonatomic,strong)UIButton *commentBtn;
+@property(nonatomic,strong)UILabel *orderStatusLabel;
+@property(nonatomic,strong)UIButton *detailBtn;
 @end
 
 @implementation OrderSuccessCell
@@ -41,12 +43,14 @@
         self.contentView.backgroundColor = AllBackLightGratColor;
         [self bgView];
         [self statusLabel];
+        [self detailBtn];
         [self detailView];
         [self orderTypeLabel];
         [self cutLine];
         [self smallImageView];
         [self loanmoneyLabel];
         [self timeaddLabel];
+        [self orderStatusLabel];
         [self cutLine2];
         [self commentBtn];
     }
@@ -85,6 +89,20 @@
         _statusLabel = statusLabel;
     }
     return _statusLabel;
+}
+
+-(UIButton *)detailBtn{
+    if(!_detailBtn){
+        UIButton *detailBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        detailBtn.frame = CGRectMake(self.bgView.width-WidthXiShu(12)-WidthXiShu(80), 0, WidthXiShu(80), HeightXiShu(35));
+        [detailBtn setTitle:@"查看详情>>" forState:UIControlStateNormal];
+        [detailBtn setTitleColor:TitleColor forState:UIControlStateNormal];
+        detailBtn.titleLabel.font = HEITI(HeightXiShu(14));
+        detailBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+        [self.bgView addSubview:detailBtn];
+        _detailBtn = detailBtn;
+    }
+    return _detailBtn;
 }
 
 -(UILabel *)orderTypeLabel{
@@ -164,6 +182,19 @@
     return _commentBtn;
 }
 
+-(UILabel *)orderStatusLabel{
+    if(!_orderStatusLabel){
+        UILabel *orderStatusLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.detailView.width-WidthXiShu(12)-WidthXiShu(80), self.timeaddLabel.maxY, WidthXiShu(80), HeightXiShu(20))];
+        orderStatusLabel.textColor = ButtonColor;
+        orderStatusLabel.textAlignment = NSTextAlignmentRight;
+        orderStatusLabel.font = HEITI(HeightXiShu(14));
+        [self.detailView addSubview:orderStatusLabel];
+        
+        _orderStatusLabel = orderStatusLabel;
+    }
+    return _orderStatusLabel;
+}
+
 #pragma mark - setter
 -(void)setModel:(OrderModel *)model{
     self.statusLabel.text = model.statusStr;
@@ -171,5 +202,6 @@
     [self.smallImageView sd_setImageWithURL:model.imageUrl placeholderImage:nil];
     self.loanmoneyLabel.text = [NSString stringWithFormat:@"借款金额：%@",model.loanmoney];
     self.timeaddLabel.text = [NSString stringWithFormat:@"申请时间：%@",model.timeadd];
+    self.orderStatusLabel.text = model.order_status;
 }
 @end

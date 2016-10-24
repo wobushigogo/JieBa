@@ -10,6 +10,9 @@
 #import "NavView.h"
 #import "LoanTableViewCell.h"
 #import "PickerView.h"
+#import "LoanApi.h"
+#import "LoanModel.h"
+#import "LoanDetailViewController.h"
 
 #define NoSelectButtonColor RGBCOLOR(207, 207, 207)
 
@@ -21,12 +24,13 @@
 @property(nonatomic,strong)UIButton *personalBtn;
 @property(nonatomic,strong)UIButton *companyBtn;
 @property(nonatomic,strong)NSMutableArray *contentArr;
-@property(nonatomic,strong)NSMutableArray *timeArr;
 @property(nonatomic,strong)PickerView *pickerView;
 @property(nonatomic,strong)UILabel *allMoney;
 @property(nonatomic,strong)UILabel *peopleCount;
 @property(nonatomic,copy)NSString *allMoneyStr;
 @property(nonatomic,copy)NSString *peopleCountStr;
+@property(nonatomic,strong)LoanModel *loanModel;
+@property(nonatomic)NSInteger type;
 @end
 
 @implementation LoanViewController
@@ -34,8 +38,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.type = 1;
     self.contentArr = [[NSMutableArray alloc] initWithObjects:@"",@"",@"",@"", nil];
-    self.timeArr = [[NSMutableArray alloc] initWithObjects:@"1月",@"2月",@"3月",@"12月", nil];
     [self statusBar];
     [self navView];
     [self setUpHeaderRefresh:NO footerRefresh:NO];
@@ -48,6 +52,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = NO;
 }
 
 #pragma mark - 页面元素
@@ -126,6 +135,7 @@
         [applyBtn setTitle:@"立即申请" forState:UIControlStateNormal];
         applyBtn.layer.masksToBounds = YES;
         applyBtn.layer.cornerRadius = HeightXiShu(5);
+        [applyBtn addTarget:self action:@selector(applyAction) forControlEvents:UIControlEventTouchUpInside];
         [secondSectionView addSubview:applyBtn];
         
         UILabel *allMoney = [[UILabel alloc] initWithFrame:CGRectMake(0, applyBtn.maxY+HeightXiShu(20), kScreenWidth, HeightXiShu(15))];
@@ -152,7 +162,7 @@
 
 -(PickerView *)pickerView{
     if(!_pickerView){
-        PickerView *pickerView = [[PickerView alloc] initWithTitle:CGRectMake(0, 0, self.view.width, self.view.height) title:@"借款期限" dataArr:self.timeArr];
+        PickerView *pickerView = [[PickerView alloc] initWithTitle:CGRectMake(0, 0, self.view.width, self.view.height) title:@"借款期限" dataArr:self.loanModel.loanMonthArr];
         __block typeof(self)wSelf = self;
         pickerView.cancelBlock = ^(void){
             [wSelf.pickerView removeFromSuperview];
@@ -289,6 +299,7 @@
     switch (button.tag) {
         case 0:
         {
+            self.type = 1;
             [self.personalBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [self.companyBtn setTitleColor:MessageColor forState:UIControlStateNormal];
             self.personalBtn.backgroundColor = ButtonColor;
@@ -297,6 +308,7 @@
             break;
         case 1:
         {
+            self.type = 2;
             [self.personalBtn setTitleColor:MessageColor forState:UIControlStateNormal];
             [self.companyBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             self.personalBtn.backgroundColor = NoSelectButtonColor;
@@ -309,7 +321,7 @@
 }
 
 -(void)changeMoneyWithTime:(NSInteger)index{
-    [self.contentArr replaceObjectAtIndex:2 withObject:self.timeArr[index]];
+    [self.contentArr replaceObjectAtIndex:2 withObject:self.loanModel.loanMonthArr[index]];
     NSString *money = self.contentArr[1];
     NSString *time =  self.contentArr[2];
     if(![money isEqualToString:@""] && ![time isEqualToString:@""]){
@@ -321,6 +333,16 @@
 }
 
 -(void)changeMoneyWithMoney:(NSString *)string{
+    if([string floatValue] < 30000){
+        [self addAlertView:@"金额不能小于3万" block:nil];
+        return;
+    }
+    
+    if([string floatValue] > 500000){
+        [self addAlertView:@"金额不能大于50万" block:nil];
+        return;
+    }
+    
     [self.contentArr replaceObjectAtIndex:1 withObject:string];
     NSString *money = self.contentArr[1];
     NSString *time =  self.contentArr[2];
@@ -330,6 +352,34 @@
         [self.contentArr replaceObjectAtIndex:3 withObject:[NSString stringWithFormat:@"%@",[StringTool roundFloat:newMoney]]];
     }
     [self.tableView reloadData];
+}
+
+-(void)applyAction{
+    if([self.contentArr[0] isEqualToString:@""]){
+        [self addAlertView:@"请填写城市" block:nil];
+        return;
+    }
+    
+    if([self.contentArr[1] isEqualToString:@""]){
+        [self addAlertView:@"请填写贷款金额" block:nil];
+        return;
+    }
+    
+    if([self.contentArr[2] isEqualToString:@""]){
+        [self addAlertView:@"请选择贷款期限" block:nil];
+        return;
+    }
+    
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:self.contentArr[0] forKey:@"city"];
+    [dic setObject:self.contentArr[1] forKey:@"money"];
+    [dic setObject:self.contentArr[2] forKey:@"time"];
+    [dic setObject:self.contentArr[3] forKey:@"allMoney"];
+    
+    LoanDetailViewController *view = [[LoanDetailViewController alloc] init];
+    view.dict = dic;
+    view.type = self.type;
+    [self.navigationController pushViewController:view animated:YES];
 }
 
 #pragma mark - LoanTableViewCellDelegate
@@ -355,5 +405,18 @@
     NSMutableAttributedString* attStr=[[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"正在申请 %@",peopleCountStr]];
     [attStr addAttribute:NSForegroundColorAttributeName value:ButtonColor range:NSMakeRange(5, peopleCountStr.length)];
     self.peopleCount.attributedText = attStr;
+}
+
+#pragma mark - 接口
+-(void)loadLoanInfo{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"order" forKey:@"_cmd_"];
+    [dic setObject:@"setting" forKey:@"type"];
+   
+    [LoanApi loanInfoWithBlock:^(LoanModel *model, NSError *error) {
+        if(!error){
+            self.loanModel = model;
+        }
+    } dic:dic noNetWork:nil];
 }
 @end

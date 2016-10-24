@@ -9,5 +9,5 @@
 #import "BaseTableViewController.h"
 
 @interface LoanViewController : BaseTableViewController
-
+-(void)loadLoanInfo;
 @end

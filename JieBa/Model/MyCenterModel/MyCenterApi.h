@@ -30,4 +30,10 @@
 
 //修改密码
 + (void)updataPwdWithBlock:(void (^)(NSString *pwd, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork;
+
+//个人信息详情
++(void)getUserInfoWithBlock:(void (^)(NSDictionary *dict, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork;
+
+//实名认证
++(void)realWithBlock:(void (^)(NSString *string, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork;
 @end

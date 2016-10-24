@@ -17,6 +17,7 @@
 @property(nonatomic,strong)UIImageView *smallImageView;
 @property(nonatomic,strong)UILabel *loanmoneyLabel;
 @property(nonatomic,strong)UILabel *timeaddLabel;
+@property(nonatomic,strong)UILabel *orderStatusLabel;
 @end
 
 @implementation OrderFailCell
@@ -45,6 +46,7 @@
         [self smallImageView];
         [self loanmoneyLabel];
         [self timeaddLabel];
+        [self orderStatusLabel];
     }
     return self;
 }
@@ -135,6 +137,19 @@
     return _timeaddLabel;
 }
 
+-(UILabel *)orderStatusLabel{
+    if(!_orderStatusLabel){
+        UILabel *orderStatusLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.detailView.width-WidthXiShu(12)-WidthXiShu(80), self.timeaddLabel.maxY, WidthXiShu(80), HeightXiShu(20))];
+        orderStatusLabel.textColor = ButtonColor;
+        orderStatusLabel.textAlignment = NSTextAlignmentRight;
+        orderStatusLabel.font = HEITI(HeightXiShu(14));
+        [self.detailView addSubview:orderStatusLabel];
+        
+        _orderStatusLabel = orderStatusLabel;
+    }
+    return _orderStatusLabel;
+}
+
 #pragma mark - setter
 -(void)setModel:(OrderModel *)model{
     self.statusLabel.text = model.statusStr;
@@ -142,5 +157,6 @@
     [self.smallImageView sd_setImageWithURL:model.imageUrl placeholderImage:nil];
     self.loanmoneyLabel.text = [NSString stringWithFormat:@"借款金额：%@",model.loanmoney];
     self.timeaddLabel.text = [NSString stringWithFormat:@"申请时间：%@",model.timeadd];
+    self.orderStatusLabel.text = model.order_status;
 }
 @end

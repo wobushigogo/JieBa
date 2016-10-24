@@ -26,5 +26,6 @@
     self.timeadd = [StringTool timeChange:dict[@"timeadd"]];
     self.loanmoney = dict[@"loanmoney"];
     self.imageUrl = [NSURL URLWithString:dict[@"imgs"]];
+    self.order_status = dict[@"order_status"];
 }
 @end

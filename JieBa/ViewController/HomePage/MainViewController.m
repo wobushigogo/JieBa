@@ -16,12 +16,13 @@
 #import "BannerViewController.h"
 #import "CompanyProfileViewController.h"
 #import "LoginViewController.h"
+#import "MyCenterApi.h"
 
 @interface MainViewController ()<ZWAdViewDelagate,MainButtonCellDelegate>
 @property(nonatomic,strong)UIView *headView;
 @property(nonatomic,strong)UIButton *scanBtn;
 @property(nonatomic,strong)ZWAdView *zwAdView;
-@property(nonatomic,strong)LocationView *loactionView;
+@property(nonatomic,strong)LocationView *locationView;
 @property(nonatomic,strong)NSMutableArray *bannerModels;
 @property(nonatomic,strong)NSMutableArray *invitationModels;
 @end
@@ -35,6 +36,8 @@
     [self.tableView setMinY:0 maxY:kScreenHeight - 44];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.tableHeaderView = self.headView;
+    [self locationView];
+    [self scanBtn];
     [self loadBanner];
     [self loadCarlife];
 }
@@ -136,20 +139,30 @@
         //[_zwAdView loadAdDataThenStart];
         [headView addSubview:zwAdView];
         
+        _zwAdView = zwAdView;
+        _headView = headView;
+    }
+    return _headView;
+}
+
+-(LocationView *)locationView{
+    if(!_locationView){
         LocationView *locationView = [[LocationView alloc] initWithFrame:CGRectMake(WidthXiShu(113), HeightXiShu(30), kScreenWidth-WidthXiShu(226), HeightXiShu(23))];
-        [headView addSubview:locationView];
-        
+        [self.view addSubview:locationView];
+        _locationView = locationView;
+    }
+    return _locationView;
+}
+
+-(UIButton *)scanBtn{
+    if(!_scanBtn){
         UIButton *scanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         scanBtn.frame = CGRectMake(kScreenWidth-WidthXiShu(12)-WidthXiShu(22), HeightXiShu(30), WidthXiShu(22), HeightXiShu(22));
         [scanBtn setImage:[GetImagePath getImagePath:@"homePage_scan"] forState:UIControlStateNormal];
-        [headView addSubview:scanBtn];
-        
-        _zwAdView = zwAdView;
-        _headView = headView;
-        _loactionView = locationView;
+        [self.view addSubview:scanBtn];
         _scanBtn = scanBtn;
     }
-    return _headView;
+    return _scanBtn;
 }
 
 #pragma mark - ZWAdViewDelagate
@@ -202,6 +215,17 @@
     } dic:dic noNetWork:nil];
 }
 
+-(void)loadUserInfo{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"member_changeuserinfo" forKey:@"_cmd_"];
+    [dic setObject:@"member_info" forKey:@"type"];
+    [MyCenterApi getUserInfoWithBlock:^(NSDictionary *dict, NSError *error) {
+        if(!error){
+
+        }
+    } dic:dic noNetWork:nil];
+}
+
 #pragma - mark delegate
 -(void)buttonClick:(NSInteger)index{
     switch (index) {
@@ -243,6 +267,8 @@
                     NSString *telStr = [@"tel://" stringByAppendingString:@"4006639066"];
                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telStr]];
                 }];
+                [alertControl addAction:cancelAction];
+                [alertControl addAction:agreeAction];
                 [self presentViewController:alertControl animated:YES completion:nil];
             }
         }

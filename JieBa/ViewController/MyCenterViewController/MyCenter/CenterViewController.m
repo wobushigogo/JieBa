@@ -15,13 +15,11 @@
 #import "ChangePwdViewController.h"
 #import "RealNameViewController.h"
 #import "ChangeInviteCodeViewController.h"
-#import <TVFaceAuthFramework/TVFaceAuthFramework.h>
-#import <Photos/Photos.h>
-#import <PhotosUI/PhotosUI.h>
 
-@interface CenterViewController () <TVFaceAuthProtocol>
+@interface CenterViewController () 
 @property(nonatomic,strong)NavView *navView;
 @property(nonatomic,strong)UIView *footerView;
+@property(nonatomic,assign)NSInteger failCount;
 @end
 
 @implementation CenterViewController
@@ -123,9 +121,8 @@
         ChangePwdViewController *view = [[ChangePwdViewController alloc] init];
         [self.navigationController pushViewController:view animated:YES];
     }else if (indexPath.row == 3){
-        [TVFaceAuthFramework tvFaceAuthCtrl:self faceAuthProtocol:self];
-//        RealNameViewController *view = [[RealNameViewController alloc] init];
-//        [self.navigationController pushViewController:view animated:YES];
+        RealNameViewController *view = [[RealNameViewController alloc] init];
+        [self.navigationController pushViewController:view animated:YES];
     }else if (indexPath.row == 4){
     
     }else{
@@ -153,30 +150,5 @@
             }
         }
     } dic:dic noNetWork:nil];
-}
-
-#pragma mark - TVFaceAuthProtocol
-- (void)didFaceAuthSuccess:(NSString*)serviceId evidenceId:(NSString*)evidenceId {
-    NSString* log = [NSString stringWithFormat:@"face auth success serviceId : %@ evidenceId : %@\n", serviceId, evidenceId];
-    [self log:log];
-}
-- (void)didFaceAuthFail:(NSString*)serviceId {
-    NSString* log = [NSString stringWithFormat:@"face auth fail serviceId %@\n", serviceId];
-    [self log:log];
-}
-
-- (void)didFaceAuthCancel {
-    NSString* log = @"cancel face auth\n";
-    [self log:log];
-}
-
-- (void)log:(NSString*)log {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-    [dateFormatter setDateFormat:@"yyyy:MM:dd HH:mm:ss:SSS"];
-    NSString *dateStr = [dateFormatter stringFromDate:[NSDate date]];
-    NSString* logStr = [NSString stringWithFormat:@"%@ %@", dateStr, log];
-    NSLog(@"%@", logStr);
 }
 @end

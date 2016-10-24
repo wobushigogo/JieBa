@@ -11,9 +11,9 @@
 @interface StringTool : NSObject
 +(NSString *)stringToRBM:(NSString *)text;
 +(NSString *)timeInfoWithDateString:(NSString *)dateString;
-+ (NSString *)timeInfoWithDateString2:(NSString *)dateString;
 +(NSString *)stringWithNull:(NSString *)str;
 +(NSString *)timeChange:(NSString *)dateString;
++(NSString *)timeChange2:(NSString *)dateString;
 +(UIImage *)imageWithRoundedCornersSize:(float)cornerRadius usingImage:(UIImage *)original;
 //验身份证
 + (BOOL)validateIDCardNumber:(NSString *)value;

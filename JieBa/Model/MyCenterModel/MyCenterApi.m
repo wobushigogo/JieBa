@@ -136,4 +136,32 @@
         }
     } apiName:@"member_changeuserinfo" noNetWork:nil];
 }
+
++(void)getUserInfoWithBlock:(void (^)(NSDictionary *dict, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork{
+    NSString *urlStr = [NSString stringWithFormat:@"?member_changeuserinfo"];
+    [SendRequst formRequstWithUrlString:urlStr postParamDic:dic success:^(id responseDic) {
+        if(block){
+            block(responseDic[@"dataresult"][@"member_info"],nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"error===>%@",error);
+        if (block) {
+            block(nil, error);
+        }
+    } apiName:@"member_changeuserinfo" noNetWork:nil];
+}
+
++(void)realWithBlock:(void (^)(NSString *string, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork{
+    NSString *urlStr = [NSString stringWithFormat:@"?member_changeuserinfo"];
+    [SendRequst formRequstWithUrlString:urlStr postParamDic:dic success:^(id responseDic) {
+        if(block){
+            block(responseDic[@"dataresult"],nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"error===>%@",error);
+        if (block) {
+            block(nil, error);
+        }
+    } apiName:@"member_changeuserinfo" noNetWork:nil];
+}
 @end

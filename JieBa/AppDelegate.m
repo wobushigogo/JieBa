@@ -16,6 +16,8 @@
 #import "LoginApi.h"
 #import "MyCenterViewController.h"
 #import <TVFaceAuthFramework/TVFaceAuthFramework.h>
+#import "MyCenterApi.h"
+#import "RealWithUsViewController.h"
 
 @interface AppDelegate ()<UITabBarControllerDelegate>
 
@@ -126,20 +128,28 @@
             return NO;
         }
     }else {
-        
-        return YES;
-        
+        if([self loadUserInfo:tabBarController viewController:viewController]){
+            return YES;
+        }else{
+            return NO;
+        }
     }
 }
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
     NSLog(@"%@",[viewController class]);
     if(tabBarController.viewControllers[0] == viewController){
-        
+//        UINavigationController *navigationctr = (UINavigationController *)viewController;
+//        MainViewController *secvc = (MainViewController *)navigationctr.topViewController;
+//        [secvc loadUserInfo];
     }else if (tabBarController.viewControllers[1] == viewController){
-        
+        UINavigationController *navigationctr = (UINavigationController *)viewController;
+        LoanViewController *secvc = (LoanViewController *)navigationctr.topViewController;
+        [secvc loadLoanInfo];
     }else if (tabBarController.viewControllers[2] == viewController){
-        
+        UINavigationController *navigationctr = (UINavigationController *)viewController;
+        RentViewController *secvc = (RentViewController *)navigationctr.topViewController;
+        [secvc loadCreditInfo];
     }else{
         UINavigationController *navigationctr = (UINavigationController *)viewController;
         MyCenterViewController *secvc = (MyCenterViewController *)navigationctr.topViewController;
@@ -155,5 +165,37 @@
 
 -(void)loginAgain{
     
+}
+
+-(BOOL)loadUserInfo:(UITabBarController *)tabBarController viewController:(UIViewController *)viewController{
+    UINavigationController *navigationctr = (UINavigationController *)tabBarController.viewControllers[0];
+    MainViewController *secvc = (MainViewController *)navigationctr.topViewController;
+    __block BOOL isReal = NO;
+    __block typeof(self)wSelf = self;
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"member_changeuserinfo" forKey:@"_cmd_"];
+    [dic setObject:@"member_info" forKey:@"type"];
+    [MyCenterApi getUserInfoWithBlock:^(NSDictionary *dict, NSError *error) {
+        if(!error){
+            if([dict[@"nameStatus"] integerValue] == 1){
+                tabBarController.selectedViewController = viewController;
+                [self tabBarController:tabBarController didSelectViewController:viewController];
+                isReal = YES;
+            }else{
+                isReal = NO;
+                UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:@"提示" message:@"是否实名认证" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
+                UIAlertAction *agreeAction = [UIAlertAction actionWithTitle:@"马上认证" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    RealWithUsViewController *realView = [[RealWithUsViewController alloc] init];
+                    [secvc.navigationController pushViewController:realView animated:YES];
+                }];
+                [alertControl addAction:cancelAction];
+                [alertControl addAction:agreeAction];
+                [wSelf.window.rootViewController presentViewController:alertControl animated:YES completion:nil];
+            }
+        }
+    } dic:dic noNetWork:nil];
+    
+    return isReal;
 }
 @end

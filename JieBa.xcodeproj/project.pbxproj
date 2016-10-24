@@ -51,6 +51,11 @@
 		D3348CE11DB9D66E00A5E06A /* rent_banner@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3348CDE1DB9D66E00A5E06A /* rent_banner@3x.png */; };
 		D3348CE51DB9F2EE00A5E06A /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3348CE41DB9F2EE00A5E06A /* MoreViewController.m */; };
 		D3348CE91DB9FD7F00A5E06A /* CompanyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3348CE81DB9FD7F00A5E06A /* CompanyProfileViewController.m */; };
+		D3348CED1DBA0EE600A5E06A /* CreditApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D3348CEC1DBA0EE600A5E06A /* CreditApi.m */; };
+		D3348CF01DBA102700A5E06A /* CreditModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D3348CEF1DBA102700A5E06A /* CreditModel.m */; };
+		D3348CF41DBA127400A5E06A /* CreditListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3348CF31DBA127400A5E06A /* CreditListViewController.m */; };
+		D3348CF71DBA154800A5E06A /* CreditListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D3348CF61DBA154800A5E06A /* CreditListModel.m */; };
+		D3348CFA1DBA1C2200A5E06A /* CreditListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3348CF91DBA1C2200A5E06A /* CreditListCell.m */; };
 		D33AAEAE1DB85CC100459F4E /* ChangeUserNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D33AAEAD1DB85CC100459F4E /* ChangeUserNameViewController.m */; };
 		D33AAEB21DB860BD00459F4E /* myCente_changUserName.png in Resources */ = {isa = PBXBuildFile; fileRef = D33AAEAF1DB860BD00459F4E /* myCente_changUserName.png */; };
 		D33AAEB31DB860BD00459F4E /* myCente_changUserName@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D33AAEB01DB860BD00459F4E /* myCente_changUserName@2x.png */; };
@@ -226,6 +231,15 @@
 		D347E3351DB4D44000E7B9BA /* myCenter_banner.png in Resources */ = {isa = PBXBuildFile; fileRef = D347E3321DB4D44000E7B9BA /* myCenter_banner.png */; };
 		D347E3361DB4D44000E7B9BA /* myCenter_banner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D347E3331DB4D44000E7B9BA /* myCenter_banner@2x.png */; };
 		D347E3371DB4D44000E7B9BA /* myCenter_banner@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D347E3341DB4D44000E7B9BA /* myCenter_banner@3x.png */; };
+		D38A95B51DBB02A7005334AC /* LoanApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D38A95B41DBB02A7005334AC /* LoanApi.m */; };
+		D38A95B81DBDAF87005334AC /* CreditDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D38A95B71DBDAF87005334AC /* CreditDetailViewController.m */; };
+		D38A95BB1DBDE516005334AC /* RealWithUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D38A95BA1DBDE516005334AC /* RealWithUsViewController.m */; };
+		D38A95BE1DBE003F005334AC /* LoanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D38A95BD1DBE003F005334AC /* LoanModel.m */; };
+		D38A95C21DBE04C6005334AC /* LoanDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D38A95C11DBE04C6005334AC /* LoanDetailViewController.m */; };
+		D38A95C61DBE095C005334AC /* loan_detail.png in Resources */ = {isa = PBXBuildFile; fileRef = D38A95C31DBE095C005334AC /* loan_detail.png */; };
+		D38A95C71DBE095C005334AC /* loan_detail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D38A95C41DBE095C005334AC /* loan_detail@2x.png */; };
+		D38A95C81DBE095C005334AC /* loan_detail@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D38A95C51DBE095C005334AC /* loan_detail@3x.png */; };
+		D38A95CB1DBE0EC7005334AC /* LoanSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D38A95CA1DBE0EC7005334AC /* LoanSuccessViewController.m */; };
 		D3B2BE151DB717CB0095306E /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B2BE141DB717CB0095306E /* UserInfoModel.m */; };
 		D3B2BE191DB726380095306E /* CenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B2BE181DB726380095306E /* CenterViewController.m */; };
 		D3B2BE1C1DB7393F0095306E /* CenterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B2BE1B1DB7393F0095306E /* CenterTableViewCell.m */; };
@@ -369,6 +383,16 @@
 		D3348CE41DB9F2EE00A5E06A /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		D3348CE71DB9FD7F00A5E06A /* CompanyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyProfileViewController.h; sourceTree = "<group>"; };
 		D3348CE81DB9FD7F00A5E06A /* CompanyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyProfileViewController.m; sourceTree = "<group>"; };
+		D3348CEB1DBA0EE600A5E06A /* CreditApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditApi.h; sourceTree = "<group>"; };
+		D3348CEC1DBA0EE600A5E06A /* CreditApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditApi.m; sourceTree = "<group>"; };
+		D3348CEE1DBA102700A5E06A /* CreditModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditModel.h; sourceTree = "<group>"; };
+		D3348CEF1DBA102700A5E06A /* CreditModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditModel.m; sourceTree = "<group>"; };
+		D3348CF21DBA127400A5E06A /* CreditListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditListViewController.h; sourceTree = "<group>"; };
+		D3348CF31DBA127400A5E06A /* CreditListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditListViewController.m; sourceTree = "<group>"; };
+		D3348CF51DBA154800A5E06A /* CreditListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditListModel.h; sourceTree = "<group>"; };
+		D3348CF61DBA154800A5E06A /* CreditListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditListModel.m; sourceTree = "<group>"; };
+		D3348CF81DBA1C2200A5E06A /* CreditListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditListCell.h; sourceTree = "<group>"; };
+		D3348CF91DBA1C2200A5E06A /* CreditListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditListCell.m; sourceTree = "<group>"; };
 		D33AAEAC1DB85CC100459F4E /* ChangeUserNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeUserNameViewController.h; sourceTree = "<group>"; };
 		D33AAEAD1DB85CC100459F4E /* ChangeUserNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeUserNameViewController.m; sourceTree = "<group>"; };
 		D33AAEAF1DB860BD00459F4E /* myCente_changUserName.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myCente_changUserName.png; sourceTree = "<group>"; };
@@ -617,6 +641,21 @@
 		D347E3321DB4D44000E7B9BA /* myCenter_banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myCenter_banner.png; sourceTree = "<group>"; };
 		D347E3331DB4D44000E7B9BA /* myCenter_banner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myCenter_banner@2x.png"; sourceTree = "<group>"; };
 		D347E3341DB4D44000E7B9BA /* myCenter_banner@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myCenter_banner@3x.png"; sourceTree = "<group>"; };
+		D38A95B31DBB02A7005334AC /* LoanApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoanApi.h; sourceTree = "<group>"; };
+		D38A95B41DBB02A7005334AC /* LoanApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoanApi.m; sourceTree = "<group>"; };
+		D38A95B61DBDAF87005334AC /* CreditDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditDetailViewController.h; sourceTree = "<group>"; };
+		D38A95B71DBDAF87005334AC /* CreditDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditDetailViewController.m; sourceTree = "<group>"; };
+		D38A95B91DBDE516005334AC /* RealWithUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealWithUsViewController.h; sourceTree = "<group>"; };
+		D38A95BA1DBDE516005334AC /* RealWithUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealWithUsViewController.m; sourceTree = "<group>"; };
+		D38A95BC1DBE003F005334AC /* LoanModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoanModel.h; sourceTree = "<group>"; };
+		D38A95BD1DBE003F005334AC /* LoanModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoanModel.m; sourceTree = "<group>"; };
+		D38A95C01DBE04C6005334AC /* LoanDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoanDetailViewController.h; sourceTree = "<group>"; };
+		D38A95C11DBE04C6005334AC /* LoanDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoanDetailViewController.m; sourceTree = "<group>"; };
+		D38A95C31DBE095C005334AC /* loan_detail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loan_detail.png; sourceTree = "<group>"; };
+		D38A95C41DBE095C005334AC /* loan_detail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loan_detail@2x.png"; sourceTree = "<group>"; };
+		D38A95C51DBE095C005334AC /* loan_detail@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loan_detail@3x.png"; sourceTree = "<group>"; };
+		D38A95C91DBE0EC7005334AC /* LoanSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoanSuccessViewController.h; sourceTree = "<group>"; };
+		D38A95CA1DBE0EC7005334AC /* LoanSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoanSuccessViewController.m; sourceTree = "<group>"; };
 		D3B2BE131DB717CB0095306E /* UserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoModel.h; sourceTree = "<group>"; };
 		D3B2BE141DB717CB0095306E /* UserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoModel.m; sourceTree = "<group>"; };
 		D3B2BE171DB726380095306E /* CenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenterViewController.h; sourceTree = "<group>"; };
@@ -798,6 +837,9 @@
 		D320497D1DB60AF3000782F9 /* Loan */ = {
 			isa = PBXGroup;
 			children = (
+				D38A95C31DBE095C005334AC /* loan_detail.png */,
+				D38A95C41DBE095C005334AC /* loan_detail@2x.png */,
+				D38A95C51DBE095C005334AC /* loan_detail@3x.png */,
 				D32049841DB63039000782F9 /* loan_city.png */,
 				D32049851DB63039000782F9 /* loan_city@2x.png */,
 				D32049861DB63039000782F9 /* loan_city@3x.png */,
@@ -838,6 +880,32 @@
 				D3348CE81DB9FD7F00A5E06A /* CompanyProfileViewController.m */,
 			);
 			path = CompanyProfile;
+			sourceTree = "<group>";
+		};
+		D3348CEA1DBA0ED700A5E06A /* CreditModel */ = {
+			isa = PBXGroup;
+			children = (
+				D3348CEB1DBA0EE600A5E06A /* CreditApi.h */,
+				D3348CEC1DBA0EE600A5E06A /* CreditApi.m */,
+				D3348CEE1DBA102700A5E06A /* CreditModel.h */,
+				D3348CEF1DBA102700A5E06A /* CreditModel.m */,
+				D3348CF51DBA154800A5E06A /* CreditListModel.h */,
+				D3348CF61DBA154800A5E06A /* CreditListModel.m */,
+			);
+			path = CreditModel;
+			sourceTree = "<group>";
+		};
+		D3348CF11DBA125D00A5E06A /* CreditList */ = {
+			isa = PBXGroup;
+			children = (
+				D3348CF21DBA127400A5E06A /* CreditListViewController.h */,
+				D3348CF31DBA127400A5E06A /* CreditListViewController.m */,
+				D3348CF81DBA1C2200A5E06A /* CreditListCell.h */,
+				D3348CF91DBA1C2200A5E06A /* CreditListCell.m */,
+				D38A95B61DBDAF87005334AC /* CreditDetailViewController.h */,
+				D38A95B71DBDAF87005334AC /* CreditDetailViewController.m */,
+			);
+			path = CreditList;
 			sourceTree = "<group>";
 		};
 		D33AAEA61DB85C8E00459F4E /* BindCard */ = {
@@ -889,6 +957,8 @@
 				D33AAF031DB8ABCB00459F4E /* CustomCamera */,
 				D33AAEBB1DB89B7900459F4E /* RealNameViewController.h */,
 				D33AAEBC1DB89B7900459F4E /* RealNameViewController.m */,
+				D38A95B91DBDE516005334AC /* RealWithUsViewController.h */,
+				D38A95BA1DBDE516005334AC /* RealWithUsViewController.m */,
 			);
 			path = RealName;
 			sourceTree = "<group>";
@@ -995,6 +1065,7 @@
 		D3458A121DB08847007BD2CF /* LoanViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D38A95BF1DBE0472005334AC /* LoanDetail */,
 				D3458A181DB08881007BD2CF /* LoanViewController.h */,
 				D3458A191DB08881007BD2CF /* LoanViewController.m */,
 				D32049771DB5EDCA000782F9 /* LoanTableViewCell.h */,
@@ -1020,6 +1091,7 @@
 		D3458A141DB08847007BD2CF /* RentViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D3348CF11DBA125D00A5E06A /* CreditList */,
 				D3458A1B1DB0888F007BD2CF /* RentViewController.h */,
 				D3458A1C1DB0888F007BD2CF /* RentViewController.m */,
 			);
@@ -1391,6 +1463,28 @@
 			path = MyCenter;
 			sourceTree = "<group>";
 		};
+		D38A95B21DBB0293005334AC /* LoanModel */ = {
+			isa = PBXGroup;
+			children = (
+				D38A95B31DBB02A7005334AC /* LoanApi.h */,
+				D38A95B41DBB02A7005334AC /* LoanApi.m */,
+				D38A95BC1DBE003F005334AC /* LoanModel.h */,
+				D38A95BD1DBE003F005334AC /* LoanModel.m */,
+			);
+			path = LoanModel;
+			sourceTree = "<group>";
+		};
+		D38A95BF1DBE0472005334AC /* LoanDetail */ = {
+			isa = PBXGroup;
+			children = (
+				D38A95C01DBE04C6005334AC /* LoanDetailViewController.h */,
+				D38A95C11DBE04C6005334AC /* LoanDetailViewController.m */,
+				D38A95C91DBE0EC7005334AC /* LoanSuccessViewController.h */,
+				D38A95CA1DBE0EC7005334AC /* LoanSuccessViewController.m */,
+			);
+			path = LoanDetail;
+			sourceTree = "<group>";
+		};
 		D3B2BE161DB726150095306E /* MyCenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -1641,6 +1735,8 @@
 		D3E147F11DAF62DE002F6D60 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D38A95B21DBB0293005334AC /* LoanModel */,
+				D3348CEA1DBA0ED700A5E06A /* CreditModel */,
 				D347E2E61DB4864400E7B9BA /* HomeModel */,
 				D3E147F91DAF7F1D002F6D60 /* MyCenterModel */,
 				D3E147F51DAF63C5002F6D60 /* LoginModel */,
@@ -1809,6 +1905,7 @@
 				TargetAttributes = {
 					D3E819631DAF259E0054B352 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = QQUFUHZ7LV;
 						ProvisioningStyle = Manual;
 					};
 					D3E8197C1DAF259E0054B352 = {
@@ -1851,6 +1948,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3348CD41DB9C08B00A5E06A /* myCenter_addCamera@3x.png in Resources */,
+				D38A95C61DBE095C005334AC /* loan_detail.png in Resources */,
 				D347E2C51DB46F0800E7B9BA /* tabbar_myCenter_gray.png in Resources */,
 				D3458A501DB0C608007BD2CF /* login_phone@2x.png in Resources */,
 				D3B2BE211DB73B220095306E /* myCenter_arrow@2x.png in Resources */,
@@ -1918,6 +2016,7 @@
 				D3458A3D1DB0B659007BD2CF /* login_TM.png in Resources */,
 				D347E2DE1DB470E700E7B9BA /* register_noShow@2x.png in Resources */,
 				D347E2CD1DB46F0800E7B9BA /* tabbar_rent_gary@3x.png in Resources */,
+				D38A95C71DBE095C005334AC /* loan_detail@2x.png in Resources */,
 				D347E3071DB49B9E00E7B9BA /* homePage_contact@2x.png in Resources */,
 				D347E30B1DB49B9E00E7B9BA /* homePage_introduce@3x.png in Resources */,
 				D32049601DB5C4E0000782F9 /* myCenter_ invitation@2x.png in Resources */,
@@ -1938,6 +2037,7 @@
 				D347E2C81DB46F0800E7B9BA /* tabbar_rent_blue.png in Resources */,
 				D32049551DB5BFE3000782F9 /* myCenter_more@3x.png in Resources */,
 				D347E3081DB49B9E00E7B9BA /* homePage_contact@3x.png in Resources */,
+				D38A95C81DBE095C005334AC /* loan_detail@3x.png in Resources */,
 				D32049531DB5BFE3000782F9 /* myCenter_more.png in Resources */,
 				D347E3011DB49B9E00E7B9BA /* homePage_assess@2x.png in Resources */,
 				D347E3061DB49B9E00E7B9BA /* homePage_contact.png in Resources */,
@@ -2032,9 +2132,12 @@
 				D3458A111DB08782007BD2CF /* BaseViewController.m in Sources */,
 				D347E2951DB3138E00E7B9BA /* UIImageView+WebCache.m in Sources */,
 				D347E2501DB30E4D00E7B9BA /* MJRefreshBackFooter.m in Sources */,
+				D3348CFA1DBA1C2200A5E06A /* CreditListCell.m in Sources */,
+				D3348CED1DBA0EE600A5E06A /* CreditApi.m in Sources */,
 				D3458A061DB0854F007BD2CF /* NSString+StringKit.m in Sources */,
 				D3E147FC1DAF7F2B002F6D60 /* MyCenterApi.m in Sources */,
 				D347E25F1DB30E4D00E7B9BA /* UIScrollView+MJExtension.m in Sources */,
+				D38A95CB1DBE0EC7005334AC /* LoanSuccessViewController.m in Sources */,
 				D3E147F81DAF63D1002F6D60 /* LoginApi.m in Sources */,
 				D347E2931DB3138E00E7B9BA /* UIImage+WebP.m in Sources */,
 				D3E147BA1DAF335C002F6D60 /* AFSecurityPolicy.m in Sources */,
@@ -2050,6 +2153,7 @@
 				D3458A5A1DB217E2007BD2CF /* StringTool.m in Sources */,
 				D347E2911DB3138E00E7B9BA /* UIImage+GIF.m in Sources */,
 				D3E147C81DAF335C002F6D60 /* UIProgressView+AFNetworking.m in Sources */,
+				D3348CF41DBA127400A5E06A /* CreditListViewController.m in Sources */,
 				D347E2581DB30E4D00E7B9BA /* MJRefreshBackNormalFooter.m in Sources */,
 				D3E8196F1DAF259E0054B352 /* ViewController.m in Sources */,
 				D347E28E1DB3138E00E7B9BA /* SDWebImageManager.m in Sources */,
@@ -2061,10 +2165,14 @@
 				D3458A0E1DB086FC007BD2CF /* GetImagePath.m in Sources */,
 				D3B2BE311DB73F6B0095306E /* LewPopupBackgroundView.m in Sources */,
 				D3E147CE1DAF3BE9002F6D60 /* MD5.m in Sources */,
+				D38A95B81DBDAF87005334AC /* CreditDetailViewController.m in Sources */,
 				D347E28B1DB3138E00E7B9BA /* SDWebImageDecoder.m in Sources */,
 				D347E28C1DB3138E00E7B9BA /* SDWebImageDownloader.m in Sources */,
 				D320497C1DB60350000782F9 /* PickerView.m in Sources */,
+				D3348CF71DBA154800A5E06A /* CreditListModel.m in Sources */,
 				D3B2BE191DB726380095306E /* CenterViewController.m in Sources */,
+				D38A95BB1DBDE516005334AC /* RealWithUsViewController.m in Sources */,
+				D3348CF01DBA102700A5E06A /* CreditModel.m in Sources */,
 				D3E147B71DAF335C002F6D60 /* AFHTTPRequestOperationManager.m in Sources */,
 				D3E147E71DAF5FAE002F6D60 /* FMDatabase.m in Sources */,
 				D3E147EC1DAF5FAE002F6D60 /* LoginSqlite.m in Sources */,
@@ -2097,6 +2205,7 @@
 				D3458A1A1DB08881007BD2CF /* LoanViewController.m in Sources */,
 				D347E2921DB3138E00E7B9BA /* UIImage+MultiFormat.m in Sources */,
 				D3E147C31DAF335C002F6D60 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				D38A95B51DBB02A7005334AC /* LoanApi.m in Sources */,
 				D347E3141DB49DAC00E7B9BA /* BannerModel.m in Sources */,
 				D3E147D51DAF5942002F6D60 /* PrintObject.m in Sources */,
 				D3E147C01DAF335C002F6D60 /* networkConnect.m in Sources */,
@@ -2145,7 +2254,9 @@
 				D347E2E91DB4865500E7B9BA /* HomeApi.m in Sources */,
 				D3E147EB1DAF5FAE002F6D60 /* FMResultSet.m in Sources */,
 				D347E2531DB30E4D00E7B9BA /* MJRefreshHeader.m in Sources */,
+				D38A95BE1DBE003F005334AC /* LoanModel.m in Sources */,
 				D33AAEBD1DB89B7900459F4E /* RealNameViewController.m in Sources */,
+				D38A95C21DBE04C6005334AC /* LoanDetailViewController.m in Sources */,
 				D3458A071DB0854F007BD2CF /* UIView+ViewKit.m in Sources */,
 				D3E819691DAF259E0054B352 /* main.m in Sources */,
 				D3E147FF1DAF8BC8002F6D60 /* InviteModel.m in Sources */,
@@ -2309,7 +2420,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jinhua Hou (8NHJNRH34B)";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = QQUFUHZ7LV;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2322,7 +2433,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhixin.JieBa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "61a1f768-3806-4799-97aa-b2fdf07ecc99";
+				PROVISIONING_PROFILE_SPECIFIER = JieBa_dev;
 			};
 			name = Debug;
 		};
@@ -2344,7 +2456,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhixin.JieBa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = JieBa_dev;
 			};
 			name = Release;
 		};
