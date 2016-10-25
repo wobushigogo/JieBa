@@ -22,7 +22,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:[NSString stringWithFormat:@"%@",[self class]] object:nil];
-    [self.tableView setMinY:0 maxY:kScreenHeight-HeightXiShu(100)];
+    [self.tableView setMinY:0 maxY:kScreenHeight-HeightXiShu(110)];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = AllBackLightGratColor;
 }

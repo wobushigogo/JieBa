@@ -9,5 +9,6 @@
 #import "BaseTableViewController.h"
 
 @interface LoanViewController : BaseTableViewController
+@property(nonatomic)BOOL isHide;
 -(void)loadLoanInfo;
 @end

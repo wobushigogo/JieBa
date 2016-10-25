@@ -63,7 +63,7 @@
     if(!_contentView){
         UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, self.navView.maxY, kScreenWidth, HeightXiShu(283))];
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, HeightXiShu(283))];
-        imageView.image = [GetImagePath getImagePath:@"rent_banner"];
+        imageView.image = [GetImagePath getImagePath:@"credit_banner"];
         [contentView addSubview:imageView];
         
         UILabel *lowMoney = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(15), HeightXiShu(80), WidthXiShu(120), HeightXiShu(30))];

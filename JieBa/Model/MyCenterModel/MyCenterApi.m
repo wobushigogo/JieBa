@@ -164,4 +164,65 @@
         }
     } apiName:@"member_changeuserinfo" noNetWork:nil];
 }
+
++ (void)orderLoanInfoWithBlock:(void (^)(NSMutableArray *array, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork{
+    NSString *urlStr = [NSString stringWithFormat:@"?order"];
+    [SendRequst formRequstWithUrlString:urlStr postParamDic:dic success:^(id responseDic) {
+        NSMutableArray *arr = [[NSMutableArray alloc] init];
+        [arr addObject:responseDic[@"dataresult"][@"loanerp"][@"ContractNo"]];
+        [arr addObject:responseDic[@"dataresult"][@"loanerp"][@"is_repayment"]];
+        [arr addObject:[StringTool timeChange2:responseDic[@"dataresult"][@"loanerp"][@"UpdateDate"]]];
+        [arr addObject:[NSString stringWithFormat:@"%@元",responseDic[@"dataresult"][@"loanerp"][@"ApplayMoney"]]];
+        [arr addObject:[NSString stringWithFormat:@"%@元",responseDic[@"dataresult"][@"loanerp"][@"MatchMoney"]]];
+        [arr addObject:[NSString stringWithFormat:@"%@元",responseDic[@"dataresult"][@"loanerp"][@"leftMoney"]]];
+        [arr addObject:[NSString stringWithFormat:@"%@期",responseDic[@"dataresult"][@"loanerp"][@"periodes"]]];
+        [arr addObject:[StringTool timeChange2:responseDic[@"dataresult"][@"loanerp"][@"BackDate"]]];
+        [arr addObject:[NSString stringWithFormat:@"%@元",responseDic[@"dataresult"][@"loanerp"][@"BackTotalMoney"]]];
+        if(block){
+            block(arr,nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"error===>%@",error);
+        if (block) {
+            block(nil, error);
+        }
+    } apiName:@"order" noNetWork:nil];
+}
+
++ (void)orderRentInfoWithBlock:(void (^)(NSMutableArray *array, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork{
+    NSString *urlStr = [NSString stringWithFormat:@"?order"];
+    [SendRequst formRequstWithUrlString:urlStr postParamDic:dic success:^(id responseDic) {
+        NSMutableArray *arr = [[NSMutableArray alloc] init];
+        [arr addObject:responseDic[@"dataresult"][@"loanerp"][@"applyCode"]];
+        [arr addObject:[StringTool timeChange2:responseDic[@"dataresult"][@"loanerp"][@"timeadd"]]];
+        [arr addObject:[NSString stringWithFormat:@"%@元",responseDic[@"dataresult"][@"loanerp"][@"backtotalmoney"]]];
+        [arr addObject:[StringTool timeChange2:responseDic[@"dataresult"][@"loanerp"][@"loanmonth"]]];
+        [arr addObject:responseDic[@"dataresult"][@"loanerp"][@"city"]];
+        [arr addObject:responseDic[@"dataresult"][@"loanerp"][@"dealer"]];
+        [arr addObject:responseDic[@"dataresult"][@"loanerp"][@"car_brand"]];
+        [arr addObject:responseDic[@"dataresult"][@"loanerp"][@"car_class"]];
+        if(block){
+            block(arr,nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"error===>%@",error);
+        if (block) {
+            block(nil, error);
+        }
+    } apiName:@"order" noNetWork:nil];
+}
+
++ (void)addCashWithBlock:(void (^)(NSMutableDictionary *dict, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork{
+    NSString *urlStr = [NSString stringWithFormat:@"?cash"];
+    [SendRequst formRequstWithUrlString:urlStr postParamDic:dic success:^(id responseDic) {
+        if(block){
+            block(responseDic[@"dataresult"][@"data"],nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"error===>%@",error);
+        if (block) {
+            block(nil, error);
+        }
+    } apiName:@"cash" noNetWork:nil];
+}
 @end

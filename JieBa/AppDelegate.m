@@ -43,6 +43,7 @@
     mainNav.navigationBarHidden = YES;
     
     LoanViewController *loan = [[LoanViewController alloc] init];
+    loan.isHide = YES;
     [loan.tabBarItem setImageInsets:UIEdgeInsetsMake(7.0, 0.0, -7.0, 0.0)];
     loan.tabBarItem.image = [[UIImage imageNamed:@"tabbar_loan_gary"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     loan.tabBarItem.selectedImage = [[UIImage imageNamed:@"tabbar_loan_blue"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];

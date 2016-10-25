@@ -56,7 +56,11 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = NO;
+    if(self.isHide){
+        self.tabBarController.tabBar.hidden = NO;
+    }else{
+        self.tabBarController.tabBar.hidden = YES;
+    }
 }
 
 #pragma mark - 页面元素
@@ -67,7 +71,8 @@
         navView.minY = HeightXiShu(20);
         navView.backgroundColor = NavColor;
         navView.titleLabel.text = @"车贷宝";
-        navView.leftBtn.hidden = YES;
+        [navView.leftBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+        navView.leftBtn.hidden = self.isHide;
         _navView = navView;
         [self.view addSubview:_navView];
     }
@@ -295,6 +300,10 @@
 }
 
 #pragma mark - 事件
+-(void)backAction{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 -(void)firstSectionAction:(UIButton *)button{
     switch (button.tag) {
         case 0:

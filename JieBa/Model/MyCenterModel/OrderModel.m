@@ -11,7 +11,8 @@
 @implementation OrderModel
 -(void)setDict:(NSDictionary *)dict{
     self.orderId = dict[@"id"];
-    self.orderType = dict[@"titles"];
+    self.orderType = [dict[@"order_type"] integerValue];
+    self.orderTypeStr = dict[@"titles"];
     if([dict[@"status"] integerValue] == 1){
         self.statusStr = @"审核中";
     }else if ([dict[@"status"] integerValue] == 2){

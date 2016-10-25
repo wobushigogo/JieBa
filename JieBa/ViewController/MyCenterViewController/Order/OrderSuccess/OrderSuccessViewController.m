@@ -10,6 +10,8 @@
 #import "MyCenterApi.h"
 #import "OrderModel.h"
 #import "OrderSuccessCell.h"
+#import "OrderLoanViewController.h"
+#import "OrderRentViewController.h"
 
 @interface OrderSuccessViewController ()
 @property(nonatomic)NSInteger startIndex;
@@ -22,7 +24,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:[NSString stringWithFormat:@"%@",[self class]] object:nil];
-    [self.tableView setMinY:0 maxY:kScreenHeight-HeightXiShu(100)];
+    [self.tableView setMinY:0 maxY:kScreenHeight-HeightXiShu(110)];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = AllBackLightGratColor;
 }
@@ -56,6 +58,19 @@
     }
     cell.model = model;
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    OrderModel *model = self.modelArr[indexPath.row];
+    if(model.orderType == 1){
+        OrderLoanViewController *view = [[OrderLoanViewController alloc] init];
+        view.contractNo = model.applyCode;
+        [self.navigationController pushViewController:view animated:YES];
+    }else if (model.orderType == 2){
+        OrderRentViewController *view = [[OrderRentViewController alloc] init];
+        view.orderId = model.orderId;
+        [self.navigationController pushViewController:view animated:YES];
+    }
 }
 
 #pragma mark - 事件

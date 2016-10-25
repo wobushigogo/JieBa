@@ -17,6 +17,9 @@
 #import "CompanyProfileViewController.h"
 #import "LoginViewController.h"
 #import "MyCenterApi.h"
+#import "MainRentViewController.h"
+#import "MainLoanViewController.h"
+#import "EvaluateViewController.h"
 
 @interface MainViewController ()<ZWAdViewDelagate,MainButtonCellDelegate>
 @property(nonatomic,strong)UIView *headView;
@@ -25,6 +28,7 @@
 @property(nonatomic,strong)LocationView *locationView;
 @property(nonatomic,strong)NSMutableArray *bannerModels;
 @property(nonatomic,strong)NSMutableArray *invitationModels;
+@property(nonatomic,copy)NSMutableDictionary *urlDic;
 @end
 
 @implementation MainViewController
@@ -38,6 +42,7 @@
     self.tableView.tableHeaderView = self.headView;
     [self locationView];
     [self scanBtn];
+    [self loadH5];
     [self loadBanner];
     [self loadCarlife];
 }
@@ -226,6 +231,18 @@
     } dic:dic noNetWork:nil];
 }
 
+-(void)loadH5{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"banner" forKey:@"_cmd_"];
+    [dic setObject:@"buy_borrow" forKey:@"type"];
+    
+    [HomeApi html5WithBlock:^(NSMutableDictionary *dict, NSError *error) {
+        if(!error){
+            self.urlDic = dict;
+        }
+    } dic:dic noNetWork:nil];
+}
+
 #pragma - mark delegate
 -(void)buttonClick:(NSInteger)index{
     switch (index) {
@@ -240,6 +257,9 @@
             if([LoginViewController openLogin]){
                 return;
             }
+            MainLoanViewController *view = [[MainLoanViewController alloc] init];
+            view.webUrl = self.urlDic[@"borrow_apply"];
+            [self.navigationController pushViewController:view animated:YES];
         }
             break;
         case 2:
@@ -247,6 +267,9 @@
             if([LoginViewController openLogin]){
                 return;
             }
+            MainRentViewController *view = [[MainRentViewController alloc] init];
+            view.webUrl = self.urlDic[@"buy_apply"];
+            [self.navigationController pushViewController:view animated:YES];
         }
             break;
         case 3:
@@ -254,6 +277,9 @@
             if([LoginViewController openLogin]){
                 return;
             }
+            EvaluateViewController *view = [[EvaluateViewController alloc] init];
+            view.webUrl = self.urlDic[@"pinggu"];
+            [self.navigationController pushViewController:view animated:YES];
         }
             break;
         case 4:

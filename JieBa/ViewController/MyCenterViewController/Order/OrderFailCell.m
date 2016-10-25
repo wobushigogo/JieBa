@@ -153,7 +153,7 @@
 #pragma mark - setter
 -(void)setModel:(OrderModel *)model{
     self.statusLabel.text = model.statusStr;
-    self.orderTypeLabel.text = model.orderType;
+    self.orderTypeLabel.text = model.orderTypeStr;
     [self.smallImageView sd_setImageWithURL:model.imageUrl placeholderImage:nil];
     self.loanmoneyLabel.text = [NSString stringWithFormat:@"借款金额：%@",model.loanmoney];
     self.timeaddLabel.text = [NSString stringWithFormat:@"申请时间：%@",model.timeadd];

@@ -16,6 +16,7 @@
 #import "MoreViewController.h"
 #import "RealNameViewController.h"
 #import "RealWithUsViewController.h"
+#import "RechargeViewController.h"
 
 @interface MyCenterViewController ()<MyCenterHeadDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property(nonatomic,strong)MyCenterHead *headView;
@@ -267,6 +268,8 @@
 #pragma mark - selector
 -(void)creditAction{
     NSLog(@"creditAction");
+    RechargeViewController *view = [[RechargeViewController alloc] init];
+    [self.navigationController pushViewController:view animated:YES];
 }
 
 -(void)withdrawAction{

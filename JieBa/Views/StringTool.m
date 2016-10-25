@@ -241,6 +241,18 @@
     return string;
 }
 
++(NSString *)timeChange2:(NSString *)dateString{
+    NSString *string = nil;
+    if([[NSString stringWithFormat:@"%@",dateString] isEqualToString:@"(null)"]||[[NSString stringWithFormat:@"%@",dateString] isEqualToString:@"<null>"]||[[NSString stringWithFormat:@"%@",dateString] isEqualToString:@""]){
+        string = @"";
+    }else{
+        NSArray *arr = [dateString componentsSeparatedByString:@" "];
+        NSArray *dateArr = [arr[0] componentsSeparatedByString:@"-"];
+        string = [NSString stringWithFormat:@"%@年%@月%@日",dateArr[0],dateArr[1],dateArr[2]];
+    }
+    return string;
+}
+
 + (UIImage *)imageWithRoundedCornersSize:(float)cornerRadius usingImage:(UIImage *)original
 {
     CGRect frame = CGRectMake(0, 0, original.size.width, original.size.height);
