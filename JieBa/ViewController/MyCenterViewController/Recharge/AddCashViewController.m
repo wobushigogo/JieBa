@@ -55,12 +55,15 @@
     
     NSString *newStr = [string substringToIndex:([string length]-1)];
     NSLog(@"===>%@",newStr);
+    
+    NSString * encodedString = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes( kCFAllocatorDefault, (CFStringRef)newStr, NULL, (CFStringRef)@"+",  kCFStringEncodingUTF8 ));
+    
     UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, self.navView.maxY, kScreenWidth, kScreenHeight - self.navView.maxY)];
     webView.delegate = self;
     NSURL *url = [NSURL URLWithString:self.webUrl];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: url];
     [request setHTTPMethod: @"POST"];
-    [request setHTTPBody:[newStr dataUsingEncoding: NSUTF8StringEncoding]];
+    [request setHTTPBody:[encodedString dataUsingEncoding: NSUTF8StringEncoding]];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];//请求头
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
