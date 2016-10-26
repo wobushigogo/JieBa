@@ -309,6 +309,15 @@
 		D3E147F81DAF63D1002F6D60 /* LoginApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E147F71DAF63D1002F6D60 /* LoginApi.m */; };
 		D3E147FC1DAF7F2B002F6D60 /* MyCenterApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E147FB1DAF7F2A002F6D60 /* MyCenterApi.m */; };
 		D3E147FF1DAF8BC8002F6D60 /* InviteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E147FE1DAF8BC8002F6D60 /* InviteModel.m */; };
+		D3E5F8441DC04FAA004398ED /* RentApplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E5F8431DC04FAA004398ED /* RentApplyCell.m */; };
+		D3E5F8481DC05EDB004398ED /* rent_liucheng.png in Resources */ = {isa = PBXBuildFile; fileRef = D3E5F8451DC05EDB004398ED /* rent_liucheng.png */; };
+		D3E5F8491DC05EDB004398ED /* rent_liucheng@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3E5F8461DC05EDB004398ED /* rent_liucheng@2x.png */; };
+		D3E5F84A1DC05EDB004398ED /* rent_liucheng@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3E5F8471DC05EDB004398ED /* rent_liucheng@3x.png */; };
+		D3E5F84E1DC05FC7004398ED /* RentApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E5F84D1DC05FC7004398ED /* RentApi.m */; };
+		D3E5F8511DC05FDF004398ED /* RentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E5F8501DC05FDF004398ED /* RentModel.m */; };
+		D3E5F8551DC08029004398ED /* rent_city.png in Resources */ = {isa = PBXBuildFile; fileRef = D3E5F8521DC08029004398ED /* rent_city.png */; };
+		D3E5F8561DC08029004398ED /* rent_city@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3E5F8531DC08029004398ED /* rent_city@2x.png */; };
+		D3E5F8571DC08029004398ED /* rent_city@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3E5F8541DC08029004398ED /* rent_city@3x.png */; };
 		D3E819691DAF259E0054B352 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E819681DAF259E0054B352 /* main.m */; };
 		D3E8196C1DAF259E0054B352 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E8196B1DAF259E0054B352 /* AppDelegate.m */; };
 		D3E8196F1DAF259E0054B352 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E8196E1DAF259E0054B352 /* ViewController.m */; };
@@ -804,6 +813,18 @@
 		D3E147FB1DAF7F2A002F6D60 /* MyCenterApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCenterApi.m; sourceTree = "<group>"; };
 		D3E147FD1DAF8BC8002F6D60 /* InviteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteModel.h; sourceTree = "<group>"; };
 		D3E147FE1DAF8BC8002F6D60 /* InviteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteModel.m; sourceTree = "<group>"; };
+		D3E5F8421DC04FAA004398ED /* RentApplyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RentApplyCell.h; sourceTree = "<group>"; };
+		D3E5F8431DC04FAA004398ED /* RentApplyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RentApplyCell.m; sourceTree = "<group>"; };
+		D3E5F8451DC05EDB004398ED /* rent_liucheng.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rent_liucheng.png; sourceTree = "<group>"; };
+		D3E5F8461DC05EDB004398ED /* rent_liucheng@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rent_liucheng@2x.png"; sourceTree = "<group>"; };
+		D3E5F8471DC05EDB004398ED /* rent_liucheng@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rent_liucheng@3x.png"; sourceTree = "<group>"; };
+		D3E5F84C1DC05FC7004398ED /* RentApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RentApi.h; sourceTree = "<group>"; };
+		D3E5F84D1DC05FC7004398ED /* RentApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RentApi.m; sourceTree = "<group>"; };
+		D3E5F84F1DC05FDF004398ED /* RentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RentModel.h; sourceTree = "<group>"; };
+		D3E5F8501DC05FDF004398ED /* RentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RentModel.m; sourceTree = "<group>"; };
+		D3E5F8521DC08029004398ED /* rent_city.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rent_city.png; sourceTree = "<group>"; };
+		D3E5F8531DC08029004398ED /* rent_city@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rent_city@2x.png"; sourceTree = "<group>"; };
+		D3E5F8541DC08029004398ED /* rent_city@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rent_city@3x.png"; sourceTree = "<group>"; };
 		D3E819641DAF259E0054B352 /* JieBa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JieBa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E819681DAF259E0054B352 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D3E8196A1DAF259E0054B352 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -906,6 +927,8 @@
 				D322EA821DBF2C730089FD56 /* MainRentViewController.m */,
 				D322EA841DBF31AF0089FD56 /* RentApplyViewController.h */,
 				D322EA851DBF31AF0089FD56 /* RentApplyViewController.m */,
+				D3E5F8421DC04FAA004398ED /* RentApplyCell.h */,
+				D3E5F8431DC04FAA004398ED /* RentApplyCell.m */,
 			);
 			path = Rent;
 			sourceTree = "<group>";
@@ -952,6 +975,12 @@
 		D3348CD51DB9D64100A5E06A /* Rent */ = {
 			isa = PBXGroup;
 			children = (
+				D3E5F8521DC08029004398ED /* rent_city.png */,
+				D3E5F8531DC08029004398ED /* rent_city@2x.png */,
+				D3E5F8541DC08029004398ED /* rent_city@3x.png */,
+				D3E5F8451DC05EDB004398ED /* rent_liucheng.png */,
+				D3E5F8461DC05EDB004398ED /* rent_liucheng@2x.png */,
+				D3E5F8471DC05EDB004398ED /* rent_liucheng@3x.png */,
 				D3348CDC1DB9D66E00A5E06A /* rent_banner.png */,
 				D3348CDD1DB9D66E00A5E06A /* rent_banner@2x.png */,
 				D3348CDE1DB9D66E00A5E06A /* rent_banner@3x.png */,
@@ -1837,6 +1866,7 @@
 		D3E147F11DAF62DE002F6D60 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D3E5F84B1DC05FB9004398ED /* RentModel */,
 				D38A95B21DBB0293005334AC /* LoanModel */,
 				D3348CEA1DBA0ED700A5E06A /* CreditModel */,
 				D347E2E61DB4864400E7B9BA /* HomeModel */,
@@ -1868,6 +1898,17 @@
 				D3B2BE521DB763DE0095306E /* OrderModel.m */,
 			);
 			path = MyCenterModel;
+			sourceTree = "<group>";
+		};
+		D3E5F84B1DC05FB9004398ED /* RentModel */ = {
+			isa = PBXGroup;
+			children = (
+				D3E5F84C1DC05FC7004398ED /* RentApi.h */,
+				D3E5F84D1DC05FC7004398ED /* RentApi.m */,
+				D3E5F84F1DC05FDF004398ED /* RentModel.h */,
+				D3E5F8501DC05FDF004398ED /* RentModel.m */,
+			);
+			path = RentModel;
 			sourceTree = "<group>";
 		};
 		D3E8195B1DAF259E0054B352 = {
@@ -2097,6 +2138,7 @@
 				D347E3001DB49B9E00E7B9BA /* homePage_assess.png in Resources */,
 				D347E3111DB49B9E00E7B9BA /* homePage_rent@3x.png in Resources */,
 				D33AAEB31DB860BD00459F4E /* myCente_changUserName@2x.png in Resources */,
+				D3E5F8481DC05EDB004398ED /* rent_liucheng.png in Resources */,
 				D3458A371DB0B427007BD2CF /* login_bg.png in Resources */,
 				D33AAF0A1DB8B68200459F4E /* myCenter_scan.png in Resources */,
 				D347E2E31DB470E700E7B9BA /* register_show.png in Resources */,
@@ -2108,8 +2150,10 @@
 				D32049611DB5C4E0000782F9 /* myCenter_ invitation@3x.png in Resources */,
 				D347E3271DB4B11800E7B9BA /* homePage_scan.png in Resources */,
 				D347E2BA1DB46F0800E7B9BA /* tabbar_home_gary@2x.png in Resources */,
+				D3E5F84A1DC05EDB004398ED /* rent_liucheng@3x.png in Resources */,
 				D32049561DB5BFE3000782F9 /* myCenter_service.png in Resources */,
 				D347E2BF1DB46F0800E7B9BA /* tabbar_loan_gary.png in Resources */,
+				D3E5F8571DC08029004398ED /* rent_city@3x.png in Resources */,
 				D3E8ADD61DB51136002F5D35 /* myCenter_ order@2x.png in Resources */,
 				D320494F1DB5BFE3000782F9 /* myCenter_active@3x.png in Resources */,
 				D3E819721DAF259E0054B352 /* Main.storyboard in Resources */,
@@ -2128,6 +2172,7 @@
 				D347E2BB1DB46F0800E7B9BA /* tabbar_home_gary@3x.png in Resources */,
 				D347E2BE1DB46F0800E7B9BA /* tabbar_loan_blue@3x.png in Resources */,
 				D347E31C1DB4A7B300E7B9BA /* homePage_loactionbg@2x.png in Resources */,
+				D3E5F8551DC08029004398ED /* rent_city.png in Resources */,
 				D347E2B71DB46F0800E7B9BA /* tabbar_home_blue@2x.png in Resources */,
 				D33AAF0B1DB8B68200459F4E /* myCenter_scan@2x.png in Resources */,
 				D347E2CB1DB46F0800E7B9BA /* tabbar_rent_gary.png in Resources */,
@@ -2160,6 +2205,7 @@
 				D347E2B61DB46F0800E7B9BA /* tabbar_home_blue.png in Resources */,
 				D32049681DB5C730000782F9 /* myCenter_ewm.png in Resources */,
 				D33AAEC31DB8A00300459F4E /* myCenter_sfz@3x.png in Resources */,
+				D3E5F8491DC05EDB004398ED /* rent_liucheng@2x.png in Resources */,
 				D3E8ADD51DB51136002F5D35 /* myCenter_ order.png in Resources */,
 				D347E2B91DB46F0800E7B9BA /* tabbar_home_gary.png in Resources */,
 				D33AAF151DB8CB3500459F4E /* oliveapp_face_model.bundle in Resources */,
@@ -2196,6 +2242,7 @@
 				D347E3291DB4B11800E7B9BA /* homePage_scan@3x.png in Resources */,
 				D320498E1DB63039000782F9 /* loan_liucheng@2x.png in Resources */,
 				D3E8ADD31DB51136002F5D35 /* myCenter_ balance@2x.png in Resources */,
+				D3E5F8561DC08029004398ED /* rent_city@2x.png in Resources */,
 				D347E2C41DB46F0800E7B9BA /* tabbar_myCenter_blue@3x.png in Resources */,
 				D3348CE01DB9D66E00A5E06A /* rent_banner@2x.png in Resources */,
 				D32049511DB5BFE3000782F9 /* myCenter_invite@2x.png in Resources */,
@@ -2246,6 +2293,7 @@
 				D3E147F81DAF63D1002F6D60 /* LoginApi.m in Sources */,
 				D347E2931DB3138E00E7B9BA /* UIImage+WebP.m in Sources */,
 				D3E147BA1DAF335C002F6D60 /* AFSecurityPolicy.m in Sources */,
+				D3E5F8511DC05FDF004398ED /* RentModel.m in Sources */,
 				D322EA8F1DBF38DC0089FD56 /* RechargeViewController.m in Sources */,
 				D3B2BE341DB73F6B0095306E /* LewPopupViewAnimationSlide.m in Sources */,
 				D3458A251DB0A7F3007BD2CF /* NavView.m in Sources */,
@@ -2306,6 +2354,7 @@
 				D3E147C41DAF335C002F6D60 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				D347E2511DB30E4D00E7B9BA /* MJRefreshComponent.m in Sources */,
 				D33AAEBA1DB87A7800459F4E /* ChangePwdViewController.m in Sources */,
+				D3E5F84E1DC05FC7004398ED /* RentApi.m in Sources */,
 				D322EA7C1DBF10170089FD56 /* OrderRentViewController.m in Sources */,
 				D347E2551DB30E4D00E7B9BA /* MJRefreshAutoNormalFooter.m in Sources */,
 				D347E2641DB3129300E7B9BA /* ZWAdView.m in Sources */,
@@ -2329,6 +2378,7 @@
 				D3E147D41DAF5942002F6D60 /* JSONKit.m in Sources */,
 				D3458A5D1DB21CFE007BD2CF /* RegexKitLite.m in Sources */,
 				D347E24F1DB30E4D00E7B9BA /* MJRefreshAutoFooter.m in Sources */,
+				D3E5F8441DC04FAA004398ED /* RentApplyCell.m in Sources */,
 				D3E147B91DAF335C002F6D60 /* AFNetworkReachabilityManager.m in Sources */,
 				D322EA791DBF0FDB0089FD56 /* OrderLoanListViewController.m in Sources */,
 				D3B2BE4D1DB757020095306E /* OrderAllViewController.m in Sources */,

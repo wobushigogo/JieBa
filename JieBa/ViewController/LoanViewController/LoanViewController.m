@@ -158,9 +158,6 @@
         _allMoney = allMoney;
         _peopleCount = peopleCount;
         _secondSectionView = secondSectionView;
-        
-        self.allMoneyStr = @"123412342134124元";
-        self.peopleCountStr = @"3000人";
     }
     return _secondSectionView;
 }
@@ -425,6 +422,8 @@
     [LoanApi loanInfoWithBlock:^(LoanModel *model, NSError *error) {
         if(!error){
             self.loanModel = model;
+            self.allMoneyStr = [NSString stringWithFormat:@"%@元",model.borrow_money];
+            self.peopleCountStr = [NSString stringWithFormat:@"%@人",model.borrow_count];
         }
     } dic:dic noNetWork:nil];
 }

@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface LoanModel : NSObject
+@property(nonatomic,copy)NSString *borrow_money;
+@property(nonatomic,copy)NSString *borrow_count;
 @property(nonatomic,strong)NSMutableArray *loanMonthArr;
 @property(nonatomic,strong)NSDictionary *dict;
 @end

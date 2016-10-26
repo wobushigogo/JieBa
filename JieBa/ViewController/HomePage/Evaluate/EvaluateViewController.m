@@ -9,6 +9,7 @@
 #import "EvaluateViewController.h"
 #import <WebKit/WebKit.h>
 #import "NavView.h"
+#import "LoanViewController.h"
 
 @interface EvaluateViewController ()<WKNavigationDelegate>
 @property (nonatomic, strong) NavView *navView;
@@ -38,6 +39,27 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;
+}
+
+
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    
+    NSString *url = navigationAction.request.URL.absoluteString;
+    
+    NSLog(@"url = %@",url);
+    BOOL toProduct = [url containsString:@"jieba=gujia"];
+    
+    WKNavigationActionPolicy allow = WKNavigationActionPolicyAllow;
+    
+    if (toProduct) {
+        LoanViewController *view = [[LoanViewController alloc] init];
+        view.isHide = NO;
+        [self.navigationController pushViewController:view animated:YES];
+        allow = WKNavigationActionPolicyCancel;
+    }
+    if (decisionHandler) {
+        decisionHandler(allow);
+    }
 }
 
 #pragma mark - 页面元素

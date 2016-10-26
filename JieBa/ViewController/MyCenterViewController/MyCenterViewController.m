@@ -268,8 +268,11 @@
 #pragma mark - selector
 -(void)creditAction{
     NSLog(@"creditAction");
-    RechargeViewController *view = [[RechargeViewController alloc] init];
-    [self.navigationController pushViewController:view animated:YES];
+    __block typeof(self)wSelf = self;
+    [self loadNameStatus:^(NSDictionary *dict) {
+        RechargeViewController *view = [[RechargeViewController alloc] init];
+        [wSelf.navigationController pushViewController:view animated:YES];
+    }];
 }
 
 -(void)withdrawAction{
@@ -285,7 +288,14 @@
 }
 
 -(void)approveAction{
-    [self loadNameStatus];
+    __block typeof(self)wSelf = self;
+    [self loadNameStatus:^(NSDictionary *dict) {
+        RealWithUsViewController *view = [[RealWithUsViewController alloc] init];
+        view.isReal = YES;
+        view.realName = dict[@"names"];
+        view.certiNumber = dict[@"certiNumber"];
+        [wSelf.navigationController pushViewController:view animated:YES];
+    }];
 }
 
 -(void)bindAction{
@@ -452,7 +462,7 @@
     } dic:dic noNetWork:nil];
 }
 
--(void)loadNameStatus{
+-(void)loadNameStatus:(void(^)(NSDictionary *dict))block{
     __block typeof(self)wSelf = self;
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setObject:@"member_changeuserinfo" forKey:@"_cmd_"];
@@ -460,11 +470,9 @@
     [MyCenterApi getUserInfoWithBlock:^(NSDictionary *dict, NSError *error) {
         if(!error){
             if([dict[@"nameStatus"] integerValue] == 1){
-                RealWithUsViewController *view = [[RealWithUsViewController alloc] init];
-                view.isReal = YES;
-                view.realName = dict[@"names"];
-                view.certiNumber = dict[@"certiNumber"];
-                [wSelf.navigationController pushViewController:view animated:YES];
+                if(block){
+                    block(dict);
+                }
             }else{
                 UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:@"提示" message:@"是否实名认证" preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];

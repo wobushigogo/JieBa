@@ -1,23 +1,24 @@
 //
-//  LoanTableViewCell.m
+//  RentApplyCell.m
 //  JieBa
 //
-//  Created by 汪洋 on 16/10/18.
+//  Created by 汪洋 on 16/10/26.
 //  Copyright © 2016年 zhixin. All rights reserved.
 //
 
-#import "LoanTableViewCell.h"
+#import "RentApplyCell.h"
 
-@interface LoanTableViewCell()<UITextFieldDelegate>
+@interface RentApplyCell()<UITextFieldDelegate>
 @property(nonatomic,strong)UILabel *titileLabel;
 @property(nonatomic,strong)UIImageView *cutLine;
 @property(nonatomic,strong)UILabel *detailLabel;
+@property(nonatomic,strong)UILabel *detailLabel2;
 @property(nonatomic,strong)UITextField *textField;
 @property(nonatomic,strong)UILabel *contentLabel;
 @property(nonatomic,copy)UIColor *contentColor;
 @end
 
-@implementation LoanTableViewCell
+@implementation RentApplyCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -96,6 +97,7 @@
         detailLabel.textColor = TitleColor;
         detailLabel.font = HEITI(HeightXiShu(16));
         detailLabel.text = @"元/月";
+        detailLabel.textAlignment = NSTextAlignmentRight;
         [self addSubview:detailLabel];
         _detailLabel = detailLabel;
     }
@@ -110,6 +112,7 @@
 
 -(void)setIsShowDetailLanel:(BOOL)isShowDetailLanel{
     self.detailLabel.hidden = !isShowDetailLanel;
+    self.detailLabel2.hidden = !isShowDetailLanel;
 }
 
 -(void)setIsShowLabel:(BOOL)isShowLabel{
@@ -143,6 +146,14 @@
         self.textField.keyboardType = UIKeyboardTypeDefault;
     }else{
         self.textField.keyboardType = UIKeyboardTypeNumberPad;
+    }
+}
+
+-(void)setDetailLabelType:(DetailLabelType)detailLabelType{
+    if(detailLabelType == signType){
+        self.detailLabel.text = @"元";
+    }else{
+        self.detailLabel.text = @"元/月";
     }
 }
 

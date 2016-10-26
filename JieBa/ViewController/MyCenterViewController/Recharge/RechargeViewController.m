@@ -113,7 +113,7 @@
     [MyCenterApi addCashWithBlock:^(NSMutableDictionary *dict, NSError *error) {
         if(!error){
             AddCashViewController *view = [[AddCashViewController alloc] init];
-            view.webUrl = dict[@"form_url"];
+            view.webUrl = dict[@"jumpurl"];
             view.dic = dict;
             [self.navigationController pushViewController:view animated:YES];
         }

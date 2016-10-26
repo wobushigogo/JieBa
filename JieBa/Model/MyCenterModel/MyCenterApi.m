@@ -216,7 +216,7 @@
     NSString *urlStr = [NSString stringWithFormat:@"?cash"];
     [SendRequst formRequstWithUrlString:urlStr postParamDic:dic success:^(id responseDic) {
         if(block){
-            block(responseDic[@"dataresult"][@"data"],nil);
+            block(responseDic[@"dataresult"],nil);
         }
     } failure:^(NSError *error) {
         NSLog(@"error===>%@",error);

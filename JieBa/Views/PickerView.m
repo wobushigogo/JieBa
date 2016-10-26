@@ -27,7 +27,7 @@
         [self contentView];
         __block typeof(self)wSelf = self;
         [UIView animateWithDuration:.5 animations:^{
-            wSelf.contentView.frame = CGRectMake(0, kScreenHeight-HeightXiShu(240), kScreenWidth, HeightXiShu(200));
+            wSelf.contentView.frame = CGRectMake(0, kScreenHeight-HeightXiShu(200), kScreenWidth, HeightXiShu(200));
         }];
     }
     return self;

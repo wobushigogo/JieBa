@@ -9,6 +9,7 @@
 #import "MainRentViewController.h"
 #import <WebKit/WebKit.h>
 #import "NavView.h"
+#import "RentApplyViewController.h"
 
 @interface MainRentViewController ()<WKNavigationDelegate>
 @property (nonatomic, strong) NavView *navView;
@@ -45,18 +46,14 @@
     NSString *url = navigationAction.request.URL.absoluteString;
     
     NSLog(@"url = %@",url);
-    BOOL toProduct = [url containsString:@"share/index.html"];
+    BOOL toProduct = [url containsString:@"jieba=czb"];
     
     WKNavigationActionPolicy allow = WKNavigationActionPolicyAllow;
-    
-    //    if (toProduct && [url containsString:@"name="]) {
-    //        NSString *goodsNo = [url componentsSeparatedByString:@"name="].lastObject;
-    //        goodsNo = [goodsNo componentsSeparatedByString:@"&"].firstObject;
-    //        SingleProductDetailController *vc = [[SingleProductDetailController alloc] init];
-    //        vc.productId = goodsNo;
-    //        [self.navigationController pushViewController:vc animated:YES];
-    //        allow = WKNavigationActionPolicyCancel;
-    //    }
+        if (toProduct) {
+            RentApplyViewController *view = [[RentApplyViewController alloc] init];
+            [self.navigationController pushViewController:view animated:YES];
+            allow = WKNavigationActionPolicyCancel;
+        }
         if (decisionHandler) {
             decisionHandler(allow);
         }

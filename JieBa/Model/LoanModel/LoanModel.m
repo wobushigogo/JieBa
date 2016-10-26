@@ -10,7 +10,8 @@
 
 @implementation LoanModel
 -(void)setDict:(NSDictionary *)dict{
-    NSLog(@"==>%@",dict[@"loanmonth"]);
-    self.loanMonthArr = [[NSMutableArray alloc] initWithArray:dict[@"loanmonth"]];
+    self.borrow_money = dict[@"borrow_money"];
+    self.borrow_count = dict[@"borrow_count"];
+    self.loanMonthArr = [[NSMutableArray alloc] initWithArray:dict[@"borrow_setting"][@"loanmonth"]];
 }
 @end

@@ -14,7 +14,7 @@
     NSString *urlStr = [NSString stringWithFormat:@"?order"];
     [SendRequst formRequstWithUrlString:urlStr postParamDic:dic success:^(id responseDic) {
         LoanModel *model = [[LoanModel alloc] init];
-        [model setDict:responseDic[@"dataresult"][@"borrow_setting"]];
+        [model setDict:responseDic[@"dataresult"]];
         if(block){
             block(model,nil);
         }
