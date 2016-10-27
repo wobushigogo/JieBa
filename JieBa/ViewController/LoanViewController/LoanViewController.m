@@ -385,6 +385,7 @@
     LoanDetailViewController *view = [[LoanDetailViewController alloc] init];
     view.dict = dic;
     view.type = self.type;
+    view.loanOrRent = loanType;
     [self.navigationController pushViewController:view animated:YES];
 }
 

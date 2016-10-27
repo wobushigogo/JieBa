@@ -1,25 +1,25 @@
 //
-//  LoanSuccessViewController.m
+//  RentSuccessViewController.m
 //  JieBa
 //
-//  Created by 汪洋 on 16/10/24.
+//  Created by 汪洋 on 16/10/27.
 //  Copyright © 2016年 zhixin. All rights reserved.
 //
 
-#import "LoanSuccessViewController.h"
+#import "RentSuccessViewController.h"
 #import "NavView.h"
 
 #define placeholderFont HEITI(HeightXiShu(15))
 #define titleMargin WidthXiShu(22)
 #define titleWidth WidthXiShu(80)
 
-@interface LoanSuccessViewController ()
+@interface RentSuccessViewController ()
 @property(nonatomic,strong)NavView *navView;
 @property(nonatomic,strong)UIView *headView;
 @property(nonatomic,strong)UIView *footerView;
 @end
 
-@implementation LoanSuccessViewController
+@implementation RentSuccessViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,7 +42,7 @@
 
 #pragma mark - tableView delegate dataSource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 7;
+    return 11;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -58,11 +58,11 @@
     }
     [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
-    if(indexPath.row !=6){
+    if(indexPath.row !=10){
         UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(12), 0, titleWidth, HeightXiShu(50))];
         title.font = placeholderFont;
         title.textColor = TitleColor;
-        title.text = @[@"申 请 人",@"联系电话",@"贷款城市",@"贷款金额",@"贷款期限",@"月需还款"][indexPath.row];
+        title.text = @[@"申 请 人",@"联系电话",@"贷款城市",@"经销商",@"车商报价",@"车辆品牌",@"车辆型号",@"借款期限",@"月需还款",@"首付金额"][indexPath.row];
         [cell.contentView addSubview:title];
         
         UILabel *content = [[UILabel alloc] initWithFrame:CGRectMake(title.maxX+titleMargin, 0, WidthXiShu(180), HeightXiShu(50))];
@@ -71,7 +71,7 @@
         content.textColor = TitleColor;
         [cell.contentView addSubview:content];
         
-        if(indexPath.row == 5){
+        if(indexPath.row == 8){
             UILabel *detail = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth-WidthXiShu(12)-WidthXiShu(40), 0, WidthXiShu(40), HeightXiShu(50))];
             detail.textColor = TitleColor;
             detail.textAlignment = NSTextAlignmentRight;
@@ -178,4 +178,5 @@
     [alertControl addAction:phoneAction];
     [self presentViewController:alertControl animated:YES completion:nil];
 }
+
 @end

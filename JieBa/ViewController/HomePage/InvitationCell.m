@@ -52,7 +52,7 @@
     [modelsArr enumerateObjectsUsingBlock:^(InvitationModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
         UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(margin + (width + space) * idx, HeightXiShu(10), width, HeightXiShu(133))];
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width, HeightXiShu(84))];
-        [imageView sd_setImageWithURL:model.imageUrl placeholderImage:nil];
+        [imageView sd_setImageWithURL:model.imageUrl placeholderImage:[GetImagePath getImagePath:@"default_smallBannre"]];
         //imageView.contentMode = UIViewContentModeScaleAspectFit;
         [bgView addSubview:imageView];
         UILabel *contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, HeightXiShu(84), width, HeightXiShu(49))];

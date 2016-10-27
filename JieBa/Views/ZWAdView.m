@@ -68,7 +68,7 @@
         adImageView.userInteractionEnabled=YES;
         adImageView.contentMode = UIViewContentModeScaleToFill;
 //        adImageView.image = [GetImagePath getImagePath:self.adDataArray[i]];
-        [adImageView sd_setImageWithURL:url placeholderImage:nil options:SDWebImageProgressiveDownload];
+        [adImageView sd_setImageWithURL:url placeholderImage:[GetImagePath getImagePath:@"default_bigBannre"] options:SDWebImageProgressiveDownload];
         //[adImageView sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholderImage:[GetImagePath getImagePath:@"banner_default"]];
         [adImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(adImgClick)]];
         [self.adScrollView addSubview:adImageView];
@@ -78,7 +78,7 @@
         NSURL *lastUrl = self.adDataArray[self.adDataArray.count-1];
         UIImageView *lastAdImageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.adScrollView.bounds.size.width, self.adScrollView.bounds.size.height)];
 //        lastAdImageView.image = [GetImagePath getImagePath:self.adDataArray[self.adDataArray.count-1]];
-        [lastAdImageView sd_setImageWithURL:lastUrl placeholderImage:nil options:SDWebImageProgressiveDownload];
+        [lastAdImageView sd_setImageWithURL:lastUrl placeholderImage:[GetImagePath getImagePath:@"default_bigBannre"] options:SDWebImageProgressiveDownload];
         //[lastAdImageView sd_setImageWithURL:[NSURL URLWithString:lastModel.imageUrl] placeholderImage:[GetImagePath getImagePath:@"banner_default"]];
         [self.adScrollView addSubview:lastAdImageView];
         
@@ -86,7 +86,7 @@
         NSURL *firstUrl = self.adDataArray[0];
         UIImageView *firstAdImageView=[[UIImageView alloc]initWithFrame:CGRectMake((self.adDataArray.count+1)*self.adScrollView.bounds.size.width, 0, self.adScrollView.bounds.size.width, self.adScrollView.bounds.size.height)];
 //        firstAdImageView.image = [GetImagePath getImagePath:self.adDataArray[0]];
-        [firstAdImageView sd_setImageWithURL:firstUrl placeholderImage:nil options:SDWebImageProgressiveDownload];
+        [firstAdImageView sd_setImageWithURL:firstUrl placeholderImage:[GetImagePath getImagePath:@"default_bigBannre"] options:SDWebImageProgressiveDownload];
 
         //[firstAdImageView sd_setImageWithURL:[NSURL URLWithString:firstModel.imageUrl] placeholderImage:[GetImagePath getImagePath:@"banner_default"]];
         [self.adScrollView addSubview:firstAdImageView];

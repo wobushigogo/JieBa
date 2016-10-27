@@ -10,6 +10,8 @@
 #import "NavView.h"
 #import "LoanApi.h"
 #import "LoanSuccessViewController.h"
+#import "RentApi.h"
+#import "RentSuccessViewController.h"
 
 #define placeholderFont HEITI(HeightXiShu(15))
 #define titleMargin WidthXiShu(22)
@@ -245,16 +247,29 @@
         return;
     }
     
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setObject:@"order" forKey:@"_cmd_"];
-    [dic setObject:@"borrowSendSms" forKey:@"type"];
-    [dic setObject:self.phoneTextFiled.text forKey:@"mobile"];
-    
-    [LoanApi loanYzmWithBlock:^(NSDictionary *dict, NSError *error) {
-        if(!error){
+    if(self.loanOrRent == loanType){
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setObject:@"order" forKey:@"_cmd_"];
+        [dic setObject:@"borrowSendSms" forKey:@"type"];
+        [dic setObject:self.phoneTextFiled.text forKey:@"mobile"];
         
-        }
-    } dic:dic noNetWork:nil];
+        [LoanApi loanYzmWithBlock:^(NSDictionary *dict, NSError *error) {
+            if(!error){
+                
+            }
+        } dic:dic noNetWork:nil];
+    }else{
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setObject:@"order" forKey:@"_cmd_"];
+        [dic setObject:@"buySendSms" forKey:@"type"];
+        [dic setObject:self.phoneTextFiled.text forKey:@"mobile"];
+        
+        [RentApi rentYzmWithBlock:^(NSDictionary *dict, NSError *error) {
+            if(!error){
+            
+            }
+        } dic:dic noNetWork:nil];
+    }
 }
 
 -(void)agreeAction{
@@ -304,32 +319,68 @@
         return;
     }
     
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setObject:@"order" forKey:@"_cmd_"];
-    [dic setObject:[NSNumber numberWithInteger:self.type] forKey:@"car_type"];
-    [dic setObject:@"borrow_add" forKey:@"type"];
-    [dic setObject:self.dict[@"city"] forKey:@"city"];
-    [dic setObject:self.dict[@"money"] forKey:@"loanmoney"];
-    [dic setObject:self.dict[@"time"] forKey:@"loanmonth"];
-    [dic setObject:self.phoneTextFiled.text forKey:@"mobile"];
-    [dic setObject:self.nameTextFiled.text forKey:@"names"];
-    [dic setObject:self.yzmTextFiled.text forKey:@"sms_code"];
-    
-    __block typeof(self)wSelf = self;
-    [LoanApi addLoanWithBlock:^(NSDictionary *dict, NSError *error) {
-        if(!error){
-            NSMutableArray *contentArr = [[NSMutableArray alloc] init];
-            [contentArr addObject:dic[@"names"]];
-            [contentArr addObject:dic[@"mobile"]];
-            [contentArr addObject:dic[@"city"]];
-            [contentArr addObject:dic[@"loanmoney"]];
-            [contentArr addObject:dic[@"loanmonth"]];
-            [contentArr addObject:self.dict[@"allMoney"]];
-            
-            LoanSuccessViewController *view = [[LoanSuccessViewController alloc] init];
-            view.contentArr = contentArr;
-            [wSelf.navigationController pushViewController:view animated:YES];
-        }
-    } dic:dic noNetWork:nil];
+    if(self.loanOrRent == loanType){
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setObject:@"order" forKey:@"_cmd_"];
+        [dic setObject:[NSNumber numberWithInteger:self.type] forKey:@"car_type"];
+        [dic setObject:@"borrow_add" forKey:@"type"];
+        [dic setObject:self.dict[@"city"] forKey:@"city"];
+        [dic setObject:self.dict[@"money"] forKey:@"loanmoney"];
+        [dic setObject:self.dict[@"time"] forKey:@"loanmonth"];
+        [dic setObject:self.phoneTextFiled.text forKey:@"mobile"];
+        [dic setObject:self.nameTextFiled.text forKey:@"names"];
+        [dic setObject:self.yzmTextFiled.text forKey:@"sms_code"];
+        
+        __block typeof(self)wSelf = self;
+        [LoanApi addLoanWithBlock:^(NSDictionary *dict, NSError *error) {
+            if(!error){
+                NSMutableArray *contentArr = [[NSMutableArray alloc] init];
+                [contentArr addObject:dic[@"names"]];
+                [contentArr addObject:dic[@"mobile"]];
+                [contentArr addObject:dic[@"city"]];
+                [contentArr addObject:dic[@"loanmoney"]];
+                [contentArr addObject:dic[@"loanmonth"]];
+                [contentArr addObject:self.dict[@"allMoney"]];
+                
+                LoanSuccessViewController *view = [[LoanSuccessViewController alloc] init];
+                view.contentArr = contentArr;
+                [wSelf.navigationController pushViewController:view animated:YES];
+            }
+        } dic:dic noNetWork:nil];
+    }else{
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setObject:@"order" forKey:@"_cmd_"];
+        [dic setObject:@"buy_add" forKey:@"type"];
+        [dic setObject:self.dict[@"city"] forKey:@"city"];
+        [dic setObject:self.dict[@"dealer"] forKey:@"dealer"];
+        [dic setObject:self.dict[@"loanmoney"] forKey:@"loanmoney"];
+        [dic setObject:self.dict[@"car_brand"] forKey:@"car_brand"];
+        [dic setObject:self.dict[@"car_class"] forKey:@"car_class"];
+        [dic setObject:self.dict[@"loanmonth"] forKey:@"loanmonth"];
+        [dic setObject:self.phoneTextFiled.text forKey:@"mobile"];
+        [dic setObject:self.nameTextFiled.text forKey:@"names"];
+        [dic setObject:self.yzmTextFiled.text forKey:@"sms_code"];
+        
+        __block typeof(self)wSelf = self;
+        [RentApi addRentWithBlock:^(NSDictionary *dict, NSError *error) {
+            if(!error){
+                NSMutableArray *contentArr = [[NSMutableArray alloc] init];
+                [contentArr addObject:dic[@"names"]];
+                [contentArr addObject:dic[@"mobile"]];
+                [contentArr addObject:dic[@"city"]];
+                [contentArr addObject:dic[@"dealer"]];
+                [contentArr addObject:[NSString stringWithFormat:@"%@元",dic[@"loanmoney"]]];
+                [contentArr addObject:dic[@"car_brand"]];
+                [contentArr addObject:dic[@"car_class"]];
+                [contentArr addObject:dic[@"loanmonth"]];
+                [contentArr addObject:self.dict[@"monthMoney"]];
+                [contentArr addObject:[NSString stringWithFormat:@"%@元",self.dict[@"firstMoney"]]];
+                
+                RentSuccessViewController *view = [[RentSuccessViewController alloc] init];
+                view.contentArr = contentArr;
+                [wSelf.navigationController pushViewController:view animated:YES];
+            }
+        } dic:dic noNetWork:nil];
+    }
 }
 @end

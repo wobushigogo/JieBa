@@ -257,6 +257,17 @@
     if(!_QRImageView){
         UIImageView *QRImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, WidthXiShu(293), HeightXiShu(433))];
         QRImageView.userInteractionEnabled = YES;
+        
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectMake((QRImageView.width-WidthXiShu(157))/2, QRImageView.height-HeightXiShu(35), WidthXiShu(157), HeightXiShu(27));
+        [btn setTitle:@"长按名片保存到相册" forState:UIControlStateNormal];
+        btn.titleLabel.font = HEITI(HeightXiShu(12));
+        btn.layer.masksToBounds = YES;
+        btn.layer.cornerRadius = HeightXiShu(5);
+        btn.layer.borderColor = [UIColor whiteColor].CGColor;
+        btn.layer.borderWidth = .5;
+        [QRImageView addSubview:btn];
+        
         UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(QRImageLong:)];
         longPress.minimumPressDuration = 0.8; //定义按的时间
         [QRImageView addGestureRecognizer:longPress];

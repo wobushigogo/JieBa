@@ -22,5 +22,6 @@
 +(StageChooseView *)stageChooseViewWithStages:(NSArray*)stages numbers:(NSArray*)numbers delegate:(id<StageChooseViewDelegate>)delegate underLineIsWhole:(BOOL)underLineIsWhole normalColor:(UIColor*)normalColor highlightColor:(UIColor*)highlightColor height:(CGFloat)height;
 - (void)hideVerticalLine;
 @property(nonatomic,strong)NSMutableArray* labels;
+-(void)stageLabelClickedWithSequence:(NSInteger)sequence;
 
 @end

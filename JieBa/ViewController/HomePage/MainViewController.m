@@ -20,6 +20,8 @@
 #import "MainRentViewController.h"
 #import "MainLoanViewController.h"
 #import "EvaluateViewController.h"
+#import "ScanViewController.h"
+#import "CommentListViewController.h"
 
 @interface MainViewController ()<ZWAdViewDelagate,MainButtonCellDelegate>
 @property(nonatomic,strong)UIView *headView;
@@ -102,6 +104,7 @@
     [moreBtn setTitleColor:ButtonColor forState:UIControlStateNormal];
     moreBtn.titleLabel.font = HEITI(HeightXiShu(10));
     moreBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    [moreBtn addTarget:self action:@selector(moreACtion) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:moreBtn];
     return view;
 }
@@ -162,12 +165,19 @@
 -(UIButton *)scanBtn{
     if(!_scanBtn){
         UIButton *scanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        scanBtn.frame = CGRectMake(kScreenWidth-WidthXiShu(12)-WidthXiShu(22), HeightXiShu(30), WidthXiShu(22), HeightXiShu(22));
+        scanBtn.frame = CGRectMake(kScreenWidth-WidthXiShu(12)-WidthXiShu(44), HeightXiShu(23), WidthXiShu(44), HeightXiShu(44));
         [scanBtn setImage:[GetImagePath getImagePath:@"homePage_scan"] forState:UIControlStateNormal];
+        [scanBtn addTarget:self action:@selector(scanACtion) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:scanBtn];
         _scanBtn = scanBtn;
     }
     return _scanBtn;
+}
+
+#pragma mark - 事件
+-(void)moreACtion{
+    CommentListViewController *view = [[CommentListViewController alloc] init];
+    [self.navigationController pushViewController:view animated:YES];
 }
 
 #pragma mark - ZWAdViewDelagate
@@ -309,5 +319,12 @@
         default:
             break;
     }
+}
+
+#pragma mark - 扫描
+-(void)scanACtion{
+    NSLog(@"scanACtion");
+    ScanViewController *view = [[ScanViewController alloc] init];
+    [self.navigationController pushViewController:view animated:YES];
 }
 @end

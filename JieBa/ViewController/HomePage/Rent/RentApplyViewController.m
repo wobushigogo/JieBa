@@ -12,6 +12,7 @@
 #import "PickerView.h"
 #import "RentModel.h"
 #import "RentApi.h"
+#import "LoanDetailViewController.h"
 
 @interface RentApplyViewController ()<RentApplyCellDelegate>
 @property(nonatomic,strong)NavView *navView;
@@ -298,11 +299,97 @@
 }
 
 -(void)applyAction{
+    if([self.contentArr[0] isEqualToString:@""]){
+        [self addAlertView:@"请填写城市" block:nil];
+        return;
+    }
     
+    if([self.contentArr[1] isEqualToString:@""]){
+        [self addAlertView:@"请选择经销商" block:nil];
+        return;
+    }
+    
+    if([self.contentArr[2] isEqualToString:@""]){
+        [self addAlertView:@"请填写贷款金额" block:nil];
+        return;
+    }
+    
+    if([self.contentArr[3] isEqualToString:@""]){
+        [self addAlertView:@"请填写车辆品牌" block:nil];
+        return;
+    }
+    
+    if([self.contentArr[4] isEqualToString:@""]){
+        [self addAlertView:@"请填写车辆型号" block:nil];
+        return;
+    }
+    
+    if([self.contentArr[5] isEqualToString:@""]){
+        [self addAlertView:@"请选择贷款期限" block:nil];
+        return;
+    }
+    
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:self.contentArr[0] forKey:@"city"];
+    [dic setObject:self.contentArr[1] forKey:@"dealer"];
+    [dic setObject:self.contentArr[2] forKey:@"loanmoney"];
+    [dic setObject:self.contentArr[3] forKey:@"car_brand"];
+    [dic setObject:self.contentArr[4] forKey:@"car_class"];
+    [dic setObject:self.contentArr[5] forKey:@"loanmonth"];
+    [dic setObject:self.contentArr[6] forKey:@"monthMoney"];
+    [dic setObject:self.contentArr[7] forKey:@"firstMoney"];
+    
+    LoanDetailViewController *view = [[LoanDetailViewController alloc] init];
+    view.dict = dic;
+    view.loanOrRent = rentType;
+    [self.navigationController pushViewController:view animated:YES];
 }
 
 -(void)changeMoneyWithPayment:(NSInteger)index{
     [self.contentArr replaceObjectAtIndex:5 withObject:[NSString stringWithFormat:@"%@期",self.rentModel.percentArr[index]]];
+    
+    NSString *money = self.contentArr[2];
+    NSString *time =  self.contentArr[5];
+    
+    if(![money isEqualToString:@""] && ![time isEqualToString:@""]){
+        //首付金额
+        double firstMoney = [money intValue]*0.3;
+        [self.contentArr replaceObjectAtIndex:7 withObject:[NSString stringWithFormat:@"%@",[StringTool roundFloat:firstMoney]]];
+        
+        //月需还款
+        double val = [money intValue]*0.006*[time intValue]+[money intValue];
+        double newMoney =  val/[time intValue];
+        [self.contentArr replaceObjectAtIndex:6 withObject:[NSString stringWithFormat:@"%@",[StringTool roundFloat:newMoney]]];
+    }
+    
+    [self.tableView reloadData];
+}
+
+-(void)changeMoneyWithMoney:(NSString *)string{
+//    if([string floatValue] < 30000){
+//        [self addAlertView:@"金额不能小于3万" block:nil];
+//        return;
+//    }
+//    
+//    if([string floatValue] > 500000){
+//        [self addAlertView:@"金额不能大于50万" block:nil];
+//        return;
+//    }
+    
+    [self.contentArr replaceObjectAtIndex:2 withObject:string];
+    NSString *money = self.contentArr[2];
+    NSString *time =  self.contentArr[5];
+    
+    if(![money isEqualToString:@""] && ![time isEqualToString:@""]){
+        //首付金额
+        double firstMoney = [money intValue]*0.3;
+        [self.contentArr replaceObjectAtIndex:7 withObject:[NSString stringWithFormat:@"%@",[StringTool roundFloat:firstMoney]]];
+        
+        //月需还款
+        double val = [money intValue]*0.006*[time intValue]+[money intValue];
+        double newMoney =  val/[time intValue];
+        [self.contentArr replaceObjectAtIndex:6 withObject:[NSString stringWithFormat:@"%@",[StringTool roundFloat:newMoney]]];
+    }
     [self.tableView reloadData];
 }
 
@@ -313,8 +400,12 @@
 
 #pragma mark - LoanTableViewCellDelegate
 -(void)textFieldDidEndEditing:(UITextField *)textField indexRow:(NSInteger)indexRow{
-    [self.contentArr replaceObjectAtIndex:indexRow withObject:textField.text];
-    [self.tableView reloadData];
+    if(indexRow == 2){
+        [self changeMoneyWithMoney:textField.text];
+    }else{
+        [self.contentArr replaceObjectAtIndex:indexRow withObject:textField.text];
+        [self.tableView reloadData];
+    }
 }
 
 #pragma mark - 接口
