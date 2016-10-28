@@ -121,6 +121,15 @@
 		D33AAF221DB8CB8200459F4E /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D33AAF211DB8CB8200459F4E /* CoreMedia.framework */; };
 		D33AAF241DB8CB8D00459F4E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D33AAF231DB8CB8D00459F4E /* SystemConfiguration.framework */; };
 		D33AAF261DB8CB9400459F4E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D33AAF251DB8CB9400459F4E /* MobileCoreServices.framework */; };
+		D33B0DC31DC2F29A007A6168 /* WithdrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D33B0DC21DC2F29A007A6168 /* WithdrawViewController.m */; };
+		D33B0DC61DC3139C007A6168 /* WithdrawCashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D33B0DC51DC3139C007A6168 /* WithdrawCashViewController.m */; };
+		D33B0DCB1DC31522007A6168 /* SignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D33B0DCA1DC31522007A6168 /* SignViewController.m */; };
+		D33B0DCF1DC31749007A6168 /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D33B0DCE1DC31749007A6168 /* ActivityViewController.m */; };
+		D33B0DD31DC31951007A6168 /* MessageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D33B0DD21DC31951007A6168 /* MessageListViewController.m */; };
+		D33B0DD61DC31B01007A6168 /* MessageListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D33B0DD51DC31B01007A6168 /* MessageListCell.m */; };
+		D33B0DD91DC31B65007A6168 /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D33B0DD81DC31B65007A6168 /* MessageModel.m */; };
+		D33B0DDC1DC3263B007A6168 /* MessageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D33B0DDB1DC3263B007A6168 /* MessageDetailViewController.m */; };
+		D33B0DE01DC347A7007A6168 /* BindCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D33B0DDF1DC347A7007A6168 /* BindCardViewController.m */; };
 		D34589F91DB07C52007BD2CF /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D34589F81DB07C52007BD2CF /* MainViewController.m */; };
 		D34589FD1DB07D79007BD2CF /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D34589FC1DB07D79007BD2CF /* BaseNavigationController.m */; };
 		D3458A051DB0854F007BD2CF /* NSString+LabelKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D3458A001DB0854F007BD2CF /* NSString+LabelKit.m */; };
@@ -549,6 +558,24 @@
 		D33AAF211DB8CB8200459F4E /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		D33AAF231DB8CB8D00459F4E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D33AAF251DB8CB9400459F4E /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		D33B0DC11DC2F29A007A6168 /* WithdrawViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WithdrawViewController.h; sourceTree = "<group>"; };
+		D33B0DC21DC2F29A007A6168 /* WithdrawViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WithdrawViewController.m; sourceTree = "<group>"; };
+		D33B0DC41DC3139C007A6168 /* WithdrawCashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WithdrawCashViewController.h; sourceTree = "<group>"; };
+		D33B0DC51DC3139C007A6168 /* WithdrawCashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WithdrawCashViewController.m; sourceTree = "<group>"; };
+		D33B0DC91DC31522007A6168 /* SignViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignViewController.h; sourceTree = "<group>"; };
+		D33B0DCA1DC31522007A6168 /* SignViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignViewController.m; sourceTree = "<group>"; };
+		D33B0DCD1DC31749007A6168 /* ActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewController.h; sourceTree = "<group>"; };
+		D33B0DCE1DC31749007A6168 /* ActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewController.m; sourceTree = "<group>"; };
+		D33B0DD11DC31951007A6168 /* MessageListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListViewController.h; sourceTree = "<group>"; };
+		D33B0DD21DC31951007A6168 /* MessageListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListViewController.m; sourceTree = "<group>"; };
+		D33B0DD41DC31B01007A6168 /* MessageListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListCell.h; sourceTree = "<group>"; };
+		D33B0DD51DC31B01007A6168 /* MessageListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListCell.m; sourceTree = "<group>"; };
+		D33B0DD71DC31B65007A6168 /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
+		D33B0DD81DC31B65007A6168 /* MessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageModel.m; sourceTree = "<group>"; };
+		D33B0DDA1DC3263B007A6168 /* MessageDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageDetailViewController.h; sourceTree = "<group>"; };
+		D33B0DDB1DC3263B007A6168 /* MessageDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageDetailViewController.m; sourceTree = "<group>"; };
+		D33B0DDE1DC347A7007A6168 /* BindCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindCardViewController.h; sourceTree = "<group>"; };
+		D33B0DDF1DC347A7007A6168 /* BindCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindCardViewController.m; sourceTree = "<group>"; };
 		D34589F71DB07C52007BD2CF /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		D34589F81DB07C52007BD2CF /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		D34589FB1DB07D79007BD2CF /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
@@ -1335,6 +1362,57 @@
 			path = libs;
 			sourceTree = "<group>";
 		};
+		D33B0DC01DC2F24B007A6168 /* Withdraw */ = {
+			isa = PBXGroup;
+			children = (
+				D33B0DC11DC2F29A007A6168 /* WithdrawViewController.h */,
+				D33B0DC21DC2F29A007A6168 /* WithdrawViewController.m */,
+				D33B0DC41DC3139C007A6168 /* WithdrawCashViewController.h */,
+				D33B0DC51DC3139C007A6168 /* WithdrawCashViewController.m */,
+			);
+			path = Withdraw;
+			sourceTree = "<group>";
+		};
+		D33B0DC81DC31516007A6168 /* Sign */ = {
+			isa = PBXGroup;
+			children = (
+				D33B0DC91DC31522007A6168 /* SignViewController.h */,
+				D33B0DCA1DC31522007A6168 /* SignViewController.m */,
+			);
+			path = Sign;
+			sourceTree = "<group>";
+		};
+		D33B0DCC1DC3173D007A6168 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				D33B0DCD1DC31749007A6168 /* ActivityViewController.h */,
+				D33B0DCE1DC31749007A6168 /* ActivityViewController.m */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		D33B0DD01DC3193C007A6168 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				D33B0DD11DC31951007A6168 /* MessageListViewController.h */,
+				D33B0DD21DC31951007A6168 /* MessageListViewController.m */,
+				D33B0DD41DC31B01007A6168 /* MessageListCell.h */,
+				D33B0DD51DC31B01007A6168 /* MessageListCell.m */,
+				D33B0DDA1DC3263B007A6168 /* MessageDetailViewController.h */,
+				D33B0DDB1DC3263B007A6168 /* MessageDetailViewController.m */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		D33B0DDD1DC346DA007A6168 /* BindCard */ = {
+			isa = PBXGroup;
+			children = (
+				D33B0DDE1DC347A7007A6168 /* BindCardViewController.h */,
+				D33B0DDF1DC347A7007A6168 /* BindCardViewController.m */,
+			);
+			path = BindCard;
+			sourceTree = "<group>";
+		};
 		D34589F51DB07C2A007BD2CF /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1425,6 +1503,11 @@
 		D3458A131DB08847007BD2CF /* MyCenterViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D33B0DDD1DC346DA007A6168 /* BindCard */,
+				D33B0DD01DC3193C007A6168 /* Message */,
+				D33B0DCC1DC3173D007A6168 /* Activity */,
+				D33B0DC81DC31516007A6168 /* Sign */,
+				D33B0DC01DC2F24B007A6168 /* Withdraw */,
 				D322EA8C1DBF38CA0089FD56 /* Recharge */,
 				D3348CE21DB9F2B900A5E06A /* More */,
 				D3B2BE3D1DB74FAF0095306E /* Order */,
@@ -2123,6 +2206,8 @@
 				D3B2BE141DB717CB0095306E /* UserInfoModel.m */,
 				D3B2BE511DB763DE0095306E /* OrderModel.h */,
 				D3B2BE521DB763DE0095306E /* OrderModel.m */,
+				D33B0DD71DC31B65007A6168 /* MessageModel.h */,
+				D33B0DD81DC31B65007A6168 /* MessageModel.m */,
 			);
 			path = MyCenterModel;
 			sourceTree = "<group>";
@@ -2522,6 +2607,7 @@
 			files = (
 				D3B2BE321DB73F6B0095306E /* LewPopupViewAnimationDrop.m in Sources */,
 				D3E147B51DAF335C002F6D60 /* AFAppDotNetAPIClient.m in Sources */,
+				D33B0DC31DC2F29A007A6168 /* WithdrawViewController.m in Sources */,
 				D347E25C1DB30E4D00E7B9BA /* MJRefreshStateHeader.m in Sources */,
 				D3B2BE4A1DB756F60095306E /* OrderFailViewController.m in Sources */,
 				D347E2541DB30E4D00E7B9BA /* MJRefreshAutoGifFooter.m in Sources */,
@@ -2546,13 +2632,16 @@
 				D3B2BE561DB76B520095306E /* OrderSuccessCell.m in Sources */,
 				D347E2591DB30E4D00E7B9BA /* MJRefreshBackStateFooter.m in Sources */,
 				D3E147C91DAF335C002F6D60 /* UIRefreshControl+AFNetworking.m in Sources */,
+				D33B0DC61DC3139C007A6168 /* WithdrawCashViewController.m in Sources */,
 				D3B2BE471DB756E00095306E /* OrderSuccessViewController.m in Sources */,
 				D3458A1D1DB0888F007BD2CF /* RentViewController.m in Sources */,
 				D3B2BE151DB717CB0095306E /* UserInfoModel.m in Sources */,
 				D3E147C61DAF335C002F6D60 /* UIButton+AFNetworking.m in Sources */,
 				D3458A5A1DB217E2007BD2CF /* StringTool.m in Sources */,
 				D347E2911DB3138E00E7B9BA /* UIImage+GIF.m in Sources */,
+				D33B0DCF1DC31749007A6168 /* ActivityViewController.m in Sources */,
 				D3E147C81DAF335C002F6D60 /* UIProgressView+AFNetworking.m in Sources */,
+				D33B0DD31DC31951007A6168 /* MessageListViewController.m in Sources */,
 				D3348CF41DBA127400A5E06A /* CreditListViewController.m in Sources */,
 				D347E2581DB30E4D00E7B9BA /* MJRefreshBackNormalFooter.m in Sources */,
 				D3E8196F1DAF259E0054B352 /* ViewController.m in Sources */,
@@ -2589,10 +2678,13 @@
 				D3E8196C1DAF259E0054B352 /* AppDelegate.m in Sources */,
 				D347E29C1DB3404C00E7B9BA /* InvitationCell.m in Sources */,
 				D347E2991DB336A600E7B9BA /* MainButtonCell.m in Sources */,
+				D33B0DCB1DC31522007A6168 /* SignViewController.m in Sources */,
 				D3458A0A1DB0869F007BD2CF /* UILabel+LabelKit.m in Sources */,
 				D347E28F1DB3138E00E7B9BA /* SDWebImagePrefetcher.m in Sources */,
 				D347E3171DB4A54E00E7B9BA /* LocationView.m in Sources */,
+				D33B0DD61DC31B01007A6168 /* MessageListCell.m in Sources */,
 				D3E147C71DAF335C002F6D60 /* UIImageView+AFNetworking.m in Sources */,
+				D33B0DDC1DC3263B007A6168 /* MessageDetailViewController.m in Sources */,
 				D347E2EC1DB495E600E7B9BA /* InvitationModel.m in Sources */,
 				D3B2BE531DB763DE0095306E /* OrderModel.m in Sources */,
 				D321DFB51DC1E7A400A5F042 /* CarlifeModel.m in Sources */,
@@ -2652,6 +2744,7 @@
 				D321DFA71DC1D2CB00A5F042 /* CommentListViewController.m in Sources */,
 				D347E25A1DB30E4D00E7B9BA /* MJRefreshGifHeader.m in Sources */,
 				D34589FD1DB07D79007BD2CF /* BaseNavigationController.m in Sources */,
+				D33B0DE01DC347A7007A6168 /* BindCardViewController.m in Sources */,
 				D3458A621DB21F6A007BD2CF /* ForgetPwdViewController.m in Sources */,
 				D3B2BE3C1DB74E1F0095306E /* StageAndNumberView.m in Sources */,
 				D347E3301DB4D1FE00E7B9BA /* MyCenterHead.m in Sources */,
@@ -2681,6 +2774,7 @@
 				D3E147E81DAF5FAE002F6D60 /* FMDatabaseAdditions.m in Sources */,
 				D3B2BE591DB76B600095306E /* OrderFailCell.m in Sources */,
 				D347E25E1DB30E4D00E7B9BA /* MJRefreshConst.m in Sources */,
+				D33B0DD91DC31B65007A6168 /* MessageModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2824,6 +2918,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
 				PROVISIONING_PROFILE = "61a1f768-3806-4799-97aa-b2fdf07ecc99";
 				PROVISIONING_PROFILE_SPECIFIER = JieBa_dev;
 				SDKROOT = iphoneos;
@@ -2836,6 +2931,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jinhua Hou (8NHJNRH34B)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = QQUFUHZ7LV;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2851,9 +2947,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/JieBa/Tools/ZBarSDK",
 				);
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhixin.JieBa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "61a1f768-3806-4799-97aa-b2fdf07ecc99";
+				PROVISIONING_PROFILE = "9a4cbf92-7bd7-48dc-958d-85c298adecfb";
 				PROVISIONING_PROFILE_SPECIFIER = JieBa_dev;
 			};
 			name = Debug;
@@ -2863,6 +2961,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jinhua Hou (8NHJNRH34B)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2878,9 +2977,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/JieBa/Tools/ZBarSDK",
 				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhixin.JieBa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = JieBa_dev;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

@@ -215,4 +215,12 @@
     }];
     self.nameLabel.text = model.userName;
 }
+
+-(void)setAvatarUrl:(NSString *)avatarUrl{
+    _avatarUrl = avatarUrl;
+    __block typeof(self)wSelf = self;
+    [self.userImgBtn sd_setImageWithURL:[NSURL URLWithString:avatarUrl] forState:UIControlStateNormal placeholderImage:nil options:SDWebImageProgressiveDownload completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        [wSelf.userImgBtn setImage:[StringTool imageWithRoundedCornersSize:image.size.width/2 usingImage:image] forState:UIControlStateNormal];
+    }];
+}
 @end

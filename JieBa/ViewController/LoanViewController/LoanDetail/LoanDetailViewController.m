@@ -255,7 +255,7 @@
         
         [LoanApi loanYzmWithBlock:^(NSDictionary *dict, NSError *error) {
             if(!error){
-                
+                [self addAlertView:@"验证码已发送" block:nil];
             }
         } dic:dic noNetWork:nil];
     }else{

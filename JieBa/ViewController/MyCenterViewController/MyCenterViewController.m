@@ -17,6 +17,12 @@
 #import "RealNameViewController.h"
 #import "RealWithUsViewController.h"
 #import "RechargeViewController.h"
+#import "WithdrawViewController.h"
+#import "SignViewController.h"
+#import "ActivityViewController.h"
+#import "MessageListViewController.h"
+#import "AddCashViewController.h"
+#import "BindCardViewController.h"
 
 @interface MyCenterViewController ()<MyCenterHeadDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property(nonatomic,strong)MyCenterHead *headView;
@@ -38,6 +44,7 @@
     self.tableView.tableFooterView = self.footerView;
     self.tableView.backgroundColor = AllBackLightGratColor;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeUserName:) name:@"changeUserName" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadInfo) name:@"reloadInfo" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,6 +59,7 @@
 
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"changeUserName" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"reloadInfo" object:nil];
 }
 
 #pragma mark - tableView delegate dataSource
@@ -97,8 +105,8 @@
         NSString *mainSelector = @[@"balanceAction",@"orderAction",@"centerAction"][indexPath.section];
         NSString *buttonName1 = @[@"充值",[NSString stringWithFormat:@"待评价  %ld",(long)self.userInfoModel.assed_count],@"实名认证"][indexPath.section];
         NSString *buttonName2 = @[@"提现",@"已评价",@"绑定银行卡"][indexPath.section];
-        NSString *selector1 = @[@"creditAction",@"evaluateAction",@"approveAction"][indexPath.section];
-        NSString *selector2 = @[@"withdrawAction",@"evaluateEndAction",@"bindAction"][indexPath.section];
+        NSString *selector1 = @[@"creditAction:",@"evaluateAction:",@"approveAction:"][indexPath.section];
+        NSString *selector2 = @[@"withdrawAction:",@"evaluateEndAction:",@"bindAction:"][indexPath.section];
         
         BOOL isString = YES;
         if(indexPath.section == 0){
@@ -158,15 +166,25 @@
         if(indexPath.row == 0){
         
         }else if (indexPath.row == 1){
-        
+            ActivityViewController *view = [[ActivityViewController alloc] init];
+            [self.navigationController pushViewController:view animated:YES];
         }else if (indexPath.row == 2){
         
         }else{
             MoreViewController *view = [[MoreViewController alloc] init];
             [self.navigationController pushViewController:view animated:YES];
         }
-    }else if (indexPath.row == 4){
+    }else if (indexPath.section == 4){
+        UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:@"提示" message:@"拨打客服电话：400 663 9066" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *serviceAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
         
+        UIAlertAction *phoneAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            NSString *telStr = [@"tel://" stringByAppendingString:@"4006639066"];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telStr]];
+        }];
+        [alertControl addAction:serviceAction];
+        [alertControl addAction:phoneAction];
+        [self presentViewController:alertControl animated:YES completion:nil];
     }
 }
 
@@ -277,20 +295,30 @@
 }
 
 #pragma mark - selector
--(void)creditAction{
+-(void)creditAction:(UIButton *)button{
     NSLog(@"creditAction");
+    button.enabled = NO;
     __block typeof(self)wSelf = self;
     [self loadNameStatus:^(NSDictionary *dict) {
+        button.enabled = YES;
         RechargeViewController *view = [[RechargeViewController alloc] init];
         [wSelf.navigationController pushViewController:view animated:YES];
     }];
 }
 
--(void)withdrawAction{
+-(void)withdrawAction:(UIButton *)button{
     NSLog(@"withdrawAction");
+    button.enabled = NO;
+    __block typeof(self)wSelf = self;
+    [self loadNameStatus:^(NSDictionary *dict) {
+        button.enabled = YES;
+        WithdrawViewController *view = [[WithdrawViewController alloc] init];
+        view.balance = self.userInfoModel.balance;
+        [wSelf.navigationController pushViewController:view animated:YES];
+    }];
 }
 
--(void)evaluateAction{
+-(void)evaluateAction:(UIButton *)button{
     NSLog(@"evaluateAction");
 }
 
@@ -298,9 +326,11 @@
     NSLog(@"evaluateEndAction");
 }
 
--(void)approveAction{
+-(void)approveAction:(UIButton *)button{
     __block typeof(self)wSelf = self;
+    button.enabled = NO;
     [self loadNameStatus:^(NSDictionary *dict) {
+        button.enabled = YES;
         RealWithUsViewController *view = [[RealWithUsViewController alloc] init];
         view.isReal = YES;
         view.realName = dict[@"names"];
@@ -309,8 +339,19 @@
     }];
 }
 
--(void)bindAction{
+-(void)bindAction:(UIButton *)button{
     NSLog(@"bindAction");
+    __block typeof(self)wSelf = self;
+    button.enabled = NO;
+    [self loadNameStatus:^(NSDictionary *dict) {
+        button.enabled = YES;
+        if([dict[@"openFuyouStatus"] intValue] == 0){
+            [wSelf isBindCard];
+        }else{
+            BindCardViewController *view = [[BindCardViewController alloc] init];
+            [wSelf.navigationController pushViewController:view animated:YES];
+        }
+    }];
 }
 
 -(void)QRImageLong:(UILongPressGestureRecognizer *)gestureRecognizer{
@@ -365,7 +406,8 @@
 }
 
 -(void)messageClick{
-
+    MessageListViewController *view = [[MessageListViewController alloc] init];
+    [self.navigationController pushViewController:view animated:YES];
 }
 
 -(void)QRCoedeClick{
@@ -377,7 +419,8 @@
 }
 
 -(void)signClick{
-
+    SignViewController *view = [[SignViewController alloc] init];
+    [self.navigationController pushViewController:view animated:YES];
 }
 
 -(void)activeClick{
@@ -455,9 +498,13 @@
 -(void)gotoAddImage:(NSData *)imageData image:(UIImage *)image{
     [MyCenterApi updataHeadWithBlock:^(NSString *imageUrl, NSError *error) {
         if(!error){
-        
+            self.headView.avatarUrl = imageUrl;
         }
     } imgData:imageData noNetWork:nil];
+}
+
+-(void)reloadInfo{
+    [self loadUserInfo];
 }
 
 -(void)loadUserInfo{
@@ -498,6 +545,22 @@
                 [alertControl addAction:agreeAction];
                 [wSelf presentViewController:alertControl animated:YES completion:nil];
             }
+        }
+    } dic:dic noNetWork:nil];
+}
+
+-(void)isBindCard{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"cash" forKey:@"_cmd_"];
+    [dic setObject:@"1" forKey:@"money"];
+    [dic setObject:@"cash_in" forKey:@"type"];
+    
+    [MyCenterApi addCashWithBlock:^(NSMutableDictionary *dict, NSError *error) {
+        if(!error){
+            AddCashViewController *view = [[AddCashViewController alloc] init];
+            view.webUrl = dict[@"jumpurl"];
+            view.dic = dict;
+            [self.navigationController pushViewController:view animated:YES];
         }
     } dic:dic noNetWork:nil];
 }

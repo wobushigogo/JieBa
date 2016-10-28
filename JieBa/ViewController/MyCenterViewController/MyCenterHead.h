@@ -20,4 +20,5 @@
 @interface MyCenterHead : UIView
 @property(nonatomic,weak)id<MyCenterHeadDelegate>delegate;
 @property(nonatomic,strong)UserInfoModel *model;
+@property(nonatomic,strong)NSString *avatarUrl;
 @end

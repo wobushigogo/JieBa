@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "UserInfoModel.h"
+#import "MessageModel.h"
 
 @interface MyCenterApi : NSObject
 //邀请记录
@@ -15,6 +16,9 @@
 
 //系统消息列表
 + (void)systemMessageListWithBlock:(void (^)(NSMutableArray *array, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork;
+
+//系统消息详情
++ (void)systemMessageInfoWithBlock:(void (^)(MessageModel *model, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork;
 
 //上传头像
 + (void)updataHeadWithBlock:(void (^)(NSString *imageUrl, NSError *error))block imgData:(NSData *)imgData noNetWork:(void(^)())noNetWork;
@@ -45,4 +49,10 @@
 
 //充值
 + (void)addCashWithBlock:(void (^)(NSMutableDictionary *dict, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork;
+
+//充值
++ (void)withdrawCashWithBlock:(void (^)(NSMutableDictionary *dict, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork;
+
+//富友金账户基本信息
++ (void)getFuyouInfoWithBlock:(void (^)(NSMutableDictionary *dict, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork;
 @end

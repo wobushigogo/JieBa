@@ -249,6 +249,8 @@
     [HomeApi html5WithBlock:^(NSMutableDictionary *dict, NSError *error) {
         if(!error){
             self.urlDic = dict;
+            [LoginSqlite insertData:dict[@"sign"] datakey:@"sign"];
+            [LoginSqlite insertData:dict[@"activity"] datakey:@"activity"];
         }
     } dic:dic noNetWork:nil];
 }

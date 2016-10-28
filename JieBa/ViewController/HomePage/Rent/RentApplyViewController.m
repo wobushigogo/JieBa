@@ -366,15 +366,15 @@
 }
 
 -(void)changeMoneyWithMoney:(NSString *)string{
-//    if([string floatValue] < 30000){
-//        [self addAlertView:@"金额不能小于3万" block:nil];
-//        return;
-//    }
-//    
-//    if([string floatValue] > 500000){
-//        [self addAlertView:@"金额不能大于50万" block:nil];
-//        return;
-//    }
+    if([string floatValue] < 30000){
+        [self addAlertView:@"金额不能小于3万" block:nil];
+        return;
+    }
+    
+    if([string floatValue] > 500000){
+        [self addAlertView:@"金额不能大于50万" block:nil];
+        return;
+    }
     
     [self.contentArr replaceObjectAtIndex:2 withObject:string];
     NSString *money = self.contentArr[2];

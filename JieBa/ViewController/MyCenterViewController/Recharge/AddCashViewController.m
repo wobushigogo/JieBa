@@ -66,6 +66,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = YES;
+}
+
 #pragma mark - 页面元素
 
 -(NavView *)navView{
@@ -91,12 +96,15 @@
     NSString *url = navigationAction.request.URL.absoluteString;
     
     NSLog(@"url = %@",url);
-    BOOL toProduct = [url containsString:@"jieba=cdb"];
+    BOOL toProduct = [url containsString:@"jieba=cash_in"];
+    
+    BOOL back = [url containsString:@"jieba=openfuyou"];
     
     WKNavigationActionPolicy allow = WKNavigationActionPolicyAllow;
     
-    if (toProduct) {
-        
+    if (toProduct || back) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadInfo" object:nil userInfo:nil];
         allow = WKNavigationActionPolicyCancel;
     }
     if (decisionHandler) {

@@ -10,6 +10,7 @@
 #import "SendRequst.h"
 #import "InviteModel.h"
 #import "OrderModel.h"
+#import "MessageModel.h"
 
 @implementation MyCenterApi
 + (void)invitationListWithBlock:(void (^)(NSMutableArray *array, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork{
@@ -38,13 +39,31 @@
     NSString *urlStr = [NSString stringWithFormat:@"?system"];
     [SendRequst formRequstWithUrlString:urlStr postParamDic:dic success:^(id responseDic) {
         NSMutableArray *arr = [[NSMutableArray alloc] init];
-        if([responseDic[@"dataresult"][@"systemlist"] isKindOfClass:[NSArray class]]){
+        if([responseDic[@"dataresult"][@"systemlist"] count] !=0){
             for(NSDictionary *item in responseDic[@"dataresult"][@"systemlist"]){
-                
+                MessageModel *model = [[MessageModel alloc] init];
+                [model setDict:item];
+                [arr addObject:model];
             }
         }
         if(block){
             block(arr,nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"error===>%@",error);
+        if (block) {
+            block(nil, error);
+        }
+    } apiName:@"system" noNetWork:nil];
+}
+
++ (void)systemMessageInfoWithBlock:(void (^)(MessageModel *model, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork{
+    NSString *urlStr = [NSString stringWithFormat:@"?system"];
+    [SendRequst formRequstWithUrlString:urlStr postParamDic:dic success:^(id responseDic) {
+        MessageModel *model = [[MessageModel alloc] init];
+        [model setDict:responseDic[@"dataresult"][@"systemlist"]];
+        if(block){
+            block(model,nil);
         }
     } failure:^(NSError *error) {
         NSLog(@"error===>%@",error);
@@ -61,7 +80,7 @@
     [dict setObject:@"avatar" forKey:@"type"];
     [SendRequst postImageRequstWithUrlString:urlStr postParamDic:dict imageDataArr:[NSMutableArray arrayWithObject:imgData] success:^(id responseDic) {
         if(block){
-            block(nil,nil);
+            block(responseDic[@"dataresult"][@"avatar"],nil);
         }
     } failure:^(NSError *error) {
         NSLog(@"error===>%@",error);
@@ -224,5 +243,33 @@
             block(nil, error);
         }
     } apiName:@"cash" noNetWork:nil];
+}
+
++ (void)withdrawCashWithBlock:(void (^)(NSMutableDictionary *dict, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork{
+    NSString *urlStr = [NSString stringWithFormat:@"?cash"];
+    [SendRequst formRequstWithUrlString:urlStr postParamDic:dic success:^(id responseDic) {
+        if(block){
+            block(responseDic[@"dataresult"],nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"error===>%@",error);
+        if (block) {
+            block(nil, error);
+        }
+    } apiName:@"cash" noNetWork:nil];
+}
+
++ (void)getFuyouInfoWithBlock:(void (^)(NSMutableDictionary *dict, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork{
+    NSString *urlStr = [NSString stringWithFormat:@"?credit"];
+    [SendRequst formRequstWithUrlString:urlStr postParamDic:dic success:^(id responseDic) {
+        if(block){
+            block(responseDic[@"dataresult"][@"fuyou_info"],nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"error===>%@",error);
+        if (block) {
+            block(nil, error);
+        }
+    } apiName:@"credit" noNetWork:nil];
 }
 @end

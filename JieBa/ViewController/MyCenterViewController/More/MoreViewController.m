@@ -25,11 +25,17 @@
     [self.tableView setMinY:self.navView.maxY maxY:kScreenHeight - 44];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = AllBackLightGratColor;
+    self.tableView.scrollEnabled = NO;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = YES;
 }
 
 #pragma mark - tableView delegate dataSource

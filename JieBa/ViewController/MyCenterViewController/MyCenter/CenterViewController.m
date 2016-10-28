@@ -15,11 +15,15 @@
 #import "ChangePwdViewController.h"
 #import "RealNameViewController.h"
 #import "ChangeInviteCodeViewController.h"
+#import "MyCenterApi.h"
+#import "AddCashViewController.h"
+#import "BindCardViewController.h"
 
 @interface CenterViewController () 
 @property(nonatomic,strong)NavView *navView;
 @property(nonatomic,strong)UIView *footerView;
 @property(nonatomic,assign)NSInteger failCount;
+@property(nonatomic,strong)NSMutableArray *detailArr;
 @end
 
 @implementation CenterViewController
@@ -27,6 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.detailArr = [[NSMutableArray alloc] initWithArray:@[@"",@"",@"",@"",@"",@""]];
     [self statusBar];
     [self navView];
     [self setUpHeaderRefresh:NO footerRefresh:NO];
@@ -35,6 +40,7 @@
     self.tableView.tableFooterView = self.footerView;
     self.tableView.backgroundColor = AllBackLightGratColor;
     self.tableView.scrollEnabled = NO;
+    [self loadNameStatus];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -101,7 +107,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     cell.title = @[@"修改用户名",@"修改手机号",@"修改密码",@"实名认证",@"绑定银行卡",@"更改邀请码"][indexPath.row];
-    cell.detail = @[@"",@"",@"",@"未认证",@"未绑定",@""][indexPath.row];
+    cell.detail = self.detailArr[indexPath.row];
     if(indexPath.row == 5){
         cell.isShowCutLine = NO;
     }else{
@@ -124,7 +130,13 @@
         RealNameViewController *view = [[RealNameViewController alloc] init];
         [self.navigationController pushViewController:view animated:YES];
     }else if (indexPath.row == 4){
-    
+        NSString *content = self.detailArr[indexPath.row];
+        if([content isEqualToString:@"已绑定"]){
+            BindCardViewController *view = [[BindCardViewController alloc] init];
+            [self.navigationController pushViewController:view animated:YES];
+        }else{
+            [self isBindCard];
+        }
     }else{
         ChangeInviteCodeViewController *view = [[ChangeInviteCodeViewController alloc] init];
         [self.navigationController pushViewController:view animated:YES];
@@ -148,6 +160,47 @@
             if(self.logoutBlock){
                 self.logoutBlock();
             }
+        }
+    } dic:dic noNetWork:nil];
+}
+
+#pragma mark - 接口
+
+-(void)loadNameStatus{
+    __block typeof(self)wSelf = self;
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"member_changeuserinfo" forKey:@"_cmd_"];
+    [dic setObject:@"member_info" forKey:@"type"];
+    [MyCenterApi getUserInfoWithBlock:^(NSDictionary *dict, NSError *error) {
+        if(!error){
+            if([dict[@"nameStatus"] integerValue] == 1){
+                [self.detailArr replaceObjectAtIndex:3 withObject:@"已认证"];
+            }else{
+                [self.detailArr replaceObjectAtIndex:3 withObject:@"未认证"];
+            }
+            
+            if([dict[@"openFuyouStatus"] integerValue] == 1){
+                [self.detailArr replaceObjectAtIndex:4 withObject:@"已绑定"];
+            }else{
+                [self.detailArr replaceObjectAtIndex:4 withObject:@"未绑定"];
+            }
+            [wSelf.tableView reloadData];
+        }
+    } dic:dic noNetWork:nil];
+}
+
+-(void)isBindCard{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"cash" forKey:@"_cmd_"];
+    [dic setObject:@"1" forKey:@"money"];
+    [dic setObject:@"cash_in" forKey:@"type"];
+    
+    [MyCenterApi addCashWithBlock:^(NSMutableDictionary *dict, NSError *error) {
+        if(!error){
+            AddCashViewController *view = [[AddCashViewController alloc] init];
+            view.webUrl = dict[@"jumpurl"];
+            view.dic = dict;
+            [self.navigationController pushViewController:view animated:YES];
         }
     } dic:dic noNetWork:nil];
 }

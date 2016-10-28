@@ -204,7 +204,11 @@
 }
 
 -(void)registerAction{
+    __block typeof (self)wSelf = self;
     RegisterViewController *view = [[RegisterViewController alloc] init];
+    view.backBlock = ^(void){
+        [wSelf dismissViewControllerAnimated:YES completion:nil];
+    };
     [self.navigationController pushViewController:view animated:YES];
 }
 
@@ -255,9 +259,8 @@
     [LoginApi loginWithBlock:^(NSDictionary *dict, NSError *error) {
         if(!error){
             [self addAlertView:@"登录成功" block:^{
-                __block typeof(self)otherSelf = wSelf;
                 [wSelf clearPWD];
-                [otherSelf dismissViewControllerAnimated:YES completion:nil];
+                [wSelf dismissViewControllerAnimated:YES completion:nil];
             }];
         }
     } dic:dic noNetWork:nil];

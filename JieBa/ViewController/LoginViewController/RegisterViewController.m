@@ -384,8 +384,11 @@
     __block typeof(self)wSelf = self;
     [LoginApi registerWithBlock:^(NSDictionary *dict, NSError *error) {
         if(!error){
-            [wSelf addAlertView:@"注册成功" block:^{
-                
+            [self addAlertView:@"注册成功" block:^{
+                if(wSelf.backBlock){
+                    wSelf.backBlock();
+                }
+                [wSelf.navigationController popViewControllerAnimated:YES];
             }];
         }
     } dic:dic noNetWork:nil];
@@ -409,7 +412,7 @@
 
     [LoginApi getYZMWithBlock:^(NSString *yzmCode, NSError *error) {
         if(!error){
-        
+            [self addAlertView:@"验证码已发送" block:nil];
         }
     } dic:dic noNetWork:nil];
 }
