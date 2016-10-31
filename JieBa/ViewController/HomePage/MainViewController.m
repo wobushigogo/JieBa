@@ -22,6 +22,9 @@
 #import "EvaluateViewController.h"
 #import "ScanViewController.h"
 #import "CommentListViewController.h"
+#import "MyCenterViewController.h"
+#import "RealWithUsViewController.h"
+#import "RentViewController.h"
 
 @interface MainViewController ()<ZWAdViewDelagate,MainButtonCellDelegate>
 @property(nonatomic,strong)UIView *headView;
@@ -236,7 +239,20 @@
     [dic setObject:@"member_info" forKey:@"type"];
     [MyCenterApi getUserInfoWithBlock:^(NSDictionary *dict, NSError *error) {
         if(!error){
-
+            if([dict[@"nameStatus"] integerValue] == 1){
+                RentViewController *view = [[RentViewController alloc] init];
+                [self.navigationController pushViewController:view animated:YES];
+            }else{
+                UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:@"提示" message:@"是否实名认证" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
+                UIAlertAction *agreeAction = [UIAlertAction actionWithTitle:@"马上认证" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    RealWithUsViewController *realView = [[RealWithUsViewController alloc] init];
+                    [self.navigationController pushViewController:realView animated:YES];
+                }];
+                [alertControl addAction:cancelAction];
+                [alertControl addAction:agreeAction];
+                [self presentViewController:alertControl animated:YES completion:nil];
+            }
         }
     } dic:dic noNetWork:nil];
 }
@@ -316,6 +332,8 @@
             if([LoginViewController openLogin]){
                 return;
             }
+            
+            
         }
             break;
         default:
@@ -327,6 +345,13 @@
 -(void)scanACtion{
     NSLog(@"scanACtion");
     ScanViewController *view = [[ScanViewController alloc] init];
+    __block typeof(self)wSelf = self;
+    view.backBlock = ^(void){
+        UINavigationController *navigationctr = (UINavigationController *)wSelf.tabBarController.viewControllers[3];
+        MyCenterViewController *secvc = (MyCenterViewController *)navigationctr.topViewController;
+        [secvc loadUserInfo];
+        wSelf.tabBarController.selectedIndex = 3;
+    };
     [self.navigationController pushViewController:view animated:YES];
 }
 @end

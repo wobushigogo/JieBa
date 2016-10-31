@@ -206,6 +206,7 @@
 -(void)registerAction{
     __block typeof (self)wSelf = self;
     RegisterViewController *view = [[RegisterViewController alloc] init];
+    view.recommendCode = @"";
     view.backBlock = ^(void){
         [wSelf dismissViewControllerAnimated:YES completion:nil];
     };

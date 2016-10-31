@@ -239,8 +239,13 @@
         recommendTextFiled.placeholder = @"好友手机号";
         recommendTextFiled.font = placeholderFont;
         recommendTextFiled.returnKeyType = UIReturnKeyDone;
-        recommendTextFiled.secureTextEntry = YES;
         recommendTextFiled.delegate = self;
+        recommendTextFiled.text = self.recommendCode;
+        if([self.recommendCode isEqualToString:@""]){
+            recommendTextFiled.enabled = YES;
+        }else{
+            recommendTextFiled.enabled = NO;
+        }
         [recommendTextFiled setValue:PlaceholderColor forKeyPath:@"_placeholderLabel.textColor"];
         [recommendView addSubview:recommendTextFiled];
         _recommendTextFiled = recommendTextFiled;
@@ -388,7 +393,7 @@
                 if(wSelf.backBlock){
                     wSelf.backBlock();
                 }
-                [wSelf.navigationController popViewControllerAnimated:YES];
+                [wSelf.navigationController popToRootViewControllerAnimated:YES];
             }];
         }
     } dic:dic noNetWork:nil];

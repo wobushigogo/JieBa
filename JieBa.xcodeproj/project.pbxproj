@@ -81,6 +81,8 @@
 		D322EA8F1DBF38DC0089FD56 /* RechargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D322EA8E1DBF38DC0089FD56 /* RechargeViewController.m */; };
 		D322EA921DBF40CD0089FD56 /* AddCashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D322EA911DBF40CD0089FD56 /* AddCashViewController.m */; };
 		D322EA961DBF5F670089FD56 /* EvaluateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D322EA951DBF5F670089FD56 /* EvaluateViewController.m */; };
+		D32FED7A1DC6F86400714584 /* HelpCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D32FED791DC6F86400714584 /* HelpCenterViewController.m */; };
+		D32FED7E1DC6FA7F00714584 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D32FED7D1DC6FA7F00714584 /* FeedbackViewController.m */; };
 		D3348CCE1DB9B82000A5E06A /* ChangeInviteCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3348CCD1DB9B82000A5E06A /* ChangeInviteCodeViewController.m */; };
 		D3348CD21DB9C08B00A5E06A /* myCenter_addCamera.png in Resources */ = {isa = PBXBuildFile; fileRef = D3348CCF1DB9C08B00A5E06A /* myCenter_addCamera.png */; };
 		D3348CD31DB9C08B00A5E06A /* myCenter_addCamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3348CD01DB9C08B00A5E06A /* myCenter_addCamera@2x.png */; };
@@ -279,6 +281,13 @@
 		D347E3351DB4D44000E7B9BA /* myCenter_banner.png in Resources */ = {isa = PBXBuildFile; fileRef = D347E3321DB4D44000E7B9BA /* myCenter_banner.png */; };
 		D347E3361DB4D44000E7B9BA /* myCenter_banner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D347E3331DB4D44000E7B9BA /* myCenter_banner@2x.png */; };
 		D347E3371DB4D44000E7B9BA /* myCenter_banner@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D347E3341DB4D44000E7B9BA /* myCenter_banner@3x.png */; };
+		D373461F1DC7313C00C9031F /* scan_kuang.png in Resources */ = {isa = PBXBuildFile; fileRef = D37346191DC7313C00C9031F /* scan_kuang.png */; };
+		D37346201DC7313C00C9031F /* scan_kuang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D373461A1DC7313C00C9031F /* scan_kuang@2x.png */; };
+		D37346211DC7313C00C9031F /* scan_kuang@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D373461B1DC7313C00C9031F /* scan_kuang@3x.png */; };
+		D37346221DC7313C00C9031F /* scan_line.png in Resources */ = {isa = PBXBuildFile; fileRef = D373461C1DC7313C00C9031F /* scan_line.png */; };
+		D37346231DC7313C00C9031F /* scan_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D373461D1DC7313C00C9031F /* scan_line@2x.png */; };
+		D37346241DC7313C00C9031F /* scan_line@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D373461E1DC7313C00C9031F /* scan_line@3x.png */; };
+		D37346271DC731A600C9031F /* ScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = D37346261DC731A600C9031F /* ScanView.m */; };
 		D38A95B51DBB02A7005334AC /* LoanApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D38A95B41DBB02A7005334AC /* LoanApi.m */; };
 		D38A95B81DBDAF87005334AC /* CreditDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D38A95B71DBDAF87005334AC /* CreditDetailViewController.m */; };
 		D38A95BB1DBDE516005334AC /* RealWithUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D38A95BA1DBDE516005334AC /* RealWithUsViewController.m */; };
@@ -505,6 +514,10 @@
 		D322EA911DBF40CD0089FD56 /* AddCashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCashViewController.m; sourceTree = "<group>"; };
 		D322EA941DBF5F670089FD56 /* EvaluateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvaluateViewController.h; sourceTree = "<group>"; };
 		D322EA951DBF5F670089FD56 /* EvaluateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvaluateViewController.m; sourceTree = "<group>"; };
+		D32FED781DC6F86400714584 /* HelpCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpCenterViewController.h; sourceTree = "<group>"; };
+		D32FED791DC6F86400714584 /* HelpCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpCenterViewController.m; sourceTree = "<group>"; };
+		D32FED7C1DC6FA7F00714584 /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
+		D32FED7D1DC6FA7F00714584 /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
 		D3348CCC1DB9B82000A5E06A /* ChangeInviteCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeInviteCodeViewController.h; sourceTree = "<group>"; };
 		D3348CCD1DB9B82000A5E06A /* ChangeInviteCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeInviteCodeViewController.m; sourceTree = "<group>"; };
 		D3348CCF1DB9C08B00A5E06A /* myCenter_addCamera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myCenter_addCamera.png; sourceTree = "<group>"; };
@@ -793,6 +806,14 @@
 		D347E3321DB4D44000E7B9BA /* myCenter_banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myCenter_banner.png; sourceTree = "<group>"; };
 		D347E3331DB4D44000E7B9BA /* myCenter_banner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myCenter_banner@2x.png"; sourceTree = "<group>"; };
 		D347E3341DB4D44000E7B9BA /* myCenter_banner@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myCenter_banner@3x.png"; sourceTree = "<group>"; };
+		D37346191DC7313C00C9031F /* scan_kuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scan_kuang.png; sourceTree = "<group>"; };
+		D373461A1DC7313C00C9031F /* scan_kuang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scan_kuang@2x.png"; sourceTree = "<group>"; };
+		D373461B1DC7313C00C9031F /* scan_kuang@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scan_kuang@3x.png"; sourceTree = "<group>"; };
+		D373461C1DC7313C00C9031F /* scan_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scan_line.png; sourceTree = "<group>"; };
+		D373461D1DC7313C00C9031F /* scan_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scan_line@2x.png"; sourceTree = "<group>"; };
+		D373461E1DC7313C00C9031F /* scan_line@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scan_line@3x.png"; sourceTree = "<group>"; };
+		D37346251DC731A600C9031F /* ScanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanView.h; sourceTree = "<group>"; };
+		D37346261DC731A600C9031F /* ScanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanView.m; sourceTree = "<group>"; };
 		D38A95B31DBB02A7005334AC /* LoanApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoanApi.h; sourceTree = "<group>"; };
 		D38A95B41DBB02A7005334AC /* LoanApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoanApi.m; sourceTree = "<group>"; };
 		D38A95B61DBDAF87005334AC /* CreditDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditDetailViewController.h; sourceTree = "<group>"; };
@@ -1094,6 +1115,8 @@
 			children = (
 				D321DF901DC1A1DD00A5F042 /* ScanViewController.h */,
 				D321DF911DC1A1DD00A5F042 /* ScanViewController.m */,
+				D37346251DC731A600C9031F /* ScanView.h */,
+				D37346261DC731A600C9031F /* ScanView.m */,
 			);
 			path = ScanView;
 			sourceTree = "<group>";
@@ -1217,6 +1240,24 @@
 			path = Evaluate;
 			sourceTree = "<group>";
 		};
+		D32FED771DC6F84900714584 /* HelpCenter */ = {
+			isa = PBXGroup;
+			children = (
+				D32FED781DC6F86400714584 /* HelpCenterViewController.h */,
+				D32FED791DC6F86400714584 /* HelpCenterViewController.m */,
+			);
+			path = HelpCenter;
+			sourceTree = "<group>";
+		};
+		D32FED7B1DC6FA4D00714584 /* Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				D32FED7C1DC6FA7F00714584 /* FeedbackViewController.h */,
+				D32FED7D1DC6FA7F00714584 /* FeedbackViewController.m */,
+			);
+			path = Feedback;
+			sourceTree = "<group>";
+		};
 		D3348CD51DB9D64100A5E06A /* Rent */ = {
 			isa = PBXGroup;
 			children = (
@@ -1236,6 +1277,8 @@
 		D3348CE21DB9F2B900A5E06A /* More */ = {
 			isa = PBXGroup;
 			children = (
+				D32FED7B1DC6FA4D00714584 /* Feedback */,
+				D32FED771DC6F84900714584 /* HelpCenter */,
 				D3348CE61DB9FD5A00A5E06A /* CompanyProfile */,
 				D3348CE31DB9F2EE00A5E06A /* MoreViewController.h */,
 				D3348CE41DB9F2EE00A5E06A /* MoreViewController.m */,
@@ -1573,6 +1616,7 @@
 		D3458A261DB0B0E7007BD2CF /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D37346181DC7313C00C9031F /* Scan */,
 				D321DF931DC1A69600A5F042 /* Defaut */,
 				D322EA871DBF326D0089FD56 /* credit */,
 				D3348CD51DB9D64100A5E06A /* Rent */,
@@ -1895,6 +1939,19 @@
 				D347E3341DB4D44000E7B9BA /* myCenter_banner@3x.png */,
 			);
 			path = MyCenter;
+			sourceTree = "<group>";
+		};
+		D37346181DC7313C00C9031F /* Scan */ = {
+			isa = PBXGroup;
+			children = (
+				D37346191DC7313C00C9031F /* scan_kuang.png */,
+				D373461A1DC7313C00C9031F /* scan_kuang@2x.png */,
+				D373461B1DC7313C00C9031F /* scan_kuang@3x.png */,
+				D373461C1DC7313C00C9031F /* scan_line.png */,
+				D373461D1DC7313C00C9031F /* scan_line@2x.png */,
+				D373461E1DC7313C00C9031F /* scan_line@3x.png */,
+			);
+			path = Scan;
 			sourceTree = "<group>";
 		};
 		D38A95B21DBB0293005334AC /* LoanModel */ = {
@@ -2355,7 +2412,7 @@
 		D3E8195C1DAF259E0054B352 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = zhixin;
 				TargetAttributes = {
 					D3E819631DAF259E0054B352 = {
@@ -2465,6 +2522,7 @@
 				D347E2DD1DB470E700E7B9BA /* register_noShow.png in Resources */,
 				D347E30C1DB49B9E00E7B9BA /* homePage_loan.png in Resources */,
 				D321DF841DC1A0AF00A5F042 /* zbar-help.html in Resources */,
+				D373461F1DC7313C00C9031F /* scan_kuang.png in Resources */,
 				D32049611DB5C4E0000782F9 /* myCenter_ invitation@3x.png in Resources */,
 				D347E3271DB4B11800E7B9BA /* homePage_scan.png in Resources */,
 				D347E2BA1DB46F0800E7B9BA /* tabbar_home_gary@2x.png in Resources */,
@@ -2490,6 +2548,7 @@
 				D3458A4A1DB0C5C3007BD2CF /* login_pwd@2x.png in Resources */,
 				D32049521DB5BFE3000782F9 /* myCenter_invite@3x.png in Resources */,
 				D347E2BB1DB46F0800E7B9BA /* tabbar_home_gary@3x.png in Resources */,
+				D37346231DC7313C00C9031F /* scan_line@2x.png in Resources */,
 				D347E2BE1DB46F0800E7B9BA /* tabbar_loan_blue@3x.png in Resources */,
 				D321DFBB1DC1F68200A5F042 /* credit_listComment@3x.png in Resources */,
 				D347E31C1DB4A7B300E7B9BA /* homePage_loactionbg@2x.png in Resources */,
@@ -2540,6 +2599,8 @@
 				D347E30A1DB49B9E00E7B9BA /* homePage_introduce@2x.png in Resources */,
 				D321DFC31DC1FA5100A5F042 /* credit_good@2x.png in Resources */,
 				D3E8ADD81DB51136002F5D35 /* myCenter_center.png in Resources */,
+				D37346211DC7313C00C9031F /* scan_kuang@3x.png in Resources */,
+				D37346201DC7313C00C9031F /* scan_kuang@2x.png in Resources */,
 				D347E2B81DB46F0800E7B9BA /* tabbar_home_blue@3x.png in Resources */,
 				D32049631DB5C4E0000782F9 /* myCenter_sign@2x.png in Resources */,
 				D33AAEB41DB860BD00459F4E /* myCente_changUserName@3x.png in Resources */,
@@ -2566,8 +2627,10 @@
 				D32049571DB5BFE3000782F9 /* myCenter_service@2x.png in Resources */,
 				D3458A511DB0C608007BD2CF /* login_phone@3x.png in Resources */,
 				D3E8ADD21DB51136002F5D35 /* myCenter_ balance.png in Resources */,
+				D37346221DC7313C00C9031F /* scan_line.png in Resources */,
 				D347E31D1DB4A7B300E7B9BA /* homePage_loactionbg@3x.png in Resources */,
 				D347E2DF1DB470E700E7B9BA /* register_noShow@3x.png in Resources */,
+				D37346241DC7313C00C9031F /* scan_line@3x.png in Resources */,
 				D3348CDF1DB9D66E00A5E06A /* rent_banner.png in Resources */,
 				D32049501DB5BFE3000782F9 /* myCenter_invite.png in Resources */,
 				D347E3291DB4B11800E7B9BA /* homePage_scan@3x.png in Resources */,
@@ -2636,6 +2699,7 @@
 				D3B2BE471DB756E00095306E /* OrderSuccessViewController.m in Sources */,
 				D3458A1D1DB0888F007BD2CF /* RentViewController.m in Sources */,
 				D3B2BE151DB717CB0095306E /* UserInfoModel.m in Sources */,
+				D32FED7E1DC6FA7F00714584 /* FeedbackViewController.m in Sources */,
 				D3E147C61DAF335C002F6D60 /* UIButton+AFNetworking.m in Sources */,
 				D3458A5A1DB217E2007BD2CF /* StringTool.m in Sources */,
 				D347E2911DB3138E00E7B9BA /* UIImage+GIF.m in Sources */,
@@ -2668,6 +2732,7 @@
 				D3E147EC1DAF5FAE002F6D60 /* LoginSqlite.m in Sources */,
 				D3E147C51DAF335C002F6D60 /* UIAlertView+AFNetworking.m in Sources */,
 				D347E32D1DB4BE1500E7B9BA /* BannerViewController.m in Sources */,
+				D32FED7A1DC6F86400714584 /* HelpCenterViewController.m in Sources */,
 				D3348CE91DB9FD7F00A5E06A /* CompanyProfileViewController.m in Sources */,
 				D3458A451DB0B8D0007BD2CF /* InputTextFiledView.m in Sources */,
 				D3E147BB1DAF335C002F6D60 /* AFURLConnectionOperation.m in Sources */,
@@ -2739,6 +2804,7 @@
 				D321DFAE1DC1D9F300A5F042 /* CommentCell.m in Sources */,
 				D347E2211DB30DC200E7B9BA /* BaseTableView.m in Sources */,
 				D33AAEB71DB8729900459F4E /* ChangePhoneViewController.m in Sources */,
+				D37346271DC731A600C9031F /* ScanView.m in Sources */,
 				D3E147BF1DAF335C002F6D60 /* ConnectionAvailable.m in Sources */,
 				D347E28A1DB3138E00E7B9BA /* SDWebImageCompat.m in Sources */,
 				D321DFA71DC1D2CB00A5F042 /* CommentListViewController.m in Sources */,
@@ -2847,6 +2913,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -2898,6 +2965,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

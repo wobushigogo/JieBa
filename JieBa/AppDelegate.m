@@ -129,10 +129,14 @@
             return NO;
         }
     }else {
-        if([self loadUserInfo:tabBarController viewController:viewController]){
-            return YES;
+        if (tabBarController.viewControllers[2] == viewController){
+            if([self loadUserInfo:tabBarController viewController:viewController]){
+                return YES;
+            }else{
+                return NO;
+            }
         }else{
-            return NO;
+            return YES;
         }
     }
 }

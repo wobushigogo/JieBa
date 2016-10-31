@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface ScanViewController : BaseViewController
-
+@property(nonatomic,strong)void(^backBlock)();
 @end

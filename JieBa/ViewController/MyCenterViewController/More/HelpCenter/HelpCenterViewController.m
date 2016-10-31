@@ -1,20 +1,20 @@
 //
-//  CompanyProfileViewController.m
+//  HelpCenterViewController.m
 //  JieBa
 //
-//  Created by 汪洋 on 16/10/21.
+//  Created by 汪洋 on 16/10/31.
 //  Copyright © 2016年 zhixin. All rights reserved.
 //
 
-#import "CompanyProfileViewController.h"
+#import "HelpCenterViewController.h"
 #import <WebKit/WebKit.h>
 #import "NavView.h"
 
-@interface CompanyProfileViewController ()<WKNavigationDelegate>
+@interface HelpCenterViewController ()<WKNavigationDelegate>
 @property (nonatomic, strong) NavView *navView;
 @end
 
-@implementation CompanyProfileViewController
+@implementation HelpCenterViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,7 +25,7 @@
     WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, self.navView.maxY, kScreenWidth, kScreenHeight - self.navView.maxY)];
     webView.navigationDelegate = self;
     NSURL* url = [NSURL URLWithString:self.webUrl];
-    NSURLRequest* request = [NSURLRequest requestWithURL:url];
+    NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:url];
     [webView loadRequest:request];
     [self.view addSubview:webView];
 }
@@ -35,11 +35,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = YES;
-}
-
 #pragma mark - 页面元素
 
 -(NavView *)navView{
@@ -47,7 +42,7 @@
         NavView *navView = [NavView initNavView];
         navView.minY = HeightXiShu(20);
         navView.backgroundColor = NavColor;
-        navView.titleLabel.text = @"公司简介";
+        navView.titleLabel.text = @"帮助中心";
         [navView.leftBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
         _navView = navView;
         [self.view addSubview:_navView];
