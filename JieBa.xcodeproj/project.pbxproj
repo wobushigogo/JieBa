@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D31515451DC8383200475E64 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D31515441DC8383200475E64 /* AddressBook.framework */; };
+		D315154B1DC8388C00475E64 /* GetAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = D31515481DC8388C00475E64 /* GetAddressBook.m */; };
+		D315154C1DC8388C00475E64 /* PostAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = D315154A1DC8388C00475E64 /* PostAddressBook.m */; };
+		D31515501DC8390700475E64 /* AddressBookApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D315154F1DC8390700475E64 /* AddressBookApi.m */; };
+		D31515541DC8770000475E64 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31515531DC8770000475E64 /* QuestionViewController.m */; };
+		D31515581DC8791000475E64 /* BorrowInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31515571DC8791000475E64 /* BorrowInfoViewController.m */; };
+		D315155C1DC87FBB00475E64 /* credit_question.png in Resources */ = {isa = PBXBuildFile; fileRef = D31515591DC87FBB00475E64 /* credit_question.png */; };
+		D315155D1DC87FBB00475E64 /* credit_question@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D315155A1DC87FBB00475E64 /* credit_question@2x.png */; };
+		D315155E1DC87FBB00475E64 /* credit_question@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D315155B1DC87FBB00475E64 /* credit_question@3x.png */; };
+		D31515621DC8932C00475E64 /* AgreeMentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31515611DC8932C00475E64 /* AgreeMentViewController.m */; };
 		D320494D1DB5BFE3000782F9 /* myCenter_active.png in Resources */ = {isa = PBXBuildFile; fileRef = D32049411DB5BFE3000782F9 /* myCenter_active.png */; };
 		D320494E1DB5BFE3000782F9 /* myCenter_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D32049421DB5BFE3000782F9 /* myCenter_active@2x.png */; };
 		D320494F1DB5BFE3000782F9 /* myCenter_active@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D32049431DB5BFE3000782F9 /* myCenter_active@3x.png */; };
@@ -403,6 +413,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D31515441DC8383200475E64 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		D31515471DC8388C00475E64 /* GetAddressBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetAddressBook.h; sourceTree = "<group>"; };
+		D31515481DC8388C00475E64 /* GetAddressBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetAddressBook.m; sourceTree = "<group>"; };
+		D31515491DC8388C00475E64 /* PostAddressBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostAddressBook.h; sourceTree = "<group>"; };
+		D315154A1DC8388C00475E64 /* PostAddressBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostAddressBook.m; sourceTree = "<group>"; };
+		D315154E1DC8390700475E64 /* AddressBookApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressBookApi.h; sourceTree = "<group>"; };
+		D315154F1DC8390700475E64 /* AddressBookApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBookApi.m; sourceTree = "<group>"; };
+		D31515521DC8770000475E64 /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
+		D31515531DC8770000475E64 /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
+		D31515561DC8791000475E64 /* BorrowInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorrowInfoViewController.h; sourceTree = "<group>"; };
+		D31515571DC8791000475E64 /* BorrowInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorrowInfoViewController.m; sourceTree = "<group>"; };
+		D31515591DC87FBB00475E64 /* credit_question.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = credit_question.png; sourceTree = "<group>"; };
+		D315155A1DC87FBB00475E64 /* credit_question@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "credit_question@2x.png"; sourceTree = "<group>"; };
+		D315155B1DC87FBB00475E64 /* credit_question@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "credit_question@3x.png"; sourceTree = "<group>"; };
+		D31515601DC8932C00475E64 /* AgreeMentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgreeMentViewController.h; sourceTree = "<group>"; };
+		D31515611DC8932C00475E64 /* AgreeMentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgreeMentViewController.m; sourceTree = "<group>"; };
 		D32049411DB5BFE3000782F9 /* myCenter_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myCenter_active.png; sourceTree = "<group>"; };
 		D32049421DB5BFE3000782F9 /* myCenter_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myCenter_active@2x.png"; sourceTree = "<group>"; };
 		D32049431DB5BFE3000782F9 /* myCenter_active@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myCenter_active@3x.png"; sourceTree = "<group>"; };
@@ -991,6 +1017,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D31515451DC8383200475E64 /* AddressBook.framework in Frameworks */,
 				D321DF8E1DC1A19400A5F042 /* libiconv.tbd in Frameworks */,
 				D321DF8C1DC1A17F00A5F042 /* QuartzCore.framework in Frameworks */,
 				D321DF8A1DC1A17600A5F042 /* CoreVideo.framework in Frameworks */,
@@ -1027,6 +1054,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D31515461DC8388C00475E64 /* GetAddressBook */ = {
+			isa = PBXGroup;
+			children = (
+				D31515471DC8388C00475E64 /* GetAddressBook.h */,
+				D31515481DC8388C00475E64 /* GetAddressBook.m */,
+				D31515491DC8388C00475E64 /* PostAddressBook.h */,
+				D315154A1DC8388C00475E64 /* PostAddressBook.m */,
+			);
+			path = GetAddressBook;
+			sourceTree = "<group>";
+		};
+		D315154D1DC838F900475E64 /* AddressBookModel */ = {
+			isa = PBXGroup;
+			children = (
+				D315154E1DC8390700475E64 /* AddressBookApi.h */,
+				D315154F1DC8390700475E64 /* AddressBookApi.m */,
+			);
+			path = AddressBookModel;
+			sourceTree = "<group>";
+		};
+		D31515511DC876E700475E64 /* Question */ = {
+			isa = PBXGroup;
+			children = (
+				D31515521DC8770000475E64 /* QuestionViewController.h */,
+				D31515531DC8770000475E64 /* QuestionViewController.m */,
+			);
+			path = Question;
+			sourceTree = "<group>";
+		};
+		D31515551DC878F600475E64 /*  BorrowInfo */ = {
+			isa = PBXGroup;
+			children = (
+				D315155F1DC8931400475E64 /* Agreement */,
+				D31515561DC8791000475E64 /* BorrowInfoViewController.h */,
+				D31515571DC8791000475E64 /* BorrowInfoViewController.m */,
+			);
+			path = " BorrowInfo";
+			sourceTree = "<group>";
+		};
+		D315155F1DC8931400475E64 /* Agreement */ = {
+			isa = PBXGroup;
+			children = (
+				D31515601DC8932C00475E64 /* AgreeMentViewController.h */,
+				D31515611DC8932C00475E64 /* AgreeMentViewController.m */,
+			);
+			path = Agreement;
+			sourceTree = "<group>";
+		};
 		D320497D1DB60AF3000782F9 /* Loan */ = {
 			isa = PBXGroup;
 			children = (
@@ -1195,6 +1270,9 @@
 		D322EA871DBF326D0089FD56 /* credit */ = {
 			isa = PBXGroup;
 			children = (
+				D31515591DC87FBB00475E64 /* credit_question.png */,
+				D315155A1DC87FBB00475E64 /* credit_question@2x.png */,
+				D315155B1DC87FBB00475E64 /* credit_question@3x.png */,
 				D321DFBC1DC1FA5100A5F042 /* credit_good.png */,
 				D321DFBD1DC1FA5100A5F042 /* credit_good@2x.png */,
 				D321DFBE1DC1FA5100A5F042 /* credit_good@3x.png */,
@@ -1566,6 +1644,8 @@
 		D3458A141DB08847007BD2CF /* RentViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D31515551DC878F600475E64 /*  BorrowInfo */,
+				D31515511DC876E700475E64 /* Question */,
 				D3348CF11DBA125D00A5E06A /* CreditList */,
 				D3458A1B1DB0888F007BD2CF /* RentViewController.h */,
 				D3458A1C1DB0888F007BD2CF /* RentViewController.m */,
@@ -2070,6 +2150,7 @@
 		D3E147821DAF335B002F6D60 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				D31515461DC8388C00475E64 /* GetAddressBook */,
 				D321DF641DC1A0AE00A5F042 /* ZBarSDK */,
 				D33AAF0D1DB8CB3500459F4E /* EQianBao */,
 				D3B2BE231DB73F6B0095306E /* PopupViewController */,
@@ -2212,6 +2293,7 @@
 		D3E147EE1DAF605F002F6D60 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D31515441DC8383200475E64 /* AddressBook.framework */,
 				D321DF8D1DC1A19400A5F042 /* libiconv.tbd */,
 				D321DF8B1DC1A17F00A5F042 /* QuartzCore.framework */,
 				D321DF891DC1A17600A5F042 /* CoreVideo.framework */,
@@ -2232,6 +2314,7 @@
 		D3E147F11DAF62DE002F6D60 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D315154D1DC838F900475E64 /* AddressBookModel */,
 				D321DFA81DC1D72D00A5F042 /* CarlifeModel */,
 				D3E5F84B1DC05FB9004398ED /* RentModel */,
 				D38A95B21DBB0293005334AC /* LoanModel */,
@@ -2525,6 +2608,7 @@
 				D373461F1DC7313C00C9031F /* scan_kuang.png in Resources */,
 				D32049611DB5C4E0000782F9 /* myCenter_ invitation@3x.png in Resources */,
 				D347E3271DB4B11800E7B9BA /* homePage_scan.png in Resources */,
+				D315155C1DC87FBB00475E64 /* credit_question.png in Resources */,
 				D347E2BA1DB46F0800E7B9BA /* tabbar_home_gary@2x.png in Resources */,
 				D3E5F84A1DC05EDB004398ED /* rent_liucheng@3x.png in Resources */,
 				D32049561DB5BFE3000782F9 /* myCenter_service.png in Resources */,
@@ -2548,6 +2632,7 @@
 				D3458A4A1DB0C5C3007BD2CF /* login_pwd@2x.png in Resources */,
 				D32049521DB5BFE3000782F9 /* myCenter_invite@3x.png in Resources */,
 				D347E2BB1DB46F0800E7B9BA /* tabbar_home_gary@3x.png in Resources */,
+				D315155E1DC87FBB00475E64 /* credit_question@3x.png in Resources */,
 				D37346231DC7313C00C9031F /* scan_line@2x.png in Resources */,
 				D347E2BE1DB46F0800E7B9BA /* tabbar_loan_blue@3x.png in Resources */,
 				D321DFBB1DC1F68200A5F042 /* credit_listComment@3x.png in Resources */,
@@ -2641,6 +2726,7 @@
 				D3348CE01DB9D66E00A5E06A /* rent_banner@2x.png in Resources */,
 				D32049511DB5BFE3000782F9 /* myCenter_invite@2x.png in Resources */,
 				D3DD973E1DBF717A003395C9 /* credit_banner.png in Resources */,
+				D315155D1DC87FBB00475E64 /* credit_question@2x.png in Resources */,
 				D3458A491DB0C5C3007BD2CF /* login_pwd.png in Resources */,
 				D347E3031DB49B9E00E7B9BA /* homePage_business.png in Resources */,
 				D347E3361DB4D44000E7B9BA /* myCenter_banner@2x.png in Resources */,
@@ -2674,10 +2760,12 @@
 				D347E25C1DB30E4D00E7B9BA /* MJRefreshStateHeader.m in Sources */,
 				D3B2BE4A1DB756F60095306E /* OrderFailViewController.m in Sources */,
 				D347E2541DB30E4D00E7B9BA /* MJRefreshAutoGifFooter.m in Sources */,
+				D31515501DC8390700475E64 /* AddressBookApi.m in Sources */,
 				D347E2521DB30E4D00E7B9BA /* MJRefreshFooter.m in Sources */,
 				D347E2881DB3138E00E7B9BA /* NSData+ImageContentType.m in Sources */,
 				D3458A111DB08782007BD2CF /* BaseViewController.m in Sources */,
 				D347E2951DB3138E00E7B9BA /* UIImageView+WebCache.m in Sources */,
+				D31515581DC8791000475E64 /* BorrowInfoViewController.m in Sources */,
 				D347E2501DB30E4D00E7B9BA /* MJRefreshBackFooter.m in Sources */,
 				D3348CFA1DBA1C2200A5E06A /* CreditListCell.m in Sources */,
 				D3348CED1DBA0EE600A5E06A /* CreditApi.m in Sources */,
@@ -2692,6 +2780,7 @@
 				D322EA8F1DBF38DC0089FD56 /* RechargeViewController.m in Sources */,
 				D3B2BE341DB73F6B0095306E /* LewPopupViewAnimationSlide.m in Sources */,
 				D3458A251DB0A7F3007BD2CF /* NavView.m in Sources */,
+				D315154B1DC8388C00475E64 /* GetAddressBook.m in Sources */,
 				D3B2BE561DB76B520095306E /* OrderSuccessCell.m in Sources */,
 				D347E2591DB30E4D00E7B9BA /* MJRefreshBackStateFooter.m in Sources */,
 				D3E147C91DAF335C002F6D60 /* UIRefreshControl+AFNetworking.m in Sources */,
@@ -2702,6 +2791,7 @@
 				D32FED7E1DC6FA7F00714584 /* FeedbackViewController.m in Sources */,
 				D3E147C61DAF335C002F6D60 /* UIButton+AFNetworking.m in Sources */,
 				D3458A5A1DB217E2007BD2CF /* StringTool.m in Sources */,
+				D315154C1DC8388C00475E64 /* PostAddressBook.m in Sources */,
 				D347E2911DB3138E00E7B9BA /* UIImage+GIF.m in Sources */,
 				D33B0DCF1DC31749007A6168 /* ActivityViewController.m in Sources */,
 				D3E147C81DAF335C002F6D60 /* UIProgressView+AFNetworking.m in Sources */,
@@ -2733,6 +2823,7 @@
 				D3E147C51DAF335C002F6D60 /* UIAlertView+AFNetworking.m in Sources */,
 				D347E32D1DB4BE1500E7B9BA /* BannerViewController.m in Sources */,
 				D32FED7A1DC6F86400714584 /* HelpCenterViewController.m in Sources */,
+				D31515541DC8770000475E64 /* QuestionViewController.m in Sources */,
 				D3348CE91DB9FD7F00A5E06A /* CompanyProfileViewController.m in Sources */,
 				D3458A451DB0B8D0007BD2CF /* InputTextFiledView.m in Sources */,
 				D3E147BB1DAF335C002F6D60 /* AFURLConnectionOperation.m in Sources */,
@@ -2741,6 +2832,7 @@
 				D347E2901DB3138E00E7B9BA /* UIButton+WebCache.m in Sources */,
 				D347E2871DB3138E00E7B9BA /* MKAnnotationView+WebCache.m in Sources */,
 				D3E8196C1DAF259E0054B352 /* AppDelegate.m in Sources */,
+				D31515621DC8932C00475E64 /* AgreeMentViewController.m in Sources */,
 				D347E29C1DB3404C00E7B9BA /* InvitationCell.m in Sources */,
 				D347E2991DB336A600E7B9BA /* MainButtonCell.m in Sources */,
 				D33B0DCB1DC31522007A6168 /* SignViewController.m in Sources */,

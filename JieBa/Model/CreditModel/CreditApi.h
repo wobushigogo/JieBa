@@ -19,4 +19,5 @@
 
 //信用贷借款记录详情
 + (void)creditDetailWithBlock:(void (^)(CreditDetailModel *model, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork;
+
 @end

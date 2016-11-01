@@ -12,5 +12,7 @@
 -(void)setDict:(NSDictionary *)dict{
     self.minMoney = dict[@"minMoney"];
     self.maxMoney = dict[@"maxMoney"];
+    self.order_status = [dict[@"order_status"] integerValue];
+    self.is_late = [dict[@"is_late"] integerValue];
 }
 @end

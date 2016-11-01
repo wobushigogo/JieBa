@@ -18,4 +18,5 @@
 
 //新增订单
 + (void)addRentWithBlock:(void (^)(NSDictionary *dict, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork;
+
 @end
