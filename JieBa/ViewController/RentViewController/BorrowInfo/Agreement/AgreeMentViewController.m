@@ -24,7 +24,7 @@
     
     WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, self.navView.maxY, kScreenWidth, kScreenHeight - self.navView.maxY)];
     
-    NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",self.webUrl,self.money]];
+    NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@&token=%@",self.webUrl,self.money,[LoginSqlite getdata:@"token"]]];
     NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:url];
     [webView loadRequest:request];
     [self.view addSubview:webView];

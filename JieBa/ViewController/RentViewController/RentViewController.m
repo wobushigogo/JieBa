@@ -43,6 +43,8 @@
     [self questionBtn];
     [self phoneBtn];
     [self loadH5];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:@"reloadData" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,6 +55,10 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = NO;
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"reloadData" object:nil];
 }
 
 #pragma mark - 页面元素
@@ -147,7 +153,7 @@
 -(UIButton *)questionBtn{
     if(!_questionBtn){
         UIButton *questionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        questionBtn.frame = CGRectMake((kScreenWidth-WidthXiShu(60))/2, self.submitBtn.maxY+HeightXiShu(140), WidthXiShu(60), HeightXiShu(20));
+        questionBtn.frame = CGRectMake((kScreenWidth-WidthXiShu(60))/2, self.submitBtn.maxY+HeightXiShu(130), WidthXiShu(60), HeightXiShu(20));
         questionBtn.titleLabel.font = HEITI(HeightXiShu(15));
         [questionBtn addTarget:self action:@selector(questionAction) forControlEvents:UIControlEventTouchUpInside];
         [questionBtn setTitle:@"常见问题" forState:UIControlStateNormal];
@@ -219,6 +225,10 @@
     [self presentViewController:alertControl animated:YES completion:nil];
 }
 
+-(void)reloadData{
+    [self loadCreditInfo];
+}
+
 #pragma mark - 接口
 -(void)loadCreditInfo{
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
@@ -236,7 +246,7 @@
                     if([self.creditModel.minMoney integerValue] == 0 && [self.creditModel.maxMoney integerValue] == 0 ){
                         [self.submitBtn setTitle:@"去借钱" forState:UIControlStateNormal];
                         self.submitBtn.backgroundColor = MessageColor;
-                        self.submitBtn.enabled = YES;
+                        self.submitBtn.enabled = NO;
                     }else{
                         [self.submitBtn setTitle:@"去借钱" forState:UIControlStateNormal];
                         self.submitBtn.backgroundColor = ButtonColor;

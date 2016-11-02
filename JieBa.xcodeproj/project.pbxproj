@@ -7,16 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D309BBBA1DC988D700355120 /* AgreeMentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D309BBB71DC988D700355120 /* AgreeMentViewController.m */; };
+		D309BBBB1DC988D700355120 /* BorrowInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D309BBB91DC988D700355120 /* BorrowInfoViewController.m */; };
+		D309BBBF1DC988F900355120 /* FuiouInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D309BBBE1DC988F900355120 /* FuiouInfoViewController.m */; };
+		D309BBC71DC9C00800355120 /* CreditYzmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D309BBC61DC9C00800355120 /* CreditYzmViewController.m */; };
+		D309BBCB1DC9C4CB00355120 /* CreditSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D309BBCA1DC9C4CB00355120 /* CreditSuccessViewController.m */; };
+		D309BBCF1DC9C70000355120 /* credit_success.png in Resources */ = {isa = PBXBuildFile; fileRef = D309BBCC1DC9C70000355120 /* credit_success.png */; };
+		D309BBD01DC9C70000355120 /* credit_success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D309BBCD1DC9C70000355120 /* credit_success@2x.png */; };
+		D309BBD11DC9C70000355120 /* credit_success@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D309BBCE1DC9C70000355120 /* credit_success@3x.png */; };
 		D31515451DC8383200475E64 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D31515441DC8383200475E64 /* AddressBook.framework */; };
 		D315154B1DC8388C00475E64 /* GetAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = D31515481DC8388C00475E64 /* GetAddressBook.m */; };
 		D315154C1DC8388C00475E64 /* PostAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = D315154A1DC8388C00475E64 /* PostAddressBook.m */; };
 		D31515501DC8390700475E64 /* AddressBookApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D315154F1DC8390700475E64 /* AddressBookApi.m */; };
 		D31515541DC8770000475E64 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31515531DC8770000475E64 /* QuestionViewController.m */; };
-		D31515581DC8791000475E64 /* BorrowInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31515571DC8791000475E64 /* BorrowInfoViewController.m */; };
 		D315155C1DC87FBB00475E64 /* credit_question.png in Resources */ = {isa = PBXBuildFile; fileRef = D31515591DC87FBB00475E64 /* credit_question.png */; };
 		D315155D1DC87FBB00475E64 /* credit_question@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D315155A1DC87FBB00475E64 /* credit_question@2x.png */; };
 		D315155E1DC87FBB00475E64 /* credit_question@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D315155B1DC87FBB00475E64 /* credit_question@3x.png */; };
-		D31515621DC8932C00475E64 /* AgreeMentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31515611DC8932C00475E64 /* AgreeMentViewController.m */; };
 		D320494D1DB5BFE3000782F9 /* myCenter_active.png in Resources */ = {isa = PBXBuildFile; fileRef = D32049411DB5BFE3000782F9 /* myCenter_active.png */; };
 		D320494E1DB5BFE3000782F9 /* myCenter_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D32049421DB5BFE3000782F9 /* myCenter_active@2x.png */; };
 		D320494F1DB5BFE3000782F9 /* myCenter_active@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D32049431DB5BFE3000782F9 /* myCenter_active@3x.png */; };
@@ -413,6 +419,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D309BBB61DC988D700355120 /* AgreeMentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgreeMentViewController.h; sourceTree = "<group>"; };
+		D309BBB71DC988D700355120 /* AgreeMentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgreeMentViewController.m; sourceTree = "<group>"; };
+		D309BBB81DC988D700355120 /* BorrowInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorrowInfoViewController.h; sourceTree = "<group>"; };
+		D309BBB91DC988D700355120 /* BorrowInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorrowInfoViewController.m; sourceTree = "<group>"; };
+		D309BBBD1DC988F900355120 /* FuiouInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuiouInfoViewController.h; sourceTree = "<group>"; };
+		D309BBBE1DC988F900355120 /* FuiouInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FuiouInfoViewController.m; sourceTree = "<group>"; };
+		D309BBC51DC9C00800355120 /* CreditYzmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditYzmViewController.h; sourceTree = "<group>"; };
+		D309BBC61DC9C00800355120 /* CreditYzmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditYzmViewController.m; sourceTree = "<group>"; };
+		D309BBC91DC9C4CB00355120 /* CreditSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditSuccessViewController.h; sourceTree = "<group>"; };
+		D309BBCA1DC9C4CB00355120 /* CreditSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditSuccessViewController.m; sourceTree = "<group>"; };
+		D309BBCC1DC9C70000355120 /* credit_success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = credit_success.png; sourceTree = "<group>"; };
+		D309BBCD1DC9C70000355120 /* credit_success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "credit_success@2x.png"; sourceTree = "<group>"; };
+		D309BBCE1DC9C70000355120 /* credit_success@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "credit_success@3x.png"; sourceTree = "<group>"; };
 		D31515441DC8383200475E64 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		D31515471DC8388C00475E64 /* GetAddressBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetAddressBook.h; sourceTree = "<group>"; };
 		D31515481DC8388C00475E64 /* GetAddressBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetAddressBook.m; sourceTree = "<group>"; };
@@ -422,13 +441,9 @@
 		D315154F1DC8390700475E64 /* AddressBookApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBookApi.m; sourceTree = "<group>"; };
 		D31515521DC8770000475E64 /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
 		D31515531DC8770000475E64 /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
-		D31515561DC8791000475E64 /* BorrowInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorrowInfoViewController.h; sourceTree = "<group>"; };
-		D31515571DC8791000475E64 /* BorrowInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorrowInfoViewController.m; sourceTree = "<group>"; };
 		D31515591DC87FBB00475E64 /* credit_question.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = credit_question.png; sourceTree = "<group>"; };
 		D315155A1DC87FBB00475E64 /* credit_question@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "credit_question@2x.png"; sourceTree = "<group>"; };
 		D315155B1DC87FBB00475E64 /* credit_question@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "credit_question@3x.png"; sourceTree = "<group>"; };
-		D31515601DC8932C00475E64 /* AgreeMentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgreeMentViewController.h; sourceTree = "<group>"; };
-		D31515611DC8932C00475E64 /* AgreeMentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgreeMentViewController.m; sourceTree = "<group>"; };
 		D32049411DB5BFE3000782F9 /* myCenter_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myCenter_active.png; sourceTree = "<group>"; };
 		D32049421DB5BFE3000782F9 /* myCenter_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myCenter_active@2x.png"; sourceTree = "<group>"; };
 		D32049431DB5BFE3000782F9 /* myCenter_active@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myCenter_active@3x.png"; sourceTree = "<group>"; };
@@ -1054,6 +1069,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D309BBB41DC988D700355120 /* BorrowInfo */ = {
+			isa = PBXGroup;
+			children = (
+				D309BBB51DC988D700355120 /* Agreement */,
+				D309BBB81DC988D700355120 /* BorrowInfoViewController.h */,
+				D309BBB91DC988D700355120 /* BorrowInfoViewController.m */,
+			);
+			path = BorrowInfo;
+			sourceTree = "<group>";
+		};
+		D309BBB51DC988D700355120 /* Agreement */ = {
+			isa = PBXGroup;
+			children = (
+				D309BBB61DC988D700355120 /* AgreeMentViewController.h */,
+				D309BBB71DC988D700355120 /* AgreeMentViewController.m */,
+			);
+			path = Agreement;
+			sourceTree = "<group>";
+		};
+		D309BBBC1DC988DC00355120 /* FuiouInfo */ = {
+			isa = PBXGroup;
+			children = (
+				D309BBBD1DC988F900355120 /* FuiouInfoViewController.h */,
+				D309BBBE1DC988F900355120 /* FuiouInfoViewController.m */,
+			);
+			path = FuiouInfo;
+			sourceTree = "<group>";
+		};
+		D309BBC41DC9C00800355120 /* CreditYzm */ = {
+			isa = PBXGroup;
+			children = (
+				D309BBC51DC9C00800355120 /* CreditYzmViewController.h */,
+				D309BBC61DC9C00800355120 /* CreditYzmViewController.m */,
+			);
+			path = CreditYzm;
+			sourceTree = "<group>";
+		};
+		D309BBC81DC9C4A900355120 /* CreditSuccess */ = {
+			isa = PBXGroup;
+			children = (
+				D309BBC91DC9C4CB00355120 /* CreditSuccessViewController.h */,
+				D309BBCA1DC9C4CB00355120 /* CreditSuccessViewController.m */,
+			);
+			path = CreditSuccess;
+			sourceTree = "<group>";
+		};
 		D31515461DC8388C00475E64 /* GetAddressBook */ = {
 			isa = PBXGroup;
 			children = (
@@ -1081,25 +1142,6 @@
 				D31515531DC8770000475E64 /* QuestionViewController.m */,
 			);
 			path = Question;
-			sourceTree = "<group>";
-		};
-		D31515551DC878F600475E64 /*  BorrowInfo */ = {
-			isa = PBXGroup;
-			children = (
-				D315155F1DC8931400475E64 /* Agreement */,
-				D31515561DC8791000475E64 /* BorrowInfoViewController.h */,
-				D31515571DC8791000475E64 /* BorrowInfoViewController.m */,
-			);
-			path = " BorrowInfo";
-			sourceTree = "<group>";
-		};
-		D315155F1DC8931400475E64 /* Agreement */ = {
-			isa = PBXGroup;
-			children = (
-				D31515601DC8932C00475E64 /* AgreeMentViewController.h */,
-				D31515611DC8932C00475E64 /* AgreeMentViewController.m */,
-			);
-			path = Agreement;
 			sourceTree = "<group>";
 		};
 		D320497D1DB60AF3000782F9 /* Loan */ = {
@@ -1270,6 +1312,9 @@
 		D322EA871DBF326D0089FD56 /* credit */ = {
 			isa = PBXGroup;
 			children = (
+				D309BBCC1DC9C70000355120 /* credit_success.png */,
+				D309BBCD1DC9C70000355120 /* credit_success@2x.png */,
+				D309BBCE1DC9C70000355120 /* credit_success@3x.png */,
 				D31515591DC87FBB00475E64 /* credit_question.png */,
 				D315155A1DC87FBB00475E64 /* credit_question@2x.png */,
 				D315155B1DC87FBB00475E64 /* credit_question@3x.png */,
@@ -1644,7 +1689,10 @@
 		D3458A141DB08847007BD2CF /* RentViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D31515551DC878F600475E64 /*  BorrowInfo */,
+				D309BBC81DC9C4A900355120 /* CreditSuccess */,
+				D309BBC41DC9C00800355120 /* CreditYzm */,
+				D309BBBC1DC988DC00355120 /* FuiouInfo */,
+				D309BBB41DC988D700355120 /* BorrowInfo */,
 				D31515511DC876E700475E64 /* Question */,
 				D3348CF11DBA125D00A5E06A /* CreditList */,
 				D3458A1B1DB0888F007BD2CF /* RentViewController.h */,
@@ -2560,7 +2608,9 @@
 				D32049691DB5C730000782F9 /* myCenter_ewm@2x.png in Resources */,
 				D33AAF181DB8CB3500459F4E /* TVSignFrameworkRes.plist in Resources */,
 				D321DF831DC1A0AF00A5F042 /* zbar-back.png in Resources */,
+				D309BBD11DC9C70000355120 /* credit_success@3x.png in Resources */,
 				D320498A1DB63039000782F9 /* loan_city.png in Resources */,
+				D309BBD01DC9C70000355120 /* credit_success@2x.png in Resources */,
 				D321DFC41DC1FA5100A5F042 /* credit_good@3x.png in Resources */,
 				D32049831DB60B17000782F9 /* loan_banner@3x.png in Resources */,
 				D3E8ADDA1DB51136002F5D35 /* myCenter_center@3x.png in Resources */,
@@ -2711,6 +2761,7 @@
 				D347E2C61DB46F0800E7B9BA /* tabbar_myCenter_gray@2x.png in Resources */,
 				D32049571DB5BFE3000782F9 /* myCenter_service@2x.png in Resources */,
 				D3458A511DB0C608007BD2CF /* login_phone@3x.png in Resources */,
+				D309BBCF1DC9C70000355120 /* credit_success.png in Resources */,
 				D3E8ADD21DB51136002F5D35 /* myCenter_ balance.png in Resources */,
 				D37346221DC7313C00C9031F /* scan_line.png in Resources */,
 				D347E31D1DB4A7B300E7B9BA /* homePage_loactionbg@3x.png in Resources */,
@@ -2765,7 +2816,6 @@
 				D347E2881DB3138E00E7B9BA /* NSData+ImageContentType.m in Sources */,
 				D3458A111DB08782007BD2CF /* BaseViewController.m in Sources */,
 				D347E2951DB3138E00E7B9BA /* UIImageView+WebCache.m in Sources */,
-				D31515581DC8791000475E64 /* BorrowInfoViewController.m in Sources */,
 				D347E2501DB30E4D00E7B9BA /* MJRefreshBackFooter.m in Sources */,
 				D3348CFA1DBA1C2200A5E06A /* CreditListCell.m in Sources */,
 				D3348CED1DBA0EE600A5E06A /* CreditApi.m in Sources */,
@@ -2798,10 +2848,12 @@
 				D33B0DD31DC31951007A6168 /* MessageListViewController.m in Sources */,
 				D3348CF41DBA127400A5E06A /* CreditListViewController.m in Sources */,
 				D347E2581DB30E4D00E7B9BA /* MJRefreshBackNormalFooter.m in Sources */,
+				D309BBC71DC9C00800355120 /* CreditYzmViewController.m in Sources */,
 				D3E8196F1DAF259E0054B352 /* ViewController.m in Sources */,
 				D347E28E1DB3138E00E7B9BA /* SDWebImageManager.m in Sources */,
 				D347E2891DB3138E00E7B9BA /* SDImageCache.m in Sources */,
 				D347E2571DB30E4D00E7B9BA /* MJRefreshBackGifFooter.m in Sources */,
+				D309BBBF1DC988F900355120 /* FuiouInfoViewController.m in Sources */,
 				D3458A211DB08D5E007BD2CF /* LoginViewController.m in Sources */,
 				D3458A541DB0E140007BD2CF /* RegisterViewController.m in Sources */,
 				D347E21E1DB30D8000E7B9BA /* BaseTableViewController.m in Sources */,
@@ -2820,6 +2872,7 @@
 				D3E147B71DAF335C002F6D60 /* AFHTTPRequestOperationManager.m in Sources */,
 				D3E147E71DAF5FAE002F6D60 /* FMDatabase.m in Sources */,
 				D3E147EC1DAF5FAE002F6D60 /* LoginSqlite.m in Sources */,
+				D309BBBA1DC988D700355120 /* AgreeMentViewController.m in Sources */,
 				D3E147C51DAF335C002F6D60 /* UIAlertView+AFNetworking.m in Sources */,
 				D347E32D1DB4BE1500E7B9BA /* BannerViewController.m in Sources */,
 				D32FED7A1DC6F86400714584 /* HelpCenterViewController.m in Sources */,
@@ -2832,11 +2885,11 @@
 				D347E2901DB3138E00E7B9BA /* UIButton+WebCache.m in Sources */,
 				D347E2871DB3138E00E7B9BA /* MKAnnotationView+WebCache.m in Sources */,
 				D3E8196C1DAF259E0054B352 /* AppDelegate.m in Sources */,
-				D31515621DC8932C00475E64 /* AgreeMentViewController.m in Sources */,
 				D347E29C1DB3404C00E7B9BA /* InvitationCell.m in Sources */,
 				D347E2991DB336A600E7B9BA /* MainButtonCell.m in Sources */,
 				D33B0DCB1DC31522007A6168 /* SignViewController.m in Sources */,
 				D3458A0A1DB0869F007BD2CF /* UILabel+LabelKit.m in Sources */,
+				D309BBBB1DC988D700355120 /* BorrowInfoViewController.m in Sources */,
 				D347E28F1DB3138E00E7B9BA /* SDWebImagePrefetcher.m in Sources */,
 				D347E3171DB4A54E00E7B9BA /* LocationView.m in Sources */,
 				D33B0DD61DC31B01007A6168 /* MessageListCell.m in Sources */,
@@ -2889,6 +2942,7 @@
 				D33AAEAE1DB85CC100459F4E /* ChangeUserNameViewController.m in Sources */,
 				D322EA861DBF31AF0089FD56 /* RentApplyViewController.m in Sources */,
 				D3458A651DB25BF6007BD2CF /* UpdataPwdViewController.m in Sources */,
+				D309BBCB1DC9C4CB00355120 /* CreditSuccessViewController.m in Sources */,
 				D347E25B1DB30E4D00E7B9BA /* MJRefreshNormalHeader.m in Sources */,
 				D347E28D1DB3138E00E7B9BA /* SDWebImageDownloaderOperation.m in Sources */,
 				D3E147BD1DAF335C002F6D60 /* AFURLResponseSerialization.m in Sources */,

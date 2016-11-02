@@ -9,6 +9,7 @@
 #import "BorrowInfoViewController.h"
 #import "NavView.h"
 #import "AgreeMentViewController.h"
+#import "CreditYzmViewController.h"
 
 @interface BorrowInfoViewController ()<UITextFieldDelegate>
 @property (nonatomic, strong) NavView *navView;
@@ -207,7 +208,14 @@
 }
 
 -(void)submitAction{
-
+    if([self.textField.text isEqualToString:@""]){
+        [self addAlertView:@"借款金额不能为空" block:nil];
+        return;
+    }
+    
+    CreditYzmViewController *view = [[CreditYzmViewController alloc] init];
+    view.money = self.textField.text;
+    [self.navigationController pushViewController:view animated:YES];
 }
 
 -(void)phoneAction{

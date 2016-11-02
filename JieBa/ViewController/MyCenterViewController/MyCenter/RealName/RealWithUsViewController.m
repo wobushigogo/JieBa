@@ -175,7 +175,9 @@
     [MyCenterApi realWithBlock:^(NSString *string, NSError *error) {
         if(!error){
             UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:@"提示" message:string preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [wSelf.navigationController popToRootViewControllerAnimated:YES];
+            }];
             [alertControl addAction:cancelAction];
             [wSelf presentViewController:alertControl animated:YES completion:nil];
         }

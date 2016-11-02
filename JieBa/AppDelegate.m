@@ -18,9 +18,11 @@
 #import <TVFaceAuthFramework/TVFaceAuthFramework.h>
 #import "MyCenterApi.h"
 #import "RealWithUsViewController.h"
+#import "AddCashViewController.h"
+#import "FuiouInfoViewController.h"
 
 @interface AppDelegate ()<UITabBarControllerDelegate>
-
+@property(nonatomic)NSInteger lastSelect;
 @end
 
 @implementation AppDelegate
@@ -71,13 +73,6 @@
     
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, tabbar.tabBar.height)];
     bgView.backgroundColor = RGBCOLOR(16, 16, 16);
-//    self.dianImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth-5-WidthXiShu(26), WidthXiShu(7.5), 6, 6)];
-//    self.dianImageView.backgroundColor = RGBCOLOR(255, 100, 64);
-//    self.dianImageView.hidden = YES;
-//    self.dianImageView.layer.cornerRadius = 3;
-//    self.dianImageView.layer.masksToBounds = YES;
-//    [bgView addSubview:self.dianImageView];
-//    [tabbar.tabBar insertSubview:bgView atIndex:0];
     tabbar.tabBar.opaque = YES;
     self.window.rootViewController = tabbar;
     [self.window makeKeyAndVisible];
@@ -130,6 +125,7 @@
         }
     }else {
         if (tabBarController.viewControllers[2] == viewController){
+            self.lastSelect = tabBarController.selectedIndex;
             if([self loadUserInfo:tabBarController viewController:viewController]){
                 return YES;
             }else{
@@ -173,8 +169,8 @@
 }
 
 -(BOOL)loadUserInfo:(UITabBarController *)tabBarController viewController:(UIViewController *)viewController{
-    UINavigationController *navigationctr = (UINavigationController *)tabBarController.viewControllers[0];
-    MainViewController *secvc = (MainViewController *)navigationctr.topViewController;
+    UINavigationController *navigationctr = (UINavigationController *)tabBarController.viewControllers[self.lastSelect];
+    //MainViewController *secvc = (MainViewController *)navigationctr.topViewController;
     __block BOOL isReal = NO;
     __block typeof(self)wSelf = self;
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
@@ -183,16 +179,27 @@
     [MyCenterApi getUserInfoWithBlock:^(NSDictionary *dict, NSError *error) {
         if(!error){
             if([dict[@"nameStatus"] integerValue] == 1){
-                tabBarController.selectedViewController = viewController;
-                [self tabBarController:tabBarController didSelectViewController:viewController];
-                isReal = YES;
+                if([dict[@"openFuyouStatus"] integerValue] == 1){
+                    if(![dict[@"fuyou_login_id"] isEqualToString:@""]){
+                        tabBarController.selectedViewController = viewController;
+                        [self tabBarController:tabBarController didSelectViewController:viewController];
+                        isReal = YES;
+                    }else{
+                        FuiouInfoViewController *view = [[FuiouInfoViewController alloc] init];
+                        [navigationctr.topViewController.navigationController pushViewController:view animated:YES];
+                        isReal = NO;
+                    }
+                }else{
+                    [wSelf isBindCard:navigationctr];
+                    isReal = NO;
+                }
             }else{
                 isReal = NO;
                 UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:@"提示" message:@"是否实名认证" preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
                 UIAlertAction *agreeAction = [UIAlertAction actionWithTitle:@"马上认证" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                     RealWithUsViewController *realView = [[RealWithUsViewController alloc] init];
-                    [secvc.navigationController pushViewController:realView animated:YES];
+                    [navigationctr.topViewController.navigationController pushViewController:realView animated:YES];
                 }];
                 [alertControl addAction:cancelAction];
                 [alertControl addAction:agreeAction];
@@ -202,5 +209,21 @@
     } dic:dic noNetWork:nil];
     
     return isReal;
+}
+
+-(void)isBindCard:(UINavigationController *)navigationctr{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"cash" forKey:@"_cmd_"];
+    [dic setObject:@"1" forKey:@"money"];
+    [dic setObject:@"cash_in" forKey:@"type"];
+    
+    [MyCenterApi addCashWithBlock:^(NSMutableDictionary *dict, NSError *error) {
+        if(!error){
+            AddCashViewController *view = [[AddCashViewController alloc] init];
+            view.webUrl = dict[@"jumpurl"];
+            view.dic = dict;
+            [navigationctr.topViewController.navigationController pushViewController:view animated:YES];
+        }
+    } dic:dic noNetWork:nil];
 }
 @end
