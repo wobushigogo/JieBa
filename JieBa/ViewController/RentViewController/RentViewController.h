@@ -9,5 +9,6 @@
 #import "BaseViewController.h"
 
 @interface RentViewController : BaseViewController
+@property(nonatomic)BOOL isHide;
 -(void)loadCreditInfo;
 @end

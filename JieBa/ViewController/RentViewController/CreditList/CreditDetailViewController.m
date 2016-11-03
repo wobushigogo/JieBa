@@ -9,6 +9,8 @@
 #import "CreditDetailViewController.h"
 #import "NavView.h"
 #import "CreditApi.h"
+#import "AgreeMentViewController.h"
+#import "CreditRepayViewController.h"
 
 @interface CreditDetailViewController ()
 @property (nonatomic, strong) NavView *navView;
@@ -296,11 +298,35 @@
 }
 
 -(void)showAction{
-
+    __block typeof(self)wSelf = self;
+    UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *loaclAction = [UIAlertAction actionWithTitle:@"个人借款协议" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        AgreeMentViewController *view = [[AgreeMentViewController alloc] init];
+        view.webUrl = self.urlDic[@"creditagreement"];
+        view.money = self.money;
+        [wSelf.navigationController pushViewController:view animated:YES];
+    }];
+    UIAlertAction *takeAction = [UIAlertAction actionWithTitle:@"居间服务协议" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        AgreeMentViewController *view = [[AgreeMentViewController alloc] init];
+        view.webUrl = self.urlDic[@"creditagreement2"];
+        view.money = self.money;
+        [wSelf.navigationController pushViewController:view animated:YES];
+    }];
+    [alertControl addAction:cancelAction];
+    [alertControl addAction:loaclAction];
+    [alertControl addAction:takeAction];
+    [self presentViewController:alertControl animated:YES completion:nil];
 }
 
 -(void)repayAction{
-
+    CreditRepayViewController *view = [[CreditRepayViewController alloc] init];
+    if(self.creditDetailModel.credit_order_status == 1){
+        view.repayOrOverdue = repay;
+    }else if (self.creditDetailModel.credit_order_status == 5){
+        view.repayOrOverdue = overdue;
+    }
+    [self.navigationController pushViewController:view animated:YES];
 }
 
 #pragma mark - 接口

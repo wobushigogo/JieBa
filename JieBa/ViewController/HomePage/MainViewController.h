@@ -10,5 +10,5 @@
 #import "BaseTableViewController.h"
 
 @interface MainViewController : BaseTableViewController
--(void)loadUserInfo;
+
 @end

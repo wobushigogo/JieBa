@@ -119,4 +119,60 @@
         }
     } apiName:@"credit" noNetWork:nil];
 }
+
++ (void)sginCreditWithBlock:(void (^)(NSMutableArray *array, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork{
+    NSString *urlStr = [NSString stringWithFormat:@"?credit"];
+    [SendRequst formRequstWithUrlString:urlStr postParamDic:dic success:^(id responseDic) {
+        if(block){
+            block([NSMutableArray array],nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"error===>%@",error);
+        if (block) {
+            block(nil, error);
+        }
+    } apiName:@"credit" noNetWork:nil];
+}
+
++ (void)giveUpCreditWithBlock:(void (^)(NSMutableArray *array, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork{
+    NSString *urlStr = [NSString stringWithFormat:@"?credit"];
+    [SendRequst formRequstWithUrlString:urlStr postParamDic:dic success:^(id responseDic) {
+        if(block){
+            block([NSMutableArray array],nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"error===>%@",error);
+        if (block) {
+            block(nil, error);
+        }
+    } apiName:@"credit" noNetWork:nil];
+}
+
++ (void)repayInfoWithBlock:(void (^)(NSMutableDictionary *dict, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork{
+    NSString *urlStr = [NSString stringWithFormat:@"?credit"];
+    [SendRequst formRequstWithUrlString:urlStr postParamDic:dic success:^(id responseDic) {
+        if(block){
+            block(responseDic[@"dataresult"][@"repayment"],nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"error===>%@",error);
+        if (block) {
+            block(nil, error);
+        }
+    } apiName:@"credit" noNetWork:nil];
+}
+
++ (void)repayMoneyWithBlock:(void (^)(NSMutableDictionary *dict, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork;{
+    NSString *urlStr = [NSString stringWithFormat:@"?credit"];
+    [SendRequst formRequstWithUrlString:urlStr postParamDic:dic success:^(id responseDic) {
+        if(block){
+            block(responseDic[@"dataresult"],nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"error===>%@",error);
+        if (block) {
+            block(nil, error);
+        }
+    } apiName:@"credit" noNetWork:nil];
+}
 @end

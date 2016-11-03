@@ -25,6 +25,8 @@
 #import "MyCenterViewController.h"
 #import "RealWithUsViewController.h"
 #import "RentViewController.h"
+#import "FuiouInfoViewController.h"
+#import "AddCashViewController.h"
 
 @interface MainViewController ()<ZWAdViewDelagate,MainButtonCellDelegate>
 @property(nonatomic,strong)UIView *headView;
@@ -233,26 +235,56 @@
     } dic:dic noNetWork:nil];
 }
 
--(void)loadUserInfo{
+-(void)loadNameStatus:(void(^)(NSDictionary *dict))block{
+    __block typeof(self)wSelf = self;
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setObject:@"member_changeuserinfo" forKey:@"_cmd_"];
     [dic setObject:@"member_info" forKey:@"type"];
     [MyCenterApi getUserInfoWithBlock:^(NSDictionary *dict, NSError *error) {
         if(!error){
             if([dict[@"nameStatus"] integerValue] == 1){
-                RentViewController *view = [[RentViewController alloc] init];
-                [self.navigationController pushViewController:view animated:YES];
+                if([dict[@"openFuyouStatus"] integerValue] == 1){
+                    if(![dict[@"fuyou_login_id"] isEqualToString:@""]){
+                        if(block){
+                            block(dict);
+                        }
+                    }else{
+                        FuiouInfoViewController *view = [[FuiouInfoViewController alloc] init];
+                        [wSelf.navigationController pushViewController:view animated:YES];
+                    }
+                }else{
+                    [wSelf isBindCard];
+                }
             }else{
                 UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:@"提示" message:@"是否实名认证" preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
                 UIAlertAction *agreeAction = [UIAlertAction actionWithTitle:@"马上认证" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    RealWithUsViewController *realView = [[RealWithUsViewController alloc] init];
-                    [self.navigationController pushViewController:realView animated:YES];
+                    RealWithUsViewController *view = [[RealWithUsViewController alloc] init];
+                    view.isReal = NO;
+                    view.realName = dict[@"names"];
+                    view.certiNumber = dict[@"certiNumber"];
+                    [wSelf.navigationController pushViewController:view animated:YES];
                 }];
                 [alertControl addAction:cancelAction];
                 [alertControl addAction:agreeAction];
-                [self presentViewController:alertControl animated:YES completion:nil];
+                [wSelf presentViewController:alertControl animated:YES completion:nil];
             }
+        }
+    } dic:dic noNetWork:nil];
+}
+
+-(void)isBindCard{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"cash" forKey:@"_cmd_"];
+    [dic setObject:@"1" forKey:@"money"];
+    [dic setObject:@"cash_in" forKey:@"type"];
+    
+    [MyCenterApi addCashWithBlock:^(NSMutableDictionary *dict, NSError *error) {
+        if(!error){
+            AddCashViewController *view = [[AddCashViewController alloc] init];
+            view.webUrl = dict[@"jumpurl"];
+            view.dic = dict;
+            [self.navigationController pushViewController:view animated:YES];
         }
     } dic:dic noNetWork:nil];
 }
@@ -295,9 +327,12 @@
             if([LoginViewController openLogin]){
                 return;
             }
-            MainRentViewController *view = [[MainRentViewController alloc] init];
-            view.webUrl = self.urlDic[@"buy_apply"];
-            [self.navigationController pushViewController:view animated:YES];
+            __block typeof(self)wSelf = self;
+            [self loadNameStatus:^(NSDictionary *dict) {
+                RentViewController *view = [[RentViewController alloc] init];
+                [view loadCreditInfo];
+                [wSelf.navigationController pushViewController:view animated:YES];
+            }];
         }
             break;
         case 3:
@@ -347,9 +382,6 @@
     ScanViewController *view = [[ScanViewController alloc] init];
     __block typeof(self)wSelf = self;
     view.backBlock = ^(void){
-        UINavigationController *navigationctr = (UINavigationController *)wSelf.tabBarController.viewControllers[3];
-        MyCenterViewController *secvc = (MyCenterViewController *)navigationctr.topViewController;
-        [secvc loadUserInfo];
         wSelf.tabBarController.selectedIndex = 3;
     };
     [self.navigationController pushViewController:view animated:YES];

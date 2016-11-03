@@ -14,5 +14,8 @@
     self.maxMoney = dict[@"maxMoney"];
     self.order_status = [dict[@"order_status"] integerValue];
     self.is_late = [dict[@"is_late"] integerValue];
+    self.loanmoney = dict[@"order_info"][@"loanmoney"];
+    self.credit_total_num = dict[@"credit_total_num"];
+    self.credit_total_money = dict[@"credit_total_money"];
 }
 @end

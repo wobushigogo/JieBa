@@ -11,6 +11,9 @@
 @interface CreditModel : NSObject
 @property(nonatomic,copy)NSString *minMoney;
 @property(nonatomic,copy)NSString *maxMoney;
+@property(nonatomic,copy)NSString *loanmoney;
+@property(nonatomic,copy)NSString *credit_total_money;
+@property(nonatomic,copy)NSString *credit_total_num;
 //1：未申请过、拒单、完成还款  允许贷款【去借钱】
 //2：订单处于审核中  不允许贷款   【审核中请等待】
 //3：完成放款，可以还款   【去还钱】，或者【已逾期，去还款】

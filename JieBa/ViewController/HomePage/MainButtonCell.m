@@ -65,7 +65,7 @@
     if(!_rentBtn){
         UIButton *rentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         rentBtn.frame = CGRectMake(kScreenWidth/3*2, 0, kScreenWidth/3, HeightXiShu(98));
-        [rentBtn setImage:[GetImagePath getImagePath:@"homePage_rent"] forState:UIControlStateNormal];
+        [rentBtn setImage:[GetImagePath getImagePath:@"homePage_credit"] forState:UIControlStateNormal];
         rentBtn.tag = 2;
         [rentBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:rentBtn];
@@ -104,7 +104,7 @@
     if(!_businessBtn){
         UIButton *businessBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         businessBtn.frame = CGRectMake(kScreenWidth/3*2, HeightXiShu(98), kScreenWidth/3, HeightXiShu(100));
-        [businessBtn setImage:[GetImagePath getImagePath:@"homePage_business"] forState:UIControlStateNormal];
+        [businessBtn setImage:[GetImagePath getImagePath:@"homePage_add"] forState:UIControlStateNormal];
         businessBtn.tag = 5;
         [businessBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:businessBtn];

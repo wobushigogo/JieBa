@@ -15,6 +15,21 @@
 		D309BBCF1DC9C70000355120 /* credit_success.png in Resources */ = {isa = PBXBuildFile; fileRef = D309BBCC1DC9C70000355120 /* credit_success.png */; };
 		D309BBD01DC9C70000355120 /* credit_success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D309BBCD1DC9C70000355120 /* credit_success@2x.png */; };
 		D309BBD11DC9C70000355120 /* credit_success@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D309BBCE1DC9C70000355120 /* credit_success@3x.png */; };
+		D30C087D1DCAE0870008F156 /* credit_noSelect.png in Resources */ = {isa = PBXBuildFile; fileRef = D30C08771DCAE0870008F156 /* credit_noSelect.png */; };
+		D30C087E1DCAE0870008F156 /* credit_noSelect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D30C08781DCAE0870008F156 /* credit_noSelect@2x.png */; };
+		D30C087F1DCAE0870008F156 /* credit_noSelect@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D30C08791DCAE0870008F156 /* credit_noSelect@3x.png */; };
+		D30C08801DCAE0870008F156 /* credit_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = D30C087A1DCAE0870008F156 /* credit_selected.png */; };
+		D30C08811DCAE0870008F156 /* credit_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D30C087B1DCAE0870008F156 /* credit_selected@2x.png */; };
+		D30C08821DCAE0870008F156 /* credit_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D30C087C1DCAE0870008F156 /* credit_selected@3x.png */; };
+		D30C08861DCAE2B10008F156 /* CreditSignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D30C08851DCAE2B10008F156 /* CreditSignViewController.m */; };
+		D30C088A1DCAED420008F156 /* CreditRepayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D30C08891DCAED420008F156 /* CreditRepayViewController.m */; };
+		D30C088D1DCB25BA0008F156 /* RepaySuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D30C088C1DCB25BA0008F156 /* RepaySuccessViewController.m */; };
+		D30C08941DCB31490008F156 /* homePage_add.png in Resources */ = {isa = PBXBuildFile; fileRef = D30C088E1DCB31490008F156 /* homePage_add.png */; };
+		D30C08951DCB31490008F156 /* homePage_add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D30C088F1DCB31490008F156 /* homePage_add@2x.png */; };
+		D30C08961DCB31490008F156 /* homePage_add@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D30C08901DCB31490008F156 /* homePage_add@3x.png */; };
+		D30C08971DCB31490008F156 /* homePage_credit.png in Resources */ = {isa = PBXBuildFile; fileRef = D30C08911DCB31490008F156 /* homePage_credit.png */; };
+		D30C08981DCB31490008F156 /* homePage_credit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D30C08921DCB31490008F156 /* homePage_credit@2x.png */; };
+		D30C08991DCB31490008F156 /* homePage_credit@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D30C08931DCB31490008F156 /* homePage_credit@3x.png */; };
 		D31515451DC8383200475E64 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D31515441DC8383200475E64 /* AddressBook.framework */; };
 		D315154B1DC8388C00475E64 /* GetAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = D31515481DC8388C00475E64 /* GetAddressBook.m */; };
 		D315154C1DC8388C00475E64 /* PostAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = D315154A1DC8388C00475E64 /* PostAddressBook.m */; };
@@ -266,9 +281,6 @@
 		D347E3001DB49B9E00E7B9BA /* homePage_assess.png in Resources */ = {isa = PBXBuildFile; fileRef = D347E2EE1DB49B9E00E7B9BA /* homePage_assess.png */; };
 		D347E3011DB49B9E00E7B9BA /* homePage_assess@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D347E2EF1DB49B9E00E7B9BA /* homePage_assess@2x.png */; };
 		D347E3021DB49B9E00E7B9BA /* homePage_assess@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D347E2F01DB49B9E00E7B9BA /* homePage_assess@3x.png */; };
-		D347E3031DB49B9E00E7B9BA /* homePage_business.png in Resources */ = {isa = PBXBuildFile; fileRef = D347E2F11DB49B9E00E7B9BA /* homePage_business.png */; };
-		D347E3041DB49B9E00E7B9BA /* homePage_business@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D347E2F21DB49B9E00E7B9BA /* homePage_business@2x.png */; };
-		D347E3051DB49B9E00E7B9BA /* homePage_business@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D347E2F31DB49B9E00E7B9BA /* homePage_business@3x.png */; };
 		D347E3061DB49B9E00E7B9BA /* homePage_contact.png in Resources */ = {isa = PBXBuildFile; fileRef = D347E2F41DB49B9E00E7B9BA /* homePage_contact.png */; };
 		D347E3071DB49B9E00E7B9BA /* homePage_contact@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D347E2F51DB49B9E00E7B9BA /* homePage_contact@2x.png */; };
 		D347E3081DB49B9E00E7B9BA /* homePage_contact@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D347E2F61DB49B9E00E7B9BA /* homePage_contact@3x.png */; };
@@ -432,6 +444,24 @@
 		D309BBCC1DC9C70000355120 /* credit_success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = credit_success.png; sourceTree = "<group>"; };
 		D309BBCD1DC9C70000355120 /* credit_success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "credit_success@2x.png"; sourceTree = "<group>"; };
 		D309BBCE1DC9C70000355120 /* credit_success@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "credit_success@3x.png"; sourceTree = "<group>"; };
+		D30C08771DCAE0870008F156 /* credit_noSelect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = credit_noSelect.png; sourceTree = "<group>"; };
+		D30C08781DCAE0870008F156 /* credit_noSelect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "credit_noSelect@2x.png"; sourceTree = "<group>"; };
+		D30C08791DCAE0870008F156 /* credit_noSelect@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "credit_noSelect@3x.png"; sourceTree = "<group>"; };
+		D30C087A1DCAE0870008F156 /* credit_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = credit_selected.png; sourceTree = "<group>"; };
+		D30C087B1DCAE0870008F156 /* credit_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "credit_selected@2x.png"; sourceTree = "<group>"; };
+		D30C087C1DCAE0870008F156 /* credit_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "credit_selected@3x.png"; sourceTree = "<group>"; };
+		D30C08841DCAE2B10008F156 /* CreditSignViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditSignViewController.h; sourceTree = "<group>"; };
+		D30C08851DCAE2B10008F156 /* CreditSignViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditSignViewController.m; sourceTree = "<group>"; };
+		D30C08881DCAED420008F156 /* CreditRepayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditRepayViewController.h; sourceTree = "<group>"; };
+		D30C08891DCAED420008F156 /* CreditRepayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditRepayViewController.m; sourceTree = "<group>"; };
+		D30C088B1DCB25BA0008F156 /* RepaySuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepaySuccessViewController.h; sourceTree = "<group>"; };
+		D30C088C1DCB25BA0008F156 /* RepaySuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepaySuccessViewController.m; sourceTree = "<group>"; };
+		D30C088E1DCB31490008F156 /* homePage_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homePage_add.png; sourceTree = "<group>"; };
+		D30C088F1DCB31490008F156 /* homePage_add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homePage_add@2x.png"; sourceTree = "<group>"; };
+		D30C08901DCB31490008F156 /* homePage_add@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homePage_add@3x.png"; sourceTree = "<group>"; };
+		D30C08911DCB31490008F156 /* homePage_credit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homePage_credit.png; sourceTree = "<group>"; };
+		D30C08921DCB31490008F156 /* homePage_credit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homePage_credit@2x.png"; sourceTree = "<group>"; };
+		D30C08931DCB31490008F156 /* homePage_credit@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homePage_credit@3x.png"; sourceTree = "<group>"; };
 		D31515441DC8383200475E64 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		D31515471DC8388C00475E64 /* GetAddressBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetAddressBook.h; sourceTree = "<group>"; };
 		D31515481DC8388C00475E64 /* GetAddressBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetAddressBook.m; sourceTree = "<group>"; };
@@ -812,9 +842,6 @@
 		D347E2EE1DB49B9E00E7B9BA /* homePage_assess.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homePage_assess.png; sourceTree = "<group>"; };
 		D347E2EF1DB49B9E00E7B9BA /* homePage_assess@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homePage_assess@2x.png"; sourceTree = "<group>"; };
 		D347E2F01DB49B9E00E7B9BA /* homePage_assess@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homePage_assess@3x.png"; sourceTree = "<group>"; };
-		D347E2F11DB49B9E00E7B9BA /* homePage_business.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homePage_business.png; sourceTree = "<group>"; };
-		D347E2F21DB49B9E00E7B9BA /* homePage_business@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homePage_business@2x.png"; sourceTree = "<group>"; };
-		D347E2F31DB49B9E00E7B9BA /* homePage_business@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homePage_business@3x.png"; sourceTree = "<group>"; };
 		D347E2F41DB49B9E00E7B9BA /* homePage_contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homePage_contact.png; sourceTree = "<group>"; };
 		D347E2F51DB49B9E00E7B9BA /* homePage_contact@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homePage_contact@2x.png"; sourceTree = "<group>"; };
 		D347E2F61DB49B9E00E7B9BA /* homePage_contact@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homePage_contact@3x.png"; sourceTree = "<group>"; };
@@ -1115,6 +1142,26 @@
 			path = CreditSuccess;
 			sourceTree = "<group>";
 		};
+		D30C08831DCAE2B10008F156 /* CreditSign */ = {
+			isa = PBXGroup;
+			children = (
+				D30C08841DCAE2B10008F156 /* CreditSignViewController.h */,
+				D30C08851DCAE2B10008F156 /* CreditSignViewController.m */,
+			);
+			path = CreditSign;
+			sourceTree = "<group>";
+		};
+		D30C08871DCAED1E0008F156 /* CreditRepay */ = {
+			isa = PBXGroup;
+			children = (
+				D30C08881DCAED420008F156 /* CreditRepayViewController.h */,
+				D30C08891DCAED420008F156 /* CreditRepayViewController.m */,
+				D30C088B1DCB25BA0008F156 /* RepaySuccessViewController.h */,
+				D30C088C1DCB25BA0008F156 /* RepaySuccessViewController.m */,
+			);
+			path = CreditRepay;
+			sourceTree = "<group>";
+		};
 		D31515461DC8388C00475E64 /* GetAddressBook */ = {
 			isa = PBXGroup;
 			children = (
@@ -1312,6 +1359,12 @@
 		D322EA871DBF326D0089FD56 /* credit */ = {
 			isa = PBXGroup;
 			children = (
+				D30C08771DCAE0870008F156 /* credit_noSelect.png */,
+				D30C08781DCAE0870008F156 /* credit_noSelect@2x.png */,
+				D30C08791DCAE0870008F156 /* credit_noSelect@3x.png */,
+				D30C087A1DCAE0870008F156 /* credit_selected.png */,
+				D30C087B1DCAE0870008F156 /* credit_selected@2x.png */,
+				D30C087C1DCAE0870008F156 /* credit_selected@3x.png */,
 				D309BBCC1DC9C70000355120 /* credit_success.png */,
 				D309BBCD1DC9C70000355120 /* credit_success@2x.png */,
 				D309BBCE1DC9C70000355120 /* credit_success@3x.png */,
@@ -1689,6 +1742,8 @@
 		D3458A141DB08847007BD2CF /* RentViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D30C08871DCAED1E0008F156 /* CreditRepay */,
+				D30C08831DCAE2B10008F156 /* CreditSign */,
 				D309BBC81DC9C4A900355120 /* CreditSuccess */,
 				D309BBC41DC9C00800355120 /* CreditYzm */,
 				D309BBBC1DC988DC00355120 /* FuiouInfo */,
@@ -1971,6 +2026,12 @@
 		D347E2ED1DB49A7F00E7B9BA /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
+				D30C088E1DCB31490008F156 /* homePage_add.png */,
+				D30C088F1DCB31490008F156 /* homePage_add@2x.png */,
+				D30C08901DCB31490008F156 /* homePage_add@3x.png */,
+				D30C08911DCB31490008F156 /* homePage_credit.png */,
+				D30C08921DCB31490008F156 /* homePage_credit@2x.png */,
+				D30C08931DCB31490008F156 /* homePage_credit@3x.png */,
 				D347E3241DB4B11800E7B9BA /* homePage_scan.png */,
 				D347E3251DB4B11800E7B9BA /* homePage_scan@2x.png */,
 				D347E3261DB4B11800E7B9BA /* homePage_scan@3x.png */,
@@ -1983,9 +2044,6 @@
 				D347E2EE1DB49B9E00E7B9BA /* homePage_assess.png */,
 				D347E2EF1DB49B9E00E7B9BA /* homePage_assess@2x.png */,
 				D347E2F01DB49B9E00E7B9BA /* homePage_assess@3x.png */,
-				D347E2F11DB49B9E00E7B9BA /* homePage_business.png */,
-				D347E2F21DB49B9E00E7B9BA /* homePage_business@2x.png */,
-				D347E2F31DB49B9E00E7B9BA /* homePage_business@3x.png */,
 				D347E2F41DB49B9E00E7B9BA /* homePage_contact.png */,
 				D347E2F51DB49B9E00E7B9BA /* homePage_contact@2x.png */,
 				D347E2F61DB49B9E00E7B9BA /* homePage_contact@3x.png */,
@@ -2628,19 +2686,20 @@
 				D3B2BE221DB73B220095306E /* myCenter_arrow@3x.png in Resources */,
 				D347E3021DB49B9E00E7B9BA /* homePage_assess@3x.png in Resources */,
 				D347E2DA1DB470E700E7B9BA /* register_noSelect.png in Resources */,
+				D30C087E1DCAE0870008F156 /* credit_noSelect@2x.png in Resources */,
 				D320494E1DB5BFE3000782F9 /* myCenter_active@2x.png in Resources */,
 				D32049621DB5C4E0000782F9 /* myCenter_sign.png in Resources */,
-				D347E3051DB49B9E00E7B9BA /* homePage_business@3x.png in Resources */,
+				D30C08961DCB31490008F156 /* homePage_add@3x.png in Resources */,
 				D32049731DB5CA86000782F9 /* myCenter_message@3x.png in Resources */,
 				D320496A1DB5C730000782F9 /* myCenter_ewm@3x.png in Resources */,
 				D32049641DB5C4E0000782F9 /* myCenter_sign@3x.png in Resources */,
 				D321DFB91DC1F68200A5F042 /* credit_listComment.png in Resources */,
 				D32049581DB5BFE3000782F9 /* myCenter_service@3x.png in Resources */,
+				D30C08981DCB31490008F156 /* homePage_credit@2x.png in Resources */,
 				D32049821DB60B17000782F9 /* loan_banner@2x.png in Resources */,
 				D347E3101DB49B9E00E7B9BA /* homePage_rent@2x.png in Resources */,
 				D3458A4F1DB0C608007BD2CF /* login_phone.png in Resources */,
 				D3348CD21DB9C08B00A5E06A /* myCenter_addCamera.png in Resources */,
-				D347E3041DB49B9E00E7B9BA /* homePage_business@2x.png in Resources */,
 				D347E3001DB49B9E00E7B9BA /* homePage_assess.png in Resources */,
 				D347E3111DB49B9E00E7B9BA /* homePage_rent@3x.png in Resources */,
 				D33AAEB31DB860BD00459F4E /* myCente_changUserName@2x.png in Resources */,
@@ -2657,9 +2716,11 @@
 				D321DF841DC1A0AF00A5F042 /* zbar-help.html in Resources */,
 				D373461F1DC7313C00C9031F /* scan_kuang.png in Resources */,
 				D32049611DB5C4E0000782F9 /* myCenter_ invitation@3x.png in Resources */,
+				D30C08991DCB31490008F156 /* homePage_credit@3x.png in Resources */,
 				D347E3271DB4B11800E7B9BA /* homePage_scan.png in Resources */,
 				D315155C1DC87FBB00475E64 /* credit_question.png in Resources */,
 				D347E2BA1DB46F0800E7B9BA /* tabbar_home_gary@2x.png in Resources */,
+				D30C08801DCAE0870008F156 /* credit_selected.png in Resources */,
 				D3E5F84A1DC05EDB004398ED /* rent_liucheng@3x.png in Resources */,
 				D32049561DB5BFE3000782F9 /* myCenter_service.png in Resources */,
 				D347E2BF1DB46F0800E7B9BA /* tabbar_loan_gary.png in Resources */,
@@ -2677,12 +2738,15 @@
 				D38A95C71DBE095C005334AC /* loan_detail@2x.png in Resources */,
 				D347E3071DB49B9E00E7B9BA /* homePage_contact@2x.png in Resources */,
 				D347E30B1DB49B9E00E7B9BA /* homePage_introduce@3x.png in Resources */,
+				D30C08971DCB31490008F156 /* homePage_credit.png in Resources */,
+				D30C08941DCB31490008F156 /* homePage_add.png in Resources */,
 				D32049601DB5C4E0000782F9 /* myCenter_ invitation@2x.png in Resources */,
 				D321DFC21DC1FA5100A5F042 /* credit_good.png in Resources */,
 				D3458A4A1DB0C5C3007BD2CF /* login_pwd@2x.png in Resources */,
 				D32049521DB5BFE3000782F9 /* myCenter_invite@3x.png in Resources */,
 				D347E2BB1DB46F0800E7B9BA /* tabbar_home_gary@3x.png in Resources */,
 				D315155E1DC87FBB00475E64 /* credit_question@3x.png in Resources */,
+				D30C087D1DCAE0870008F156 /* credit_noSelect.png in Resources */,
 				D37346231DC7313C00C9031F /* scan_line@2x.png in Resources */,
 				D347E2BE1DB46F0800E7B9BA /* tabbar_loan_blue@3x.png in Resources */,
 				D321DFBB1DC1F68200A5F042 /* credit_listComment@3x.png in Resources */,
@@ -2722,6 +2786,7 @@
 				D33AAF171DB8CB3500459F4E /* TVSignFrameworkRes.bundle in Resources */,
 				D347E2B61DB46F0800E7B9BA /* tabbar_home_blue.png in Resources */,
 				D321DFC71DC1FA5100A5F042 /* credit_noGood@3x.png in Resources */,
+				D30C08951DCB31490008F156 /* homePage_add@2x.png in Resources */,
 				D321DF9C1DC1A72F00A5F042 /* default_bigBannre@3x.png in Resources */,
 				D32049681DB5C730000782F9 /* myCenter_ewm.png in Resources */,
 				D33AAEC31DB8A00300459F4E /* myCenter_sfz@3x.png in Resources */,
@@ -2735,6 +2800,7 @@
 				D321DFC31DC1FA5100A5F042 /* credit_good@2x.png in Resources */,
 				D3E8ADD81DB51136002F5D35 /* myCenter_center.png in Resources */,
 				D37346211DC7313C00C9031F /* scan_kuang@3x.png in Resources */,
+				D30C087F1DCAE0870008F156 /* credit_noSelect@3x.png in Resources */,
 				D37346201DC7313C00C9031F /* scan_kuang@2x.png in Resources */,
 				D347E2B81DB46F0800E7B9BA /* tabbar_home_blue@3x.png in Resources */,
 				D32049631DB5C4E0000782F9 /* myCenter_sign@2x.png in Resources */,
@@ -2753,6 +2819,7 @@
 				D32049711DB5CA86000782F9 /* myCenter_message.png in Resources */,
 				D347E2E41DB470E700E7B9BA /* register_show@2x.png in Resources */,
 				D3458A321DB0B12F007BD2CF /* login_back@2x.png in Resources */,
+				D30C08821DCAE0870008F156 /* credit_selected@3x.png in Resources */,
 				D321DF851DC1A0AF00A5F042 /* zbar-helpicons.png in Resources */,
 				D3458A4B1DB0C5C3007BD2CF /* login_pwd@3x.png in Resources */,
 				D3DD97401DBF717A003395C9 /* credit_banner@3x.png in Resources */,
@@ -2764,6 +2831,7 @@
 				D309BBCF1DC9C70000355120 /* credit_success.png in Resources */,
 				D3E8ADD21DB51136002F5D35 /* myCenter_ balance.png in Resources */,
 				D37346221DC7313C00C9031F /* scan_line.png in Resources */,
+				D30C08811DCAE0870008F156 /* credit_selected@2x.png in Resources */,
 				D347E31D1DB4A7B300E7B9BA /* homePage_loactionbg@3x.png in Resources */,
 				D347E2DF1DB470E700E7B9BA /* register_noShow@3x.png in Resources */,
 				D37346241DC7313C00C9031F /* scan_line@3x.png in Resources */,
@@ -2779,7 +2847,6 @@
 				D3DD973E1DBF717A003395C9 /* credit_banner.png in Resources */,
 				D315155D1DC87FBB00475E64 /* credit_question@2x.png in Resources */,
 				D3458A491DB0C5C3007BD2CF /* login_pwd.png in Resources */,
-				D347E3031DB49B9E00E7B9BA /* homePage_business.png in Resources */,
 				D347E3361DB4D44000E7B9BA /* myCenter_banner@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2850,6 +2917,7 @@
 				D347E2581DB30E4D00E7B9BA /* MJRefreshBackNormalFooter.m in Sources */,
 				D309BBC71DC9C00800355120 /* CreditYzmViewController.m in Sources */,
 				D3E8196F1DAF259E0054B352 /* ViewController.m in Sources */,
+				D30C08861DCAE2B10008F156 /* CreditSignViewController.m in Sources */,
 				D347E28E1DB3138E00E7B9BA /* SDWebImageManager.m in Sources */,
 				D347E2891DB3138E00E7B9BA /* SDImageCache.m in Sources */,
 				D347E2571DB30E4D00E7B9BA /* MJRefreshBackGifFooter.m in Sources */,
@@ -2949,6 +3017,7 @@
 				D347E2611DB30E4D00E7B9BA /* UIView+MJExtension.m in Sources */,
 				D321DFAE1DC1D9F300A5F042 /* CommentCell.m in Sources */,
 				D347E2211DB30DC200E7B9BA /* BaseTableView.m in Sources */,
+				D30C088A1DCAED420008F156 /* CreditRepayViewController.m in Sources */,
 				D33AAEB71DB8729900459F4E /* ChangePhoneViewController.m in Sources */,
 				D37346271DC731A600C9031F /* ScanView.m in Sources */,
 				D3E147BF1DAF335C002F6D60 /* ConnectionAvailable.m in Sources */,
@@ -2964,6 +3033,7 @@
 				D3B2BE391DB74B190095306E /* StageChooseView.m in Sources */,
 				D3B2BE501DB757130095306E /* OrderUnderwayViewController.m in Sources */,
 				D322EA961DBF5F670089FD56 /* EvaluateViewController.m in Sources */,
+				D30C088D1DCB25BA0008F156 /* RepaySuccessViewController.m in Sources */,
 				D3458A051DB0854F007BD2CF /* NSString+LabelKit.m in Sources */,
 				D32049791DB5EDCA000782F9 /* LoanTableViewCell.m in Sources */,
 				D322EA921DBF40CD0089FD56 /* AddCashViewController.m in Sources */,

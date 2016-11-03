@@ -74,6 +74,8 @@
     if(model.status != 1){
         CreditDetailViewController *view = [[CreditDetailViewController alloc] init];
         view.orderId = model.orderId;
+        view.urlDic = self.urlDic;
+        view.money = self.money;
         [self.navigationController pushViewController:view animated:YES];
     }
 }

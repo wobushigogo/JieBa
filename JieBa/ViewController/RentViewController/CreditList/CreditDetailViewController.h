@@ -10,5 +10,7 @@
 
 @interface CreditDetailViewController : BaseViewController
 @property(nonatomic,copy)NSString *orderId;
+@property(nonatomic,strong)NSMutableDictionary *urlDic;
+@property(nonatomic,copy)NSString *money;
 @property(nonatomic)BOOL status;
 @end

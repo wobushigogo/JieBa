@@ -23,6 +23,7 @@
 #import "MessageListViewController.h"
 #import "AddCashViewController.h"
 #import "BindCardViewController.h"
+#import "FuiouInfoViewController.h"
 
 @interface MyCenterViewController ()<MyCenterHeadDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property(nonatomic,strong)MyCenterHead *headView;
@@ -528,8 +529,17 @@
     [MyCenterApi getUserInfoWithBlock:^(NSDictionary *dict, NSError *error) {
         if(!error){
             if([dict[@"nameStatus"] integerValue] == 1){
-                if(block){
-                    block(dict);
+                if([dict[@"openFuyouStatus"] integerValue] == 1){
+                    if(![dict[@"fuyou_login_id"] isEqualToString:@""]){
+                        if(block){
+                            block(dict);
+                        }
+                    }else{
+                        FuiouInfoViewController *view = [[FuiouInfoViewController alloc] init];
+                        [wSelf.navigationController pushViewController:view animated:YES];
+                    }
+                }else{
+                    [wSelf isBindCard];
                 }
             }else{
                 UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:@"提示" message:@"是否实名认证" preferredStyle:UIAlertControllerStyleAlert];

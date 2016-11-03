@@ -1,36 +1,34 @@
 //
-//  FuiouInfoViewController.m
+//  CreditRepayViewController.m
 //  JieBa
 //
-//  Created by 汪洋 on 2016/11/2.
+//  Created by 汪洋 on 2016/11/3.
 //  Copyright © 2016年 zhixin. All rights reserved.
 //
 
-#import "FuiouInfoViewController.h"
+#import "CreditSignViewController.h"
 #import "NavView.h"
-#import "MyCenterApi.h"
+#import "AgreeMentViewController.h"
 #import "CreditApi.h"
 
-@interface FuiouInfoViewController ()<UITextFieldDelegate>
+@interface CreditSignViewController ()<UITextFieldDelegate>
 @property (nonatomic, strong) NavView *navView;
-@property(nonatomic,strong)NSMutableArray *contentArr;
 @property(nonatomic,strong)UIView *footerView;
+@property(nonatomic,strong)UIButton *agreeBtn;
 @property(nonatomic,strong)UILabel *phoneLabel;
 @property(nonatomic,strong)UIView *yzmView;
 @property(nonatomic,strong)UITextField *yzmTextField;
 @property(nonatomic,strong)UIButton *yzmBtn;
-@property(nonatomic,strong)NSString *phoneStr;
-@property(nonatomic,strong)NSString *login_id;
 @property(nonatomic,strong)UIButton *submitBtn;
+@property(nonatomic)BOOL isAgree;
 @end
 
-@implementation FuiouInfoViewController
+@implementation CreditSignViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSArray *arr = @[@[@"",@""],@[@"",@"",@""]];
-    self.contentArr = [NSMutableArray arrayWithArray:arr];
+    self.isAgree = NO;
     [self statusBar];
     [self navView];
     
@@ -40,8 +38,6 @@
     self.tableView.backgroundColor = AllBackLightGratColor;
     self.tableView.scrollEnabled = NO;
     self.tableView.tableFooterView = self.footerView;
-    
-    [self loadInfo];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -100,27 +96,12 @@
 }
 
 #pragma mark - tableView delegate dataSource
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
-}
-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if(section == 0){
-        return 2;
-    }else{
-        return 3;
-    }
+    return 2;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return HeightXiShu(50);
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if(section == 0){
-        return 0;
-    }
-    return HeightXiShu(10);
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -132,25 +113,30 @@
     }
     [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
-    NSString *titleStr = @[@[@"姓       名",@"身份证号"],@[@"开户银行",@"开户支行",@"银行卡号"]][indexPath.section][indexPath.row];
-    
-    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(12), 0, WidthXiShu(80), HeightXiShu(50))];
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, HeightXiShu(50))];
     title.font = HEITI(HeightXiShu(15));
-    title.textColor = TitleColor;
-    title.text = titleStr;
+    title.textColor = ButtonColor;
+    title.text = @[@"个人借款协议",@"居间服务协议"][indexPath.row];
+    title.textAlignment = NSTextAlignmentCenter;
     [cell.contentView addSubview:title];
-    
-    UILabel *content = [[UILabel alloc] initWithFrame:CGRectMake(title.maxX+WidthXiShu(22), 0, WidthXiShu(180), HeightXiShu(50))];
-    content.text = self.contentArr[indexPath.section][indexPath.row];
-    content.font = HEITI(HeightXiShu(15));
-    content.textColor = MessageColor;
-    [cell.contentView addSubview:content];
     
     UIImageView *cutLine = [[UIImageView alloc] initWithFrame:CGRectMake(WidthXiShu(12), HeightXiShu(49), kScreenWidth-WidthXiShu(12), .5)];
     cutLine.backgroundColor = AllLightGrayColor;
     [cell.contentView addSubview:cutLine];
     return cell;
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    AgreeMentViewController *view = [[AgreeMentViewController alloc] init];
+    if(indexPath.row == 0){
+        view.webUrl = self.urlDic[@"creditagreement"];
+    }else{
+        view.webUrl = self.urlDic[@"creditagreement2"];
+    }
+    view.money = self.money;
+    [self.navigationController pushViewController:view animated:YES];
+}
+
 #pragma mark - 页面元素
 
 -(NavView *)navView{
@@ -158,7 +144,7 @@
         NavView *navView = [NavView initNavView];
         navView.minY = HeightXiShu(20);
         navView.backgroundColor = NavColor;
-        navView.titleLabel.text = @"金账户详情";
+        navView.titleLabel.text = @"签署合约";
         [navView.leftBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
         _navView = navView;
         [self.view addSubview:_navView];
@@ -168,20 +154,35 @@
 
 -(UIView *)footerView{
     if(!_footerView){
-        UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, self.tableView.height-HeightXiShu(260))];
-        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, HeightXiShu(32), kScreenWidth, HeightXiShu(20))];
-        title.textColor = TitleColor;
-        title.font = HEITI(HeightXiShu(15));
-        title.textAlignment = NSTextAlignmentCenter;
-        NSMutableAttributedString* attStr=[[NSMutableAttributedString alloc]initWithString:@"验证码将发送到您的手机"];
-        [attStr addAttribute:NSForegroundColorAttributeName value:ButtonColor range:NSMakeRange(0, 3)];
-        title.attributedText = attStr;
+        UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.navView.maxY, kScreenWidth,self.tableView.height - HeightXiShu(100))];
+        
+        UIButton *agreeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        agreeBtn.frame = CGRectMake(WidthXiShu(12), HeightXiShu(15), WidthXiShu(21), HeightXiShu(21));
+        [agreeBtn setImage:[GetImagePath getImagePath:@"credit_noSelect"] forState:UIControlStateNormal];
+        [agreeBtn addTarget:self action:@selector(agreeAction) forControlEvents:UIControlEventTouchUpInside];
+        [footerView addSubview:agreeBtn];
+        _agreeBtn = agreeBtn;
+        
+        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(agreeBtn.maxX+WidthXiShu(11), HeightXiShu(15), WidthXiShu(250), HeightXiShu(20))];
+        title.text = @"同意贷款相关合同（勾选之后才可签约）";
+        title.textColor = MessageColor;
+        title.font = HEITI(HeightXiShu(14));
         [footerView addSubview:title];
         
-        UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, HeightXiShu(5)+title.maxY, kScreenWidth, HeightXiShu(20))];
+        UILabel *title2 = [[UILabel alloc] initWithFrame:CGRectMake(0, title.maxY+HeightXiShu(100), kScreenWidth, HeightXiShu(20))];
+        title2.textColor = TitleColor;
+        title2.font = HEITI(HeightXiShu(15));
+        title2.textAlignment = NSTextAlignmentCenter;
+        NSMutableAttributedString* attStr=[[NSMutableAttributedString alloc]initWithString:@"验证码将发送到您的手机"];
+        [attStr addAttribute:NSForegroundColorAttributeName value:ButtonColor range:NSMakeRange(0, 3)];
+        title2.attributedText = attStr;
+        [footerView addSubview:title2];
+        
+        UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, HeightXiShu(5)+title2.maxY, kScreenWidth, HeightXiShu(20))];
         phoneLabel.textAlignment = NSTextAlignmentCenter;
         phoneLabel.font = HEITI(HeightXiShu(15));
         phoneLabel.textColor = TitleColor;
+        phoneLabel.text = [[LoginSqlite getdata:@"phone"] stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
         [footerView addSubview:phoneLabel];
         _phoneLabel = phoneLabel;
         
@@ -189,9 +190,9 @@
         
         UIButton *submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         submitBtn.frame = CGRectMake(WidthXiShu(12), self.yzmView.maxY+HeightXiShu(32), kScreenWidth-WidthXiShu(24), HeightXiShu(50));
-        [submitBtn setTitle:@"确定" forState:UIControlStateNormal];
+        [submitBtn setTitle:@"签约" forState:UIControlStateNormal];
         submitBtn.backgroundColor = ButtonColor;
-        submitBtn.titleLabel.font = HEITI(HeightXiShu(15));
+        submitBtn.titleLabel.font = HEITI(HeightXiShu(19));
         submitBtn.layer.masksToBounds = YES;
         submitBtn.layer.cornerRadius = HeightXiShu(5);
         [submitBtn addTarget:self action:@selector(submitAction) forControlEvents:UIControlEventTouchUpInside];
@@ -241,13 +242,27 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(void)agreeAction{
+    if(self.isAgree){
+        [self.agreeBtn setImage:[GetImagePath getImagePath:@"credit_noSelect"] forState:UIControlStateNormal];
+        self.isAgree = NO;
+    }else{
+        [self.agreeBtn setImage:[GetImagePath getImagePath:@"credit_selected"] forState:UIControlStateNormal];
+        self.isAgree = YES;
+    }
+}
+
 -(void)yzmAction{
+    if(!self.isAgree){
+        [self addAlertView:@"请同意协议" block:nil];
+        return;
+    }
+    
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setObject:@"credit" forKey:@"_cmd_"];
-    [dic setObject:@"bindFuyouSms" forKey:@"type"];
-    [dic setObject:self.phoneStr forKey:@"mobile"];
+    [dic setObject:@"eqian_sms" forKey:@"type"];
     
-    [CreditApi fuiouYzmWithBlock:^(NSMutableArray *array, NSError *error) {
+    [CreditApi creditYzmWithBlock:^(NSMutableArray *array, NSError *error) {
         if(!error){
             [self addAlertView:@"验证码已发送" block:nil];
         }
@@ -256,37 +271,11 @@
 
 -(void)submitAction{
     [self.yzmTextField resignFirstResponder];
-    [self bindFuiou];
-}
-
-#pragma  mark - textFieldDelegate
--(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [textField resignFirstResponder];
-    return YES;
-}
-
-#pragma mark - 接口
--(void)loadInfo{
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setObject:@"credit" forKey:@"_cmd_"];
-    [dic setObject:@"fuyou_info" forKey:@"type"];
+    if(!self.isAgree){
+        [self addAlertView:@"请同意协议" block:nil];
+        return;
+    }
     
-    [MyCenterApi getFuyouInfoWithBlock:^(NSMutableDictionary *dict, NSError *error) {
-        if(!error){
-            NSArray *arr1 = [[NSArray alloc] initWithObjects:dict[@"cust_nm"],dict[@"certif_id"], nil];
-            NSArray *arr2 = [[NSArray alloc] initWithObjects:dict[@"bank_name"],dict[@"bank_nm"],dict[@"capAcntNo"], nil];
-            [self.contentArr replaceObjectAtIndex:0 withObject:arr1];
-            [self.contentArr replaceObjectAtIndex:1 withObject:arr2];
-            [self.tableView reloadData];
-            self.phoneStr = dict[@"mobile_no"];
-            self.login_id = dict[@"login_id"];
-            self.phoneLabel.text = [dict[@"mobile_no"] stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
-        }
-    } dic:dic noNetWork:nil];
-}
-
--(void)bindFuiou{
-    [self.yzmTextField resignFirstResponder];
     if([self.yzmTextField.text isEqualToString:@""]){
         [self addAlertView:@"验证码不能为空" block:nil];
         return;
@@ -294,19 +283,24 @@
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setObject:@"credit" forKey:@"_cmd_"];
-    [dic setObject:@"bindFuyou" forKey:@"type"];
-    [dic setObject:self.yzmTextField.text forKey:@"sms_code"];
-    [dic setObject:self.phoneStr forKey:@"mobile"];
-    [dic setObject:self.login_id forKey:@"fuyou_login_id"];
+    [dic setObject:@"eqian_submit" forKey:@"type"];
+    [dic setObject:self.yzmTextField.text forKey:@"eqian_smscode"];
     self.submitBtn.enabled = NO;
     __block typeof(self)wSelf = self;
-    [CreditApi bindFuiouWithBlock:^(NSString *message, NSError *error) {
+    [CreditApi sginCreditWithBlock:^(NSMutableArray *array, NSError *error) {
         if(!error){
-            [self addAlertView:@"绑定成功" block:^{
+            [self addAlertView:@"签约成功" block:^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadData" object:nil userInfo:nil];
                 [wSelf.navigationController popToRootViewControllerAnimated:YES];
             }];
         }
         self.submitBtn.enabled = YES;
     } dic:dic noNetWork:nil];
+}
+
+#pragma  mark - textFieldDelegate
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
 }
 @end

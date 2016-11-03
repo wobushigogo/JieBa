@@ -16,6 +16,8 @@
 #import "BorrowInfoViewController.h"
 #import "MyCenterApi.h"
 #import "AddCashViewController.h"
+#import "CreditSignViewController.h"
+#import "CreditRepayViewController.h"
 
 @interface RentViewController ()
 @property(nonatomic,strong)NavView *navView;
@@ -27,6 +29,11 @@
 @property(nonatomic,strong)UIButton *questionBtn;
 @property(nonatomic,strong)UIButton *phoneBtn;
 @property(nonatomic,strong)UIView *btnView;
+@property(nonatomic,strong)UIView *detailView;
+@property(nonatomic,strong)NSString *totalMoney;
+@property(nonatomic,strong)NSString *totalPeople;
+@property(nonatomic,strong)UILabel *totalMoneyLabel;
+@property(nonatomic,strong)UILabel *totalPeopleLabel;
 @property(nonatomic,copy)NSMutableDictionary *urlDic;
 @end
 
@@ -54,7 +61,11 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = NO;
+    if(self.isHide){
+        self.tabBarController.tabBar.hidden = NO;
+    }else{
+        self.tabBarController.tabBar.hidden = YES;
+    }
 }
 
 -(void)dealloc{
@@ -69,7 +80,8 @@
         navView.minY = HeightXiShu(20);
         navView.backgroundColor = NavColor;
         navView.titleLabel.text = @"信用贷";
-        navView.leftBtn.hidden = YES;
+        navView.leftBtn.hidden = self.isHide;
+        [navView.leftBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
         [navView.rightBtn setTitle:@"借款记录" forState:UIControlStateNormal];
         [navView.rightBtn addTarget:self action:@selector(rightAction) forControlEvents:UIControlEventTouchUpInside];
         _navView = navView;
@@ -80,24 +92,37 @@
 
 -(UIView *)contentView{
     if(!_contentView){
-        UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, self.navView.maxY, kScreenWidth, HeightXiShu(283))];
+        UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, self.navView.maxY, kScreenWidth, HeightXiShu(333))];
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, HeightXiShu(283))];
         imageView.image = [GetImagePath getImagePath:@"credit_banner"];
         [contentView addSubview:imageView];
         
-        UILabel *lowMoney = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(15), HeightXiShu(80), WidthXiShu(120), HeightXiShu(30))];
+        UILabel *lowMoney = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(15), HeightXiShu(60), WidthXiShu(120), HeightXiShu(30))];
         lowMoney.textColor = ButtonColor;
         lowMoney.text = @"￥0";
-        lowMoney.font = [UIFont boldSystemFontOfSize:HeightXiShu(30)];
+        lowMoney.font = [UIFont boldSystemFontOfSize:HeightXiShu(28)];
         [contentView addSubview:lowMoney];
         
-        UILabel *mostMoney = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth-WidthXiShu(15)-WidthXiShu(140), HeightXiShu(175), WidthXiShu(140), HeightXiShu(30))];
+        UILabel *mostMoney = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth-WidthXiShu(15)-WidthXiShu(120), HeightXiShu(135), WidthXiShu(120), HeightXiShu(30))];
         mostMoney.textColor = ButtonColor;
         mostMoney.text = @"￥0";
-        mostMoney.font = [UIFont boldSystemFontOfSize:HeightXiShu(30)];
+        mostMoney.font = [UIFont boldSystemFontOfSize:HeightXiShu(28)];
         [contentView addSubview:mostMoney];
         
+        UILabel *totalMoneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(12), imageView.maxY+HeightXiShu(18), WidthXiShu(185), HeightXiShu(20))];
+        totalMoneyLabel.textColor = TitleColor;
+        totalMoneyLabel.font = HEITI(HeightXiShu(14));
+        [contentView addSubview:totalMoneyLabel];
+        
+        UILabel *totalPeopleLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth-WidthXiShu(12)-WidthXiShu(175),imageView.maxY+HeightXiShu(18), WidthXiShu(175), HeightXiShu(20))];
+        totalPeopleLabel.textColor = TitleColor;
+        totalPeopleLabel.font = HEITI(HeightXiShu(14));
+        totalPeopleLabel.textAlignment = NSTextAlignmentRight;
+        [contentView addSubview:totalPeopleLabel];
+        
         [self.view addSubview:contentView];
+        _totalMoneyLabel = totalMoneyLabel;
+        _totalPeopleLabel = totalPeopleLabel;
         _contentView = contentView;
         _lowMoney = lowMoney;
         _mostMoney = mostMoney;
@@ -108,7 +133,7 @@
 -(UIButton *)submitBtn{
     if(!_submitBtn){
         UIButton *submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        submitBtn.frame = CGRectMake(WidthXiShu(12), self.contentView.maxY+HeightXiShu(30), kScreenWidth-WidthXiShu(24), HeightXiShu(50));
+        submitBtn.frame = CGRectMake(WidthXiShu(12), self.contentView.maxY, kScreenWidth-WidthXiShu(24), HeightXiShu(50));
         submitBtn.backgroundColor = ButtonColor;
         submitBtn.titleLabel.font = HEITI(HeightXiShu(19));
         [submitBtn addTarget:self action:@selector(submitAction) forControlEvents:UIControlEventTouchUpInside];
@@ -125,7 +150,7 @@
 
 -(UIView *)btnView{
     if(!_btnView){
-        UIView *btnView = [[UIView alloc] initWithFrame:CGRectMake(0, self.contentView.maxY+HeightXiShu(30), kScreenWidth, HeightXiShu(50))];
+        UIView *btnView = [[UIView alloc] initWithFrame:CGRectMake(0, self.contentView.maxY, kScreenWidth, HeightXiShu(50))];
         UIButton *signBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         signBtn.frame = CGRectMake(WidthXiShu(10), 0, WidthXiShu(200), HeightXiShu(50));
         signBtn.backgroundColor = ButtonColor;
@@ -153,7 +178,7 @@
 -(UIButton *)questionBtn{
     if(!_questionBtn){
         UIButton *questionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        questionBtn.frame = CGRectMake((kScreenWidth-WidthXiShu(60))/2, self.submitBtn.maxY+HeightXiShu(130), WidthXiShu(60), HeightXiShu(20));
+        questionBtn.frame = CGRectMake((kScreenWidth-WidthXiShu(60))/2, self.submitBtn.maxY+HeightXiShu(100), WidthXiShu(60), HeightXiShu(20));
         questionBtn.titleLabel.font = HEITI(HeightXiShu(15));
         [questionBtn addTarget:self action:@selector(questionAction) forControlEvents:UIControlEventTouchUpInside];
         [questionBtn setTitle:@"常见问题" forState:UIControlStateNormal];
@@ -180,30 +205,74 @@
     return _phoneBtn;
 }
 
+#pragma mark - setter
+-(void)setTotalMoney:(NSString *)totalMoney{
+    _totalMoney = totalMoney;
+    NSMutableAttributedString* attStr=[[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"贷款总额：%@元",totalMoney]];
+    [attStr addAttribute:NSForegroundColorAttributeName value:ButtonColor range:NSMakeRange(5, totalMoney.length)];
+    self.totalMoneyLabel.attributedText = attStr;
+}
+
+-(void)setTotalPeople:(NSString *)totalPeople{
+    _totalPeople = totalPeople;
+    NSMutableAttributedString* attStr=[[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"正在申请：%@人",totalPeople]];
+    [attStr addAttribute:NSForegroundColorAttributeName value:ButtonColor range:NSMakeRange(5, totalPeople.length)];
+    self.totalPeopleLabel.attributedText = attStr;
+}
+
 #pragma mark - 事件
+-(void)backAction{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 -(void)rightAction{
     CreditListViewController *view = [[CreditListViewController alloc] init];
+    view.urlDic = self.urlDic;
+    view.money = self.creditModel.loanmoney;
     [self.navigationController pushViewController:view animated:YES];
 }
 
 -(void)submitAction{
-    [self loadNameStatus:^(NSDictionary *dict) {
-        if(dict[@"fuyou_login_id"]){
-        
+    switch (self.creditModel.order_status) {
+        case 1:
+        {
+            BorrowInfoViewController *view = [[BorrowInfoViewController alloc] init];
+            view.model = self.creditModel;
+            view.urlDic = self.urlDic;
+            [self.navigationController pushViewController:view animated:YES];
         }
-    }];
-    BorrowInfoViewController *view = [[BorrowInfoViewController alloc] init];
-    view.model = self.creditModel;
-    view.urlDic = self.urlDic;
-    [self.navigationController pushViewController:view animated:YES];
+            break;
+        case 3:
+        {
+            CreditRepayViewController *view = [[CreditRepayViewController alloc] init];
+            if(self.creditModel.is_late == 0){
+                view.repayOrOverdue = repay;
+            }else{
+                view.repayOrOverdue = overdue;
+            }
+            [self.navigationController pushViewController:view animated:YES];
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 -(void)signAction{
-    
+    CreditSignViewController *view = [[CreditSignViewController alloc] init];
+    view.urlDic = self.urlDic;
+    view.money = self.creditModel.loanmoney;
+    [self.navigationController pushViewController:view animated:YES];
 }
 
 -(void)giveUpAction{
-    
+    __block typeof(self)wSelf = self;
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"您确定放弃订单吗？" preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [wSelf giveUpOrder];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alert animated:YES completion:NULL];
 }
 
 -(void)questionAction{
@@ -240,6 +309,8 @@
             self.creditModel = model;
             self.lowMoney.text = [NSString stringWithFormat:@"￥%@",self.creditModel.minMoney];
             self.mostMoney.text = [NSString stringWithFormat:@"￥%@",self.creditModel.maxMoney];
+            self.totalMoney = model.credit_total_money;
+            self.totalPeople = model.credit_total_num;
             switch (model.order_status) {
                 case 1:
                 {
@@ -253,6 +324,7 @@
                         self.submitBtn.enabled = YES;
                     }
                     self.btnView.hidden = YES;
+                    self.submitBtn.hidden = NO;
                 }
                     break;
                 case 2:
@@ -275,6 +347,7 @@
                         self.submitBtn.enabled = YES;
                     }
                     self.btnView.hidden = YES;
+                    self.submitBtn.hidden = NO;
                 }
                     break;
                 case 4:
@@ -289,6 +362,7 @@
                     self.submitBtn.backgroundColor = MessageColor;
                     self.submitBtn.enabled = NO;
                     self.btnView.hidden = YES;
+                    self.submitBtn.hidden = NO;
                 }
                     break;
                 default:
@@ -310,36 +384,14 @@
     } dic:dic noNetWork:nil];
 }
 
--(void)loadNameStatus:(void(^)(NSDictionary *dict))block{
-    __block typeof(self)wSelf = self;
+-(void)giveUpOrder{
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setObject:@"member_changeuserinfo" forKey:@"_cmd_"];
-    [dic setObject:@"member_info" forKey:@"type"];
-    [MyCenterApi getUserInfoWithBlock:^(NSDictionary *dict, NSError *error) {
-        if(!error){
-            if([dict[@"openFuyouStatus"] integerValue] == 1){
-                if(block){
-                    block(dict);
-                }
-            }else{
-                [wSelf isBindCard];
-            }
-        }
-    } dic:dic noNetWork:nil];
-}
-
--(void)isBindCard{
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setObject:@"cash" forKey:@"_cmd_"];
-    [dic setObject:@"1" forKey:@"money"];
-    [dic setObject:@"cash_in" forKey:@"type"];
+    [dic setObject:@"credit" forKey:@"_cmd_"];
+    [dic setObject:@"give_up_order" forKey:@"type"];
     
-    [MyCenterApi addCashWithBlock:^(NSMutableDictionary *dict, NSError *error) {
+    [CreditApi giveUpCreditWithBlock:^(NSMutableArray *array, NSError *error) {
         if(!error){
-            AddCashViewController *view = [[AddCashViewController alloc] init];
-            view.webUrl = dict[@"jumpurl"];
-            view.dic = dict;
-            [self.navigationController pushViewController:view animated:YES];
+            [self loadCreditInfo];
         }
     } dic:dic noNetWork:nil];
 }

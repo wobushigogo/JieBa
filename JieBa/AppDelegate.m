@@ -53,6 +53,7 @@
     loanNav.navigationBarHidden = YES;
     
     RentViewController *rent = [[RentViewController alloc] init];
+    rent.isHide = YES;
     [rent.tabBarItem setImageInsets:UIEdgeInsetsMake(7.0, 0.0, -7.0, 0.0)];
     rent.tabBarItem.image = [[UIImage imageNamed:@"tabbar_rent_gary"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     rent.tabBarItem.selectedImage = [[UIImage imageNamed:@"tabbar_rent_blue"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];

@@ -19,7 +19,7 @@
 
 
 @interface CreditDetailModel : NSObject
-@property(nonatomic)NSInteger credit_order_status;
+@property(nonatomic)NSInteger credit_order_status;//1：使用中  2:审核中  4：已还款   5：已逾期
 @property(nonatomic,copy)NSString *loanmoney;
 @property(nonatomic,copy)NSString *timeadd;
 @property(nonatomic,copy)NSString *back_date;
