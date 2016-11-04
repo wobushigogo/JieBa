@@ -195,7 +195,7 @@
     
     self.nameLabel.text = model.name;
     [self.headImageView sd_setImageWithURL:model.avatarUrl];
-    self.dateLabel.text = model.lastTime;
+    self.dateLabel.text = [StringTool timeChange2:model.lastTime];
     self.contentLabel.text = model.content;
     
     [model.imageArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {

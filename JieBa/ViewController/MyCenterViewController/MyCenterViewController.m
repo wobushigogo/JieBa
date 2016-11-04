@@ -304,7 +304,7 @@
         button.enabled = YES;
         RechargeViewController *view = [[RechargeViewController alloc] init];
         [wSelf.navigationController pushViewController:view animated:YES];
-    }];
+    } button:button];
 }
 
 -(void)withdrawAction:(UIButton *)button{
@@ -316,7 +316,7 @@
         WithdrawViewController *view = [[WithdrawViewController alloc] init];
         view.balance = self.userInfoModel.balance;
         [wSelf.navigationController pushViewController:view animated:YES];
-    }];
+    } button:button];
 }
 
 -(void)evaluateAction:(UIButton *)button{
@@ -337,7 +337,7 @@
         view.realName = dict[@"names"];
         view.certiNumber = dict[@"certiNumber"];
         [wSelf.navigationController pushViewController:view animated:YES];
-    }];
+    } button:button];
 }
 
 -(void)bindAction:(UIButton *)button{
@@ -352,7 +352,7 @@
             BindCardViewController *view = [[BindCardViewController alloc] init];
             [wSelf.navigationController pushViewController:view animated:YES];
         }
-    }];
+    } button:button];
 }
 
 -(void)QRImageLong:(UILongPressGestureRecognizer *)gestureRecognizer{
@@ -521,7 +521,7 @@
     } dic:dic noNetWork:nil];
 }
 
--(void)loadNameStatus:(void(^)(NSDictionary *dict))block{
+-(void)loadNameStatus:(void(^)(NSDictionary *dict))block button:(UIButton *)button{
     __block typeof(self)wSelf = self;
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setObject:@"member_changeuserinfo" forKey:@"_cmd_"];
@@ -535,17 +535,20 @@
                             block(dict);
                         }
                     }else{
+                        button.enabled = YES;
                         FuiouInfoViewController *view = [[FuiouInfoViewController alloc] init];
                         [wSelf.navigationController pushViewController:view animated:YES];
                     }
                 }else{
+                    button.enabled = YES;
                     [wSelf isBindCard];
                 }
             }else{
+                button.enabled = YES;
                 UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:@"提示" message:@"是否实名认证" preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
                 UIAlertAction *agreeAction = [UIAlertAction actionWithTitle:@"马上认证" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    RealWithUsViewController *view = [[RealWithUsViewController alloc] init];
+                    RealNameViewController *view = [[RealNameViewController alloc] init];
                     view.isReal = NO;
                     view.realName = dict[@"names"];
                     view.certiNumber = dict[@"certiNumber"];

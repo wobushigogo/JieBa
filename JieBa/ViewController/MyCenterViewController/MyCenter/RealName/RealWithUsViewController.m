@@ -145,7 +145,7 @@
 
 #pragma mark - 事件
 -(void)backAction{
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 -(void)submitAction{

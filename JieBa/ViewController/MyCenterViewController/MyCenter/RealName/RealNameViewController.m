@@ -12,6 +12,7 @@
 #import <TVFaceAuthFramework/TVFaceAuthFramework.h>
 #import <Photos/Photos.h>
 #import <PhotosUI/PhotosUI.h>
+#import "RealWithUsViewController.h"
 
 @interface RealNameViewController ()<TVFaceAuthProtocol>
 @property(nonatomic,strong)NavView *navView;
@@ -54,17 +55,49 @@
 }
 
 #pragma mark - TVFaceAuthProtocol
-- (void)didFaceAuthSuccess:(NSString*)serviceId evidenceId:(NSString*)evidenceId {
-    NSString* log = [NSString stringWithFormat:@"face auth success serviceId : %@ evidenceId : %@\n", serviceId, evidenceId];
+- (void)didFaceAuthSuccess:(NSString*)serviceId evidenceId:(NSString*)evidenceId name:(NSString*)name idno:(NSString*)idno {
+    NSString* log = [NSString stringWithFormat:@"face auth success serviceId : %@ evidenceId : %@ name : %@ idno : %@\n", serviceId, evidenceId, name, idno];
     [self log:log];
 }
+
 - (void)didFaceAuthFail:(NSString*)serviceId {
     NSString* log = [NSString stringWithFormat:@"face auth fail serviceId %@\n", serviceId];
     [self log:log];
 }
 
+- (void)didFaceAuthOcrFail:(NSError*)error {
+    NSString* log = [NSString stringWithFormat:@"face auth ocr fail 3 times, last error : %@\n", error];
+    
+    RealWithUsViewController *view = [[RealWithUsViewController alloc] init];
+    view.isReal = self.isReal;
+    view.realName = self.realName;
+    view.certiNumber = self.certiNumber;
+    [self.navigationController pushViewController:view animated:YES];
+
+    
+    [self log:log];
+}
+
+- (BOOL)checkAccountInfo:(NSString*)name idno:(NSString*)idno {
+    NSString* log = [NSString stringWithFormat:@"face auth back account info %@ %@，", name, idno];
+    [self log:log];
+    
+    //自定义判断逻辑
+//    if([_nameField.text length] > 0 && [_idnoField.text length] > 0) {
+//        if([_nameField.text isEqualToString:name] && [_idnoField.text isEqualToString:idno]) {
+//            NSLog(@"校验通过。");
+//            return YES;
+//        }
+//        NSLog(@"校验不通过");
+//        return NO;
+//    }
+    
+    NSLog(@"不做校验");
+    //默认返回
+    return YES;
+}
+
 - (void)didFaceAuthCancel {
-    [self.navigationController popViewControllerAnimated:YES];
     NSString* log = @"cancel face auth\n";
     [self log:log];
 }

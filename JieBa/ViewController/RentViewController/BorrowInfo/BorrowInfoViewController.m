@@ -208,6 +208,17 @@
 }
 
 -(void)submitAction{
+    __block typeof(self)wSelf = self;
+    if([self.model.maxMoney intValue] == 0){
+        [self addAlertView:@"亲，您的信用积分不足，暂不能使用此项目，请坚持登录或签到，增加信用积分！" block:^{
+            if(wSelf.backBlock){
+                wSelf.backBlock();
+            }
+            [wSelf.navigationController popToRootViewControllerAnimated:YES];
+        }];
+        return;
+    }
+    
     if([self.textField.text isEqualToString:@""]){
         [self addAlertView:@"借款金额不能为空" block:nil];
         return;
@@ -232,10 +243,10 @@
 }
 
 -(void)changeMoneyWithMoney:(NSString *)string{
-    if([string floatValue] > [self.model.maxMoney floatValue]){
-        [self addAlertView:[NSString stringWithFormat:@"金额不能大于%@",self.model.maxMoney] block:nil];
-        return;
-    }
+//    if([string floatValue] > [self.model.maxMoney floatValue]){
+//        [self addAlertView:[NSString stringWithFormat:@"金额不能大于%@",self.model.maxMoney] block:nil];
+//        return;
+//    }
     
     [self.contentArr replaceObjectAtIndex:0 withObject:string];
     NSString *money = string;

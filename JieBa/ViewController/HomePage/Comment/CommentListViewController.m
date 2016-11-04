@@ -12,6 +12,7 @@
 #import "CarlifeApi.h"
 #import "CommentCell.h"
 #import "CarlifeModel.h"
+#import "CommentDetailViewController.h"
 
 @interface CommentListViewController ()<StageChooseViewDelegate>
 @property (nonatomic, strong) NavView *navView;
@@ -69,6 +70,13 @@
     CarlifeModel *model = self.modelArr[indexPath.row];
     cell.model = model;
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    CarlifeModel *model = self.modelArr[indexPath.row];
+    CommentDetailViewController *view = [[CommentDetailViewController alloc] init];
+    view.commentId = model.commentId;
+    [self.navigationController pushViewController:view animated:YES];
 }
 #pragma mark - 页面元素
 

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Bar Tint Color</key>
-	<string>5495e6</string>
+	<string>289ceb</string>
 	<key>Title Tint Color</key>
 	<string>FFFFFF</string>
 	<key>Status Bar Style</key>
@@ -11,7 +11,9 @@
 	<key>Btn Title Color</key>
 	<string>FFFFFF</string>
 	<key>Btn Bg Color</key>
-	<string>5495e6</string>
+	<string>289ceb</string>
+	<key>Technical Support Info Style</key>
+	<integer>1</integer>
 	<key>Server Environment</key>
 	<integer>0</integer>
 </dict>

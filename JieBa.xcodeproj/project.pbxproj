@@ -347,6 +347,9 @@
 		D3B2BE531DB763DE0095306E /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B2BE521DB763DE0095306E /* OrderModel.m */; };
 		D3B2BE561DB76B520095306E /* OrderSuccessCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B2BE551DB76B520095306E /* OrderSuccessCell.m */; };
 		D3B2BE591DB76B600095306E /* OrderFailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B2BE581DB76B600095306E /* OrderFailCell.m */; };
+		D3D6FB9A1DCC2D8C002A2458 /* CommentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D6FB991DCC2D8C002A2458 /* CommentDetailViewController.m */; };
+		D3D6FB9D1DCC50A3002A2458 /* CommentHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D6FB9C1DCC50A3002A2458 /* CommentHeadView.m */; };
+		D3D6FBA01DCC65C7002A2458 /* CarLifeCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D6FB9F1DCC65C7002A2458 /* CarLifeCommentCell.m */; };
 		D3DD973E1DBF717A003395C9 /* credit_banner.png in Resources */ = {isa = PBXBuildFile; fileRef = D3DD973B1DBF717A003395C9 /* credit_banner.png */; };
 		D3DD973F1DBF717A003395C9 /* credit_banner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3DD973C1DBF717A003395C9 /* credit_banner@2x.png */; };
 		D3DD97401DBF717A003395C9 /* credit_banner@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3DD973D1DBF717A003395C9 /* credit_banner@3x.png */; };
@@ -939,6 +942,12 @@
 		D3B2BE551DB76B520095306E /* OrderSuccessCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderSuccessCell.m; sourceTree = "<group>"; };
 		D3B2BE571DB76B600095306E /* OrderFailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderFailCell.h; sourceTree = "<group>"; };
 		D3B2BE581DB76B600095306E /* OrderFailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderFailCell.m; sourceTree = "<group>"; };
+		D3D6FB981DCC2D8C002A2458 /* CommentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentDetailViewController.h; sourceTree = "<group>"; };
+		D3D6FB991DCC2D8C002A2458 /* CommentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentDetailViewController.m; sourceTree = "<group>"; };
+		D3D6FB9B1DCC50A3002A2458 /* CommentHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentHeadView.h; sourceTree = "<group>"; };
+		D3D6FB9C1DCC50A3002A2458 /* CommentHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentHeadView.m; sourceTree = "<group>"; };
+		D3D6FB9E1DCC65C7002A2458 /* CarLifeCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarLifeCommentCell.h; sourceTree = "<group>"; };
+		D3D6FB9F1DCC65C7002A2458 /* CarLifeCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarLifeCommentCell.m; sourceTree = "<group>"; };
 		D3DD973B1DBF717A003395C9 /* credit_banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = credit_banner.png; sourceTree = "<group>"; };
 		D3DD973C1DBF717A003395C9 /* credit_banner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "credit_banner@2x.png"; sourceTree = "<group>"; };
 		D3DD973D1DBF717A003395C9 /* credit_banner@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "credit_banner@3x.png"; sourceTree = "<group>"; };
@@ -1310,6 +1319,7 @@
 		D321DFA41DC1D27C00A5F042 /* Comment */ = {
 			isa = PBXGroup;
 			children = (
+				D3D6FB971DCC2D1D002A2458 /* CommentDetail */,
 				D321DFA51DC1D2CB00A5F042 /* CommentListViewController.h */,
 				D321DFA61DC1D2CB00A5F042 /* CommentListViewController.m */,
 				D321DFAC1DC1D9F300A5F042 /* CommentCell.h */,
@@ -2253,6 +2263,19 @@
 			path = OrderUnderway;
 			sourceTree = "<group>";
 		};
+		D3D6FB971DCC2D1D002A2458 /* CommentDetail */ = {
+			isa = PBXGroup;
+			children = (
+				D3D6FB981DCC2D8C002A2458 /* CommentDetailViewController.h */,
+				D3D6FB991DCC2D8C002A2458 /* CommentDetailViewController.m */,
+				D3D6FB9B1DCC50A3002A2458 /* CommentHeadView.h */,
+				D3D6FB9C1DCC50A3002A2458 /* CommentHeadView.m */,
+				D3D6FB9E1DCC65C7002A2458 /* CarLifeCommentCell.h */,
+				D3D6FB9F1DCC65C7002A2458 /* CarLifeCommentCell.m */,
+			);
+			path = CommentDetail;
+			sourceTree = "<group>";
+		};
 		D3E147821DAF335B002F6D60 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -2887,6 +2910,7 @@
 				D3348CFA1DBA1C2200A5E06A /* CreditListCell.m in Sources */,
 				D3348CED1DBA0EE600A5E06A /* CreditApi.m in Sources */,
 				D3458A061DB0854F007BD2CF /* NSString+StringKit.m in Sources */,
+				D3D6FB9D1DCC50A3002A2458 /* CommentHeadView.m in Sources */,
 				D3E147FC1DAF7F2B002F6D60 /* MyCenterApi.m in Sources */,
 				D347E25F1DB30E4D00E7B9BA /* UIScrollView+MJExtension.m in Sources */,
 				D38A95CB1DBE0EC7005334AC /* LoanSuccessViewController.m in Sources */,
@@ -2919,6 +2943,7 @@
 				D3E8196F1DAF259E0054B352 /* ViewController.m in Sources */,
 				D30C08861DCAE2B10008F156 /* CreditSignViewController.m in Sources */,
 				D347E28E1DB3138E00E7B9BA /* SDWebImageManager.m in Sources */,
+				D3D6FBA01DCC65C7002A2458 /* CarLifeCommentCell.m in Sources */,
 				D347E2891DB3138E00E7B9BA /* SDImageCache.m in Sources */,
 				D347E2571DB30E4D00E7B9BA /* MJRefreshBackGifFooter.m in Sources */,
 				D309BBBF1DC988F900355120 /* FuiouInfoViewController.m in Sources */,
@@ -3035,6 +3060,7 @@
 				D322EA961DBF5F670089FD56 /* EvaluateViewController.m in Sources */,
 				D30C088D1DCB25BA0008F156 /* RepaySuccessViewController.m in Sources */,
 				D3458A051DB0854F007BD2CF /* NSString+LabelKit.m in Sources */,
+				D3D6FB9A1DCC2D8C002A2458 /* CommentDetailViewController.m in Sources */,
 				D32049791DB5EDCA000782F9 /* LoanTableViewCell.m in Sources */,
 				D322EA921DBF40CD0089FD56 /* AddCashViewController.m in Sources */,
 				D322EA8B1DBF33BA0089FD56 /* MainLoanViewController.m in Sources */,

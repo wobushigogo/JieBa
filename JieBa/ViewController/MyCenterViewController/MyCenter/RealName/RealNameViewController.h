@@ -9,5 +9,7 @@
 #import "BaseViewController.h"
 
 @interface RealNameViewController : BaseViewController
-
+@property(nonatomic)BOOL isReal;
+@property(nonatomic,copy)NSString *realName;
+@property(nonatomic,copy)NSString *certiNumber;
 @end

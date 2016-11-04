@@ -17,7 +17,7 @@
 #import "MyCenterViewController.h"
 #import <TVFaceAuthFramework/TVFaceAuthFramework.h>
 #import "MyCenterApi.h"
-#import "RealWithUsViewController.h"
+#import "RealNameViewController.h"
 #import "AddCashViewController.h"
 #import "FuiouInfoViewController.h"
 
@@ -199,7 +199,10 @@
                 UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:@"提示" message:@"是否实名认证" preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
                 UIAlertAction *agreeAction = [UIAlertAction actionWithTitle:@"马上认证" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    RealWithUsViewController *realView = [[RealWithUsViewController alloc] init];
+                    RealNameViewController *realView = [[RealNameViewController alloc] init];
+                    realView.isReal = NO;
+                    realView.realName = dict[@"names"];
+                    realView.certiNumber = dict[@"certiNumber"];
                     [navigationctr.topViewController.navigationController pushViewController:realView animated:YES];
                 }];
                 [alertControl addAction:cancelAction];

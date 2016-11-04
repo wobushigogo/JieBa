@@ -239,6 +239,9 @@
             BorrowInfoViewController *view = [[BorrowInfoViewController alloc] init];
             view.model = self.creditModel;
             view.urlDic = self.urlDic;
+            view.backBlock = ^(void){
+                self.tabBarController.selectedIndex = 0;
+            };
             [self.navigationController pushViewController:view animated:YES];
         }
             break;
@@ -314,15 +317,9 @@
             switch (model.order_status) {
                 case 1:
                 {
-                    if([self.creditModel.minMoney integerValue] == 0 && [self.creditModel.maxMoney integerValue] == 0 ){
-                        [self.submitBtn setTitle:@"去借钱" forState:UIControlStateNormal];
-                        self.submitBtn.backgroundColor = MessageColor;
-                        self.submitBtn.enabled = NO;
-                    }else{
-                        [self.submitBtn setTitle:@"去借钱" forState:UIControlStateNormal];
-                        self.submitBtn.backgroundColor = ButtonColor;
-                        self.submitBtn.enabled = YES;
-                    }
+                    [self.submitBtn setTitle:@"去借钱" forState:UIControlStateNormal];
+                    self.submitBtn.backgroundColor = ButtonColor;
+                    self.submitBtn.enabled = YES;
                     self.btnView.hidden = YES;
                     self.submitBtn.hidden = NO;
                 }

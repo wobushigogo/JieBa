@@ -23,7 +23,7 @@
 #import "ScanViewController.h"
 #import "CommentListViewController.h"
 #import "MyCenterViewController.h"
-#import "RealWithUsViewController.h"
+#import "RealNameViewController.h"
 #import "RentViewController.h"
 #import "FuiouInfoViewController.h"
 #import "AddCashViewController.h"
@@ -259,7 +259,7 @@
                 UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:@"提示" message:@"是否实名认证" preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
                 UIAlertAction *agreeAction = [UIAlertAction actionWithTitle:@"马上认证" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    RealWithUsViewController *view = [[RealWithUsViewController alloc] init];
+                    RealNameViewController *view = [[RealNameViewController alloc] init];
                     view.isReal = NO;
                     view.realName = dict[@"names"];
                     view.certiNumber = dict[@"certiNumber"];

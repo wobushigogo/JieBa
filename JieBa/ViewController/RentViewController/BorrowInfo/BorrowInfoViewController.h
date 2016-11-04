@@ -12,4 +12,5 @@
 @interface BorrowInfoViewController : BaseTableViewController
 @property(nonatomic,strong)CreditModel *model;
 @property(nonatomic,copy)NSMutableDictionary *urlDic;
+@property(nonatomic,strong)void(^backBlock)();
 @end
