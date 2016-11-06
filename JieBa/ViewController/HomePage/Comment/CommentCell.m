@@ -13,7 +13,7 @@
 @property(nonatomic,strong)UIImageView *headImageView;
 @property(nonatomic,strong)UILabel *nameLabel;
 @property(nonatomic,strong)UILabel  *dateLabel;
-@property(nonatomic,strong)UIButton *detailBtn;
+@property(nonatomic,strong)UILabel *detailLabel;
 @property(nonatomic,strong)UILabel *contentLabel;
 @property(nonatomic,strong)UILabel *locationLabel;
 @property(nonatomic,strong)UIView *commentView;
@@ -53,7 +53,7 @@
         [self headImageView];
         [self nameLabel];
         [self dateLabel];
-        [self detailBtn];
+        [self detailLabel];
         [self contentLabel];
         [self locationLabel];
         [self commentView];
@@ -105,18 +105,17 @@
     return _dateLabel;
 }
 
--(UIButton *)detailBtn{
-    if(!_detailBtn){
-        UIButton *detailBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        detailBtn.frame = CGRectMake(kScreenWidth-WidthXiShu(12)-WidthXiShu(80), HeightXiShu(20), WidthXiShu(80), HeightXiShu(20));
-        [detailBtn setTitle:@"查看全文》" forState:UIControlStateNormal];
-        [detailBtn setTitleColor:ButtonColor forState:UIControlStateNormal];
-        detailBtn.titleLabel.font = HEITI(HeightXiShu(14));
-        detailBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-        [self.bgView addSubview:detailBtn];
-        _detailBtn = detailBtn;
+-(UILabel *)detailLabel{
+    if(!_detailLabel){
+        UILabel *detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth-WidthXiShu(12)-WidthXiShu(80), HeightXiShu(20), WidthXiShu(80), HeightXiShu(20))];
+        detailLabel.text = @"查看全文》";
+        detailLabel.font = HEITI(HeightXiShu(14));
+        detailLabel.textColor = ButtonColor;
+        detailLabel.textAlignment = NSTextAlignmentRight;
+        [self.bgView addSubview:detailLabel];
+        _detailLabel = detailLabel;
     }
-    return _detailBtn;
+    return _detailLabel;
 }
 
 -(UILabel *)contentLabel{
@@ -154,7 +153,7 @@
         
         UIImageView *commentImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 1, WidthXiShu(18), HeightXiShu(18))];
         commentImageView.maxX = commentLabel.minX;
-        commentImageView.image = [GetImagePath getImagePath:@"credit_listComment"];
+        commentImageView.image = [GetImagePath getImagePath:@"carLife_listComment"];
         [commentView addSubview:commentImageView];
         
         [self.bgView addSubview:commentView];
@@ -177,7 +176,7 @@
         
         UIImageView *goodImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 1, WidthXiShu(18), HeightXiShu(18))];
         goodImageView.maxX = goodLabel.minX;
-        goodImageView.image = [GetImagePath getImagePath:@"credit_listComment"];
+        goodImageView.image = [GetImagePath getImagePath:@"carLife_good"];
         [goodView addSubview:goodImageView];
         
         [self.bgView addSubview:goodView];

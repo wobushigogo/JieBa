@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.is_cream = @"1";
+    self.is_cream = @"";
     [self statusBar];
     [self navView];
     [self.stageChooseView setMinY:self.navView.maxY];
@@ -111,9 +111,9 @@
 - (void)stageBtnClickedWithNumber:(NSInteger)stageNumber {
     self.startIndex = 1;
     if(stageNumber == 0){
-        self.is_cream = @"";
-    }else{
         self.is_cream = @"1";
+    }else{
+        self.is_cream = @"";
     }
     [self netWorkWithType:BaseTableViewRefreshFirstLoad];
 }

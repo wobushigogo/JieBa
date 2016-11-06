@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D30459411DCED2A60032514C /* CommentChatToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D30459401DCED2A60032514C /* CommentChatToolBar.m */; };
+		D304594C1DCEF09B0032514C /* carLife_good.png in Resources */ = {isa = PBXBuildFile; fileRef = D30459431DCEF09B0032514C /* carLife_good.png */; };
+		D304594D1DCEF09B0032514C /* carLife_good@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D30459441DCEF09B0032514C /* carLife_good@2x.png */; };
+		D304594E1DCEF09B0032514C /* carLife_good@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D30459451DCEF09B0032514C /* carLife_good@3x.png */; };
+		D304594F1DCEF09B0032514C /* carLife_listComment.png in Resources */ = {isa = PBXBuildFile; fileRef = D30459461DCEF09B0032514C /* carLife_listComment.png */; };
+		D30459501DCEF09B0032514C /* carLife_listComment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D30459471DCEF09B0032514C /* carLife_listComment@2x.png */; };
+		D30459511DCEF09B0032514C /* carLife_listComment@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D30459481DCEF09B0032514C /* carLife_listComment@3x.png */; };
+		D30459521DCEF09B0032514C /* carLife_noGood.png in Resources */ = {isa = PBXBuildFile; fileRef = D30459491DCEF09B0032514C /* carLife_noGood.png */; };
+		D30459531DCEF09B0032514C /* carLife_noGood@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D304594A1DCEF09B0032514C /* carLife_noGood@2x.png */; };
+		D30459541DCEF09B0032514C /* carLife_noGood@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D304594B1DCEF09B0032514C /* carLife_noGood@3x.png */; };
 		D309BBBA1DC988D700355120 /* AgreeMentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D309BBB71DC988D700355120 /* AgreeMentViewController.m */; };
 		D309BBBB1DC988D700355120 /* BorrowInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D309BBB91DC988D700355120 /* BorrowInfoViewController.m */; };
 		D309BBBF1DC988F900355120 /* FuiouInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D309BBBE1DC988F900355120 /* FuiouInfoViewController.m */; };
@@ -94,15 +104,6 @@
 		D321DFAB1DC1D73E00A5F042 /* CarlifeApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D321DFAA1DC1D73E00A5F042 /* CarlifeApi.m */; };
 		D321DFAE1DC1D9F300A5F042 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D321DFAD1DC1D9F300A5F042 /* CommentCell.m */; };
 		D321DFB51DC1E7A400A5F042 /* CarlifeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D321DFB41DC1E7A400A5F042 /* CarlifeModel.m */; };
-		D321DFB91DC1F68200A5F042 /* credit_listComment.png in Resources */ = {isa = PBXBuildFile; fileRef = D321DFB61DC1F68200A5F042 /* credit_listComment.png */; };
-		D321DFBA1DC1F68200A5F042 /* credit_listComment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D321DFB71DC1F68200A5F042 /* credit_listComment@2x.png */; };
-		D321DFBB1DC1F68200A5F042 /* credit_listComment@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D321DFB81DC1F68200A5F042 /* credit_listComment@3x.png */; };
-		D321DFC21DC1FA5100A5F042 /* credit_good.png in Resources */ = {isa = PBXBuildFile; fileRef = D321DFBC1DC1FA5100A5F042 /* credit_good.png */; };
-		D321DFC31DC1FA5100A5F042 /* credit_good@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D321DFBD1DC1FA5100A5F042 /* credit_good@2x.png */; };
-		D321DFC41DC1FA5100A5F042 /* credit_good@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D321DFBE1DC1FA5100A5F042 /* credit_good@3x.png */; };
-		D321DFC51DC1FA5100A5F042 /* credit_noGood.png in Resources */ = {isa = PBXBuildFile; fileRef = D321DFBF1DC1FA5100A5F042 /* credit_noGood.png */; };
-		D321DFC61DC1FA5100A5F042 /* credit_noGood@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D321DFC01DC1FA5100A5F042 /* credit_noGood@2x.png */; };
-		D321DFC71DC1FA5100A5F042 /* credit_noGood@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D321DFC11DC1FA5100A5F042 /* credit_noGood@3x.png */; };
 		D322EA761DBEFF2F0089FD56 /* OrderLoanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D322EA751DBEFF2F0089FD56 /* OrderLoanViewController.m */; };
 		D322EA791DBF0FDB0089FD56 /* OrderLoanListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D322EA781DBF0FDB0089FD56 /* OrderLoanListViewController.m */; };
 		D322EA7C1DBF10170089FD56 /* OrderRentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D322EA7B1DBF10170089FD56 /* OrderRentViewController.m */; };
@@ -434,6 +435,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D304593F1DCED2A60032514C /* CommentChatToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentChatToolBar.h; sourceTree = "<group>"; };
+		D30459401DCED2A60032514C /* CommentChatToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentChatToolBar.m; sourceTree = "<group>"; };
+		D30459431DCEF09B0032514C /* carLife_good.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carLife_good.png; sourceTree = "<group>"; };
+		D30459441DCEF09B0032514C /* carLife_good@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "carLife_good@2x.png"; sourceTree = "<group>"; };
+		D30459451DCEF09B0032514C /* carLife_good@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "carLife_good@3x.png"; sourceTree = "<group>"; };
+		D30459461DCEF09B0032514C /* carLife_listComment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carLife_listComment.png; sourceTree = "<group>"; };
+		D30459471DCEF09B0032514C /* carLife_listComment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "carLife_listComment@2x.png"; sourceTree = "<group>"; };
+		D30459481DCEF09B0032514C /* carLife_listComment@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "carLife_listComment@3x.png"; sourceTree = "<group>"; };
+		D30459491DCEF09B0032514C /* carLife_noGood.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carLife_noGood.png; sourceTree = "<group>"; };
+		D304594A1DCEF09B0032514C /* carLife_noGood@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "carLife_noGood@2x.png"; sourceTree = "<group>"; };
+		D304594B1DCEF09B0032514C /* carLife_noGood@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "carLife_noGood@3x.png"; sourceTree = "<group>"; };
 		D309BBB61DC988D700355120 /* AgreeMentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgreeMentViewController.h; sourceTree = "<group>"; };
 		D309BBB71DC988D700355120 /* AgreeMentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgreeMentViewController.m; sourceTree = "<group>"; };
 		D309BBB81DC988D700355120 /* BorrowInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorrowInfoViewController.h; sourceTree = "<group>"; };
@@ -561,15 +573,6 @@
 		D321DFAD1DC1D9F300A5F042 /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
 		D321DFB31DC1E7A400A5F042 /* CarlifeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarlifeModel.h; sourceTree = "<group>"; };
 		D321DFB41DC1E7A400A5F042 /* CarlifeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarlifeModel.m; sourceTree = "<group>"; };
-		D321DFB61DC1F68200A5F042 /* credit_listComment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = credit_listComment.png; sourceTree = "<group>"; };
-		D321DFB71DC1F68200A5F042 /* credit_listComment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "credit_listComment@2x.png"; sourceTree = "<group>"; };
-		D321DFB81DC1F68200A5F042 /* credit_listComment@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "credit_listComment@3x.png"; sourceTree = "<group>"; };
-		D321DFBC1DC1FA5100A5F042 /* credit_good.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = credit_good.png; sourceTree = "<group>"; };
-		D321DFBD1DC1FA5100A5F042 /* credit_good@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "credit_good@2x.png"; sourceTree = "<group>"; };
-		D321DFBE1DC1FA5100A5F042 /* credit_good@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "credit_good@3x.png"; sourceTree = "<group>"; };
-		D321DFBF1DC1FA5100A5F042 /* credit_noGood.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = credit_noGood.png; sourceTree = "<group>"; };
-		D321DFC01DC1FA5100A5F042 /* credit_noGood@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "credit_noGood@2x.png"; sourceTree = "<group>"; };
-		D321DFC11DC1FA5100A5F042 /* credit_noGood@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "credit_noGood@3x.png"; sourceTree = "<group>"; };
 		D322EA741DBEFF2F0089FD56 /* OrderLoanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderLoanViewController.h; sourceTree = "<group>"; };
 		D322EA751DBEFF2F0089FD56 /* OrderLoanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderLoanViewController.m; sourceTree = "<group>"; };
 		D322EA771DBF0FDB0089FD56 /* OrderLoanListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderLoanListViewController.h; sourceTree = "<group>"; };
@@ -1105,6 +1108,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D30459421DCEF09B0032514C /* CarLife */ = {
+			isa = PBXGroup;
+			children = (
+				D30459431DCEF09B0032514C /* carLife_good.png */,
+				D30459441DCEF09B0032514C /* carLife_good@2x.png */,
+				D30459451DCEF09B0032514C /* carLife_good@3x.png */,
+				D30459461DCEF09B0032514C /* carLife_listComment.png */,
+				D30459471DCEF09B0032514C /* carLife_listComment@2x.png */,
+				D30459481DCEF09B0032514C /* carLife_listComment@3x.png */,
+				D30459491DCEF09B0032514C /* carLife_noGood.png */,
+				D304594A1DCEF09B0032514C /* carLife_noGood@2x.png */,
+				D304594B1DCEF09B0032514C /* carLife_noGood@3x.png */,
+			);
+			path = CarLife;
+			sourceTree = "<group>";
+		};
 		D309BBB41DC988D700355120 /* BorrowInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -1381,15 +1400,6 @@
 				D31515591DC87FBB00475E64 /* credit_question.png */,
 				D315155A1DC87FBB00475E64 /* credit_question@2x.png */,
 				D315155B1DC87FBB00475E64 /* credit_question@3x.png */,
-				D321DFBC1DC1FA5100A5F042 /* credit_good.png */,
-				D321DFBD1DC1FA5100A5F042 /* credit_good@2x.png */,
-				D321DFBE1DC1FA5100A5F042 /* credit_good@3x.png */,
-				D321DFBF1DC1FA5100A5F042 /* credit_noGood.png */,
-				D321DFC01DC1FA5100A5F042 /* credit_noGood@2x.png */,
-				D321DFC11DC1FA5100A5F042 /* credit_noGood@3x.png */,
-				D321DFB61DC1F68200A5F042 /* credit_listComment.png */,
-				D321DFB71DC1F68200A5F042 /* credit_listComment@2x.png */,
-				D321DFB81DC1F68200A5F042 /* credit_listComment@3x.png */,
 				D3DD973B1DBF717A003395C9 /* credit_banner.png */,
 				D3DD973C1DBF717A003395C9 /* credit_banner@2x.png */,
 				D3DD973D1DBF717A003395C9 /* credit_banner@3x.png */,
@@ -1809,6 +1819,7 @@
 		D3458A261DB0B0E7007BD2CF /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D30459421DCEF09B0032514C /* CarLife */,
 				D37346181DC7313C00C9031F /* Scan */,
 				D321DF931DC1A69600A5F042 /* Defaut */,
 				D322EA871DBF326D0089FD56 /* credit */,
@@ -2266,6 +2277,8 @@
 		D3D6FB971DCC2D1D002A2458 /* CommentDetail */ = {
 			isa = PBXGroup;
 			children = (
+				D304593F1DCED2A60032514C /* CommentChatToolBar.h */,
+				D30459401DCED2A60032514C /* CommentChatToolBar.m */,
 				D3D6FB981DCC2D8C002A2458 /* CommentDetailViewController.h */,
 				D3D6FB991DCC2D8C002A2458 /* CommentDetailViewController.m */,
 				D3D6FB9B1DCC50A3002A2458 /* CommentHeadView.h */,
@@ -2674,7 +2687,6 @@
 				D3348CD41DB9C08B00A5E06A /* myCenter_addCamera@3x.png in Resources */,
 				D38A95C61DBE095C005334AC /* loan_detail.png in Resources */,
 				D347E2C51DB46F0800E7B9BA /* tabbar_myCenter_gray.png in Resources */,
-				D321DFBA1DC1F68200A5F042 /* credit_listComment@2x.png in Resources */,
 				D3458A501DB0C608007BD2CF /* login_phone@2x.png in Resources */,
 				D3B2BE211DB73B220095306E /* myCenter_arrow@2x.png in Resources */,
 				D32049541DB5BFE3000782F9 /* myCenter_more@2x.png in Resources */,
@@ -2692,7 +2704,7 @@
 				D309BBD11DC9C70000355120 /* credit_success@3x.png in Resources */,
 				D320498A1DB63039000782F9 /* loan_city.png in Resources */,
 				D309BBD01DC9C70000355120 /* credit_success@2x.png in Resources */,
-				D321DFC41DC1FA5100A5F042 /* credit_good@3x.png in Resources */,
+				D30459511DCEF09B0032514C /* carLife_listComment@3x.png in Resources */,
 				D32049831DB60B17000782F9 /* loan_banner@3x.png in Resources */,
 				D3E8ADDA1DB51136002F5D35 /* myCenter_center@3x.png in Resources */,
 				D347E30F1DB49B9E00E7B9BA /* homePage_rent.png in Resources */,
@@ -2714,9 +2726,9 @@
 				D32049621DB5C4E0000782F9 /* myCenter_sign.png in Resources */,
 				D30C08961DCB31490008F156 /* homePage_add@3x.png in Resources */,
 				D32049731DB5CA86000782F9 /* myCenter_message@3x.png in Resources */,
+				D30459521DCEF09B0032514C /* carLife_noGood.png in Resources */,
 				D320496A1DB5C730000782F9 /* myCenter_ewm@3x.png in Resources */,
 				D32049641DB5C4E0000782F9 /* myCenter_sign@3x.png in Resources */,
-				D321DFB91DC1F68200A5F042 /* credit_listComment.png in Resources */,
 				D32049581DB5BFE3000782F9 /* myCenter_service@3x.png in Resources */,
 				D30C08981DCB31490008F156 /* homePage_credit@2x.png in Resources */,
 				D32049821DB60B17000782F9 /* loan_banner@2x.png in Resources */,
@@ -2739,6 +2751,7 @@
 				D321DF841DC1A0AF00A5F042 /* zbar-help.html in Resources */,
 				D373461F1DC7313C00C9031F /* scan_kuang.png in Resources */,
 				D32049611DB5C4E0000782F9 /* myCenter_ invitation@3x.png in Resources */,
+				D304594C1DCEF09B0032514C /* carLife_good.png in Resources */,
 				D30C08991DCB31490008F156 /* homePage_credit@3x.png in Resources */,
 				D347E3271DB4B11800E7B9BA /* homePage_scan.png in Resources */,
 				D315155C1DC87FBB00475E64 /* credit_question.png in Resources */,
@@ -2762,17 +2775,17 @@
 				D347E3071DB49B9E00E7B9BA /* homePage_contact@2x.png in Resources */,
 				D347E30B1DB49B9E00E7B9BA /* homePage_introduce@3x.png in Resources */,
 				D30C08971DCB31490008F156 /* homePage_credit.png in Resources */,
+				D304594D1DCEF09B0032514C /* carLife_good@2x.png in Resources */,
 				D30C08941DCB31490008F156 /* homePage_add.png in Resources */,
 				D32049601DB5C4E0000782F9 /* myCenter_ invitation@2x.png in Resources */,
-				D321DFC21DC1FA5100A5F042 /* credit_good.png in Resources */,
 				D3458A4A1DB0C5C3007BD2CF /* login_pwd@2x.png in Resources */,
+				D304594E1DCEF09B0032514C /* carLife_good@3x.png in Resources */,
 				D32049521DB5BFE3000782F9 /* myCenter_invite@3x.png in Resources */,
 				D347E2BB1DB46F0800E7B9BA /* tabbar_home_gary@3x.png in Resources */,
 				D315155E1DC87FBB00475E64 /* credit_question@3x.png in Resources */,
 				D30C087D1DCAE0870008F156 /* credit_noSelect.png in Resources */,
 				D37346231DC7313C00C9031F /* scan_line@2x.png in Resources */,
 				D347E2BE1DB46F0800E7B9BA /* tabbar_loan_blue@3x.png in Resources */,
-				D321DFBB1DC1F68200A5F042 /* credit_listComment@3x.png in Resources */,
 				D347E31C1DB4A7B300E7B9BA /* homePage_loactionbg@2x.png in Resources */,
 				D3E5F8551DC08029004398ED /* rent_city.png in Resources */,
 				D347E2B71DB46F0800E7B9BA /* tabbar_home_blue@2x.png in Resources */,
@@ -2783,7 +2796,6 @@
 				D33AAEC21DB8A00300459F4E /* myCenter_sfz@2x.png in Resources */,
 				D33AAF0C1DB8B68200459F4E /* myCenter_scan@3x.png in Resources */,
 				D347E3371DB4D44000E7B9BA /* myCenter_banner@3x.png in Resources */,
-				D321DFC51DC1FA5100A5F042 /* credit_noGood.png in Resources */,
 				D347E3351DB4D44000E7B9BA /* myCenter_banner.png in Resources */,
 				D3458A381DB0B427007BD2CF /* login_bg@2x.png in Resources */,
 				D347E2C81DB46F0800E7B9BA /* tabbar_rent_blue.png in Resources */,
@@ -2804,11 +2816,11 @@
 				D3B2BE201DB73B220095306E /* myCenter_arrow.png in Resources */,
 				D347E30E1DB49B9E00E7B9BA /* homePage_loan@3x.png in Resources */,
 				D3E8ADD41DB51136002F5D35 /* myCenter_ balance@3x.png in Resources */,
+				D30459531DCEF09B0032514C /* carLife_noGood@2x.png in Resources */,
 				D347E2E21DB470E700E7B9BA /* register_select@3x.png in Resources */,
 				D347E30D1DB49B9E00E7B9BA /* homePage_loan@2x.png in Resources */,
 				D33AAF171DB8CB3500459F4E /* TVSignFrameworkRes.bundle in Resources */,
 				D347E2B61DB46F0800E7B9BA /* tabbar_home_blue.png in Resources */,
-				D321DFC71DC1FA5100A5F042 /* credit_noGood@3x.png in Resources */,
 				D30C08951DCB31490008F156 /* homePage_add@2x.png in Resources */,
 				D321DF9C1DC1A72F00A5F042 /* default_bigBannre@3x.png in Resources */,
 				D32049681DB5C730000782F9 /* myCenter_ewm.png in Resources */,
@@ -2820,7 +2832,6 @@
 				D347E2C31DB46F0800E7B9BA /* tabbar_myCenter_blue@2x.png in Resources */,
 				D347E2C91DB46F0800E7B9BA /* tabbar_rent_blue@2x.png in Resources */,
 				D347E30A1DB49B9E00E7B9BA /* homePage_introduce@2x.png in Resources */,
-				D321DFC31DC1FA5100A5F042 /* credit_good@2x.png in Resources */,
 				D3E8ADD81DB51136002F5D35 /* myCenter_center.png in Resources */,
 				D37346211DC7313C00C9031F /* scan_kuang@3x.png in Resources */,
 				D30C087F1DCAE0870008F156 /* credit_noSelect@3x.png in Resources */,
@@ -2831,10 +2842,12 @@
 				D321DF9F1DC1A72F00A5F042 /* default_smallBannre@3x.png in Resources */,
 				D347E2C11DB46F0800E7B9BA /* tabbar_loan_gary@3x.png in Resources */,
 				D3348CE11DB9D66E00A5E06A /* rent_banner@3x.png in Resources */,
+				D30459541DCEF09B0032514C /* carLife_noGood@3x.png in Resources */,
 				D347E2CC1DB46F0800E7B9BA /* tabbar_rent_gary@2x.png in Resources */,
 				D321DF9A1DC1A72F00A5F042 /* default_bigBannre.png in Resources */,
 				D33AAEC11DB8A00300459F4E /* myCenter_sfz.png in Resources */,
 				D347E2C71DB46F0800E7B9BA /* tabbar_myCenter_gray@3x.png in Resources */,
+				D30459501DCEF09B0032514C /* carLife_listComment@2x.png in Resources */,
 				D347E2CA1DB46F0800E7B9BA /* tabbar_rent_blue@3x.png in Resources */,
 				D3458A311DB0B12F007BD2CF /* login_back.png in Resources */,
 				D347E2E11DB470E700E7B9BA /* register_select@2x.png in Resources */,
@@ -2846,7 +2859,6 @@
 				D321DF851DC1A0AF00A5F042 /* zbar-helpicons.png in Resources */,
 				D3458A4B1DB0C5C3007BD2CF /* login_pwd@3x.png in Resources */,
 				D3DD97401DBF717A003395C9 /* credit_banner@3x.png in Resources */,
-				D321DFC61DC1FA5100A5F042 /* credit_noGood@2x.png in Resources */,
 				D320498D1DB63039000782F9 /* loan_liucheng.png in Resources */,
 				D347E2C61DB46F0800E7B9BA /* tabbar_myCenter_gray@2x.png in Resources */,
 				D32049571DB5BFE3000782F9 /* myCenter_service@2x.png in Resources */,
@@ -2854,6 +2866,7 @@
 				D309BBCF1DC9C70000355120 /* credit_success.png in Resources */,
 				D3E8ADD21DB51136002F5D35 /* myCenter_ balance.png in Resources */,
 				D37346221DC7313C00C9031F /* scan_line.png in Resources */,
+				D304594F1DCEF09B0032514C /* carLife_listComment.png in Resources */,
 				D30C08811DCAE0870008F156 /* credit_selected@2x.png in Resources */,
 				D347E31D1DB4A7B300E7B9BA /* homePage_loactionbg@3x.png in Resources */,
 				D347E2DF1DB470E700E7B9BA /* register_noShow@3x.png in Resources */,
@@ -2936,6 +2949,7 @@
 				D347E2911DB3138E00E7B9BA /* UIImage+GIF.m in Sources */,
 				D33B0DCF1DC31749007A6168 /* ActivityViewController.m in Sources */,
 				D3E147C81DAF335C002F6D60 /* UIProgressView+AFNetworking.m in Sources */,
+				D30459411DCED2A60032514C /* CommentChatToolBar.m in Sources */,
 				D33B0DD31DC31951007A6168 /* MessageListViewController.m in Sources */,
 				D3348CF41DBA127400A5E06A /* CreditListViewController.m in Sources */,
 				D347E2581DB30E4D00E7B9BA /* MJRefreshBackNormalFooter.m in Sources */,

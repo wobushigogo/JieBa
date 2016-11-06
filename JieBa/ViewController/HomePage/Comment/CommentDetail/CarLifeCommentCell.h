@@ -10,6 +10,6 @@
 #import "CarlifeModel.h"
 
 @interface CarLifeCommentCell : UITableViewCell
-@property(nonatomic,strong)CarlifeModel *model;
+@property(nonatomic,strong)CommentModel *model;
 +(CGFloat)carculateCellHeightWithString:(NSString *)str;
 @end

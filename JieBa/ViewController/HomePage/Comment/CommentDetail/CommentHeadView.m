@@ -112,7 +112,7 @@
 -(UIView *)commentView{
     if(!_commentView){
         UIView *commentView = [[UIView alloc] initWithFrame:CGRectMake(kScreenWidth-WidthXiShu(12)-WidthXiShu(60), self.height-HeightXiShu(16)-HeightXiShu(20), WidthXiShu(60), HeightXiShu(20))];
-        
+                
         UILabel *commentLabel = [[UILabel alloc] initWithFrame:CGRectMake(commentView.width-WidthXiShu(42), 0, WidthXiShu(42), HeightXiShu(20))];
         commentLabel.textAlignment = NSTextAlignmentRight;
         commentLabel.textColor = MessageColor;
@@ -121,8 +121,13 @@
         
         UIImageView *commentImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 1, WidthXiShu(18), HeightXiShu(18))];
         commentImageView.maxX = commentLabel.minX;
-        commentImageView.image = [GetImagePath getImagePath:@"credit_listComment"];
+        commentImageView.image = [GetImagePath getImagePath:@"carLife_listComment"];
         [commentView addSubview:commentImageView];
+        
+        UIButton *commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        commentBtn.frame = CGRectMake(0, 0, WidthXiShu(60), HeightXiShu(20));
+        [commentBtn addTarget:self action:@selector(commentAction) forControlEvents:UIControlEventTouchUpInside];
+        [commentView addSubview:commentBtn];
         
         [self addSubview:commentView];
         _commentImageView = commentImageView;
@@ -144,7 +149,7 @@
         
         UIImageView *goodImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 1, WidthXiShu(18), HeightXiShu(18))];
         goodImageView.maxX = goodLabel.minX;
-        goodImageView.image = [GetImagePath getImagePath:@"credit_listComment"];
+        goodImageView.image = [GetImagePath getImagePath:@"carLife_good"];
         [goodView addSubview:goodImageView];
         
         [self addSubview:goodView];
@@ -156,6 +161,7 @@
 }
 
 -(void)setModel:(CarlifeModel *)model{
+    _model = model;
     CGFloat height = 0;
     CGRect size = [model.content autosizeWithFont:HEITI(HeightXiShu(14)) maxWidth:kScreenWidth-WidthXiShu(24)];
     height += size.size.height+HeightXiShu(62)+HeightXiShu(10)+HeightXiShu(161);
@@ -167,6 +173,8 @@
     [self.headImageView sd_setImageWithURL:model.avatarUrl];
     self.dateLabel.text = [StringTool timeInfoWithDateString:model.lastTime];
     self.contentLabel.text = model.content;
+    self.detailBtn.hidden = !model.can_delete;
+    
     
     [model.imageArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(((WidthXiShu(6)+WidthXiShu(113))*idx)+WidthXiShu(16), self.contentLabel.maxY+HeightXiShu(6), WidthXiShu(113), HeightXiShu(113))];
@@ -193,4 +201,9 @@
     self.goodImageView.maxX = self.goodLabel.minX - WidthXiShu(4);
 }
 
+-(void)commentAction{
+    if([self.delegate respondsToSelector:@selector(commentClick:)]){
+        [self.delegate commentClick:self.model.commentId];
+    }
+}
 @end

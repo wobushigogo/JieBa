@@ -70,4 +70,20 @@
         }
     } apiName:@"carlife" noNetWork:nil];
 }
+
++ (void)addCommentWithBlock:(void (^)(NSMutableArray *array, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork{
+    NSString *urlStr = [NSString stringWithFormat:@"?carlife"];
+    [SendRequst formRequstWithUrlString:urlStr postParamDic:dic success:^(id responseDic) {
+        NSMutableArray *arr = [[NSMutableArray alloc] init];
+        
+        if(block){
+            block(arr,nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"error===>%@",error);
+        if (block) {
+            block(nil, error);
+        }
+    } apiName:@"carlife" noNetWork:nil];
+}
 @end

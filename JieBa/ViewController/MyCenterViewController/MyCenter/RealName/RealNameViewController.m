@@ -13,6 +13,7 @@
 #import <Photos/Photos.h>
 #import <PhotosUI/PhotosUI.h>
 #import "RealWithUsViewController.h"
+#import "MyCenterApi.h"
 
 @interface RealNameViewController ()<TVFaceAuthProtocol>
 @property(nonatomic,strong)NavView *navView;
@@ -32,6 +33,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = YES;
 }
 
 #pragma mark - 页面元素
@@ -57,6 +63,27 @@
 #pragma mark - TVFaceAuthProtocol
 - (void)didFaceAuthSuccess:(NSString*)serviceId evidenceId:(NSString*)evidenceId name:(NSString*)name idno:(NSString*)idno {
     NSString* log = [NSString stringWithFormat:@"face auth success serviceId : %@ evidenceId : %@ name : %@ idno : %@\n", serviceId, evidenceId, name, idno];
+    
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"member_changeuserinfo" forKey:@"_cmd_"];
+    [dic setObject:@"realname" forKey:@"type"];
+    [dic setObject:name forKey:@"names"];
+    [dic setObject:idno forKey:@"certiNumber"];
+    
+    __block typeof(self)wSelf = self;
+    [MyCenterApi realWithBlock:^(NSString *string, NSError *error) {
+        if(!error){
+            UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:@"提示" message:string preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [wSelf.navigationController popToRootViewControllerAnimated:YES];
+            }];
+            [alertControl addAction:cancelAction];
+            [wSelf presentViewController:alertControl animated:YES completion:nil];
+        }else{
+            [wSelf.navigationController popToRootViewControllerAnimated:YES];
+        }
+    } dic:dic noNetWork:nil];
+    
     [self log:log];
 }
 
@@ -99,6 +126,7 @@
 
 - (void)didFaceAuthCancel {
     NSString* log = @"cancel face auth\n";
+    [self.navigationController popToRootViewControllerAnimated:YES];
     [self log:log];
 }
 

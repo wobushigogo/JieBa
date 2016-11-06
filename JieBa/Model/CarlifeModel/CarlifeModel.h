@@ -18,6 +18,7 @@
 @property(nonatomic,copy)NSString *eval_num;
 @property(nonatomic,copy)NSString *point_num;
 @property(nonatomic)BOOL is_point;
+@property(nonatomic)BOOL can_delete;
 @property(nonatomic,strong)NSMutableArray *imageArr;
 @property(nonatomic,strong)NSDictionary *dict;
 @end
@@ -30,6 +31,7 @@
 @property(nonatomic,copy)NSString *lastTime;
 @property(nonatomic,copy)NSString *content;
 @property(nonatomic,copy)NSString *to_names;
+@property(nonatomic,copy)NSString *from_memberid;
 @property(nonatomic)BOOL can_delete;
 @property(nonatomic)BOOL isReply;
 @property(nonatomic,strong)NSDictionary *dict;

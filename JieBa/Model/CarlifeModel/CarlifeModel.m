@@ -19,6 +19,11 @@
     self.location = dict[@"location"];
     self.eval_num = dict[@"eval_num"];
     self.point_num = dict[@"point_num"];
+    if([dict[@"can_delete"] integerValue] == 0){
+        self.can_delete = NO;
+    }else{
+        self.can_delete = YES;
+    }
 }
 @end
 
@@ -30,6 +35,7 @@
     self.content = dict[@"content"];
     self.avatarUrl = [NSURL URLWithString:dict[@"avatar"]];
     self.lastTime = dict[@"date_time"];
+    self.from_memberid = dict[@"from_memberid"];
     if([dict[@"can_delete"] integerValue] == 0){
         self.can_delete = NO;
     }else{
@@ -40,6 +46,12 @@
         self.isReply = NO;
     }else{
         self.isReply = YES;
+    }
+    
+    if([dict[@"can_delete"] integerValue] == 0){
+        self.can_delete = NO;
+    }else{
+        self.can_delete = YES;
     }
 }
 
