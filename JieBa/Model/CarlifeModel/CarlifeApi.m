@@ -86,4 +86,68 @@
         }
     } apiName:@"carlife" noNetWork:nil];
 }
+
++ (void)goodCarlifeWithBlock:(void (^)(NSMutableArray *array, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork{
+    NSString *urlStr = [NSString stringWithFormat:@"?carlife"];
+    [SendRequst formRequstWithUrlString:urlStr postParamDic:dic success:^(id responseDic) {
+        NSMutableArray *arr = [[NSMutableArray alloc] init];
+        
+        if(block){
+            block(arr,nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"error===>%@",error);
+        if (block) {
+            block(nil, error);
+        }
+    } apiName:@"carlife" noNetWork:nil];
+}
+
++ (void)delGoodCarlifeWithBlock:(void (^)(NSMutableArray *array, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork{
+    NSString *urlStr = [NSString stringWithFormat:@"?carlife"];
+    [SendRequst formRequstWithUrlString:urlStr postParamDic:dic success:^(id responseDic) {
+        NSMutableArray *arr = [[NSMutableArray alloc] init];
+        
+        if(block){
+            block(arr,nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"error===>%@",error);
+        if (block) {
+            block(nil, error);
+        }
+    } apiName:@"carlife" noNetWork:nil];
+}
+
++ (void)delCarlifeWithBlock:(void (^)(NSMutableArray *array, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork{
+    NSString *urlStr = [NSString stringWithFormat:@"?carlife"];
+    [SendRequst formRequstWithUrlString:urlStr postParamDic:dic success:^(id responseDic) {
+        NSMutableArray *arr = [[NSMutableArray alloc] init];
+        
+        if(block){
+            block(arr,nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"error===>%@",error);
+        if (block) {
+            block(nil, error);
+        }
+    } apiName:@"carlife" noNetWork:nil];
+}
+
++ (void)delCommentWithBlock:(void (^)(NSMutableArray *array, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork{
+    NSString *urlStr = [NSString stringWithFormat:@"?carlife"];
+    [SendRequst formRequstWithUrlString:urlStr postParamDic:dic success:^(id responseDic) {
+        NSMutableArray *arr = [[NSMutableArray alloc] init];
+        
+        if(block){
+            block(arr,nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"error===>%@",error);
+        if (block) {
+            block(nil, error);
+        }
+    } apiName:@"carlife" noNetWork:nil];
+}
 @end

@@ -80,6 +80,7 @@
         [detailBtn setTitleColor:ButtonColor forState:UIControlStateNormal];
         detailBtn.titleLabel.font = HEITI(HeightXiShu(14));
         detailBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+        [detailBtn addTarget:self action:@selector(delInfo) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:detailBtn];
         _detailBtn = detailBtn;
     }
@@ -152,6 +153,11 @@
         goodImageView.image = [GetImagePath getImagePath:@"carLife_good"];
         [goodView addSubview:goodImageView];
         
+        UIButton *goodBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        goodBtn.frame = CGRectMake(0, 0, WidthXiShu(60), HeightXiShu(20));
+        [goodBtn addTarget:self action:@selector(goodAction) forControlEvents:UIControlEventTouchUpInside];
+        [goodView addSubview:goodBtn];
+        
         [self addSubview:goodView];
         _goodImageView = goodImageView;
         _goodLabel = goodLabel;
@@ -199,11 +205,43 @@
     self.goodLabel.height = HeightXiShu(20);
     self.goodLabel.maxX = self.goodView.width;
     self.goodImageView.maxX = self.goodLabel.minX - WidthXiShu(4);
+    
+    if(model.is_point){
+        self.goodImageView.image = [GetImagePath getImagePath:@"carLife_good"];
+    }else{
+        self.goodImageView.image = [GetImagePath getImagePath:@"carLife_noGood"];
+    }
+}
+
+-(void)setIs_point:(BOOL)is_point{
+    _is_point = is_point;
+    if(is_point){
+        self.goodImageView.image = [GetImagePath getImagePath:@"carLife_good"];
+    }else{
+        self.goodImageView.image = [GetImagePath getImagePath:@"carLife_noGood"];
+    }
+}
+
+-(void)setPoint_num:(NSString *)point_num{
+    _point_num = point_num;
+    self.goodLabel.text = point_num;
 }
 
 -(void)commentAction{
     if([self.delegate respondsToSelector:@selector(commentClick:)]){
         [self.delegate commentClick:self.model.commentId];
+    }
+}
+
+-(void)goodAction{
+    if([self.delegate respondsToSelector:@selector(goodClick:)]){
+        [self.delegate goodClick:self.model];
+    }
+}
+
+-(void)delInfo{
+    if([self.delegate respondsToSelector:@selector(delClcik:)]){
+        [self.delegate delClcik:self.model.commentId];
     }
 }
 @end

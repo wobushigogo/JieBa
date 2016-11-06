@@ -107,6 +107,7 @@
         [detailBtn setTitleColor:ButtonColor forState:UIControlStateNormal];
         detailBtn.titleLabel.font = HEITI(HeightXiShu(14));
         detailBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+        [detailBtn addTarget:self action:@selector(delInfo) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:detailBtn];
         _detailBtn = detailBtn;
     }
@@ -124,6 +125,7 @@
 }
 
 -(void)setModel:(CommentModel *)model{
+    _model = model;
     CGFloat height = 0;
     CGRect size = [model.content autosizeWithFont:HEITI(HeightXiShu(15)) maxWidth:kScreenWidth-WidthXiShu(24)-WidthXiShu(53)];
     height += size.size.height+HeightXiShu(42);
@@ -141,6 +143,14 @@
         self.contentLabel.attributedText = attStr;
     }else{
         self.contentLabel.text = model.content;
+    }
+    
+    self.detailBtn.hidden = !model.can_delete;
+}
+
+-(void)delInfo{
+    if([self.delegate respondsToSelector:@selector(delComment:)]){
+        [self.delegate delComment:self.model.aId];
     }
 }
 @end

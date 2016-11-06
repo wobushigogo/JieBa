@@ -14,7 +14,7 @@
 #import "CarLifeCommentCell.h"
 #import "CommentChatToolBar.h"
 
-@interface CommentDetailViewController ()<CommentHeadViewDelegate,CommentChatToolBarDelegate>
+@interface CommentDetailViewController ()<CommentHeadViewDelegate,CommentChatToolBarDelegate,CarLifeCommentCellDelegate>
 @property (nonatomic, strong) NavView *navView;
 @property(nonatomic,strong)CarlifeModel *carlifeModel;
 @property(nonatomic,strong)CommentHeadView *headView;
@@ -121,6 +121,7 @@
     }
     CommentModel *model = self.modelArr[indexPath.row];
     cell.model = model;
+    cell.delegate = self;
     return cell;
 }
 
@@ -209,6 +210,48 @@
     }
 }
 
+-(void)goodClick:(CarlifeModel *)model{
+    if(model.is_point){
+        [self delGood:model];
+    }else{
+        [self addGood:model];
+    }
+}
+
+-(void)delClcik{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"carlife" forKey:@"_cmd_"];
+    [dic setObject:@"detail" forKey:@"type"];
+    [dic setObject:self.commentId forKey:@"id"];
+    __block typeof(self)wSelf = self;
+    [CarlifeApi delCarlifeWithBlock:^(NSMutableArray *array, NSError *error) {
+        if(!error){
+            if(wSelf.delBlcok){
+                wSelf.delBlcok();
+            }
+        }
+    } dic:dic noNetWork:nil];
+}
+
+-(void)delComment:(NSString *)aId{
+    __block typeof(self) wSelf = self;
+    UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:@"提示" message:@"确认删除本次评论吗？" preferredStyle:UIAlertControllerStyleAlert];
+    [alertControl addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+    [alertControl addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setObject:@"carlife" forKey:@"_cmd_"];
+        [dic setObject:@"del_eval" forKey:@"type"];
+        [dic setObject:aId forKey:@"id"];
+        [CarlifeApi delCommentWithBlock:^(NSMutableArray *array, NSError *error) {
+            if(!error){
+                [wSelf netWorkWithType:BaseTableViewRefreshHeader];
+            }
+        } dic:dic noNetWork:nil];
+
+    }]];
+    [self presentViewController:alertControl animated:YES completion:nil];
+}
+
 -(void)chatToolSendBtnClickedWithContent:(NSString *)string{
     NSLog(@"====>%@",string);
     [self addNewComment:string];
@@ -279,6 +322,38 @@
             }
         }
         isHeaderRefresh ? [self.tableView.mj_header endRefreshing] : [self.tableView.mj_footer endRefreshing];
+    } dic:dic noNetWork:nil];
+}
+
+-(void)addGood:(CarlifeModel *)model{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"carlife" forKey:@"_cmd_"];
+    [dic setObject:@"goodpoint" forKey:@"type"];
+    [dic setObject:model.commentId forKey:@"id"];
+    
+    [CarlifeApi goodCarlifeWithBlock:^(NSMutableArray *array, NSError *error) {
+        if(!error){
+            self.headView.is_point = YES;
+            model.is_point = YES;
+            model.point_num = [NSString stringWithFormat:@"%d",[model.point_num integerValue] +1];
+            self.headView.point_num = model.point_num;
+        }
+    } dic:dic noNetWork:nil];
+}
+
+-(void)delGood:(CarlifeModel *)model{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"carlife" forKey:@"_cmd_"];
+    [dic setObject:@"canclepoint" forKey:@"type"];
+    [dic setObject:model.commentId forKey:@"id"];
+    
+    [CarlifeApi delGoodCarlifeWithBlock:^(NSMutableArray *array, NSError *error) {
+        if(!error){
+            self.headView.is_point = NO;
+            model.is_point = NO;
+            model.point_num = [NSString stringWithFormat:@"%d",[model.point_num integerValue] -1];
+            self.headView.point_num = model.point_num;
+        }
     } dic:dic noNetWork:nil];
 }
 @end

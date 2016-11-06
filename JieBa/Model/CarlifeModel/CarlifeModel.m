@@ -24,12 +24,19 @@
     }else{
         self.can_delete = YES;
     }
+    
+    if([dict[@"is_point"] integerValue] == 0){
+        self.is_point = NO;
+    }else{
+        self.is_point = YES;
+    }
 }
 @end
 
 @implementation CommentModel
 
 -(void)setDict:(NSDictionary *)dict{
+    self.aId = dict[@"id"];
     self.assedId = dict[@"assed_id"];
     self.name = dict[@"names"];
     self.content = dict[@"content"];

@@ -25,6 +25,7 @@
 
 
 @interface CommentModel : NSObject
+@property(nonatomic,copy)NSString *aId;
 @property(nonatomic,copy)NSString *assedId;
 @property(nonatomic,strong)NSURL *avatarUrl;
 @property(nonatomic,copy)NSString *name;

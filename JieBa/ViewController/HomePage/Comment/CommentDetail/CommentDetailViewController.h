@@ -10,4 +10,5 @@
 
 @interface CommentDetailViewController : BaseTableViewController
 @property(nonatomic,copy)NSString *commentId;
+@property(nonatomic,strong)void(^delBlcok)();
 @end

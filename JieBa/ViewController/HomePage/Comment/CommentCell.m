@@ -176,8 +176,12 @@
         
         UIImageView *goodImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 1, WidthXiShu(18), HeightXiShu(18))];
         goodImageView.maxX = goodLabel.minX;
-        goodImageView.image = [GetImagePath getImagePath:@"carLife_good"];
         [goodView addSubview:goodImageView];
+        
+        UIButton *goodBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        goodBtn.frame = CGRectMake(0, 0, WidthXiShu(60), HeightXiShu(20));
+        [goodBtn addTarget:self action:@selector(goodAction) forControlEvents:UIControlEventTouchUpInside];
+        [goodView addSubview:goodBtn];
         
         [self.bgView addSubview:goodView];
         _goodImageView = goodImageView;
@@ -188,6 +192,7 @@
 }
 
 -(void)setModel:(CarlifeModel *)model{
+    _model = model;
     CGRect size = [model.content autosizeWithFont:HEITI(HeightXiShu(14)) maxWidth:kScreenWidth-WidthXiShu(24) maxHeight:HeightXiShu(40)];
     self.contentLabel.height = size.size.height;
     self.bgView.height = self.contentLabel.maxY+HeightXiShu(161);
@@ -220,5 +225,31 @@
     self.goodLabel.height = HeightXiShu(20);
     self.goodLabel.maxX = self.goodView.width;
     self.goodImageView.maxX = self.goodLabel.minX - WidthXiShu(4);
+    
+    if(model.is_point){
+        self.goodImageView.image = [GetImagePath getImagePath:@"carLife_good"];
+    }else{
+        self.goodImageView.image = [GetImagePath getImagePath:@"carLife_noGood"];
+    }
+}
+
+-(void)setIs_point:(BOOL)is_point{
+    _is_point = is_point;
+    if(is_point){
+        self.goodImageView.image = [GetImagePath getImagePath:@"carLife_good"];
+    }else{
+        self.goodImageView.image = [GetImagePath getImagePath:@"carLife_noGood"];
+    }
+}
+
+-(void)setPoint_num:(NSString *)point_num{
+    _point_num = point_num;
+    self.goodLabel.text = point_num;
+}
+
+-(void)goodAction{
+    if([self.delegate respondsToSelector:@selector(goodClick:cell:)]){
+        [self.delegate goodClick:self.model cell:self];
+    }
 }
 @end

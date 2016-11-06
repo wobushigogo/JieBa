@@ -14,7 +14,7 @@
 #import "CarlifeModel.h"
 #import "CommentDetailViewController.h"
 
-@interface CommentListViewController ()<StageChooseViewDelegate>
+@interface CommentListViewController ()<StageChooseViewDelegate,CommentCellDelegate>
 @property (nonatomic, strong) NavView *navView;
 @property(nonatomic,strong)StageChooseView *stageChooseView;
 @property(nonatomic)NSInteger startIndex;
@@ -36,8 +36,6 @@
     [self.tableView setMinY:self.stageChooseView.maxY maxY:kScreenHeight];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = AllBackLightGratColor;
-    
-    [self netWorkWithType:BaseTableViewRefreshFirstLoad];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,6 +65,7 @@
         cell = [[CommentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    cell.delegate = self;
     CarlifeModel *model = self.modelArr[indexPath.row];
     cell.model = model;
     return cell;
@@ -74,8 +73,12 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     CarlifeModel *model = self.modelArr[indexPath.row];
+    __block typeof(self)wSelf = self;
     CommentDetailViewController *view = [[CommentDetailViewController alloc] init];
     view.commentId = model.commentId;
+    view.delBlcok = ^(void){
+        [wSelf netWorkWithType:BaseTableViewRefreshHeader];
+    };
     [self.navigationController pushViewController:view animated:YES];
 }
 #pragma mark - 页面元素
@@ -105,6 +108,14 @@
 #pragma mark - 事件
 -(void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)goodClick:(CarlifeModel *)model cell:(CommentCell *)cell{
+    if(model.is_point){
+        [self delGood:model cell:cell];
+    }else{
+        [self addGood:model cell:cell];
+    }
 }
 
 #pragma mark - StageChooseViewDelegate
@@ -141,6 +152,38 @@
             }
         }
         isHeaderRefresh ? [self.tableView.mj_header endRefreshing] : [self.tableView.mj_footer endRefreshing];
+    } dic:dic noNetWork:nil];
+}
+
+-(void)addGood:(CarlifeModel *)model cell:(CommentCell *)cell{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"carlife" forKey:@"_cmd_"];
+    [dic setObject:@"goodpoint" forKey:@"type"];
+    [dic setObject:model.commentId forKey:@"id"];
+    
+    [CarlifeApi goodCarlifeWithBlock:^(NSMutableArray *array, NSError *error) {
+        if(!error){
+            cell.is_point = YES;
+            model.is_point = YES;
+            model.point_num = [NSString stringWithFormat:@"%d",[model.point_num integerValue] +1];
+            cell.point_num = model.point_num;
+        }
+    } dic:dic noNetWork:nil];
+}
+
+-(void)delGood:(CarlifeModel *)model cell:(CommentCell *)cell{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"carlife" forKey:@"_cmd_"];
+    [dic setObject:@"canclepoint" forKey:@"type"];
+    [dic setObject:model.commentId forKey:@"id"];
+    
+    [CarlifeApi delGoodCarlifeWithBlock:^(NSMutableArray *array, NSError *error) {
+        if(!error){
+            cell.is_point = NO;
+            model.is_point = NO;
+            model.point_num = [NSString stringWithFormat:@"%d",[model.point_num integerValue] -1];
+            cell.point_num = model.point_num;
+        }
     } dic:dic noNetWork:nil];
 }
 @end

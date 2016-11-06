@@ -9,7 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "CarlifeModel.h"
 
+@protocol CarLifeCommentCellDelegate <NSObject>
+-(void)delComment:(NSString *)aId;
+@end
+
 @interface CarLifeCommentCell : UITableViewCell
 @property(nonatomic,strong)CommentModel *model;
+@property(nonatomic,weak)id<CarLifeCommentCellDelegate>delegate;
 +(CGFloat)carculateCellHeightWithString:(NSString *)str;
 @end
