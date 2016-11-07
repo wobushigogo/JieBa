@@ -164,6 +164,13 @@
 		D33B0DD91DC31B65007A6168 /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D33B0DD81DC31B65007A6168 /* MessageModel.m */; };
 		D33B0DDC1DC3263B007A6168 /* MessageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D33B0DDB1DC3263B007A6168 /* MessageDetailViewController.m */; };
 		D33B0DE01DC347A7007A6168 /* BindCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D33B0DDF1DC347A7007A6168 /* BindCardViewController.m */; };
+		D33B6AD41DD0219900D59873 /* OrderCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D33B6AD31DD0219900D59873 /* OrderCommentViewController.m */; };
+		D33B6AD81DD0529C00D59873 /* myCenter_ camer.png in Resources */ = {isa = PBXBuildFile; fileRef = D33B6AD51DD0529B00D59873 /* myCenter_ camer.png */; };
+		D33B6AD91DD0529C00D59873 /* myCenter_ camer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D33B6AD61DD0529B00D59873 /* myCenter_ camer@2x.png */; };
+		D33B6ADA1DD0529C00D59873 /* myCenter_ camer@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D33B6AD71DD0529B00D59873 /* myCenter_ camer@3x.png */; };
+		D33B6ADF1DD06C3B00D59873 /* WaitCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D33B6ADE1DD06C3B00D59873 /* WaitCommentViewController.m */; };
+		D33B6AE21DD0790D00D59873 /* AssedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D33B6AE11DD0790D00D59873 /* AssedModel.m */; };
+		D33B6AE51DD07C4300D59873 /* EndCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D33B6AE41DD07C4300D59873 /* EndCommentViewController.m */; };
 		D34589F91DB07C52007BD2CF /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D34589F81DB07C52007BD2CF /* MainViewController.m */; };
 		D34589FD1DB07D79007BD2CF /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D34589FC1DB07D79007BD2CF /* BaseNavigationController.m */; };
 		D3458A051DB0854F007BD2CF /* NSString+LabelKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D3458A001DB0854F007BD2CF /* NSString+LabelKit.m */; };
@@ -666,6 +673,17 @@
 		D33B0DDB1DC3263B007A6168 /* MessageDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageDetailViewController.m; sourceTree = "<group>"; };
 		D33B0DDE1DC347A7007A6168 /* BindCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindCardViewController.h; sourceTree = "<group>"; };
 		D33B0DDF1DC347A7007A6168 /* BindCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindCardViewController.m; sourceTree = "<group>"; };
+		D33B6AD21DD0219900D59873 /* OrderCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderCommentViewController.h; sourceTree = "<group>"; };
+		D33B6AD31DD0219900D59873 /* OrderCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderCommentViewController.m; sourceTree = "<group>"; };
+		D33B6AD51DD0529B00D59873 /* myCenter_ camer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myCenter_ camer.png"; sourceTree = "<group>"; };
+		D33B6AD61DD0529B00D59873 /* myCenter_ camer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myCenter_ camer@2x.png"; sourceTree = "<group>"; };
+		D33B6AD71DD0529B00D59873 /* myCenter_ camer@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myCenter_ camer@3x.png"; sourceTree = "<group>"; };
+		D33B6ADD1DD06C3B00D59873 /* WaitCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitCommentViewController.h; sourceTree = "<group>"; };
+		D33B6ADE1DD06C3B00D59873 /* WaitCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitCommentViewController.m; sourceTree = "<group>"; };
+		D33B6AE01DD0790D00D59873 /* AssedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssedModel.h; sourceTree = "<group>"; };
+		D33B6AE11DD0790D00D59873 /* AssedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssedModel.m; sourceTree = "<group>"; };
+		D33B6AE31DD07C4300D59873 /* EndCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndCommentViewController.h; sourceTree = "<group>"; };
+		D33B6AE41DD07C4300D59873 /* EndCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndCommentViewController.m; sourceTree = "<group>"; };
 		D34589F71DB07C52007BD2CF /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		D34589F81DB07C52007BD2CF /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		D34589FB1DB07D79007BD2CF /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
@@ -1652,6 +1670,33 @@
 			path = BindCard;
 			sourceTree = "<group>";
 		};
+		D33B6AD11DD0217C00D59873 /* OrderComment */ = {
+			isa = PBXGroup;
+			children = (
+				D33B6AD21DD0219900D59873 /* OrderCommentViewController.h */,
+				D33B6AD31DD0219900D59873 /* OrderCommentViewController.m */,
+			);
+			path = OrderComment;
+			sourceTree = "<group>";
+		};
+		D33B6ADB1DD06B9C00D59873 /* EndComment */ = {
+			isa = PBXGroup;
+			children = (
+				D33B6AE31DD07C4300D59873 /* EndCommentViewController.h */,
+				D33B6AE41DD07C4300D59873 /* EndCommentViewController.m */,
+			);
+			path = EndComment;
+			sourceTree = "<group>";
+		};
+		D33B6ADC1DD06B9C00D59873 /* WaitComment */ = {
+			isa = PBXGroup;
+			children = (
+				D33B6ADD1DD06C3B00D59873 /* WaitCommentViewController.h */,
+				D33B6ADE1DD06C3B00D59873 /* WaitCommentViewController.m */,
+			);
+			path = WaitComment;
+			sourceTree = "<group>";
+		};
 		D34589F51DB07C2A007BD2CF /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -2093,6 +2138,9 @@
 		D347E3311DB4D44000E7B9BA /* MyCenter */ = {
 			isa = PBXGroup;
 			children = (
+				D33B6AD51DD0529B00D59873 /* myCenter_ camer.png */,
+				D33B6AD61DD0529B00D59873 /* myCenter_ camer@2x.png */,
+				D33B6AD71DD0529B00D59873 /* myCenter_ camer@3x.png */,
 				D3348CCF1DB9C08B00A5E06A /* myCenter_addCamera.png */,
 				D3348CD01DB9C08B00A5E06A /* myCenter_addCamera@2x.png */,
 				D3348CD11DB9C08B00A5E06A /* myCenter_addCamera@3x.png */,
@@ -2223,6 +2271,9 @@
 		D3B2BE3D1DB74FAF0095306E /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				D33B6ADB1DD06B9C00D59873 /* EndComment */,
+				D33B6ADC1DD06B9C00D59873 /* WaitComment */,
+				D33B6AD11DD0217C00D59873 /* OrderComment */,
 				D322EA731DBEFF0E0089FD56 /* OrderDetail */,
 				D3B2BE411DB756B40095306E /* OrderFail */,
 				D3B2BE421DB756B40095306E /* OrderSuccess */,
@@ -2490,6 +2541,8 @@
 				D3B2BE521DB763DE0095306E /* OrderModel.m */,
 				D33B0DD71DC31B65007A6168 /* MessageModel.h */,
 				D33B0DD81DC31B65007A6168 /* MessageModel.m */,
+				D33B6AE01DD0790D00D59873 /* AssedModel.h */,
+				D33B6AE11DD0790D00D59873 /* AssedModel.m */,
 			);
 			path = MyCenterModel;
 			sourceTree = "<group>";
@@ -2750,6 +2803,7 @@
 				D347E30C1DB49B9E00E7B9BA /* homePage_loan.png in Resources */,
 				D321DF841DC1A0AF00A5F042 /* zbar-help.html in Resources */,
 				D373461F1DC7313C00C9031F /* scan_kuang.png in Resources */,
+				D33B6ADA1DD0529C00D59873 /* myCenter_ camer@3x.png in Resources */,
 				D32049611DB5C4E0000782F9 /* myCenter_ invitation@3x.png in Resources */,
 				D304594C1DCEF09B0032514C /* carLife_good.png in Resources */,
 				D30C08991DCB31490008F156 /* homePage_credit@3x.png in Resources */,
@@ -2782,6 +2836,7 @@
 				D304594E1DCEF09B0032514C /* carLife_good@3x.png in Resources */,
 				D32049521DB5BFE3000782F9 /* myCenter_invite@3x.png in Resources */,
 				D347E2BB1DB46F0800E7B9BA /* tabbar_home_gary@3x.png in Resources */,
+				D33B6AD81DD0529C00D59873 /* myCenter_ camer.png in Resources */,
 				D315155E1DC87FBB00475E64 /* credit_question@3x.png in Resources */,
 				D30C087D1DCAE0870008F156 /* credit_noSelect.png in Resources */,
 				D37346231DC7313C00C9031F /* scan_line@2x.png in Resources */,
@@ -2850,6 +2905,7 @@
 				D30459501DCEF09B0032514C /* carLife_listComment@2x.png in Resources */,
 				D347E2CA1DB46F0800E7B9BA /* tabbar_rent_blue@3x.png in Resources */,
 				D3458A311DB0B12F007BD2CF /* login_back.png in Resources */,
+				D33B6AD91DD0529C00D59873 /* myCenter_ camer@2x.png in Resources */,
 				D347E2E11DB470E700E7B9BA /* register_select@2x.png in Resources */,
 				D347E2DC1DB470E700E7B9BA /* register_noSelect@3x.png in Resources */,
 				D32049711DB5CA86000782F9 /* myCenter_message.png in Resources */,
@@ -2916,6 +2972,7 @@
 				D347E2541DB30E4D00E7B9BA /* MJRefreshAutoGifFooter.m in Sources */,
 				D31515501DC8390700475E64 /* AddressBookApi.m in Sources */,
 				D347E2521DB30E4D00E7B9BA /* MJRefreshFooter.m in Sources */,
+				D33B6AE21DD0790D00D59873 /* AssedModel.m in Sources */,
 				D347E2881DB3138E00E7B9BA /* NSData+ImageContentType.m in Sources */,
 				D3458A111DB08782007BD2CF /* BaseViewController.m in Sources */,
 				D347E2951DB3138E00E7B9BA /* UIImageView+WebCache.m in Sources */,
@@ -2969,6 +3026,7 @@
 				D3B2BE311DB73F6B0095306E /* LewPopupBackgroundView.m in Sources */,
 				D3E147CE1DAF3BE9002F6D60 /* MD5.m in Sources */,
 				D38A95B81DBDAF87005334AC /* CreditDetailViewController.m in Sources */,
+				D33B6AD41DD0219900D59873 /* OrderCommentViewController.m in Sources */,
 				D347E28B1DB3138E00E7B9BA /* SDWebImageDecoder.m in Sources */,
 				D347E28C1DB3138E00E7B9BA /* SDWebImageDownloader.m in Sources */,
 				D320497C1DB60350000782F9 /* PickerView.m in Sources */,
@@ -3006,6 +3064,7 @@
 				D3B2BE531DB763DE0095306E /* OrderModel.m in Sources */,
 				D321DFB51DC1E7A400A5F042 /* CarlifeModel.m in Sources */,
 				D3B2BE351DB73F6B0095306E /* LewPopupViewAnimationSpring.m in Sources */,
+				D33B6AE51DD07C4300D59873 /* EndCommentViewController.m in Sources */,
 				D3E147E91DAF5FAE002F6D60 /* FMDatabasePool.m in Sources */,
 				D3E147C21DAF335C002F6D60 /* SendRequst.m in Sources */,
 				D3E147C41DAF335C002F6D60 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -3087,6 +3146,7 @@
 				D347E2531DB30E4D00E7B9BA /* MJRefreshHeader.m in Sources */,
 				D38A95BE1DBE003F005334AC /* LoanModel.m in Sources */,
 				D33AAEBD1DB89B7900459F4E /* RealNameViewController.m in Sources */,
+				D33B6ADF1DD06C3B00D59873 /* WaitCommentViewController.m in Sources */,
 				D38A95C21DBE04C6005334AC /* LoanDetailViewController.m in Sources */,
 				D3458A071DB0854F007BD2CF /* UIView+ViewKit.m in Sources */,
 				D3E819691DAF259E0054B352 /* main.m in Sources */,

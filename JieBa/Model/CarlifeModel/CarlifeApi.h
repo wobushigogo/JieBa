@@ -35,5 +35,5 @@
 + (void)addCommentWithBlock:(void (^)(NSMutableArray *array, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork;
 
 //添加订单评价
-+ (void)assedCommitWithBlock:(void (^)(NSMutableArray *array, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork;
++ (void)assedCommitWithBlock:(void (^)(NSMutableArray *array, NSError *error))block dic:(NSMutableDictionary *)dic imageDataArr:(NSMutableArray *)imageDataArr noNetWork:(void(^)())noNetWork;
 @end

@@ -139,7 +139,7 @@
 
 -(UILabel *)orderStatusLabel{
     if(!_orderStatusLabel){
-        UILabel *orderStatusLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.detailView.width-WidthXiShu(12)-WidthXiShu(80), self.timeaddLabel.maxY, WidthXiShu(80), HeightXiShu(20))];
+        UILabel *orderStatusLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.detailView.width-WidthXiShu(12)-WidthXiShu(100), self.timeaddLabel.maxY, WidthXiShu(100), HeightXiShu(20))];
         orderStatusLabel.textColor = ButtonColor;
         orderStatusLabel.textAlignment = NSTextAlignmentRight;
         orderStatusLabel.font = HEITI(HeightXiShu(14));

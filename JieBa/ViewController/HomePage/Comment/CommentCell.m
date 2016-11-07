@@ -22,6 +22,7 @@
 @property(nonatomic,strong)UIView *goodView;
 @property(nonatomic,strong)UILabel *goodLabel;
 @property(nonatomic,strong)UIImageView *goodImageView;
+@property(nonatomic,strong)UIView *imagesView;
 @end
 
 @implementation CommentCell
@@ -37,10 +38,14 @@
     // Configure the view for the selected state
 }
 
-+(CGFloat)carculateCellHeightWithString:(NSString *)str{
++(CGFloat)carculateCellHeightWithString:(NSString *)str imgArr:(NSMutableArray *)imgArr{
     CGFloat height = 0;
     CGRect size = [str autosizeWithFont:HEITI(HeightXiShu(14)) maxWidth:kScreenWidth-WidthXiShu(24) maxHeight:HeightXiShu(40)];
-    height += size.size.height+HeightXiShu(62)+HeightXiShu(10)+HeightXiShu(161);
+    if(imgArr.count != 0){
+        height += size.size.height+HeightXiShu(62)+HeightXiShu(10)+HeightXiShu(161);
+    }else{
+        height += size.size.height+HeightXiShu(62)+HeightXiShu(10)+HeightXiShu(161)-HeightXiShu(125);
+    }
     return height;
 }
 
@@ -55,6 +60,7 @@
         [self dateLabel];
         [self detailLabel];
         [self contentLabel];
+        [self imagesView];
         [self locationLabel];
         [self commentView];
     }
@@ -130,6 +136,15 @@
     return _contentLabel;
 }
 
+-(UIView *)imagesView{
+    if(!_imagesView){
+        UIView *imagesView = [[UIView alloc] initWithFrame:CGRectMake(0, self.contentLabel.maxY+HeightXiShu(6), kScreenWidth, HeightXiShu(113))];
+        [self.bgView addSubview:imagesView];
+        _imagesView = imagesView;
+    }
+    return _imagesView;
+}
+
 -(UILabel *)locationLabel{
     if(!_locationLabel){
         UILabel *locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(WidthXiShu(12), self.bgView.height-HeightXiShu(16)-HeightXiShu(20), WidthXiShu(100), HeightXiShu(20))];
@@ -193,19 +208,27 @@
 
 -(void)setModel:(CarlifeModel *)model{
     _model = model;
+    [self.imagesView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     CGRect size = [model.content autosizeWithFont:HEITI(HeightXiShu(14)) maxWidth:kScreenWidth-WidthXiShu(24) maxHeight:HeightXiShu(40)];
     self.contentLabel.height = size.size.height;
-    self.bgView.height = self.contentLabel.maxY+HeightXiShu(161);
+    if(model.imageArr.count != 0){
+        self.bgView.height = self.contentLabel.maxY+HeightXiShu(161);
+        self.imagesView.height = HeightXiShu(113);
+    }else{
+        self.bgView.height = self.contentLabel.maxY+HeightXiShu(161)-HeightXiShu(125);
+        self.imagesView.height = 0;
+    }
     
     self.nameLabel.text = model.name;
     [self.headImageView sd_setImageWithURL:model.avatarUrl];
     self.dateLabel.text = [StringTool timeChange2:model.lastTime];
     self.contentLabel.text = model.content;
+    self.imagesView.minY = self.contentLabel.maxY + HeightXiShu(6);
     
     [model.imageArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(((WidthXiShu(6)+WidthXiShu(113))*idx)+WidthXiShu(16), self.contentLabel.maxY+HeightXiShu(6), WidthXiShu(113), HeightXiShu(113))];
-        [imageView sd_setImageWithURL:[NSURL URLWithString:obj]];
-        [self.bgView addSubview:imageView];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(((WidthXiShu(6)+WidthXiShu(113))*idx)+WidthXiShu(16), 0, WidthXiShu(113), HeightXiShu(113))];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:obj] placeholderImage:[GetImagePath getImagePath:@"default_smallBannre"]];
+        [self.imagesView addSubview:imageView];
     }];
     
     self.locationLabel.text = model.location;

@@ -55,7 +55,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     CarlifeModel *model = self.modelArr[indexPath.row];
-    return [CommentCell carculateCellHeightWithString:model.content];
+    return [CommentCell carculateCellHeightWithString:model.content imgArr:model.imageArr];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -77,6 +77,10 @@
     CommentDetailViewController *view = [[CommentDetailViewController alloc] init];
     view.commentId = model.commentId;
     view.delBlcok = ^(void){
+        [wSelf netWorkWithType:BaseTableViewRefreshHeader];
+    };
+    
+    view.addCommentBlock = ^(void){
         [wSelf netWorkWithType:BaseTableViewRefreshHeader];
     };
     [self.navigationController pushViewController:view animated:YES];

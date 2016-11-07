@@ -28,5 +28,12 @@
     self.loanmoney = dict[@"loanmoney"];
     self.imageUrl = [NSURL URLWithString:dict[@"imgs"]];
     self.order_status = dict[@"order_status"];
+    self.backTotalMoney = dict[@"backtotalmoney"];
+    self.assedId = dict[@"is_assed"];
+    if([dict[@"is_assed"] isEqualToString:@""]){
+        self.is_assed = NO;
+    }else{
+        self.is_assed = YES;
+    }
 }
 @end

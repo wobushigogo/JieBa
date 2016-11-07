@@ -218,19 +218,27 @@
     }
 }
 
--(void)delClcik{
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setObject:@"carlife" forKey:@"_cmd_"];
-    [dic setObject:@"detail" forKey:@"type"];
-    [dic setObject:self.commentId forKey:@"id"];
+-(void)delClcik:(NSString *)aId{
     __block typeof(self)wSelf = self;
-    [CarlifeApi delCarlifeWithBlock:^(NSMutableArray *array, NSError *error) {
-        if(!error){
-            if(wSelf.delBlcok){
-                wSelf.delBlcok();
+    UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:@"提示" message:@"确认删除评论吗？" preferredStyle:UIAlertControllerStyleAlert];
+    [alertControl addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+    [alertControl addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setObject:@"carlife" forKey:@"_cmd_"];
+        [dic setObject:@"delete_assed" forKey:@"type"];
+        [dic setObject:aId forKey:@"assed_id"];
+        
+        [CarlifeApi delCarlifeWithBlock:^(NSMutableArray *array, NSError *error) {
+            if(!error){
+                if(wSelf.delBlcok){
+                    wSelf.delBlcok();
+                }
+                [wSelf.navigationController popViewControllerAnimated:YES];
             }
-        }
-    } dic:dic noNetWork:nil];
+        } dic:dic noNetWork:nil];
+        
+    }]];
+    [self presentViewController:alertControl animated:YES completion:nil];
 }
 
 -(void)delComment:(NSString *)aId{
@@ -290,13 +298,18 @@
             wSelf.isShowBar = NO;
             [UIView animateWithDuration:.2 animations:^{
                 wSelf.footerView.minY = kScreenHeight;
-                self.tableView.transform = CGAffineTransformIdentity;
+                wSelf.tableView.transform = CGAffineTransformIdentity;
             } completion:^(BOOL finished) {
                 [wSelf.footerView removeFromSuperview];
                 wSelf.footerView = nil;
             }];
-            self.startIndex = 1;
-            [self netWorkWithType:BaseTableViewRefreshHeader];
+            wSelf.startIndex = 1;
+            [wSelf loadInfo];
+            [wSelf netWorkWithType:BaseTableViewRefreshHeader];
+            
+            if(wSelf.addCommentBlock){
+                wSelf.addCommentBlock();
+            }
         }
     } dic:dic noNetWork:nil];
 }

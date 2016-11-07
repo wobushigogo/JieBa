@@ -150,4 +150,26 @@
         }
     } apiName:@"carlife" noNetWork:nil];
 }
+
++ (void)assedCommitWithBlock:(void (^)(NSMutableArray *array, NSError *error))block dic:(NSMutableDictionary *)dic imageDataArr:(NSMutableArray *)imageDataArr noNetWork:(void(^)())noNetWork{
+    NSString *urlStr = [NSString stringWithFormat:@"?carlife"];
+    
+    NSMutableArray *imgArr = [[NSMutableArray alloc] init];
+    [imageDataArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if([obj isKindOfClass:[NSData class]]){
+            [imgArr addObject:obj];
+        }
+    }];
+    NSLog(@"===>%@",imgArr);
+    [SendRequst postImageRequstWithUrlString:urlStr postParamDic:dic imageDataArr:imgArr success:^(id responseDic) {
+        if(block){
+            block([NSMutableArray array],nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"error===>%@",error);
+        if (block) {
+            block(nil, error);
+        }
+    } apiName:@"carlife" noNetWork:nil];
+}
 @end

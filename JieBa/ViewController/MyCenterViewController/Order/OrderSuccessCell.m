@@ -175,7 +175,8 @@
         [commentBtn setTitle:@"立即评价" forState:UIControlStateNormal];
         commentBtn.titleLabel.font = HEITI(HeightXiShu(14));
         commentBtn.layer.masksToBounds = YES;
-        commentBtn.layer.cornerRadius = HeightXiShu(3); 
+        commentBtn.layer.cornerRadius = HeightXiShu(3);
+        [commentBtn addTarget:self action:@selector(commentACtion) forControlEvents:UIControlEventTouchUpInside];
         [self.detailView addSubview:commentBtn];
         _commentBtn = commentBtn;
     }
@@ -203,5 +204,33 @@
     self.loanmoneyLabel.text = [NSString stringWithFormat:@"借款金额：%@",model.loanmoney];
     self.timeaddLabel.text = [NSString stringWithFormat:@"申请时间：%@",model.timeadd];
     self.orderStatusLabel.text = model.order_status;
+    if(model.is_assed){
+        [self.commentBtn setTitle:@"已评价" forState:UIControlStateNormal];
+    }else{
+        [self.commentBtn setTitle:@"立即评价" forState:UIControlStateNormal];
+    }
+}
+
+-(void)setAssedModel:(AssedModel *)assedModel{
+    self.statusLabel.text = assedModel.statusStr;
+    self.orderTypeLabel.text = assedModel.orderTypeStr;
+    [self.smallImageView sd_setImageWithURL:assedModel.imageUrl placeholderImage:nil];
+    self.loanmoneyLabel.text = [NSString stringWithFormat:@"借款金额：%@",assedModel.loanmoney];
+    self.timeaddLabel.text = [NSString stringWithFormat:@"申请时间：%@",assedModel.timeadd];
+    if(assedModel.is_assed){
+        [self.commentBtn setTitle:@"已评价" forState:UIControlStateNormal];
+    }else{
+        [self.commentBtn setTitle:@"立即评价" forState:UIControlStateNormal];
+    }
+}
+
+-(void)setIndexPath:(NSIndexPath *)indexPath{
+    _indexPath = indexPath;
+}
+
+-(void)commentACtion{
+    if([self.delegate respondsToSelector:@selector(commentClick:)]){
+        [self.delegate commentClick:self.indexPath.row];
+    }
 }
 @end

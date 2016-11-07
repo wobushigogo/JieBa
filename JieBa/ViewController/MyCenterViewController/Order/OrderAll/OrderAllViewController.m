@@ -13,8 +13,10 @@
 #import "OrderSuccessCell.h"
 #import "OrderLoanViewController.h"
 #import "OrderRentViewController.h"
+#import "OrderCommentViewController.h"
+#import "CommentDetailViewController.h"
 
-@interface OrderAllViewController ()
+@interface OrderAllViewController ()<OrderSuccessCellDelegate>
 @property(nonatomic)NSInteger startIndex;
 @property(nonatomic,strong)NSMutableArray *modelArr;
 @end
@@ -62,6 +64,8 @@
             cell = [[OrderSuccessCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
+        cell.delegate = self;
+        cell.indexPath = indexPath;
         cell.model = model;
         return cell;
     }else{
@@ -93,6 +97,20 @@
 -(void)reloadData{
     NSLog(@"OrderAllViewController reloadData");
     [self netWorkWithType:BaseTableViewRefreshFirstLoad];
+}
+
+-(void)commentClick:(NSInteger)index{
+    OrderModel *model = self.modelArr[index];
+    if(model.is_assed){
+        CommentDetailViewController *view = [[CommentDetailViewController alloc] init];
+        view.commentId = model.assedId;
+        [self.navigationController pushViewController:view animated:YES];
+    }else{
+        OrderCommentViewController *view = [[OrderCommentViewController alloc] init];
+        view.imageUrl = model.imageUrl;
+        view.orderId = model.orderId;
+        [self.navigationController pushViewController:view animated:YES];
+    }
 }
 
 #pragma mark - 接口

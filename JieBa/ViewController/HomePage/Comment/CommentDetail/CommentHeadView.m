@@ -170,7 +170,11 @@
     _model = model;
     CGFloat height = 0;
     CGRect size = [model.content autosizeWithFont:HEITI(HeightXiShu(14)) maxWidth:kScreenWidth-WidthXiShu(24)];
-    height += size.size.height+HeightXiShu(62)+HeightXiShu(10)+HeightXiShu(161);
+    if(model.imageArr.count != 0){
+        height += size.size.height+HeightXiShu(62)+HeightXiShu(10)+HeightXiShu(161);
+    }else{
+        height += size.size.height+HeightXiShu(62)+HeightXiShu(10)+HeightXiShu(161)-HeightXiShu(125);
+    }
     if(self.heightBlock){
         self.heightBlock(height);
     }
@@ -184,7 +188,7 @@
     
     [model.imageArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(((WidthXiShu(6)+WidthXiShu(113))*idx)+WidthXiShu(16), self.contentLabel.maxY+HeightXiShu(6), WidthXiShu(113), HeightXiShu(113))];
-        [imageView sd_setImageWithURL:[NSURL URLWithString:obj]];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:obj] placeholderImage:[GetImagePath getImagePath:@"default_smallBannre"]];
         [self addSubview:imageView];
     }];
     

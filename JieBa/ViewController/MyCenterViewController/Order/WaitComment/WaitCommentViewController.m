@@ -1,34 +1,39 @@
 //
-//  OrderSuccessViewController.m
+//  WaitCommentViewController.m
 //  JieBa
 //
-//  Created by 汪洋 on 16/10/19.
+//  Created by 汪洋 on 2016/11/7.
 //  Copyright © 2016年 zhixin. All rights reserved.
 //
 
-#import "OrderSuccessViewController.h"
-#import "MyCenterApi.h"
-#import "OrderModel.h"
+#import "WaitCommentViewController.h"
+#import "NavView.h"
 #import "OrderSuccessCell.h"
+#import "AssedModel.h"
 #import "OrderLoanViewController.h"
 #import "OrderRentViewController.h"
+#import "MyCenterApi.h"
 #import "OrderCommentViewController.h"
-#import "CommentDetailViewController.h"
 
-@interface OrderSuccessViewController ()<OrderSuccessCellDelegate>
-@property(nonatomic)NSInteger startIndex;
+@interface WaitCommentViewController ()<OrderSuccessCellDelegate>
+@property(nonatomic,strong)NavView *navView;
 @property(nonatomic,strong)NSMutableArray *modelArr;
+@property(nonatomic)NSInteger startIndex;
 @end
 
-@implementation OrderSuccessViewController
+@implementation WaitCommentViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:[NSString stringWithFormat:@"%@",[self class]] object:nil];
-    [self.tableView setMinY:0 maxY:kScreenHeight-HeightXiShu(110)];
+    [self statusBar];
+    [self navView];
+    
+    [self.tableView setMinY:self.navView.maxY maxY:kScreenHeight];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = AllBackLightGratColor;
+    
+    [self netWorkWithType:BaseTableViewRefreshFirstLoad];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,9 +41,9 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)dealloc{
-    NSLog(@"OrderSuccessViewController dealloc");
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:[NSString stringWithFormat:@"%@",[self class]] object:nil];
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = YES;
 }
 
 #pragma mark - tableView delegate dataSource
@@ -51,14 +56,14 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    OrderModel *model = self.modelArr[indexPath.row];
+    AssedModel *model = self.modelArr[indexPath.row];
     static NSString* const identifier = @"OrderSuccessCell";
     OrderSuccessCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[OrderSuccessCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    cell.model = model;
+    cell.assedModel = model;
     cell.delegate = self;
     cell.indexPath = indexPath;
     return cell;
@@ -77,24 +82,32 @@
     }
 }
 
+#pragma mark - 页面元素
+
+-(NavView *)navView{
+    if(!_navView){
+        NavView *navView = [NavView initNavView];
+        navView.minY = HeightXiShu(20);
+        navView.backgroundColor = NavColor;
+        navView.titleLabel.text = @"待评价";
+        [navView.leftBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+        _navView = navView;
+        [self.view addSubview:_navView];
+    }
+    return _navView;
+}
+
 #pragma mark - 事件
--(void)reloadData{
-    NSLog(@"OrderUnderwayViewController reloadData");
-    [self netWorkWithType:BaseTableViewRefreshFirstLoad];
+-(void)backAction{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)commentClick:(NSInteger)index{
-    OrderModel *model = self.modelArr[index];
-    if(model.is_assed){
-        CommentDetailViewController *view = [[CommentDetailViewController alloc] init];
-        view.commentId = model.assedId;
-        [self.navigationController pushViewController:view animated:YES];
-    }else{
-        OrderCommentViewController *view = [[OrderCommentViewController alloc] init];
-        view.imageUrl = model.imageUrl;
-        view.orderId = model.orderId;
-        [self.navigationController pushViewController:view animated:YES];
-    }
+    AssedModel *model = self.modelArr[index];
+    OrderCommentViewController *view = [[OrderCommentViewController alloc] init];
+    view.imageUrl = model.imageUrl;
+    view.orderId = model.orderId;
+    [self.navigationController pushViewController:view animated:YES];
 }
 
 #pragma mark - 接口
@@ -103,12 +116,11 @@
     NSInteger startIndex = isHeaderRefresh ? 1 : (self.startIndex + 1);
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setObject:@"order" forKey:@"_cmd_"];
-    [dic setObject:@"list" forKey:@"type"];
+    [dic setObject:@"assed" forKey:@"type"];
     [dic setObject:[NSNumber numberWithInteger:startIndex] forKey:@"page"];
-    [dic setObject:@"2" forKey:@"status"];
     [dic setObject:@"10" forKey:@"number"];
     
-    [MyCenterApi orderListWithBlock:^(NSMutableArray *array, NSError *error) {
+    [MyCenterApi waitCommentListWithBlock:^(NSMutableArray *array, NSError *error) {
         if(!error){
             isHeaderRefresh ? self.modelArr = array : [self.modelArr addObjectsFromArray:array];
             [self.tableView reloadData];
@@ -121,5 +133,4 @@
         isHeaderRefresh ? [self.tableView.mj_header endRefreshing] : [self.tableView.mj_footer endRefreshing];
     } dic:dic noNetWork:nil];
 }
-
 @end

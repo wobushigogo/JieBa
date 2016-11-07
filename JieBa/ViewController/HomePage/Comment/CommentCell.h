@@ -19,5 +19,5 @@
 @property(nonatomic)BOOL is_point;
 @property(nonatomic,strong)NSString *point_num;
 @property(nonatomic,weak)id<CommentCellDelegate>delegate;
-+(CGFloat)carculateCellHeightWithString:(NSString *)str;
++(CGFloat)carculateCellHeightWithString:(NSString *)str imgArr:(NSMutableArray *)imgArr;
 @end

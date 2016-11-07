@@ -24,6 +24,8 @@
 #import "AddCashViewController.h"
 #import "BindCardViewController.h"
 #import "FuiouInfoViewController.h"
+#import "WaitCommentViewController.h"
+#import "EndCommentViewController.h"
 
 @interface MyCenterViewController ()<MyCenterHeadDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property(nonatomic,strong)MyCenterHead *headView;
@@ -216,6 +218,7 @@
 
 #pragma mark - 创建前3个view
 -(UIView *)cellViewWithMainImg:(NSString *)mainImgName mainText:(NSString *)mainText subText:(NSString *)subText buttonName1:(NSString *)buttonName1 buttonName2:(NSString *)buttonName2 selector:(SEL)selector selector1:(SEL)selector1 selector2:(SEL)selector2 needMainBtn:(BOOL)needMainBtn stingOrImage:(BOOL)stingOrImage{
+    
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, HeightXiShu(80))];
     UIView *cutLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, .5)];
     cutLine.backgroundColor = AllLightGrayColor;
@@ -321,10 +324,14 @@
 
 -(void)evaluateAction:(UIButton *)button{
     NSLog(@"evaluateAction");
+    WaitCommentViewController *view = [[WaitCommentViewController alloc] init];
+    [self.navigationController pushViewController:view animated:YES];
 }
 
--(void)evaluateEndAction{
+-(void)evaluateEndAction:(UIButton *)button{
     NSLog(@"evaluateEndAction");
+    EndCommentViewController *view = [[EndCommentViewController alloc] init];
+    [self.navigationController pushViewController:view animated:YES];
 }
 
 -(void)approveAction:(UIButton *)button{

@@ -11,6 +11,7 @@
 #import "InviteModel.h"
 #import "OrderModel.h"
 #import "MessageModel.h"
+#import "AssedModel.h"
 
 @implementation MyCenterApi
 + (void)invitationListWithBlock:(void (^)(NSMutableArray *array, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork{
@@ -114,6 +115,52 @@
             for(NSDictionary *item in responseDic[@"dataresult"][@"orderlist"]){
                 OrderModel *model = [[OrderModel alloc] init];
                 [model setDict:item];
+                [arr addObject:model];
+            }
+        }
+        if(block){
+            block(arr,nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"error===>%@",error);
+        if (block) {
+            block(nil, error);
+        }
+    } apiName:@"order" noNetWork:nil];
+}
+
++ (void)waitCommentListWithBlock:(void (^)(NSMutableArray *array, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork{
+    NSString *urlStr = [NSString stringWithFormat:@"?order"];
+    [SendRequst formRequstWithUrlString:urlStr postParamDic:dic success:^(id responseDic) {
+        NSMutableArray *arr = [[NSMutableArray alloc] init];
+        if([responseDic[@"dataresult"][@"assedlist"] count] !=0){
+            for(NSDictionary *item in responseDic[@"dataresult"][@"assedlist"]){
+                AssedModel *model = [[AssedModel alloc] init];
+                [model setDict:item];
+                model.is_assed = NO;
+                [arr addObject:model];
+            }
+        }
+        if(block){
+            block(arr,nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"error===>%@",error);
+        if (block) {
+            block(nil, error);
+        }
+    } apiName:@"order" noNetWork:nil];
+}
+
++ (void)endCommentListWithBlock:(void (^)(NSMutableArray *array, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork{
+    NSString *urlStr = [NSString stringWithFormat:@"?order"];
+    [SendRequst formRequstWithUrlString:urlStr postParamDic:dic success:^(id responseDic) {
+        NSMutableArray *arr = [[NSMutableArray alloc] init];
+        if([responseDic[@"dataresult"][@"assedlist"] count] !=0){
+            for(NSDictionary *item in responseDic[@"dataresult"][@"assedlist"]){
+                AssedModel *model = [[AssedModel alloc] init];
+                [model setDict:item];
+                model.is_assed = YES;
                 [arr addObject:model];
             }
         }
@@ -285,5 +332,19 @@
             block(nil, error);
         }
     } apiName:@"view" noNetWork:nil];
+}
+
++ (void)orderCommentInfoWithBlock:(void (^)(NSMutableDictionary *dict, NSError *error))block dic:(NSMutableDictionary *)dic noNetWork:(void(^)())noNetWork{
+    NSString *urlStr = [NSString stringWithFormat:@"?order"];
+    [SendRequst formRequstWithUrlString:urlStr postParamDic:dic success:^(id responseDic) {
+        if(block){
+            block(responseDic[@"dataresult"][@"data"],nil);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"error===>%@",error);
+        if (block) {
+            block(nil, error);
+        }
+    } apiName:@"order" noNetWork:nil];
 }
 @end
